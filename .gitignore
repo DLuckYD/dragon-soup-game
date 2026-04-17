@@ -1,0 +1,50 @@
+# Unity
+[Ll]ibrary/
+[Tt]emp/
+[Oo]bj/
+[Bb]uild/
+[Bb]uilds/
+[Ll]ogs/
+UserSettings/
+MemoryCaptures/
+Recordings/
+
+# IDE / local files
+.vs/
+.idea/
+.vscode/
+.gradle/
+.DS_Store
+Thumbs.db
+.vsconfig
+
+# Unity generated project files
+*.csproj
+*.unityproj
+*.sln
+*.slnx
+*.suo
+*.tmp
+*.user
+*.userprefs
+*.pidb
+*.booproj
+*.svd
+*.pdb
+*.mdb
+*.opendb
+*.VC.db
+
+# Plastic / UVCS leftovers
+.plastic/
+ignore.conf
+
+# Optional local logs
+logRunSetup.txt
+
+# Wwise local/cache files
+Dragon Soup_WwiseProject/.cache/
+Dragon Soup_WwiseProject/Cache/
+Dragon Soup_WwiseProject/Logs/
+Dragon Soup_WwiseProject/.vs/
+Dragon Soup_WwiseProject/.idea/
