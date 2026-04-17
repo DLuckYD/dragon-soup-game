@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7eaa5f4e5b4ce3344bf280ac66fa903c, type: 3}
+  m_Name: RatShishKebab
+  m_EditorClassIdentifier: Assembly-CSharp::Recipe
+  id: 1
+  displayName: Rat Shish-Kebab
+  ingredients:
+  - item: {fileID: 11400000, guid: 536e4103e2dae224696f5b571909f60e, type: 2}
+    amount: 3
+  - item: {fileID: 11400000, guid: 91b3c57c8456e1340a6297c0a73eb933, type: 2}
+    amount: 1
+  - item: {fileID: 11400000, guid: 0adff101fac623148bc77439c4e95d86, type: 2}
+    amount: 2
+  result: {fileID: 11400000, guid: 9006436ef0c1a8448bdeb781f0b3c2c6, type: 2}
+  cookTime: 0
+  icon: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}

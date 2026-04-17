@@ -1,0 +1,29 @@
+using UnityEngine;
+
+public class HouseSpawner : MonoBehaviour
+{
+    [SerializeField] private Transform[] spawnPoints;
+
+    public void SpawnObject(ItemData ingridient, int amount)
+    {
+
+        if (ingridient == null || spawnPoints == null)
+        {
+            Debug.Log("HouseSpawner: ingridien/spawnPoints is null or empty");
+        }
+        
+        if (ingridient == null || spawnPoints.Length == 0)
+        {
+            Debug.Log("HouseSpawner: spawnPoints not assigned");
+        }
+
+        for (int i = 0; i < amount; i++)
+        {
+            var v = spawnPoints[Random.Range(0, spawnPoints.Length)];
+            Instantiate( ingridient.worldPrefab, v.position, v.rotation);
+
+
+        }
+
+    }
+}

@@ -1,0 +1,70 @@
+{
+  "intros": [
+    {
+      "id": "intro_001",
+      "text": "Oh, hello there! It's good to see a friendly face around here. Could you bring me {amount}× {ingredient}?"
+    },
+    {
+      "id": "intro_002",
+      "text": "Hey! I was just about to start cooking, but I'm missing something important. I need {amount}× {ingredient}."
+    },
+    {
+      "id": "intro_003",
+      "text": "Excuse me, traveler. I have a small request. Could you find {amount}× {ingredient} for me?"
+    },
+    {
+      "id": "intro_004",
+      "text": "You look like someone who knows their way around. I could really use {amount}× {ingredient}."
+    },
+    {
+      "id": "intro_005",
+      "text": "Perfect timing! I need a bit of help. I'm looking for {amount}× {ingredient}."
+    }
+  ],
+
+  "outros": [
+    {
+      "id": "outro_001",
+      "text": "I really need this to keep things going here. I'd appreciate your help."
+    },
+    {
+      "id": "outro_002",
+      "text": "Without it, I won't be able to finish what I started. I'm counting on you."
+    },
+    {
+      "id": "outro_003",
+      "text": "It may not sound like much, but it's very important to me."
+    },
+    {
+      "id": "outro_004",
+      "text": "If you manage to find it, I'll make sure it's worth your time."
+    },
+    {
+      "id": "outro_005",
+      "text": "Let me know once you have it. I'll be waiting right here."
+    }
+  ],
+
+  "hints": [
+    {
+      "id": "hint_001",
+      "text": "somewhere in the nearby forest"
+    },
+    {
+      "id": "hint_002",
+      "text": "close to the river beyond the hills"
+    },
+    {
+      "id": "hint_003",
+      "text": "around the old mill outside the village"
+    },
+    {
+      "id": "hint_004",
+      "text": "not far from the main road"
+    },
+    {
+      "id": "hint_005",
+      "text": "in the surrounding area, if you look carefully"
+    }
+  ]
+}
