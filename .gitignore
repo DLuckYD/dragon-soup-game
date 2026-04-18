@@ -48,7 +48,8 @@ Dragon Soup_WwiseProject/Cache/
 Dragon Soup_WwiseProject/Logs/
 Dragon Soup_WwiseProject/.vs/
 Dragon Soup_WwiseProject/.idea/
-Dragon Soup_WwiseProject/GeneratedSoundBanks/
+Dragon Soup_WwiseProject/GeneratedSoundBanks/Mac/
+Dragon Soup_WwiseProject/GeneratedSoundBanks/Windows/
 Dragon Soup_WwiseProject/*.backup
 Dragon Soup_WwiseProject/*.akd
 Dragon Soup_WwiseProject/*.prof
