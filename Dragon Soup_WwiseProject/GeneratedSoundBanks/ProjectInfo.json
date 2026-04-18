@@ -1,0 +1,36 @@
+{
+ "ProjectInfo": {
+  "Project": {
+   "Name": "Dragon Soup_WwiseProject",
+   "GUID": "{07D0CBF7-45B7-445A-9460-C35AB5C5C434}",
+   "Generator": "2025.1.4.9062"
+  },
+  "CacheRoot": "../.cache",
+  "Platforms": [
+   {
+    "Name": "Mac",
+    "GUID": "{E6B9569C-57E4-4DC7-B38D-19F4F92899EE}",
+    "BasePlatform": "Mac",
+    "BasePlatformGUID": "{9C6217D5-DD11-4795-87C1-6CE02853C540}",
+    "Path": "Mac"
+   },
+   {
+    "Name": "Windows",
+    "GUID": "{76B5BF9F-7C9E-4466-B85A-AAE9A90C6B90}",
+    "BasePlatform": "Windows",
+    "BasePlatformGUID": "{6E0CB257-C6C8-4C5C-8366-2740DFC441EB}",
+    "Path": "Windows"
+   }
+  ],
+  "Languages": [
+   {
+    "Name": "English(US)",
+    "Id": "684519430",
+    "GUID": "{0B3A105D-CE02-40BA-8D00-9CED049121BD}",
+    "Default": "true",
+    "UseAsStandIn": "true"
+   }
+  ],
+  "FileHash": "{256079E9-B5CF-8E1F-DA81-6E5429193EF3}"
+ }
+}
