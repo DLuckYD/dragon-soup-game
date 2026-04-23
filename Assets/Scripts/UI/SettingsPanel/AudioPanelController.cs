@@ -16,16 +16,22 @@ public class AudioPanelController : MonoBehaviour
     }
     public void OnGameVolumeChanged(float value)
     {
+        SettingsManager.Instance.CurrentSettings.masterVolume = value;
+        SettingsManager.Instance.SaveSettings();
         Debug.Log("Game volume: " + Mathf.RoundToInt(value * 100).ToString());
     }
 
     public void OnMusicVolumeChanged(float value)
     {
+        SettingsManager.Instance.CurrentSettings.musicVolume = value;
+        SettingsManager.Instance.SaveSettings();
         Debug.Log("Music volume: " + Mathf.RoundToInt(value * 100).ToString());
     }
 
     public void OnEffectsVolumeChanged(float value)
     {
+        SettingsManager.Instance.CurrentSettings.effectsVolume = value;
+        SettingsManager.Instance.SaveSettings();
         Debug.Log("Effects volume: " + Mathf.RoundToInt(value * 100).ToString());
     }
 }

@@ -2,6 +2,13 @@ using System.ComponentModel.Design;
 using Unity.Physics;
 using UnityEngine;
 
+
+[System.Serializable]
+public struct PlayerSaveData
+{
+    public Vector3 position;
+}
+
 public class PlayerMovement : MonoBehaviour
 {
     [Header("Movement")]
@@ -193,8 +200,3 @@ public class PlayerMovement : MonoBehaviour
 
 }
 
-[System.Serializable]
-public struct PlayerSaveData
-{
-    public Vector3 position;
-}

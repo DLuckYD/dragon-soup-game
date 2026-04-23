@@ -1,16 +1,18 @@
 using UnityEngine;
 
-public class SaveSystem : MonoBehaviour
+public class SaveSystem
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    public static SaveData saveData = new SaveData();
+
+    [System.Serializable]
+    public struct SaveData
     {
-        
+        public PlayerSaveData playerData;
     }
 
-    // Update is called once per frame
-    void Update()
+    public static string SaveFileName()
     {
-        
+        string saveFile = Application.persistentDataPath + "/savefile" + ".save";
+        return saveFile;
     }
 }

@@ -1,7 +1,7 @@
-using UnityEngine;
-
 using System.Collections.Generic;
 using TMPro;
+using UnityEngine;
+using static UnityEngine.Rendering.DebugUI;
 
 public class VideoSettings : MonoBehaviour
 {
@@ -27,6 +27,10 @@ public class VideoSettings : MonoBehaviour
             return;
         Resolution resolution = uniqueResolutions[resolutionIndex];
         Screen.SetResolution(resolution.width, resolution.height, true);
+
+        SettingsManager.Instance.CurrentSettings.resolutionWidth = resolution.width;
+        SettingsManager.Instance.CurrentSettings.resolutionHeight = resolution.height;
+        SettingsManager.Instance.SaveSettings();
     }
 
     public void SetAllPossibleResolutions()
@@ -96,6 +100,9 @@ public class VideoSettings : MonoBehaviour
         }
 
         Screen.SetResolution(Screen.width, Screen.height, mode);
+
+        SettingsManager.Instance.CurrentSettings.screenModeIndex = screenModeIndex;
+        SettingsManager.Instance.SaveSettings();
     }
 
     public void SetAllPossibleScreenModes()

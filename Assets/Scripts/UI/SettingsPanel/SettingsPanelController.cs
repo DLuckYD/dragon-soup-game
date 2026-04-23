@@ -51,6 +51,8 @@ public class SettingsPanel : MonoBehaviour
         ResetButtons();
         audioPanel.SetActive(true);
         audioButton.interactable = false;
+
+        Debug.Log("ShowAudioPanel called");
     }
 
     public void ShowVideoPanel()
@@ -80,4 +82,16 @@ public class SettingsPanel : MonoBehaviour
     {
         mainMenuManager.ShowStartScreen();
     }
+}
+
+[System.Serializable]
+public class SettingsData
+{
+    public float masterVolume;
+    public float musicVolume;
+    public float effectsVolume;
+
+    public int resolutionWidth;
+    public int resolutionHeight;
+    public int screenModeIndex;
 }

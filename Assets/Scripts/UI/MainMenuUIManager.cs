@@ -51,6 +51,7 @@ public class MainMenuUIManager : MonoBehaviour
 
     public void ShowSettingsScreen()
     {
+        Debug.Log("ShowSettingsScreen called");
         HideAllScreens();
         settingsScreenPanel.SetActive(true);
     }
