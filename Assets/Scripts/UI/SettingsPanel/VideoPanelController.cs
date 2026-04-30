@@ -1,21 +1,20 @@
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
-using static UnityEngine.Rendering.DebugUI;
 
 public class VideoSettings : MonoBehaviour
 {
     [SerializeField] private TMP_Dropdown resolutionDropdown;
     [SerializeField] private TMP_Dropdown screenModeDropdown;
 
-    private Resolution[] resolutions;
     private List<Resolution> uniqueResolutions = new List<Resolution>();
-    private int currentResolutionIndex = 0;
 
     void Start()
     {
         SetAllPossibleResolutions();
         SetAllPossibleScreenModes();
+
+        LoadValuesFromSettings();
 
         resolutionDropdown.onValueChanged.AddListener(SetResolution);
         screenModeDropdown.onValueChanged.AddListener(SetScreenMode);
@@ -25,22 +24,30 @@ public class VideoSettings : MonoBehaviour
     {
         if (resolutionIndex < 0 || resolutionIndex >= uniqueResolutions.Count)
             return;
-        Resolution resolution = uniqueResolutions[resolutionIndex];
-        Screen.SetResolution(resolution.width, resolution.height, true);
 
-        SettingsManager.Instance.CurrentSettings.resolutionWidth = resolution.width;
-        SettingsManager.Instance.CurrentSettings.resolutionHeight = resolution.height;
-        SettingsManager.Instance.SaveSettings();
+        Resolution resolution = uniqueResolutions[resolutionIndex];
+
+        // get current screen mode
+        int screenModeIndex = SettingsSaveLoadManager.Instance.CurrentSettings.screenModeIndex;
+        FullScreenMode mode = GetScreenModeFromIndex(screenModeIndex);
+
+        // apply correct resolution with the correct screen mode
+        Screen.SetResolution(resolution.width, resolution.height, mode);
+
+        // add new values to file
+        SettingsSaveLoadManager.Instance.CurrentSettings.resolutionWidth = resolution.width;
+        SettingsSaveLoadManager.Instance.CurrentSettings.resolutionHeight = resolution.height;
+        SettingsSaveLoadManager.Instance.SaveSettings();
     }
 
     public void SetAllPossibleResolutions()
     {
-        resolutions = Screen.resolutions;
+        Resolution[] resolutions = Screen.resolutions;
+
         uniqueResolutions.Clear();
         resolutionDropdown.ClearOptions();
 
         HashSet<string> addedResolutions = new HashSet<string>();
-        List<string> options = new List<string>();
 
         for (int i = 0; i < resolutions.Length; i++)
         {
@@ -61,48 +68,36 @@ public class VideoSettings : MonoBehaviour
             return b.height.CompareTo(a.height);
         });
 
-        currentResolutionIndex = 0;
+        // create text options for the dropdown
+        List<string> options = new List<string>();
 
-        for (int i = 0; i < uniqueResolutions.Count; i++)
+        foreach (Resolution resolution in uniqueResolutions)
         {
-            options.Add(uniqueResolutions[i].width + "x" + uniqueResolutions[i].height);
-
-            if (uniqueResolutions[i].width == Screen.width &&
-                uniqueResolutions[i].height == Screen.height)
-            {
-                currentResolutionIndex = i;
-            }
+            options.Add(resolution.width + "x" + resolution.height);
         }
 
         resolutionDropdown.AddOptions(options);
-        resolutionDropdown.value = currentResolutionIndex;
-        resolutionDropdown.RefreshShownValue();
     }
 
     public void SetScreenMode(int screenModeIndex)
     {
-        FullScreenMode mode = FullScreenMode.FullScreenWindow;
+        // convert the index to the correct FullScreenMode
+        FullScreenMode mode = GetScreenModeFromIndex(screenModeIndex);
 
-        switch (screenModeIndex)
+        int width = SettingsSaveLoadManager.Instance.CurrentSettings.resolutionWidth;
+        int height = SettingsSaveLoadManager.Instance.CurrentSettings.resolutionHeight;
+
+        if (width <= 0 || height <= 0)
         {
-            case 0:
-                mode = FullScreenMode.ExclusiveFullScreen;
-                break;
-            case 1:
-                mode = FullScreenMode.FullScreenWindow;
-                break;
-            case 2:
-                mode = FullScreenMode.Windowed;
-                break;
-            case 3:
-                mode = FullScreenMode.MaximizedWindow;
-                break;
+            width = Screen.width;
+            height = Screen.height;
         }
 
-        Screen.SetResolution(Screen.width, Screen.height, mode);
+        Screen.SetResolution(width, height, mode);
 
-        SettingsManager.Instance.CurrentSettings.screenModeIndex = screenModeIndex;
-        SettingsManager.Instance.SaveSettings();
+        // save new screen mode index to file
+        SettingsSaveLoadManager.Instance.CurrentSettings.screenModeIndex = screenModeIndex;
+        SettingsSaveLoadManager.Instance.SaveSettings();
     }
 
     public void SetAllPossibleScreenModes()
@@ -118,24 +113,80 @@ public class VideoSettings : MonoBehaviour
         };
 
         screenModeDropdown.AddOptions(options);
-        screenModeDropdown.value = GetCurrentScreenModeIndex();
-        screenModeDropdown.RefreshShownValue();
     }
 
-    private int GetCurrentScreenModeIndex()
+    private void LoadValuesFromSettings()
     {
-        switch (Screen.fullScreenMode)
+        // get the save data from file
+        SettingsData settings = SettingsSaveLoadManager.Instance.CurrentSettings;
+
+        // find the index that corresponds to the saved resolution
+        int savedResolutionIndex = FindResolutionIndex(
+            settings.resolutionWidth,
+            settings.resolutionHeight
+        );
+
+        resolutionDropdown.SetValueWithoutNotify(savedResolutionIndex);
+
+        int screenModeIndex = Mathf.Clamp(settings.screenModeIndex, 0, 3);
+        screenModeDropdown.SetValueWithoutNotify(screenModeIndex);
+
+        ApplyCurrentVideoSettings();
+    }
+
+    private void ApplyCurrentVideoSettings()
+    {
+        SettingsData settings = SettingsSaveLoadManager.Instance.CurrentSettings;
+
+        int width = settings.resolutionWidth;
+        int height = settings.resolutionHeight;
+
+        if (width <= 0 || height <= 0)
         {
-            case FullScreenMode.ExclusiveFullScreen:
-                return 0;
-            case FullScreenMode.FullScreenWindow:
-                return 1;
-            case FullScreenMode.Windowed:
-                return 2;
-            case FullScreenMode.MaximizedWindow:
-                return 3;
+            width = Screen.width;
+            height = Screen.height;
+
+            settings.resolutionWidth = width;
+            settings.resolutionHeight = height;
+        }
+
+        FullScreenMode mode = GetScreenModeFromIndex(settings.screenModeIndex);
+
+        Screen.SetResolution(width, height, mode);
+    }
+
+    private int FindResolutionIndex(int width, int height)
+    {
+        for (int i = 0; i < uniqueResolutions.Count; i++)
+        {
+            if (uniqueResolutions[i].width == width &&
+                uniqueResolutions[i].height == height)
+            {
+                return i;
+            }
+        }
+
+        return FindResolutionIndex(Screen.width, Screen.height);
+    }
+
+    private FullScreenMode GetScreenModeFromIndex(int screenModeIndex)
+    {
+        switch (screenModeIndex)
+        {
+            case 0:
+                return FullScreenMode.ExclusiveFullScreen;
+
+            case 1:
+                return FullScreenMode.FullScreenWindow;
+
+            case 2:
+                return FullScreenMode.Windowed;
+
+            case 3:
+                return FullScreenMode.MaximizedWindow;
+
             default:
-                return 1;
+                return FullScreenMode.FullScreenWindow;
         }
     }
 }

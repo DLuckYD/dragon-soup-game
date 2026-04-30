@@ -9,27 +9,25 @@ public class InputPanelController : MonoBehaviour
     //reference to the InputActionAsset that contains the actions we want to rebind
     [SerializeField] private InputActionAsset inputActionsAsset;
 
-    // references to the UI elements for each action
-    private RebindItemUI[] rebindItems;
-
     [Header("Slider")]
     [SerializeField] private Slider mouseSensitivitySlider;
 
     [SerializeField] private MainMenuUIManager mainMenuManager;
 
+    // references to the UI elements for each action 
+    private RebindItemUI[] rebindItems;
     // currently active rebinding operation
     private RebindingOperation currentRebind;
 
     private void Start()
     {
-        Debug.Log("InputPanelController Start");
+        LoadInputSettings();
 
         rebindItems = GetComponentsInChildren<RebindItemUI>(true);
-        Debug.Log("Found rebind items: " + rebindItems.Length);
 
         foreach (var item in rebindItems)
         {
-            Debug.Log($"Item: {item.name}, Button: {item.Button}, Label: {item.Label}, Action: {item.ActionReference}, BindingIndex: {item.BindingIndex}");
+            //Debug.Log($"Item: {item.name}, Button: {item.Button}, Label: {item.Label}, Action: {item.ActionReference}, BindingIndex: {item.BindingIndex}");
 
             // set up the button listener for this item
             if (item.Button != null)
@@ -41,10 +39,25 @@ public class InputPanelController : MonoBehaviour
             RefreshLabel(item);
         }
 
-        //// load any previously saved binding overrides
-        //LoadBindingOverrides();
-
         mouseSensitivitySlider.onValueChanged.AddListener(OnMouseSensitivityChanged);
+    }
+
+    private void LoadInputSettings()
+    {
+       if(SettingsSaveLoadManager.Instance == null || SettingsSaveLoadManager.Instance.CurrentSettings == null)
+       {
+            Debug.LogWarning("SettingsManager or CurrentSettings is missing.");
+            return;
+        }
+
+       SettingsData settings = SettingsSaveLoadManager.Instance.CurrentSettings;
+
+        if (mouseSensitivitySlider != null)
+        {
+            mouseSensitivitySlider.SetValueWithoutNotify(settings.mouseSensitivity);
+        }
+
+        LoadBindingOverridesFromSettings();
     }
 
     private void StartRebind(RebindItemUI item)
@@ -98,7 +111,7 @@ public class InputPanelController : MonoBehaviour
                 currentRebind = null;
 
                 RefreshLabel(item);
-                SaveBindingOverrides();
+                SaveBindingOverridesToSettings();
             })
             .OnCancel(op =>
             {
@@ -122,33 +135,49 @@ public class InputPanelController : MonoBehaviour
         item.Label.text = item.ActionReference.action.GetBindingDisplayString(item.BindingIndex);
     }
 
-    private void SaveBindingOverrides()
+    private void SaveBindingOverridesToSettings()
+    {
+        if (inputActionsAsset == null)
+        {
+            Debug.LogWarning("InputActionsAsset is missing.");
+            return;
+        }
+
+        string json = inputActionsAsset.SaveBindingOverridesAsJson();
+        Debug.Log("Saved binding overrides JSON: " + json);
+
+        SettingsSaveLoadManager.Instance.CurrentSettings.inputBindingOverridesJson = json;
+        SettingsSaveLoadManager.Instance.SaveSettings();
+
+    }
+
+    private void LoadBindingOverridesFromSettings()
     {
         if (inputActionsAsset == null)
             return;
 
-        string json = inputActionsAsset.SaveBindingOverridesAsJson();
-        PlayerPrefs.SetString("InputRebinds", json);
-        PlayerPrefs.Save();
+        if (SettingsSaveLoadManager.Instance == null || SettingsSaveLoadManager.Instance.CurrentSettings == null)
+            return;
+
+        string json = SettingsSaveLoadManager.Instance.CurrentSettings.inputBindingOverridesJson;
+
+        if (string.IsNullOrEmpty(json))
+        {
+            Debug.Log("No saved input binding overrides found.");
+            return;
+        }
+
+        inputActionsAsset.LoadBindingOverridesFromJson(json);
+
+        Debug.Log("Input binding overrides loaded from settings.json");
     }
-
-    //private void LoadBindingOverrides()
-    //{
-    //    if (inputActionsAsset == null || !PlayerPrefs.HasKey("InputRebinds"))
-    //        return;
-
-    //    string json = PlayerPrefs.GetString("InputRebinds");
-    //    inputActionsAsset.LoadBindingOverridesFromJson(json);
-
-    //    foreach (var item in rebindItems)
-    //    {
-    //        RefreshLabel(item);
-    //    }
-    //}
 
     private void OnMouseSensitivityChanged(float value)
     {
+        SettingsSaveLoadManager.Instance.CurrentSettings.mouseSensitivity = value;
         Debug.Log("Mouse sensitivity changed: " + value);
+
+        SettingsSaveLoadManager.Instance.SaveSettings();
     }
 
     private void OnDestroy()

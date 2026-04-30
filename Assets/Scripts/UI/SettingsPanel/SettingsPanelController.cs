@@ -1,14 +1,29 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-public class SettingsPanel : MonoBehaviour
+[System.Serializable]
+public class SettingsData
+{
+    public float masterVolume = 1f;
+    public float musicVolume = 1f;
+    public float effectsVolume = 1f;
+
+    public int resolutionWidth = 2560;
+    public int resolutionHeight = 1440;
+    public int screenModeIndex = 1;
+
+    public string inputBindingOverridesJson = "";
+    public float mouseSensitivity = 1f;
+}
+
+public class SettingsPanelController: MonoBehaviour
 {
     [Header("Buttons")]
     [SerializeField] private Button audioButton;
     [SerializeField] private Button videoButton;
     [SerializeField] private Button inputButton;
     [SerializeField] private Button othersButton;
-    [SerializeField] private Button backButton;
+    [SerializeField] private Button backToMenuButton;
 
     [Header("Panels")]
     [SerializeField] private GameObject audioPanel;
@@ -24,7 +39,7 @@ public class SettingsPanel : MonoBehaviour
         videoButton.onClick.AddListener(ShowVideoPanel);
         inputButton.onClick.AddListener(ShowInputPanel);
         othersButton.onClick.AddListener(ShowOthersPanel);
-        backButton.onClick.AddListener(OnBackPressed);
+        backToMenuButton.onClick.AddListener(BackToMenu);
 
         ShowAudioPanel();
     }
@@ -78,20 +93,11 @@ public class SettingsPanel : MonoBehaviour
         othersPanel.SetActive(true);
         othersButton.interactable = false;
     }
-    public void OnBackPressed()
+    public void BackToMenu()
     {
+        SettingsSaveLoadManager.Instance.SaveSettings();
+        this.gameObject.SetActive(false);
+
         mainMenuManager.ShowStartScreen();
     }
-}
-
-[System.Serializable]
-public class SettingsData
-{
-    public float masterVolume;
-    public float musicVolume;
-    public float effectsVolume;
-
-    public int resolutionWidth;
-    public int resolutionHeight;
-    public int screenModeIndex;
 }
