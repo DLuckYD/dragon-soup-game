@@ -52,7 +52,7 @@ public class InputPanelController : MonoBehaviour
         // get item action
         InputAction action = item.ActionReference.action;
 
-        // checke the binding index
+        // check the binding index
         if (item.BindingIndex < 0 || item.BindingIndex >= action.bindings.Count)
         {
             Debug.LogWarning($"Invalid binding index {item.BindingIndex} for action {action.name}");

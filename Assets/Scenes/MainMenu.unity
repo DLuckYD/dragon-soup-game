@@ -3333,8 +3333,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::RebindItemUI
   button: {fileID: 704323368}
   label: {fileID: 2005363304}
-  actionReference: {fileID: 0}
-  bindingIndex: 0
+  actionReference: {fileID: -1680190386980627800, guid: 052faaac586de48259a63d0c4782560b, type: 3}
+  bindingIndex: 4
 --- !u!1 &340651706
 GameObject:
   m_ObjectHideFlags: 0
@@ -6151,8 +6151,8 @@ RectTransform:
   - {fileID: 714197840}
   - {fileID: 1610705293}
   - {fileID: 336407047}
-  - {fileID: 1788970077}
   - {fileID: 1988833488}
+  - {fileID: 1788970077}
   - {fileID: 1011089930}
   - {fileID: 557286156}
   - {fileID: 131739757}
@@ -7814,7 +7814,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &747420621
 RectTransform:
   m_ObjectHideFlags: 0
@@ -14730,7 +14730,7 @@ MonoBehaviour:
   button: {fileID: 694583458}
   label: {fileID: 1486206653}
   actionReference: {fileID: -1680190386980627800, guid: 052faaac586de48259a63d0c4782560b, type: 3}
-  bindingIndex: 0
+  bindingIndex: 2
 --- !u!1 &1650609368
 GameObject:
   m_ObjectHideFlags: 0
@@ -15868,8 +15868,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::RebindItemUI
   button: {fileID: 917311979}
   label: {fileID: 1853778104}
-  actionReference: {fileID: 0}
-  bindingIndex: 0
+  actionReference: {fileID: -1680190386980627800, guid: 052faaac586de48259a63d0c4782560b, type: 3}
+  bindingIndex: 8
 --- !u!1 &1791177684
 GameObject:
   m_ObjectHideFlags: 0
@@ -18299,7 +18299,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1984494371
 RectTransform:
   m_ObjectHideFlags: 0
@@ -18453,8 +18453,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::RebindItemUI
   button: {fileID: 2092210177}
   label: {fileID: 896905989}
-  actionReference: {fileID: 0}
-  bindingIndex: 0
+  actionReference: {fileID: -1680190386980627800, guid: 052faaac586de48259a63d0c4782560b, type: 3}
+  bindingIndex: 6
 --- !u!1 &2000196816
 GameObject:
   m_ObjectHideFlags: 0
