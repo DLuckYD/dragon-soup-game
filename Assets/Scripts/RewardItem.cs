@@ -2,7 +2,7 @@
 
 public enum ItemType
 {
-    Chair, Matal, Wood, Stone
+    Metal, Wood, Stone
 }
 
 public class RewardItem : InventoryItem
@@ -21,8 +21,7 @@ public class RewardItem : InventoryItem
 
     private MeshRenderer[] renderers;
 
-
-    private void Awake()
+    protected override void Awake()
     {
         base.Awake();
         renderers = GetComponentsInChildren<MeshRenderer>(true);
@@ -32,6 +31,10 @@ public class RewardItem : InventoryItem
             Debug.Log($"[{name}] Renderer[{i}] = {GetFullPath(renderers[i].transform)} enabled={renderers[i].enabled}");
     }
 
+    public void InitializeAsRuntimeSpawnedItem()
+    {
+        EnsureRuntimeSaveId();
+    }
 
     public void ApplyUpgrade()
     {
