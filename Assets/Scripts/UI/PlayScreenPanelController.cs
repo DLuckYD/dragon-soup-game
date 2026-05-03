@@ -26,12 +26,12 @@ public class PlayScreenPanelController : MonoBehaviour
 
     public void ContinueLastGame()
     {
-
+        GameSaveLoadManager.Instance.ContinueGame();
     }
 
     public void CreateNewGame()
     {
-
+        GameSaveLoadManager.Instance.StartNewGame();
     }
 
     public void OnBackPressed()
