@@ -57,6 +57,36 @@ public class GameSaveLoadManager : MonoBehaviour
         }
     }
 
+    public void LoadTheSaveFile(string path)
+    {
+        if (!File.Exists(path))
+        {
+            Debug.LogWarning("Save file does not exist: " + path);
+            return;
+        }
+
+        string json = File.ReadAllText(path);
+        GameSaveData data = JsonUtility.FromJson<GameSaveData>(json);
+
+        if (data == null)
+        {
+            Debug.LogWarning("Invalid save file: " + path);
+            return;
+        }
+
+        pendingLoadData = data;
+
+        if (SceneManager.GetActiveScene().name != data.sceneName)
+        {
+            SceneManager.LoadScene(data.sceneName);
+        }
+        else
+        {
+            RestoreGameData(data);
+            pendingLoadData = null;
+        }
+    }
+
     public void StartNewGame()
     {
         pendingLoadData = null;
@@ -80,6 +110,16 @@ public class GameSaveLoadManager : MonoBehaviour
         if (HotbarManager.Instance != null)
         {
             data.inventory = HotbarManager.Instance.CaptureSaveData();
+        }
+
+        if (SceneObjectsManager.Instance != null)
+        {
+            data.sceneObjects = SceneObjectsManager.Instance.CaptureSaveData();
+        }
+
+        if (PlayerSaveManager.Instance != null)
+        {
+            data.player = PlayerSaveManager.Instance.CaptureSaveData();
         }
 
         WriteSaveFile(saveFileName, data);
@@ -186,9 +226,15 @@ public class GameSaveLoadManager : MonoBehaviour
         if (pendingLoadData == null)
             return;
 
-        Debug.Log("[LOAD] Scene loaded. Restoring save data...");
+        StartCoroutine(RestoreAfterSceneReady());
+    }
 
-        // apply the loaded data to the scene
+    private IEnumerator RestoreAfterSceneReady()
+    {
+        yield return null;
+
+        Debug.Log("[LOAD] Scene is ready. Restoring save data...");
+
         RestoreGameData(pendingLoadData);
         pendingLoadData = null;
     }
@@ -229,6 +275,12 @@ public class GameSaveLoadManager : MonoBehaviour
     {
         if (HotbarManager.Instance != null && data.inventory != null)
             HotbarManager.Instance.RestoreSaveData(data.inventory);
+
+        if (SceneObjectsManager.Instance != null && data.sceneObjects != null)
+            SceneObjectsManager.Instance.RestoreSaveData(data.sceneObjects);
+
+        if (PlayerSaveManager.Instance != null && data.player != null)
+            PlayerSaveManager.Instance.RestoreSaveData(data.player);
 
 
         Debug.Log("Game loaded: " + data.saveName);

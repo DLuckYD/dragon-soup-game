@@ -296,8 +296,14 @@ public class PlayerInteraction : MonoBehaviour
     private void HandleHotbarNumberKeys()
     {
         int index = GetHotbarSlotByKeyIndex();
-        if (index == -1) return;
+        if (index == -1)
+            return;
 
+        EquipHotbarSlot(index);
+    }
+
+    public void EquipHotbarSlot(int index)
+    {
         HotbarSlot slot = hotbarManager.GetSlotByPosition(index);
 
         // if the slot is empty - clear hands
@@ -520,10 +526,32 @@ public class PlayerInteraction : MonoBehaviour
         return (heldItem != null) ? heldItem : null;
     }
 
-    public void DeleteHeldItem()
+    public int GetActiveHotbarIndex()
     {
-        if (heldItem == null) return;
-        Destroy(heldItem.gameObject);
-        heldItem = null;
+        return activeHotbarIndex;
+    }
+
+    public void RestoreActiveHotbarSlot(int index)
+    {
+        activeHotbarIndex = index;
+
+        if (index < 0)
+        {
+            ClearHands(dropWorldItem: false);
+            return;
+        }
+
+        HotbarSlot slot = hotbarManager.GetSlotByPosition(index);
+
+        if (slot == null || (slot.uniqueItem == null && (slot.itemData == null || slot.amount <= 0)))
+        {
+            ClearHands(dropWorldItem: false);
+            activeHotbarIndex = -1;
+            return;
+        }
+
+        EquipHotbarSlot(index);
+
+        Debug.Log("[PLAYER LOAD] Restored active hotbar slot: " + index);
     }
 }

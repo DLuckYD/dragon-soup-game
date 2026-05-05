@@ -1,5 +1,10 @@
+using System.IO;
 using UnityEngine;
 using UnityEngine.UI;
+
+#if UNITY_EDITOR
+using UnityEditor;
+#endif
 
 public class PlayScreenPanelController : MonoBehaviour
 {
@@ -21,7 +26,20 @@ public class PlayScreenPanelController : MonoBehaviour
 
     public void LoadSaveFile()
     {
+#if UNITY_EDITOR
+        string path = EditorUtility.OpenFilePanel(
+            "Select Save File",
+            Path.Combine(Application.persistentDataPath, "Saves"),
+            "json"
+        );
 
+        if (!string.IsNullOrEmpty(path))
+        {
+            GameSaveLoadManager.Instance.LoadTheSaveFile(path);
+        }
+#else
+    Debug.LogWarning("OpenFilePanel works only in Unity Editor. Use in-game save list for builds.");
+#endif
     }
 
     public void ContinueLastGame()

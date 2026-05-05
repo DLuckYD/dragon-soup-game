@@ -2,13 +2,6 @@ using System.ComponentModel.Design;
 using Unity.Physics;
 using UnityEngine;
 
-
-[System.Serializable]
-public struct PlayerSaveData
-{
-    public Vector3 position;
-}
-
 public class PlayerMovement : MonoBehaviour
 {
     [Header("Movement")]
@@ -140,6 +133,9 @@ public class PlayerMovement : MonoBehaviour
         //air movement
         else
             rb.AddForce(moveDirection.normalized * moveSpeed * 10f * airMultiplier, ForceMode.Force);
+
+        Debug.DrawRay(orientation.position, orientation.forward * 3f, Color.blue);
+        Debug.DrawRay(orientation.position, orientation.right * 3f, Color.red);
     }
 
     private void GroundCheck()
@@ -182,21 +178,5 @@ public class PlayerMovement : MonoBehaviour
         rb.linearVelocity = new Vector3(rb.linearVelocity.x, 0f, rb.linearVelocity.z);
         rb.AddForce(transform.up * jumpForce, ForceMode.Impulse);
     }
-
-    #region Save and Load
-
-    public void Save(ref PlayerSaveData data)
-    {
-        data.position = transform.position;
-    }
-
-    public void Load(PlayerSaveData data)
-    {
-        transform.position = data.position;
-    }
-
-    #endregion
-
-
 }
 
