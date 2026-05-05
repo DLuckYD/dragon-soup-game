@@ -148,7 +148,6 @@ public class InputPanelController : MonoBehaviour
 
         SettingsSaveLoadManager.Instance.CurrentSettings.inputBindingOverridesJson = json;
         SettingsSaveLoadManager.Instance.SaveSettings();
-
     }
 
     private void LoadBindingOverridesFromSettings()

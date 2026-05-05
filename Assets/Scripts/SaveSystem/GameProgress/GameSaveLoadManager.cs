@@ -16,8 +16,9 @@ public class GameSaveLoadManager : MonoBehaviour
     private GameSaveData pendingLoadData;
 
     [Header("Autosave")]
-    [SerializeField] private float autoSaveIntervalSeconds = 360f; // 6 minutes
     [SerializeField] private string gameplaySceneName = "SampleScene";
+
+    private float autoSaveIntervalSeconds = 360f;
 
     private Coroutine autoSaveCoroutine;
 
@@ -67,8 +68,6 @@ public class GameSaveLoadManager : MonoBehaviour
             reason = "Unknown reason";
 
         saveBlockers.Add(reason);
-
-        
     }
 
     public void RemoveSaveBlocker(string reason)
@@ -80,15 +79,6 @@ public class GameSaveLoadManager : MonoBehaviour
         {
             Debug.Log("[SAVE BLOCK] Removed blocker: " + reason);
         }
-    }
-
-    private bool CanSave()
-    {
-        if (saveBlockers.Count > 0)
-            return true;
-
-        Debug.LogWarning("[SAVE] Save blocked. Reasons: " + string.Join(", ", saveBlockers));
-        return false;
     }
 
     public void LoadTheSaveFile(string path)
@@ -165,6 +155,11 @@ public class GameSaveLoadManager : MonoBehaviour
             data.player = PlayerSaveManager.Instance.CaptureSaveData();
         }
 
+        //if(QuestSaveManager.Instance != null)
+        //{
+        //    data.quests = QuestSaveManager.Instance.CaptureSaveData();
+        //}
+
         WriteSaveFile(saveFileName, data);
 
         return true;
@@ -178,6 +173,17 @@ public class GameSaveLoadManager : MonoBehaviour
             return;
 
         OnAutoSaveCompleted?.Invoke("Autosave completed");
+    }
+
+    public void SetAutoSaveTime(float minutes)
+    {
+        Debug.Log("Setting autosave time to " + minutes + " minutes.");
+        autoSaveIntervalSeconds = minutes * 60;
+        if (autoSaveCoroutine != null)
+        {
+            StopAutoSave();
+            StartAutoSave();
+        }
     }
 
     private void StartAutoSave()
@@ -220,6 +226,21 @@ public class GameSaveLoadManager : MonoBehaviour
                 Debug.LogWarning("[AUTOSAVE] Skipped. HotbarManager.Instance is NULL.");
                 continue;
             }
+            if (SceneObjectsManager.Instance == null)
+            {
+                Debug.LogWarning("[AUTOSAVE] Skipped. SceneObjectsManager.Instance is NULL.");
+                continue;
+            }
+            if (PlayerSaveManager.Instance == null)
+            {
+                Debug.LogWarning("[AUTOSAVE] Skipped. PlayerSaveManager.Instance is NULL.");
+                continue;
+            }
+            //if (QuestSaveManager.Instance == null)
+            //{
+            //    Debug.LogWarning("[AUTOSAVE] Skipped. QuestManager.Instance is NULL.");
+            //    continue;
+            //}
             AutoSave();
         }
     }
@@ -334,6 +355,9 @@ public class GameSaveLoadManager : MonoBehaviour
 
         if (PlayerSaveManager.Instance != null && data.player != null)
             PlayerSaveManager.Instance.RestoreSaveData(data.player);
+
+        //if (QuestSaveManager.Instance != null && data.quests != null)
+        //    QuestSaveManager.Instance.RestoreSaveData(data.quests);
 
 
         Debug.Log("Game loaded: " + data.saveName);

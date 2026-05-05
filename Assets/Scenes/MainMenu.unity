@@ -1136,7 +1136,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 77657e2a9f017b54ab20b48aa5521b28, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GameSaveLoadManager
-  autoSaveIntervalSeconds: 360
   gameplaySceneName: SampleScene
 --- !u!4 &113940407
 Transform:
@@ -5332,7 +5331,7 @@ GameObject:
   - component: {fileID: 533652286}
   - component: {fileID: 533652285}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5377,7 +5376,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Custom
+  m_text: 10 min
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -8511,7 +8510,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 1 min
+  m_text: 3 min
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -10567,7 +10566,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1070820605
 RectTransform:
   m_ObjectHideFlags: 0
@@ -13456,7 +13455,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 3 min
+  m_text: 5 min
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -14014,7 +14013,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 5 min
+  m_text: 7 min
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -16956,13 +16955,14 @@ GameObject:
   - component: {fileID: 1856711814}
   - component: {fileID: 1856711816}
   - component: {fileID: 1856711815}
+  - component: {fileID: 1856711817}
   m_Layer: 5
   m_Name: OtherPanel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1856711814
 RectTransform:
   m_ObjectHideFlags: 0
@@ -17022,6 +17022,24 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1856711813}
   m_CullTransparentMesh: 1
+--- !u!114 &1856711817
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1856711813}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a9dba3da212b9ee4bbedab0509896d0e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::OthersPanelController
+  timeButtons:
+  - {fileID: 1650609370}
+  - {fileID: 733184421}
+  - {fileID: 993974861}
+  - {fileID: 143526033}
+  autoSaveMinutes: 0300000005000000070000000a000000
 --- !u!1 &1867213867
 GameObject:
   m_ObjectHideFlags: 0
@@ -18421,7 +18439,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1984494371
 RectTransform:
   m_ObjectHideFlags: 0
@@ -19787,7 +19805,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &2102640826
 RectTransform:
   m_ObjectHideFlags: 0

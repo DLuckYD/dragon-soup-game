@@ -23833,6 +23833,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2146820019}
   - component: {fileID: 2146820018}
+  - component: {fileID: 2146820020}
   m_Layer: 0
   m_Name: QuestSystem
   m_TagString: Untagged
@@ -23855,6 +23856,7 @@ MonoBehaviour:
   questUI: {fileID: 310633487}
   houseSpawner: {fileID: 2075675857}
   playerInventory: {fileID: 950630261}
+  itemDatabase: {fileID: 11400000, guid: f44b26ab315462f4180f7022d4ec53cf, type: 2}
   dialogueJsonFile: {fileID: 4900000, guid: af5ac9f6bab2f7f4dba86011a6cd9332, type: 3}
   defaultIngredient: {fileID: 11400000, guid: 536e4103e2dae224696f5b571909f60e, type: 2}
   defaultAmount: 0
@@ -23877,6 +23879,19 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2146820020
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2146820017}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3b965a2bd6ed97642aac2ced471b8830, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::QuestSaveManager
+  questManager: {fileID: 2146820018}
 --- !u!1001 &5793355977685499179
 PrefabInstance:
   m_ObjectHideFlags: 0

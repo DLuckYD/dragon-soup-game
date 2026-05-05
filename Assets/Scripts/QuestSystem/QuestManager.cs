@@ -10,6 +10,9 @@ public class QuestManager : MonoBehaviour
     [SerializeField] private HouseSpawner houseSpawner;
     [SerializeField] private HotbarManager playerInventory;
 
+    [Header("Items Database")]
+    [SerializeField] private ItemDataBase itemDatabase;
+
     [Header("Dialogue JSON")]
     [SerializeField] private TextAsset dialogueJsonFile;
 
@@ -483,5 +486,179 @@ public class QuestManager : MonoBehaviour
         OnQuestFinished?.Invoke(npc);
     }
 
+//    public int BagIndex => bagIndex;
 
+//    public void SetBagIndexFromSave(int value)
+//    {
+//        bagIndex = Mathf.Max(0, value);
+//    }
+
+//    public bool TryGetActiveQuestSaveData(AdventurerNPC npc, out ActiveQuestSaveData saveData)
+//    {
+//        saveData = null;
+
+//        if (npc == null)
+//            return false;
+
+//        if (!activeQuests.TryGetValue(npc, out ActiveQuest quest) || quest == null)
+//            return false;
+
+//        float remainingReturnSeconds = 0f;
+
+//        if (quest.returnAtTime != float.MaxValue)
+//        {
+//            remainingReturnSeconds = Mathf.Max(0f, quest.returnAtTime - Time.time);
+//        }
+
+//        saveData = new ActiveQuestSaveData
+//        {
+//            ingredientId = quest.ingredient != null ? quest.ingredient.id : "",
+//            amount = quest.amount,
+//            minRewardValue = quest.minRewardValue,
+//            remainingReturnSeconds = remainingReturnSeconds,
+//            attemptsLeft = quest.attemptsLeft
+//        };
+
+//        Debug.Log(
+//            "[QUEST SAVE] Active quest for adventurer: " + npc.Data.id +
+//            " | npc.State: " + npc.State +
+//            " | returnAtTime: " + quest.returnAtTime +
+//            " | Time.time: " + Time.time +
+//            " | remaining: " + remainingReturnSeconds
+//        );
+
+//        return true;
+//    }
+
+//    public void ClearQuestRuntimeState()
+//    {
+//        activeQuests.Clear();
+//        offerPreviews.Clear();
+//    }
+
+//    public void RestoreActiveQuestFromSave(
+//    AdventurerNPC npc,
+//    AdventurerState savedState,
+//    ActiveQuestSaveData savedQuest
+//)
+//    {
+//        if (npc == null)
+//        {
+//            Debug.LogWarning("[QUEST LOAD] Cannot restore quest. NPC is NULL.");
+//            return;
+//        }
+
+//        if (savedQuest == null)
+//        {
+//            Debug.LogWarning("[QUEST LOAD] Cannot restore quest. Saved quest is NULL for NPC: " + npc.name);
+//            return;
+//        }
+
+//        ItemData ingredient = null;
+
+//        if (itemDatabase != null && !string.IsNullOrEmpty(savedQuest.ingredientId))
+//        {
+//            ingredient = itemDatabase.GetItemById(savedQuest.ingredientId);
+//        }
+
+//        if (ingredient == null)
+//        {
+//            Debug.LogWarning(
+//                "[QUEST LOAD] Missing ingredient with id: " +
+//                savedQuest.ingredientId +
+//                ". Using default ingredient."
+//            );
+
+//            ingredient = defaultIngredient;
+//        }
+
+//        if (ingredient == null)
+//        {
+//            Debug.LogError("[QUEST LOAD] Cannot restore quest. Ingredient and defaultIngredient are NULL.");
+//            return;
+//        }
+
+//        int amount = Mathf.Max(1, savedQuest.amount);
+//        int minRewardValue = Mathf.Max(0, savedQuest.minRewardValue);
+//        int attemptsLeft = Mathf.Max(0, savedQuest.attemptsLeft);
+
+//        ActiveQuest quest = new ActiveQuest
+//        {
+//            npc = npc,
+//            ingredient = ingredient,
+//            amount = amount,
+//            minRewardValue = minRewardValue,
+//            attemptsLeft = attemptsLeft
+//        };
+
+//        if (savedState == AdventurerState.InProgress)
+//        {
+//            float remaining = Mathf.Max(0f, savedQuest.remainingReturnSeconds);
+
+//            if (remaining <= 0f)
+//            {
+//                quest.returnAtTime = float.MaxValue;
+
+//                npc.SetState(AdventurerState.WaitingReward);
+//                npc.ShowAdventurer();
+
+//                Debug.Log(
+//                    "[QUEST LOAD] Adventurer return time already passed. Set to WaitingReward. NPC: " +
+//                    npc.Data.id
+//                );
+//            }
+//            else
+//            {
+//                quest.returnAtTime = Time.time + remaining;
+
+//                npc.SetState(AdventurerState.InProgress);
+//                npc.HideAdventurer();
+
+//                Debug.Log(
+//                    "[QUEST LOAD] Restored InProgress quest. NPC: " +
+//                    npc.Data.id +
+//                    " | remaining seconds: " +
+//                    remaining
+//                );
+//            }
+//        }
+//        else if (savedState == AdventurerState.WaitingReward)
+//        {
+//            quest.returnAtTime = float.MaxValue;
+
+//            npc.SetState(AdventurerState.WaitingReward);
+//            npc.ShowAdventurer();
+
+//            Debug.Log("[QUEST LOAD] Restored WaitingReward quest. NPC: " + npc.Data.id);
+//        }
+//        else
+//        {
+//            quest.returnAtTime = float.MaxValue;
+
+//            npc.SetState(savedState);
+//            npc.ShowAdventurer();
+
+//            Debug.Log(
+//                "[QUEST LOAD] Restored quest with non-progress state: " +
+//                savedState +
+//                " | NPC: " +
+//                npc.Data.id
+//            );
+//        }
+
+//        activeQuests[npc] = quest;
+
+//        Debug.Log(
+//            "[QUEST LOAD] Active quest restored for NPC: " +
+//            npc.Data.id +
+//            " | ingredient: " +
+//            ingredient.id +
+//            " | amount: " +
+//            amount +
+//            " | minRewardValue: " +
+//            minRewardValue +
+//            " | attemptsLeft: " +
+//            attemptsLeft
+//        );
+//    }
 }

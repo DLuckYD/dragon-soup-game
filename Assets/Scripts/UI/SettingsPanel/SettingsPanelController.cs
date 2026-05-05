@@ -14,6 +14,8 @@ public class SettingsData
 
     public string inputBindingOverridesJson = "";
     public float mouseSensitivity = 1f;
+
+    public int autoSaveTime = 5;
 }
 
 public class SettingsPanelController: MonoBehaviour

@@ -36,7 +36,6 @@ public class SettingsSaveLoadManager : MonoBehaviour
 #endif
 
         LoadSettings();
-        ApplySettings();
     }
 
     // load the settings from the file
@@ -88,20 +87,5 @@ public class SettingsSaveLoadManager : MonoBehaviour
     {
         CurrentSettings = new SettingsData();
         SaveSettings();
-    }
-
-    // apply the settings to the game
-    public void ApplySettings()
-    {
-
-        if (CurrentSettings == null)
-            return;
-
-
-        // audio volume
-        // resolution
-        // fullscreen
-        // language
-        // mouse sensitivity
     }
 }
