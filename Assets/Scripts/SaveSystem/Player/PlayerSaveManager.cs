@@ -50,15 +50,6 @@ public class PlayerSaveManager : MonoBehaviour
         saveData.posY = position.y;
         saveData.posZ = position.z;
 
-        if (playerMovement != null && playerMovement.orientation != null)
-        {
-            saveData.orientationYaw = playerMovement.orientation.eulerAngles.y;
-        }
-        else
-        {
-            Debug.LogWarning("[PLAYER SAVE] PlayerMovement or orientation is NULL.");
-        }
-
         if (playerInteraction == null)
         {
             return saveData;
@@ -86,8 +77,6 @@ public class PlayerSaveManager : MonoBehaviour
 
         Vector3 position = new Vector3(data.posX, data.posY, data.posZ);
 
-        Quaternion yawRotation = Quaternion.Euler(0f, data.orientationYaw, 0f);
-
         Rigidbody rb = playerTransform.GetComponent<Rigidbody>();
 
         if (rb != null)
@@ -100,16 +89,8 @@ public class PlayerSaveManager : MonoBehaviour
         else
         {
             playerTransform.position = position;
-        }
+        }       
 
-        // the direction of the move = orientation
-        if (playerMovement != null && playerMovement.orientation != null)
-        {
-            playerMovement.orientation.rotation = yawRotation;
-        }
-
-        // player body should look in the same direction as the orientation
-        playerTransform.rotation = yawRotation;
 
         Physics.SyncTransforms();
 

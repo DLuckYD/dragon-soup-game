@@ -4,6 +4,7 @@ using System;
 using System.IO;
 using UnityEngine.SceneManagement;
 using System.Collections;
+using System.Collections.Generic;
 
 public class GameSaveLoadManager : MonoBehaviour
 {
@@ -22,6 +23,9 @@ public class GameSaveLoadManager : MonoBehaviour
 
     public static event Action<string> OnAutoSaveCompleted;
     public static event Action<string> OnManualSaveCompleted;
+
+    private readonly HashSet<string> saveBlockers = new();
+    public bool IsSaveBlocked => saveBlockers.Count > 0;
 
     private void Awake()
     {
@@ -55,6 +59,36 @@ public class GameSaveLoadManager : MonoBehaviour
             Debug.Log("Manual save...");
             ManualSave();
         }
+    }
+
+    public void AddSaveBlocker(string reason)
+    {
+        if (string.IsNullOrEmpty(reason))
+            reason = "Unknown reason";
+
+        saveBlockers.Add(reason);
+
+        Debug.Log("[SAVE BLOCK] Added blocker: " + reason);
+    }
+
+    public void RemoveSaveBlocker(string reason)
+    {
+        if (string.IsNullOrEmpty(reason))
+            reason = "Unknown reason";
+
+        if (saveBlockers.Remove(reason))
+        {
+            Debug.Log("[SAVE BLOCK] Removed blocker: " + reason);
+        }
+    }
+
+    private bool CanSave()
+    {
+        if (!IsSaveBlocked)
+            return true;
+
+        Debug.LogWarning("[SAVE] Save blocked. Reasons: " + string.Join(", ", saveBlockers));
+        return false;
     }
 
     public void LoadTheSaveFile(string path)
@@ -98,8 +132,11 @@ public class GameSaveLoadManager : MonoBehaviour
         LoadGame("autosave");
     }
 
-    public void SaveGame(string saveFileName)
+    public bool SaveGame(string saveFileName)
     {
+        if(!CanSave())
+            return false;
+
         GameSaveData data = new GameSaveData();
 
         data.version = 1;
@@ -123,11 +160,17 @@ public class GameSaveLoadManager : MonoBehaviour
         }
 
         WriteSaveFile(saveFileName, data);
+
+        return true;
     }
 
     public void AutoSave()
     {
-        SaveGame("autosave");
+        bool saved = SaveGame("autosave");
+
+        if(!saved)
+            return;
+
         OnAutoSaveCompleted?.Invoke("Autosave completed");
     }
 
@@ -178,7 +221,11 @@ public class GameSaveLoadManager : MonoBehaviour
     public void ManualSave()
     {
         string fileName = "manual_" + DateTime.Now.ToString("yyyy_MM_dd_HH_mm_ss");
-        SaveGame(fileName);
+        bool saved = SaveGame(fileName);
+
+        if(!saved)
+            return;
+
         OnManualSaveCompleted?.Invoke("Manual save completed");
     }
 

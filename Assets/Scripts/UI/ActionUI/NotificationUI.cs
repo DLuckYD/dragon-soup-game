@@ -2,7 +2,7 @@ using System.Collections;
 using TMPro;
 using UnityEngine;
 
-public class SaveNotificationUI : MonoBehaviour
+public class NotificationUI : MonoBehaviour
 {
     [SerializeField] private GameObject notificationPanel;
     [SerializeField] private TMP_Text notificationText;

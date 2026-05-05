@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
+    [Header("Camera")]
+    [SerializeField] private Transform cameraTransform;
+
     [Header("Movement")]
     private float moveSpeed;
     public float walkSpeed;
@@ -63,6 +66,8 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        UpdateOrientationFromCamera();
+
         MyInput(); 
         GroundCheck();
         StateHandler();
@@ -72,6 +77,20 @@ public class PlayerMovement : MonoBehaviour
     private void FixedUpdate()
     {
         MovePlayer();
+    }
+
+    private void UpdateOrientationFromCamera()
+    {
+        if (orientation == null || cameraTransform == null)
+            return;
+
+        Vector3 flatForward = cameraTransform.forward;
+        flatForward.y = 0f;
+
+        if (flatForward.sqrMagnitude < 0.001f)
+            return;
+
+        orientation.rotation = Quaternion.LookRotation(flatForward.normalized);
     }
 
     private void MyInput()
