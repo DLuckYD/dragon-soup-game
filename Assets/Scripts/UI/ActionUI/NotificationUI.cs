@@ -15,6 +15,8 @@ public class NotificationUI : MonoBehaviour
         Debug.Log("Subscribing to save events...");
         GameSaveLoadManager.OnAutoSaveCompleted += ShowAutoSaveMessage;
         GameSaveLoadManager.OnManualSaveCompleted += ShowManualSaveMessage;
+        GameSaveLoadManager.OnSaveFailed += ShowSaveFailedMessage;
+
     }
 
     private void OnDisable()
@@ -22,6 +24,8 @@ public class NotificationUI : MonoBehaviour
         Debug.Log("Unsubscribing from save events...");
         GameSaveLoadManager.OnAutoSaveCompleted -= ShowAutoSaveMessage;
         GameSaveLoadManager.OnManualSaveCompleted -= ShowManualSaveMessage;
+        GameSaveLoadManager.OnSaveFailed -= ShowSaveFailedMessage;
+
     }
 
     void Start()
@@ -44,25 +48,38 @@ public class NotificationUI : MonoBehaviour
         ShowMessage(message);
     }
 
+    private void ShowSaveFailedMessage(string message)
+    {
+        Debug.Log("Received save failed message: " + message);
+        ShowMessage(message);
+    }
+
     private void ShowMessage(string message)
     {
-        Debug.Log("Showing save notification: " + message);
+        Debug.Log("Showing notification: " + message);
+
         if (notificationPanel == null || notificationText == null)
+        {
+            Debug.LogWarning("[NOTIFICATION UI] Panel or text is not assigned.");
             return;
+        }
 
         notificationText.text = message;
+
         if (currentRoutine != null)
         {
             StopCoroutine(currentRoutine);
         }
-        Debug.Log("Starting notification coroutine...");
+
         currentRoutine = StartCoroutine(ShowNotificationCoroutine());
     }
 
     private IEnumerator ShowNotificationCoroutine()
     {
         notificationPanel.SetActive(true);
+
         yield return new WaitForSeconds(showTime);
+
         notificationPanel.SetActive(false);
         notificationText.text = "";
         currentRoutine = null;

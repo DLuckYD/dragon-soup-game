@@ -23,9 +23,9 @@ public class GameSaveLoadManager : MonoBehaviour
 
     public static event Action<string> OnAutoSaveCompleted;
     public static event Action<string> OnManualSaveCompleted;
+    public static event Action<string> OnSaveFailed;
 
     private readonly HashSet<string> saveBlockers = new();
-    public bool IsSaveBlocked => saveBlockers.Count > 0;
 
     private void Awake()
     {
@@ -68,7 +68,7 @@ public class GameSaveLoadManager : MonoBehaviour
 
         saveBlockers.Add(reason);
 
-        Debug.Log("[SAVE BLOCK] Added blocker: " + reason);
+        
     }
 
     public void RemoveSaveBlocker(string reason)
@@ -84,7 +84,7 @@ public class GameSaveLoadManager : MonoBehaviour
 
     private bool CanSave()
     {
-        if (!IsSaveBlocked)
+        if (saveBlockers.Count > 0)
             return true;
 
         Debug.LogWarning("[SAVE] Save blocked. Reasons: " + string.Join(", ", saveBlockers));
@@ -134,8 +134,14 @@ public class GameSaveLoadManager : MonoBehaviour
 
     public bool SaveGame(string saveFileName)
     {
-        if(!CanSave())
+        if (saveBlockers.Count > 0)
+        {
+            string message = "Cannot save right now.";
+            Debug.LogWarning("[SAVE] " + message);
+
+            OnSaveFailed?.Invoke(message);
             return false;
+        }
 
         GameSaveData data = new GameSaveData();
 

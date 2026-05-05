@@ -958,7 +958,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &99953010
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1031,7 +1031,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3d4e383692aa96e4bad9c8474512d27f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SaveBlockerOnEnable
-  blockerReason: Quest return window is open
+  blockerReason: Quest offer window is open
 --- !u!1 &128316332
 GameObject:
   m_ObjectHideFlags: 0
@@ -1842,6 +1842,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b48467a5e7ef7cd41bf4bb91f0e7b616, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerMovement
+  cameraTransform: {fileID: 0}
   walkSpeed: 5
   groundDrag: 5
   jumpForce: 5
@@ -2348,7 +2349,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &310633483
 RectTransform:
   m_ObjectHideFlags: 0
