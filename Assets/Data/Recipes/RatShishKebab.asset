@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7eaa5f4e5b4ce3344bf280ac66fa903c, type: 3}
   m_Name: RatShishKebab
   m_EditorClassIdentifier: Assembly-CSharp::Recipe
-  id: 1
+  id: rat_shish_kebab
   displayName: Rat Shish-Kebab
   ingredients:
   - item: {fileID: 11400000, guid: 536e4103e2dae224696f5b571909f60e, type: 2}

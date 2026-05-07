@@ -296,8 +296,14 @@ public class PlayerInteraction : MonoBehaviour
     private void HandleHotbarNumberKeys()
     {
         int index = GetHotbarSlotByKeyIndex();
-        if (index == -1) return;
+        if (index == -1)
+            return;
 
+        EquipHotbarSlot(index);
+    }
+
+    public void EquipHotbarSlot(int index)
+    {
         HotbarSlot slot = hotbarManager.GetSlotByPosition(index);
 
         // if the slot is empty - clear hands
@@ -331,13 +337,23 @@ public class PlayerInteraction : MonoBehaviour
             return;
         }
 
-        // 
+        // Stackable item visual
         if (slot.itemData != null && slot.amount > 0 && slot.itemData.isStackable)
         {
             activeHotbarIndex = index;
             EquipStackableFromSlot(slot);
 
             Debug.Log("Equipped STACKABLE visual from slot " + (index + 1));
+            return;
+        }
+
+        // Non-stackable item restored from save by itemData
+        if (slot.itemData != null && slot.amount > 0 && !slot.itemData.isStackable)
+        {
+            activeHotbarIndex = index;
+            EquipNonStackableFromSlot(slot);
+
+            Debug.Log("Equipped NON-stackable visual from itemData slot " + (index + 1));
             return;
         }
     }
@@ -458,15 +474,84 @@ public class PlayerInteraction : MonoBehaviour
         heldItem = heldStackableVisual;
     }
 
+    private void EquipNonStackableFromSlot(HotbarSlot slot)
+    {
+        // if there is an object in hand not from inventory -> drop it
+        bool dropWorld = (heldItem != null && !heldItem.isInInventory);
+        ClearHands(dropWorldItem: dropWorld);
+
+        if (slot.itemData == null)
+        {
+            //Debug.LogWarning("[EQUIP] Cannot equip non-stackable item. itemData is NULL.");
+            return;
+        }
+
+        // check if data has prefab reference
+        if (slot.itemData.worldPrefab == null)
+        {
+            Debug.LogWarning("[EQUIP] Cannot equip non-stackable item. World prefab is NULL for: " + slot.itemData.name);
+            return;
+        }
+
+        // add object to the hand
+        GameObject spawnedObject = Instantiate(
+            slot.itemData.worldPrefab,
+            objectGrabPointTransform.position,
+            objectGrabPointTransform.rotation
+        );
+
+        RewardItem itemObject = spawnedObject.GetComponent<RewardItem>();
+
+        if (itemObject == null)
+        {
+            Debug.LogWarning("[EQUIP] Spawned prefab does not have RewardItem component: " + spawnedObject.name);
+            Destroy(spawnedObject);
+            return;
+        }
+
+        // assign item data to the spawned object
+        heldItem = itemObject;
+        heldItem.isInInventory = true;
+        heldItem.gameObject.SetActive(true);
+        heldItem.Grab(objectGrabPointTransform);
+        heldItem.isHeld = true;
+
+        slot.uniqueItem = heldItem;
+
+        Debug.Log("[EQUIP] Non-stackable item equipped from itemData: " + slot.itemData.name);
+    }
+
     public InventoryItem getHeldItem()
     {
         return (heldItem != null) ? heldItem : null;
     }
 
-    public void DeleteHeldItem()
+    public int GetActiveHotbarIndex()
     {
-        if (heldItem == null) return;
-        Destroy(heldItem.gameObject);
-        heldItem = null;
+        return activeHotbarIndex;
+    }
+
+    public void RestoreActiveHotbarSlot(int index)
+    {
+        activeHotbarIndex = index;
+
+        if (index < 0)
+        {
+            ClearHands(dropWorldItem: false);
+            return;
+        }
+
+        HotbarSlot slot = hotbarManager.GetSlotByPosition(index);
+
+        if (slot == null || (slot.uniqueItem == null && (slot.itemData == null || slot.amount <= 0)))
+        {
+            ClearHands(dropWorldItem: false);
+            activeHotbarIndex = -1;
+            return;
+        }
+
+        EquipHotbarSlot(index);
+
+        Debug.Log("[PLAYER LOAD] Restored active hotbar slot: " + index);
     }
 }
