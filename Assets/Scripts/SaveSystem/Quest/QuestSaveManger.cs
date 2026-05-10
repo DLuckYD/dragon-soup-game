@@ -1,242 +1,258 @@
-//using UnityEngine;
+using System.Collections.Generic;
+using UnityEngine;
 
-//using System.Collections.Generic;
-//using UnityEngine;
+public class QuestSaveManager : MonoBehaviour
+{
+    public static QuestSaveManager Instance { get; private set; }
 
-//public class QuestSaveManager : MonoBehaviour
-//{
-//    public static QuestSaveManager Instance { get; private set; }
+    [Header("References")]
+    [SerializeField] private QuestManager questManager;
+    [SerializeField] private AdventurerSpawner adventurerSpawner;
 
-//    [SerializeField] private QuestManager questManager;
+    private void Awake()
+    {
+        Instance = this;
 
-//    private void Awake()
-//    {
-//        Instance = this;
+        if (questManager == null)
+            questManager = FindFirstObjectByType<QuestManager>();
 
-//        if (questManager == null)
-//            questManager = FindFirstObjectByType<QuestManager>();
-//    }
+        if (adventurerSpawner == null)
+            adventurerSpawner = FindFirstObjectByType<AdventurerSpawner>();
+    }
 
-//    public QuestSaveData CaptureSaveData()
-//    {
-//        QuestSaveData saveData = new QuestSaveData();
+    public QuestSaveData CaptureSaveData()
+    {
+        Debug.Log("========== QUEST SAVE START ==========");
 
-//        if (questManager == null)
-//        {
-//            Debug.LogWarning("[QUEST SAVE] QuestManager is NULL.");
-//            return saveData;
-//        }
+        QuestSaveData saveData = new QuestSaveData();
 
-//        saveData.bagIndex = questManager.BagIndex;
+        if (questManager == null)
+        {
+            Debug.LogWarning("[QUEST SAVE] QuestManager is NULL.");
+            return saveData;
+        }
 
-//        AdventurerNPC[] npcs = FindObjectsByType<AdventurerNPC>(
-//            FindObjectsInactive.Include,
-//            FindObjectsSortMode.None
-//        );
+        if (adventurerSpawner == null)
+        {
+            Debug.LogWarning("[QUEST SAVE] AdventurerSpawner is NULL.");
+            return saveData;
+        }
 
-//        Debug.Log("[QUEST SAVE] Found AdventurerNPC count: " + npcs.Length);
+        saveData.bagIndex = questManager.BagIndex;
 
-//        foreach (AdventurerNPC npc in npcs)
-//        {
-//            if (npc == null)
-//            {
-//                Debug.LogWarning("[QUEST SAVE] Found NULL npc.");
-//                continue;
-//            }
+        IReadOnlyList<AdventurerNPC> adventurers = adventurerSpawner.SpawnedAdventurers;
 
-//            if (npc.Data == null)
-//            {
-//                Debug.LogWarning("[QUEST SAVE] NPC has NULL Data: " + npc.name);
-//                continue;
-//            }
+        Debug.Log("[QUEST SAVE] Spawned adventurers count: " + adventurers.Count);
 
-//            Debug.Log(
-//                "[QUEST SAVE] Checking NPC: " + npc.name +
-//                " | adventurerId: " + npc.Data.id +
-//                " | displayName: " + npc.Data.displayName +
-//                " | state: " + npc.State +
-//                " | activeInHierarchy: " + npc.gameObject.activeInHierarchy
-//            );
+        foreach (AdventurerNPC npc in adventurers)
+        {
+            if (npc == null)
+            {
+                Debug.LogWarning("[QUEST SAVE] Found NULL adventurer. Skipping.");
+                continue;
+            }
 
-//            AdventurerQuestSaveData npcSave = new AdventurerQuestSaveData
-//            {
-//                adventurerId = npc.Data.id,
-//                state = npc.State.ToString(),
-//                hasActiveQuest = false,
-//                activeQuest = null
-//            };
+            if (npc.Data == null)
+            {
+                Debug.LogWarning("[QUEST SAVE] Adventurer has NULL data: " + npc.name);
+                continue;
+            }
 
-//            if (questManager.TryGetActiveQuestSaveData(npc, out ActiveQuestSaveData activeQuestSave))
-//            {
-//                npcSave.hasActiveQuest = true;
-//                npcSave.activeQuest = activeQuestSave;
+            if (string.IsNullOrEmpty(npc.Data.id))
+            {
+                Debug.LogWarning("[QUEST SAVE] Adventurer has EMPTY id: " + npc.name);
+                continue;
+            }
 
-//                Debug.Log("[QUEST SAVE] NPC has active quest: " + npc.Data.id);
-//            }
-//            else
-//            {
-//                Debug.Log("[QUEST SAVE] NPC has NO active quest: " + npc.Data.id);
-//            }
+            int queueIndex = adventurerSpawner.GetQueueIndex(npc);
 
-//            saveData.adventurers.Add(npcSave);
-//        }
+            AdventurerQuestSaveData npcSave = new AdventurerQuestSaveData
+            {
+                adventurerId = npc.Data.id,
+                state = npc.State.ToString(),
+                queueIndex = queueIndex,
+                hasActiveQuest = false,
+                activeQuest = null
+            };
 
-//        Debug.Log("[QUEST SAVE] Final saved adventurers count: " + saveData.adventurers.Count);
+            if (questManager.TryGetActiveQuestSaveData(npc, out ActiveQuestSaveData activeQuestSave))
+            {
+                npcSave.hasActiveQuest = true;
+                npcSave.activeQuest = activeQuestSave;
 
-//        return saveData;
-//    }
+                Debug.Log(
+                    "[QUEST SAVE] Saved active quest for adventurer: " +
+                    npc.Data.id +
+                    " | state: " +
+                    npc.State +
+                    " | queueIndex: " +
+                    queueIndex +
+                    " | remaining: " +
+                    activeQuestSave.remainingReturnSeconds
+                );
+            }
+            else
+            {
+                Debug.Log(
+                    "[QUEST SAVE] Saved adventurer without active quest: " +
+                    npc.Data.id +
+                    " | state: " +
+                    npc.State +
+                    " | queueIndex: " +
+                    queueIndex
+                );
+            }
 
-//    public void RestoreSaveData(QuestSaveData saveData)
-//    {
-//        Debug.Log("========== QUEST LOAD START ==========");
+            saveData.adventurers.Add(npcSave);
+        }
 
-//        if (saveData == null || saveData.adventurers == null)
-//        {
-//            Debug.LogWarning("[QUEST LOAD] Save data is NULL.");
-//            return;
-//        }
+        Debug.Log("[QUEST SAVE] Final saved adventurers count: " + saveData.adventurers.Count);
+        Debug.Log("========== QUEST SAVE END ==========");
 
-//        if (questManager == null)
-//        {
-//            Debug.LogWarning("[QUEST LOAD] QuestManager is NULL.");
-//            return;
-//        }
+        return saveData;
+    }
 
-//        questManager.ClearQuestRuntimeState();
-//        questManager.SetBagIndexFromSave(saveData.bagIndex);
+    public void RestoreSaveData(QuestSaveData saveData)
+    {
+        Debug.Log("========== QUEST LOAD START ==========");
 
-//        AdventurerNPC[] npcs = FindObjectsByType<AdventurerNPC>(
-//            FindObjectsInactive.Include,
-//            FindObjectsSortMode.None
-//        );
+        if (saveData == null || saveData.adventurers == null)
+        {
+            Debug.LogWarning("[QUEST LOAD] Save data is NULL.");
+            return;
+        }
 
-//        Debug.Log("[QUEST LOAD] Found AdventurerNPC objects: " + npcs.Length);
+        if (questManager == null)
+        {
+            Debug.LogWarning("[QUEST LOAD] QuestManager is NULL.");
+            return;
+        }
 
-//        Dictionary<string, AdventurerNPC> npcsById = new Dictionary<string, AdventurerNPC>();
+        if (adventurerSpawner == null)
+        {
+            Debug.LogWarning("[QUEST LOAD] AdventurerSpawner is NULL.");
+            return;
+        }
 
-//        foreach (AdventurerNPC npc in npcs)
-//        {
-//            if (npc == null)
-//                continue;
+        // Clear runtime quest dictionaries.
+        questManager.ClearQuestRuntimeState();
 
-//            if (npc.Data == null)
-//            {
-//                Debug.LogWarning("[QUEST LOAD] NPC has NULL AdventurerData: " + npc.name);
-//                continue;
-//            }
+        // Restore quest generation progress.
+        questManager.SetBagIndexFromSave(saveData.bagIndex);
 
-//            if (string.IsNullOrEmpty(npc.Data.id))
-//            {
-//                Debug.LogWarning("[QUEST LOAD] NPC has EMPTY AdventurerData id: " + npc.name);
-//                continue;
-//            }
+        // Remove all current adventurers before restoring saved ones.
+        // This prevents duplicates after loading.
+        adventurerSpawner.ClearAllAdventurersForLoad();
 
-//            if (npcsById.ContainsKey(npc.Data.id))
-//            {
-//                Debug.LogWarning(
-//                    "[QUEST LOAD] Duplicate adventurer id found: " +
-//                    npc.Data.id +
-//                    " on NPC: " +
-//                    npc.name
-//                );
-//                continue;
-//            }
+        Debug.Log("[QUEST LOAD] Saved adventurers count: " + saveData.adventurers.Count);
 
-//            npcsById.Add(npc.Data.id, npc);
+        foreach (AdventurerQuestSaveData savedNpc in saveData.adventurers)
+        {
+            if (savedNpc == null)
+            {
+                Debug.LogWarning("[QUEST LOAD] Saved adventurer entry is NULL. Skipping.");
+                continue;
+            }
 
-//            Debug.Log(
-//                "[QUEST LOAD] Registered NPC: " +
-//                npc.name +
-//                " | id: " +
-//                npc.Data.id
-//            );
-//        }
+            if (string.IsNullOrEmpty(savedNpc.adventurerId))
+            {
+                Debug.LogWarning("[QUEST LOAD] Saved adventurer has EMPTY id. Skipping.");
+                continue;
+            }
 
-//        Debug.Log("[QUEST LOAD] NPCs registered by id: " + npcsById.Count);
-//        Debug.Log("[QUEST LOAD] Saved adventurers count: " + saveData.adventurers.Count);
+            if (!TryParseState(savedNpc.state, out AdventurerState restoredState))
+            {
+                Debug.LogWarning(
+                    "[QUEST LOAD] Cannot parse adventurer state: " +
+                    savedNpc.state +
+                    ". Using Offered."
+                );
 
-//        foreach (AdventurerQuestSaveData savedNpc in saveData.adventurers)
-//        {
-//            if (savedNpc == null)
-//            {
-//                Debug.LogWarning("[QUEST LOAD] Saved NPC entry is NULL. Skipping.");
-//                continue;
-//            }
+                restoredState = AdventurerState.Offered;
+            }
 
-//            if (string.IsNullOrEmpty(savedNpc.adventurerId))
-//            {
-//                Debug.LogWarning("[QUEST LOAD] Saved adventurer has EMPTY id. Skipping.");
-//                continue;
-//            }
+            Debug.Log(
+                "[QUEST LOAD] Restoring adventurer: " +
+                savedNpc.adventurerId +
+                " | state: " +
+                restoredState +
+                " | queueIndex: " +
+                savedNpc.queueIndex +
+                " | hasActiveQuest: " +
+                savedNpc.hasActiveQuest
+            );
 
-//            if (!npcsById.TryGetValue(savedNpc.adventurerId, out AdventurerNPC npc))
-//            {
-//                Debug.LogWarning(
-//                    "[QUEST LOAD] Could not find NPC with id: " +
-//                    savedNpc.adventurerId
-//                );
-//                continue;
-//            }
+            AdventurerNPC npc = adventurerSpawner.SpawnAdventurerFromSave(
+                savedNpc.adventurerId,
+                restoredState,
+                savedNpc.queueIndex
+            );
 
-//            //AdventurerState savedState = savedNpc.state;
+            if (npc == null)
+            {
+                Debug.LogWarning(
+                    "[QUEST LOAD] Failed to spawn adventurer from save. Id: " +
+                    savedNpc.adventurerId
+                );
 
-//            //Debug.Log(
-//            //    "[QUEST LOAD] Restoring adventurer: " +
-//            //    savedNpc.adventurerId +
-//            //    " | savedState: " +
-//            //    savedState +
-//            //    " | hasActiveQuest: " +
-//            //    savedNpc.hasActiveQuest
-//            //);
+                continue;
+            }
 
-//            //if (savedNpc.hasActiveQuest && savedNpc.activeQuest != null)
-//            //{
-//            //    questManager.RestoreActiveQuestFromSave(
-//            //        npc,
-//            //        savedState,
-//            //        savedNpc.activeQuest
-//            //    );
+            if (savedNpc.hasActiveQuest && savedNpc.activeQuest != null)
+            {
+                questManager.RestoreActiveQuestFromSave(
+                    npc,
+                    restoredState,
+                    savedNpc.activeQuest
+                );
+            }
+            else
+            {
+                RestoreAdventurerWithoutActiveQuest(npc, restoredState, savedNpc.adventurerId);
+            }
+        }
 
-//            //    continue;
-//            //}
+        Debug.Log("[QUEST LOAD] Restored adventurers: " + saveData.adventurers.Count);
+        Debug.Log("========== QUEST LOAD END ==========");
+    }
 
-//            //RestoreAdventurerWithoutActiveQuest(npc, savedState, savedNpc.adventurerId);
-//        }
+    private bool TryParseState(string stateText, out AdventurerState state)
+    {
+        return System.Enum.TryParse(stateText, out state);
+    }
 
-//        Debug.Log("[QUEST LOAD] Restored adventurers: " + saveData.adventurers.Count);
-//        Debug.Log("========== QUEST LOAD END ==========");
-//    }
+    private void RestoreAdventurerWithoutActiveQuest(
+        AdventurerNPC npc,
+        AdventurerState savedState,
+        string adventurerId
+    )
+    {
+        if (npc == null)
+            return;
 
-//    private void RestoreAdventurerWithoutActiveQuest(
-//    AdventurerNPC npc,
-//    AdventurerState savedState,
-//    string adventurerId
-//)
-//    {
-//        if (npc == null)
-//            return;
+        // Adventurer has no active quest and is simply waiting for a quest.
+        if (savedState == AdventurerState.Offered)
+        {
+            npc.SetState(AdventurerState.Offered);
 
-//        if (savedState == AdventurerState.Offered)
-//        {
-//            npc.SetState(AdventurerState.Offered);
-//            npc.ShowAdventurer();
+            Debug.Log(
+                "[QUEST LOAD] Restored adventurer without active quest as Offered: " +
+                adventurerId
+            );
 
-//            Debug.Log(
-//                "[QUEST LOAD] Restored adventurer without active quest as Offered: " +
-//                adventurerId
-//            );
+            return;
+        }
 
-//            return;
-//        }
+        // Safety fallback.
+        // If an adventurer was saved as InProgress or WaitingReward but has no quest data,
+        // this state is invalid. We reset it to Offered.
+        Debug.LogWarning(
+            "[QUEST LOAD] Adventurer has state " +
+            savedState +
+            " but no active quest. Resetting to Offered. Adventurer id: " +
+            adventurerId
+        );
 
-//        Debug.LogWarning(
-//            "[QUEST LOAD] Adventurer has state " +
-//            savedState +
-//            " but no active quest. Resetting to Offered. Adventurer id: " +
-//            adventurerId
-//        );
-
-//        npc.SetState(AdventurerState.Offered);
-//        npc.ShowAdventurer();
-//    }
-//}
+        npc.SetState(AdventurerState.Offered);
+    }
+}
