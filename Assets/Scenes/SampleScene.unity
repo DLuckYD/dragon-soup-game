@@ -1654,6 +1654,37 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 188439884}
   m_CullTransparentMesh: 1
+--- !u!1 &232706733
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 232706734}
+  m_Layer: 0
+  m_Name: QueuePoint_2_Waiting
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &232706734
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 232706733}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
+  m_LocalPosition: {x: 9.21516, y: 1, z: 0.343}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1912251385}
+  m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
 --- !u!4 &238093639 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6856649130744557486, guid: 06ad683a707c4384c96f99a148f4ee9f, type: 3}
@@ -13690,7 +13721,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1400429415}
   m_Layer: 0
-  m_Name: SpawnPoint
+  m_Name: QueuePoint_0_Window
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -17033,13 +17064,17 @@ MonoBehaviour:
   questUI: {fileID: 310633487}
   adventurerPrefab: {fileID: 4826028933367974865, guid: f5cd89dd203c6b5428d9adb96e6f3bb7, type: 3}
   spawnPoint: {fileID: 1400429415}
+  queuePoints:
+  - {fileID: 1400429415}
+  - {fileID: 2119348744}
+  - {fileID: 232706734}
   adventurerPool:
   - {fileID: 11400000, guid: bd784f67a4940d7479a12477108838f4, type: 2}
   - {fileID: 11400000, guid: 2abfb2401698f6e43a17a48d6d45ea47, type: 2}
   - {fileID: 11400000, guid: 4378937d5100cb54189da630628a6a35, type: 2}
   minDelay: 1
   maxDelay: 5
-  offerLifetimeSeconds: 25
+  spawnOnStart: 1
 --- !u!4 &1912251385
 Transform:
   m_ObjectHideFlags: 0
@@ -17054,6 +17089,8 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1400429415}
+  - {fileID: 2119348744}
+  - {fileID: 232706734}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1921039230
@@ -23638,6 +23675,37 @@ PrefabInstance:
       insertIndex: 5
       addedObject: {fileID: 1304465541}
   m_SourcePrefab: {fileID: 100100000, guid: 2b3442917f31f3a41a87afa943484e30, type: 3}
+--- !u!1 &2119348743
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2119348744}
+  m_Layer: 0
+  m_Name: QueuePoint_1_Waiting
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2119348744
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2119348743}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
+  m_LocalPosition: {x: 9.21516, y: 1, z: -0.732}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1912251385}
+  m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
 --- !u!1 &2124749896
 GameObject:
   m_ObjectHideFlags: 0
@@ -23856,6 +23924,7 @@ MonoBehaviour:
   questUI: {fileID: 310633487}
   houseSpawner: {fileID: 2075675857}
   playerInventory: {fileID: 950630261}
+  adventurerSpawner: {fileID: 0}
   itemDatabase: {fileID: 11400000, guid: f44b26ab315462f4180f7022d4ec53cf, type: 2}
   dialogueJsonFile: {fileID: 4900000, guid: af5ac9f6bab2f7f4dba86011a6cd9332, type: 3}
   defaultIngredient: {fileID: 11400000, guid: 536e4103e2dae224696f5b571909f60e, type: 2}
@@ -23892,6 +23961,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::QuestSaveManager
   questManager: {fileID: 2146820018}
+  adventurerSpawner: {fileID: 0}
 --- !u!1001 &5793355977685499179
 PrefabInstance:
   m_ObjectHideFlags: 0

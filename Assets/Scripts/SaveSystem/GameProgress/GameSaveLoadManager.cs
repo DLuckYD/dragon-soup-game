@@ -155,10 +155,10 @@ public class GameSaveLoadManager : MonoBehaviour
             data.player = PlayerSaveManager.Instance.CaptureSaveData();
         }
 
-        //if(QuestSaveManager.Instance != null)
-        //{
-        //    data.quests = QuestSaveManager.Instance.CaptureSaveData();
-        //}
+        if (QuestSaveManager.Instance != null)
+        {
+            data.quests = QuestSaveManager.Instance.CaptureSaveData();
+        }
 
         WriteSaveFile(saveFileName, data);
 
@@ -236,11 +236,11 @@ public class GameSaveLoadManager : MonoBehaviour
                 Debug.LogWarning("[AUTOSAVE] Skipped. PlayerSaveManager.Instance is NULL.");
                 continue;
             }
-            //if (QuestSaveManager.Instance == null)
-            //{
-            //    Debug.LogWarning("[AUTOSAVE] Skipped. QuestManager.Instance is NULL.");
-            //    continue;
-            //}
+            if (QuestSaveManager.Instance == null)
+            {
+                Debug.LogWarning("[AUTOSAVE] Skipped. QuestManager.Instance is NULL.");
+                continue;
+            }
             AutoSave();
         }
     }
@@ -356,8 +356,8 @@ public class GameSaveLoadManager : MonoBehaviour
         if (PlayerSaveManager.Instance != null && data.player != null)
             PlayerSaveManager.Instance.RestoreSaveData(data.player);
 
-        //if (QuestSaveManager.Instance != null && data.quests != null)
-        //    QuestSaveManager.Instance.RestoreSaveData(data.quests);
+        if (QuestSaveManager.Instance != null && data.quests != null)
+            QuestSaveManager.Instance.RestoreSaveData(data.quests);
 
 
         Debug.Log("Game loaded: " + data.saveName);
