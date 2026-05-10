@@ -42,7 +42,7 @@ public class CookingStation : MonoBehaviour
         foreach (var ingredient in recipe.ingredients)
             playerInventory.RemoveItemDataAmount(ingredient.item, ingredient.amount);
 
-        playerInventory.addCookingDishToInventory(recipe.result);
+        playerInventory.AddCookingDishToInventory(recipe.result);
 
         cookedRecipes.Add(recipe.id);
 

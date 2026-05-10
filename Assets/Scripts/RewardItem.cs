@@ -2,7 +2,7 @@
 
 public enum ItemType
 {
-    Chair, Matal, Wood, Stone
+    Metal, Wood, Stone
 }
 
 public class RewardItem : InventoryItem
@@ -15,14 +15,11 @@ public class RewardItem : InventoryItem
     public bool isUpgraded = false;
     public bool canBeUpgrated = true;
 
-    [Header("Visuals (same matherials for all objects)")]
-    public Material defaultMat;
     public Material upgradedMat;
 
     private MeshRenderer[] renderers;
 
-
-    private void Awake()
+    protected override void Awake()
     {
         base.Awake();
         renderers = GetComponentsInChildren<MeshRenderer>(true);
@@ -32,12 +29,17 @@ public class RewardItem : InventoryItem
             Debug.Log($"[{name}] Renderer[{i}] = {GetFullPath(renderers[i].transform)} enabled={renderers[i].enabled}");
     }
 
-
     public void ApplyUpgrade()
     {
         Debug.Log($"[ApplyUpgrade] {name} called. isUpgraded={isUpgraded}, canBeUpgrated={canBeUpgrated}");
 
         if (isUpgraded) return;
+
+        if (!canBeUpgrated)
+        {
+            Debug.LogWarning($"[ApplyUpgrade] {name} cannot be upgraded.");
+            return;
+        }
 
         isUpgraded = true;
         UpdateVisual();
@@ -47,12 +49,9 @@ public class RewardItem : InventoryItem
 
     public void UpdateVisual()
     {
-        Material target = isUpgraded ? upgradedMat : defaultMat;
-
-        if (target == null)
+        if (renderers == null || renderers.Length == 0)
         {
-            Debug.LogError($"[{name}] Target material is NULL! isUpgraded={isUpgraded}");
-            return;
+            renderers = GetComponentsInChildren<MeshRenderer>(true);
         }
 
         if (renderers == null || renderers.Length == 0)
@@ -61,18 +60,31 @@ public class RewardItem : InventoryItem
             return;
         }
 
-        foreach (var r in renderers)
+        if (!isUpgraded)
         {
+            Debug.Log($"[{name}] Item is not upgraded. Keeping prefab material.");
+            return;
+        }
+
+        if (upgradedMat == null)
+        {
+            Debug.LogError($"[{name}] upgradedMat is NULL!");
+            return;
+        }
+
+        foreach (MeshRenderer r in renderers)
+        {
+            if (r == null) continue;
             // якщо хтось юзає MaterialPropertyBlock (outline/hover), це може перебивати вигляд
             r.SetPropertyBlock(null);
 
-            var mats = r.sharedMaterials;
-            if (mats != null && mats.Length > 0)
-            {
-                Debug.Log($"[{name}] Swap on {GetFullPath(r.transform)} slot0: {mats[0]?.name} -> {target.name}");
-                mats[0] = target;
-                r.sharedMaterials = mats;
-            }
+            Material[] mats = r.sharedMaterials;
+
+            if (mats == null || mats.Length == 0)
+                continue;
+
+            mats[0] = upgradedMat;
+            r.sharedMaterials = mats;
         }
     }
 
