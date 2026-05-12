@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ea32ced8bc60a6c409646b9f9909ae03, type: 3}
   m_Name: ButterKnifeData
   m_EditorClassIdentifier: Assembly-CSharp::ItemData
-  id: 3
+  id: butter_knife
   displayName: Butter Knife
   icon: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
   isStackable: 0

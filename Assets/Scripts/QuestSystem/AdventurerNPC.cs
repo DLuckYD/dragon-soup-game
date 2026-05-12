@@ -134,4 +134,10 @@ public class AdventurerNPC : MonoBehaviour
         
     }
     
+    public void SetInteractionEnabled(bool enabled)
+    {
+        if (interactionCollider != null)
+            interactionCollider.enabled = enabled;
+    }
+    
 }
