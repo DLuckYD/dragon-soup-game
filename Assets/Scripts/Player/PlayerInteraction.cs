@@ -376,21 +376,52 @@ public class PlayerInteraction : MonoBehaviour
 
     void TryUpgradeItem()
     {
-        if (upgradeStation != null && heldItem is RewardItem reward && reward.isInInventory && !reward.isUpgraded)
-        {
-            upgradeStation.UpgradeItem(reward);
-            Debug.Log("is upgraded value=" + reward.Value);
-            EventManager.CallItemUpgraded(reward, upgradeStation);
-        }
-        else if (upgradeStation != null && heldItem == null)
-        {
-            Debug.Log("There's nothing in hands, nothing to upgrade");
-        }
-        else
+        if (upgradeStation == null)
         {
             Debug.Log("There's no upgrade station");
+            return;
         }
+
+        if (heldItem == null)
+        {
+            Debug.Log("There's nothing in hands, nothing to modify");
+            return;
+        }
+
+        if (heldItem is not RewardItem reward)
+        {
+            Debug.Log("Held item is not a reward item");
+            return;
+        }
+
+        if (!reward.isInInventory)
+        {
+            Debug.Log("Item is not in inventory");
+            return;
+        }
+
+        RewardItem result = upgradeStation.UpgradeItem(reward);
+
+        if (result == null)
+        {
+            Debug.Log("Item was destroyed or removed by station");
+            heldItem = null;
+            return;
+        }
+        
+        if (!upgradeStation.LastProcessSuccessful)
+        {
+            Debug.Log("Station did not modify the item.");
+            return;
+        }
+
+        Debug.Log("Item processed. Current value = " + result.Value);
+
+        EventManager.CallItemModified(result, upgradeStation);
     }
+    
+    
+    
     private void OpenAndCloseCookBook()
     {
         if (cookingStation == null)

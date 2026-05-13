@@ -675,13 +675,13 @@ PrefabInstance:
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 9026aa700e9f9754c95ed760f675fdac, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 148164263}
-    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 9026aa700e9f9754c95ed760f675fdac, type: 3}
-      insertIndex: -1
       addedObject: {fileID: 148164262}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 9026aa700e9f9754c95ed760f675fdac, type: 3}
       insertIndex: -1
       addedObject: {fileID: 148164261}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 9026aa700e9f9754c95ed760f675fdac, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 148164265}
     - targetCorrespondingSourceObject: {fileID: -8391222552659086748, guid: 9026aa700e9f9754c95ed760f675fdac, type: 3}
       insertIndex: -1
       addedObject: {fileID: 523769132}
@@ -1213,7 +1213,12 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 12.005549, y: 7.479406, z: 19.949348}
   m_Center: {x: -0.8008381, y: 3.239703, z: -0.8005673}
---- !u!114 &148164263
+--- !u!4 &148164264 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 9026aa700e9f9754c95ed760f675fdac, type: 3}
+  m_PrefabInstance: {fileID: 79280159}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &148164265
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1222,14 +1227,24 @@ MonoBehaviour:
   m_GameObject: {fileID: 148164259}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4597e968a10bee643badfe8321b533dc, type: 3}
+  m_Script: {fileID: 11500000, guid: dc1dfddedb44e154191e8bdefa0da266, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::WorkbenchStation
---- !u!4 &148164264 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 9026aa700e9f9754c95ed760f675fdac, type: 3}
-  m_PrefabInstance: {fileID: 79280159}
-  m_PrefabAsset: {fileID: 0}
+  m_EditorClassIdentifier: Assembly-CSharp::UpgradeStation
+  canInteract: 1
+  disabledMessage: This station cannot be used right now.
+  useSoundEvent: 
+  successMessage: Item modified.
+  noItemMessage: No item to modify.
+  conditions:
+    requireCanBeModified: 1
+    stateRequirement: 1
+    requiredState: 0
+    useTypeFilter: 0
+    allowedTypes: 
+  effects:
+  - {fileID: 11400000, guid: c798c0959bf64f34fbc8af00050b3f6e, type: 2}
+  - {fileID: 11400000, guid: baa0d1f372072984aa69b5e566a9a748, type: 2}
+  - {fileID: 11400000, guid: 685099d70774fb04e8703f4ed98ceac3, type: 2}
 --- !u!1 &167733744
 GameObject:
   m_ObjectHideFlags: 0
