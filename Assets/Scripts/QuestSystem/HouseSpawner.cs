@@ -1,8 +1,15 @@
 using UnityEngine;
+using System;
+
+
 
 public class HouseSpawner : MonoBehaviour
 {
     [SerializeField] private Transform[] spawnPoints;
+    
+    public static HouseSpawner Instance { get; private set; }
+    public static event Action<string> OnSpawned;
+    
 
     public void SpawnObject(ItemData ingridient, int amount)
     {
@@ -19,8 +26,10 @@ public class HouseSpawner : MonoBehaviour
 
         for (int i = 0; i < amount; i++)
         {
-            var v = spawnPoints[Random.Range(0, spawnPoints.Length)];
+            var v = spawnPoints[UnityEngine.Random.Range(0, spawnPoints.Length)];
             Instantiate( ingridient.worldPrefab, v.position, v.rotation);
+            OnSpawned?.Invoke("Items added in supply box ");
+            
 
 
         }
