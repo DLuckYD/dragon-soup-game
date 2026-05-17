@@ -20,7 +20,7 @@ public class QuestManager : MonoBehaviour
     [SerializeField] private TextAsset dialogueJsonFile;
 
     [Header("Quest Generation (MVP)")]
-    [SerializeField] private ItemData defaultIngredient;
+    [SerializeField] private IngredientData defaultIngredient;
     [SerializeField] private int defaultAmount = 3;
     [SerializeField] private int defaultMinRewardValue = 10;
     [SerializeField] private float defaultReturnDelaySeconds = 15f;
@@ -69,7 +69,7 @@ public class QuestManager : MonoBehaviour
         public string hintText;
 
         public Recipe recipe;
-        public ItemData ingredientData;
+        public IngredientData ingredientData;
         public string ingredientName;
         public Sprite ingredientIcon;
         public int amount;
@@ -81,7 +81,7 @@ public class QuestManager : MonoBehaviour
     private struct QuestTarget
     {
         public Recipe recipe;
-        public ItemData ingredient;
+        public IngredientData ingredient;
         public int amount;
     }
 
@@ -89,7 +89,7 @@ public class QuestManager : MonoBehaviour
     {
         public AdventurerNPC npc;
 
-        public ItemData ingredient;
+        public IngredientData ingredient;
         public int amount;
         public int minRewardValue;
         public float returnAtTime;
@@ -198,7 +198,7 @@ public class QuestManager : MonoBehaviour
         // Pick quest target from the bag system.
         QuestTarget target = PickTargetFromRecipes();
 
-        ItemData ingredient = target.ingredient != null ? target.ingredient : defaultIngredient;
+        IngredientData ingredient = target.ingredient != null ? target.ingredient : defaultIngredient;
         int amount = Mathf.Max(1, target.amount);
 
         if (ingredient == null)
@@ -480,7 +480,7 @@ public class QuestManager : MonoBehaviour
             return;
         }
 
-        ItemData ingredient = null;
+        IngredientData ingredient = null;
 
         if (itemDatabase != null && !string.IsNullOrEmpty(savedQuest.ingredientId))
         {
@@ -628,7 +628,7 @@ public class QuestManager : MonoBehaviour
         bagIndex = 0;
 
         // Each ingredient appears only once in the bag.
-        HashSet<ItemData> usedIngredients = new HashSet<ItemData>();
+        HashSet<IngredientData> usedIngredients = new HashSet<IngredientData>();
 
         foreach (Recipe recipe in recipePool)
         {

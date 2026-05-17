@@ -2,7 +2,7 @@ using UnityEngine;
 
 public abstract class InventoryItem : MonoBehaviour
 {
-    public ItemData itemData;
+    public IngredientData itemData;
 
     public bool isInInventory;
     public bool isHeld = false;

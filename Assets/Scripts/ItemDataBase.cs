@@ -9,7 +9,7 @@ using UnityEditor;
 public class ItemDataBase : ScriptableObject
 {
     [Header("Items")]
-    [SerializeField] private List<ItemData> items = new List<ItemData>();
+    [SerializeField] private List<IngredientData> items = new List<IngredientData>();
 
 #if UNITY_EDITOR
     [Header("Editor Auto Fill")]
@@ -25,7 +25,7 @@ public class ItemDataBase : ScriptableObject
         foreach (string guid in guids)
         {
             string path = AssetDatabase.GUIDToAssetPath(guid);
-            ItemData item = AssetDatabase.LoadAssetAtPath<ItemData>(path);
+            IngredientData item = AssetDatabase.LoadAssetAtPath<IngredientData>(path);
 
             if (item != null && !items.Contains(item))
             {
@@ -42,9 +42,9 @@ public class ItemDataBase : ScriptableObject
     }
 #endif
 
-    public ItemData GetItemById(string id)
+    public IngredientData GetItemById(string id)
     {
-        foreach (ItemData item in items)
+        foreach (IngredientData item in items)
         {
             if (item.id.Equals(id))
                 return item;
@@ -54,7 +54,7 @@ public class ItemDataBase : ScriptableObject
         return null;
     }
 
-    public List<ItemData> GetAllItems()
+    public List<IngredientData> GetAllItems()
     {
         return items;
     }

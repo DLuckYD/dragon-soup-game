@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ea32ced8bc60a6c409646b9f9909ae03, type: 3}
-  m_Name: RatData
+  m_Name: SeagullBurger
   m_EditorClassIdentifier: Assembly-CSharp::ItemData
-  id: rat_meat
-  displayName: Rat Meat
+  id: segull_burger
+  displayName: Seagull burger
   icon: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
   isStackable: 1
   maxStackSize: 12
-  worldPrefab: {fileID: 75258695185696432, guid: 2152944387c7d1b4e92dd50f3599c717, type: 3}
+  worldPrefab: {fileID: 3609085205059398615, guid: c4360d36d739f7d418691af91775f415, type: 3}

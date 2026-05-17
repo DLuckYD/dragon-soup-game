@@ -60,7 +60,7 @@ public class HotbarManager : MonoBehaviour
         if (worldItem == null || worldItem.itemData == null) return false;
         if (!worldItem.itemData.isStackable) return false;
 
-        ItemData data = worldItem.itemData;
+        IngredientData data = worldItem.itemData;
 
         // 1) stack into existing
         for (int i = 0; i < slots.Length; i++)
@@ -180,7 +180,7 @@ public class HotbarManager : MonoBehaviour
         return false;
     }
 
-    public bool HasItemDataAmount(ItemData data, int requiredAmount)
+    public bool HasItemDataAmount(IngredientData data, int requiredAmount)
     {
         int total = 0;
 
@@ -198,7 +198,7 @@ public class HotbarManager : MonoBehaviour
         return false;
     }
 
-    public void RemoveItemDataAmount(ItemData data, int amount)
+    public void RemoveItemDataAmount(IngredientData data, int amount)
     {
         int remaining = amount;
         for (int i = 0; i < slots.Length; i++)
@@ -222,7 +222,7 @@ public class HotbarManager : MonoBehaviour
         }
     }
 
-    public void AddCookingDishToInventory(ItemData result)
+    public void AddCookingDishToInventory(IngredientData result)
     {
         if (result == null)
         {
@@ -232,7 +232,7 @@ public class HotbarManager : MonoBehaviour
 
         if (result.worldPrefab == null)
         {
-            Debug.LogWarning($"addCookingDishToInventory: worldPrefab is NULL for ItemData {result.name}");
+            Debug.LogWarning($"addCookingDishToInventory: worldPrefab is NULL for IngredientData {result.name}");
             return;
         }
 
@@ -316,7 +316,7 @@ public class HotbarManager : MonoBehaviour
 
         foreach (InventoryItemSaveData savedItem in saveData.items)
         {
-            ItemData itemData = itemDatabase.GetItemById(savedItem.itemId);
+            IngredientData itemData = itemDatabase.GetItemById(savedItem.itemId);
 
             if (itemData == null)
             {
@@ -343,7 +343,7 @@ public class HotbarManager : MonoBehaviour
         }
     }
 
-    private void AddItemToSlot(int slotIndex, ItemData itemData, int amount)
+    private void AddItemToSlot(int slotIndex, IngredientData itemData, int amount)
     {
         List<HotbarSlot> inventorySlots = new List<HotbarSlot>(slots);
         while (slots.Length <= slotIndex)
