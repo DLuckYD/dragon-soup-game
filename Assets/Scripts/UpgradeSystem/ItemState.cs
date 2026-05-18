@@ -7,5 +7,6 @@ public enum ItemState
    Burned,
    Frozen,
    Painted,
-   Poisoned
+   Poisoned,
+   Sharpened
 }
