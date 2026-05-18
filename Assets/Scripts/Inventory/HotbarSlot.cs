@@ -36,9 +36,9 @@ public class HotbarSlot : MonoBehaviour
 
     public void UpdateUI()
     {
-        var data = uniqueItem != null ? uniqueItem.itemData : itemData;
+        ItemData data = uniqueItem != null ? uniqueItem.itemData : itemData;
 
-        if (itemData == null || (uniqueItem == null && amount <= 0))
+        if (data == null || (uniqueItem == null && amount <= 0))
         {
             if (icon != null)
             {
@@ -55,12 +55,12 @@ public class HotbarSlot : MonoBehaviour
         if (icon != null)
         {
             icon.enabled = true;
-            icon.sprite = itemData.icon;
+            icon.sprite = data.icon;
         }
 
         if (amountText != null)
         {
-            amountText.text = (uniqueItem == null && itemData.isStackable && amount > 1)
+            amountText.text = (uniqueItem == null && data.isStackable && amount > 1)
                 ? amount.ToString()
                 : "";
         }

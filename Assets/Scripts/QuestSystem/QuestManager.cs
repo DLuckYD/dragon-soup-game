@@ -5,10 +5,16 @@ using UnityEngine;
 
 public class QuestManager : MonoBehaviour
 {
+    public static QuestManager Instance { get; private set; }
+
     [Header("References")]
     [SerializeField] private QuestUI questUI;
     [SerializeField] private HouseSpawner houseSpawner;
     [SerializeField] private HotbarManager playerInventory;
+    [SerializeField] private AdventurerSpawner adventurerSpawner;
+
+    [Header("Items Database")]
+    [SerializeField] private ItemDataBase itemDatabase;
 
     [Header("Dialogue JSON")]
     [SerializeField] private TextAsset dialogueJsonFile;
@@ -22,17 +28,33 @@ public class QuestManager : MonoBehaviour
     [Header("Recipe Pool")]
     [SerializeField] private List<Recipe> recipePool = new();
 
+    // Fired when an item reward was consumed by the quest system.
     public event Action<object> OnRewardConsumed;
+
+    // Fired when the adventurer cycle is fully finished and the NPC can be removed.
     public event Action<AdventurerNPC> OnQuestFinished;
+
+    // Fired when a quest is accepted and the adventurer leaves the queue.
+    public event Action<AdventurerNPC> OnQuestAccepted;
+
+    // Fired when a quest timer finishes and the adventurer returns.
+    public event Action<AdventurerNPC> OnAdventurerReturned;
 
     private QuestDialogueBankJson bank;
 
+    // Runtime active quests. One adventurer can have one active quest.
     private readonly Dictionary<AdventurerNPC, ActiveQuest> activeQuests = new();
+
+    // Temporary generated quest offers.
+    // We block saving while offer panels are open, so this does not need to be saved for now.
     private readonly Dictionary<AdventurerNPC, OfferPreview> offerPreviews = new();
 
-    // ------------------ Bag (no repeats until exhausted) ------------------
+    // Bag system: quest targets are selected without repeats until the bag is exhausted.
     private readonly List<QuestTarget> targetBag = new();
     private int bagIndex = 0;
+
+    // Temporary list used in Update to avoid modifying quest state while iterating dictionary.
+    private readonly List<ActiveQuest> questsReadyToReturn = new();
 
     // ------------------ Data structs ------------------
 
@@ -92,6 +114,20 @@ public class QuestManager : MonoBehaviour
 
     private void Awake()
     {
+        Instance = this;
+
+        if (questUI == null)
+            questUI = FindFirstObjectByType<QuestUI>();
+
+        if (houseSpawner == null)
+            houseSpawner = FindFirstObjectByType<HouseSpawner>();
+
+        if (playerInventory == null)
+            playerInventory = FindFirstObjectByType<HotbarManager>();
+
+        if (adventurerSpawner == null)
+            adventurerSpawner = FindFirstObjectByType<AdventurerSpawner>();
+
         if (questUI != null)
             questUI.Initialize(this);
 
@@ -100,20 +136,29 @@ public class QuestManager : MonoBehaviour
 
     private void Update()
     {
+        questsReadyToReturn.Clear();
+
         foreach (var kv in activeQuests)
         {
-            var quest = kv.Value;
+            ActiveQuest quest = kv.Value;
 
-            // Adventurer returns once
-            if (quest != null && quest.returnAtTime != float.MaxValue && Time.time >= quest.returnAtTime)
+            if (quest == null)
+                continue;
+
+            // The adventurer has not returned yet.
+            if (quest.returnAtTime == float.MaxValue)
+                continue;
+
+            // The quest timer finished.
+            if (Time.time >= quest.returnAtTime)
             {
-                quest.returnAtTime = float.MaxValue;
-                AkUnitySoundEngine.PostEvent("Adventurer_Returns", gameObject);
-                quest.npc.SetState(AdventurerState.WaitingReward);
-                quest.npc.ShowAdventurer();
-
-                // Return UI НЕ открываем автоматически (только по T)
+                questsReadyToReturn.Add(quest);
             }
+        }
+
+        for (int i = 0; i < questsReadyToReturn.Count; i++)
+        {
+            MarkAdventurerReturned(questsReadyToReturn[i]);
         }
     }
 
@@ -121,15 +166,16 @@ public class QuestManager : MonoBehaviour
 
     public bool TryOpenReturnUI(AdventurerNPC npc)
     {
-        if (npc == null || questUI == null) return false;
+        if (npc == null || questUI == null)
+            return false;
 
-        if (!activeQuests.TryGetValue(npc, out var quest) || quest == null)
+        if (!activeQuests.TryGetValue(npc, out ActiveQuest quest) || quest == null)
             return false;
 
         if (npc.State != AdventurerState.WaitingReward)
             return false;
 
-        var info = new ReturnInfo
+        ReturnInfo info = new ReturnInfo
         {
             ingredientName = quest.ingredient != null ? quest.ingredient.displayName : "Ingredient",
             amount = quest.amount,
@@ -143,13 +189,14 @@ public class QuestManager : MonoBehaviour
 
     public OfferPreview GetOrCreateOfferPreview(AdventurerNPC npc)
     {
-        if (npc == null) return default;
+        if (npc == null)
+            return default;
 
-        if (offerPreviews.TryGetValue(npc, out var cached))
+        if (offerPreviews.TryGetValue(npc, out OfferPreview cached))
             return cached;
 
-        // 1) Берём цель из "колоды" без повторов (ingredient + amount из рецепта)
-        var target = PickTargetFromRecipes();
+        // Pick quest target from the bag system.
+        QuestTarget target = PickTargetFromRecipes();
 
         ItemData ingredient = target.ingredient != null ? target.ingredient : defaultIngredient;
         int amount = Mathf.Max(1, target.amount);
@@ -163,10 +210,10 @@ public class QuestManager : MonoBehaviour
         int minValue = Mathf.Max(0, defaultMinRewardValue);
         float delay = Mathf.Max(1f, defaultReturnDelaySeconds);
 
-        // 2) Диалоги
-        var intro = PickRandom(bank?.intros);
-        var outro = PickRandom(bank?.outros);
-        var hint = PickRandom(bank?.hints);
+        // Pick dialogue lines.
+        QuestDialogueEntry intro = PickRandom(bank?.intros);
+        QuestDialogueEntry outro = PickRandom(bank?.outros);
+        QuestDialogueEntry hint = PickRandom(bank?.hints);
 
         string ingredientName = ingredient != null ? ingredient.displayName : "Ingredient";
         Sprite ingredientIcon = ingredient != null ? ingredient.icon : null;
@@ -174,14 +221,14 @@ public class QuestManager : MonoBehaviour
 
         string introText = ApplyTokens(intro.text ?? "", ingredientName, amount, hintText);
 
-        string outroRaw = (outro.text ?? "");
+        string outroRaw = outro.text ?? "";
         string outroText = ApplyTokens(outroRaw, ingredientName, amount, hintText);
 
-        // Если в outro нет {hint}, добавим hint отдельной строкой
+        // If the outro dialogue does not include {hint}, add the hint as a separate line.
         if (!outroRaw.Contains("{hint}", StringComparison.OrdinalIgnoreCase) && !string.IsNullOrEmpty(hintText))
             outroText = $"Hint: {hintText}\n{outroText}";
 
-        var preview = new OfferPreview
+        OfferPreview preview = new OfferPreview
         {
             intro = introText,
             outro = outroText,
@@ -202,23 +249,30 @@ public class QuestManager : MonoBehaviour
         };
 
         offerPreviews[npc] = preview;
+
         return preview;
     }
 
     public void AcceptQuest(AdventurerNPC npc)
     {
-        if (npc == null) return;
-        if (activeQuests.ContainsKey(npc)) return;
+        if (npc == null)
+            return;
 
-        var preview = GetOrCreateOfferPreview(npc);
+        if (activeQuests.ContainsKey(npc))
+        {
+            Debug.LogWarning("[QUEST] Cannot accept quest. NPC already has an active quest: " + npc.name);
+            return;
+        }
 
-        var quest = new ActiveQuest
+        OfferPreview preview = GetOrCreateOfferPreview(npc);
+
+        ActiveQuest quest = new ActiveQuest
         {
             npc = npc,
             ingredient = preview.ingredientData != null ? preview.ingredientData : defaultIngredient,
-            amount = preview.amount,
-            minRewardValue = preview.minRewardValue,
-            returnAtTime = Time.time + preview.returnDelaySeconds,
+            amount = Mathf.Max(1, preview.amount),
+            minRewardValue = Mathf.Max(0, preview.minRewardValue),
+            returnAtTime = Time.time + Mathf.Max(1f, preview.returnDelaySeconds),
             attemptsLeft = 2,
 
             introId = preview.introId,
@@ -231,14 +285,37 @@ public class QuestManager : MonoBehaviour
         offerPreviews.Remove(npc);
 
         npc.SetState(AdventurerState.InProgress);
-        npc.HideAdventurer();
+
+        // The spawner controls queue positions and visibility.
+        // If the spawner exists, let it remove this adventurer from the queue.
+        if (adventurerSpawner != null)
+        {
+            adventurerSpawner.NotifyQuestAccepted(npc);
+        }
+        else
+        {
+            npc.HideAdventurer();
+        }
+
+        OnQuestAccepted?.Invoke(npc);
+
+        Debug.Log(
+            "[QUEST ACCEPTED] NPC: " + GetNpcDebugName(npc) +
+            " | ingredient: " + (quest.ingredient != null ? quest.ingredient.id : "NULL") +
+            " | amount: " + quest.amount +
+            " | minRewardValue: " + quest.minRewardValue +
+            " | returnAtTime: " + quest.returnAtTime +
+            " | remaining: " + (quest.returnAtTime - Time.time) +
+            " | activeQuests count: " + activeQuests.Count
+        );
     }
 
     public void RejectReturnedAdventurer(AdventurerNPC npc)
     {
-        if (npc == null) return;
+        if (npc == null)
+            return;
 
-        if (!activeQuests.TryGetValue(npc, out var quest) || quest == null)
+        if (!activeQuests.TryGetValue(npc, out ActiveQuest quest) || quest == null)
             return;
 
         if (npc.State != AdventurerState.WaitingReward)
@@ -249,9 +326,10 @@ public class QuestManager : MonoBehaviour
 
     public void TrySubmitReward(AdventurerNPC npc, PlayerInteraction playerInteraction)
     {
-        if (npc == null) return;
+        if (npc == null)
+            return;
 
-        if (!activeQuests.TryGetValue(npc, out var quest) || quest == null)
+        if (!activeQuests.TryGetValue(npc, out ActiveQuest quest) || quest == null)
             return;
 
         if (npc.State != AdventurerState.WaitingReward)
@@ -259,25 +337,15 @@ public class QuestManager : MonoBehaviour
 
         if (playerInteraction == null || playerInteraction.getHeldItem() == null)
         {
-            questUI?.OpenReturnUI(npc, new ReturnInfo
-            {
-                ingredientName = quest.ingredient != null ? quest.ingredient.displayName : "Ingredient",
-                amount = quest.amount,
-                minRewardValue = quest.minRewardValue,
-                attemptsLeft = quest.attemptsLeft
-            });
+            OpenReturnUIForQuest(npc, quest);
             return;
         }
 
-        if (!TryGetItemValue(playerInteraction.getHeldItem(), out int value))
+        object heldItem = playerInteraction.getHeldItem();
+
+        if (!TryGetItemValue(heldItem, out int value))
         {
-            questUI?.OpenReturnUI(npc, new ReturnInfo
-            {
-                ingredientName = quest.ingredient != null ? quest.ingredient.displayName : "Ingredient",
-                amount = quest.amount,
-                minRewardValue = quest.minRewardValue,
-                attemptsLeft = quest.attemptsLeft
-            });
+            OpenReturnUIForQuest(npc, quest);
             return;
         }
 
@@ -285,43 +353,253 @@ public class QuestManager : MonoBehaviour
 
         if (value >= quest.minRewardValue)
         {
-            // SUCCESS
-            if (playerInteraction.getHeldItem().isInInventory)
+            // Success: consume reward item.
+            InventoryItem rewardItem = playerInteraction.getHeldItem();
+
+            if (rewardItem != null)
             {
-                playerInventory.RemoveItemDataAmount(playerInteraction.getHeldItem().itemData, 1);
+                OnRewardConsumed?.Invoke(rewardItem);
+
+                if (rewardItem.isInInventory && playerInventory != null)
+                {
+                    playerInventory.RemoveItemDataAmount(rewardItem.itemData, 1);
+                }
+
+                Destroy(rewardItem.gameObject);
             }
 
-            Destroy(playerInteraction.getHeldItem().gameObject);
-
-            // Spawn ingredients in the house
+            // Spawn requested ingredients in the house.
             houseSpawner?.SpawnObject(quest.ingredient, quest.amount);
 
             FinishQuest(npc);
         }
         else
         {
+            // Failed attempt.
             if (quest.attemptsLeft <= 0)
             {
                 FinishQuest(npc);
             }
             else
             {
-                questUI?.OpenReturnUI(npc, new ReturnInfo
-                {
-                    ingredientName = quest.ingredient != null ? quest.ingredient.displayName : "Ingredient",
-                    amount = quest.amount,
-                    minRewardValue = quest.minRewardValue,
-                    attemptsLeft = quest.attemptsLeft
-                });
+                OpenReturnUIForQuest(npc, quest);
             }
         }
     }
 
-    // ------------------ Bag logic (NO repeats until all used) ------------------
+    public void DismissNpc(AdventurerNPC npc)
+    {
+        Debug.Log("[QUEST] DismissNpc: " + (npc ? npc.name : "NULL"), this);
+
+        if (npc == null)
+            return;
+
+        // Remove all temporary quest data related to this NPC.
+        activeQuests.Remove(npc);
+        offerPreviews.Remove(npc);
+
+        questUI?.CloseAll();
+
+        // The spawner listens to this event and removes the adventurer object.
+        OnQuestFinished?.Invoke(npc);
+    }
+
+    // ------------------ Save / Load support ------------------
+
+    public int BagIndex => bagIndex;
+
+    public void SetBagIndexFromSave(int value)
+    {
+        bagIndex = Mathf.Max(0, value);
+    }
+
+    public void ClearQuestRuntimeState()
+    {
+        activeQuests.Clear();
+        offerPreviews.Clear();
+
+        Debug.Log("[QUEST LOAD] Quest runtime state cleared.");
+    }
+
+    public bool TryGetActiveQuestSaveData(AdventurerNPC npc, out ActiveQuestSaveData saveData)
+    {
+        saveData = null;
+
+        if (npc == null)
+            return false;
+
+        if (!activeQuests.TryGetValue(npc, out ActiveQuest quest) || quest == null)
+            return false;
+
+        float remainingReturnSeconds = 0f;
+
+        // Do not save returnAtTime directly, because it is based on Time.time.
+        // Save only the remaining time.
+        if (quest.returnAtTime != float.MaxValue)
+        {
+            remainingReturnSeconds = Mathf.Max(0f, quest.returnAtTime - Time.time);
+        }
+
+        saveData = new ActiveQuestSaveData
+        {
+            ingredientId = quest.ingredient != null ? quest.ingredient.id : "",
+            amount = quest.amount,
+            minRewardValue = quest.minRewardValue,
+            remainingReturnSeconds = remainingReturnSeconds,
+            attemptsLeft = quest.attemptsLeft
+        };
+
+        Debug.Log(
+            "[QUEST SAVE] Active quest for NPC: " + GetNpcDebugName(npc) +
+            " | state: " + npc.State +
+            " | returnAtTime: " + quest.returnAtTime +
+            " | Time.time: " + Time.time +
+            " | remaining: " + remainingReturnSeconds +
+            " | ingredient: " + saveData.ingredientId +
+            " | amount: " + saveData.amount
+        );
+
+        return true;
+    }
+
+    public void RestoreActiveQuestFromSave(
+        AdventurerNPC npc,
+        AdventurerState savedState,
+        ActiveQuestSaveData savedQuest
+    )
+    {
+        if (npc == null)
+        {
+            Debug.LogWarning("[QUEST LOAD] Cannot restore quest. NPC is NULL.");
+            return;
+        }
+
+        if (savedQuest == null)
+        {
+            Debug.LogWarning("[QUEST LOAD] Cannot restore quest. Saved quest is NULL for NPC: " + npc.name);
+            return;
+        }
+
+        ItemData ingredient = null;
+
+        if (itemDatabase != null && !string.IsNullOrEmpty(savedQuest.ingredientId))
+        {
+            ingredient = itemDatabase.GetItemById(savedQuest.ingredientId);
+        }
+
+        if (ingredient == null)
+        {
+            Debug.LogWarning(
+                "[QUEST LOAD] Missing ingredient with id: " +
+                savedQuest.ingredientId +
+                ". Using default ingredient."
+            );
+
+            ingredient = defaultIngredient;
+        }
+
+        if (ingredient == null)
+        {
+            Debug.LogError("[QUEST LOAD] Cannot restore quest. Ingredient and defaultIngredient are NULL.");
+            return;
+        }
+
+        int amount = Mathf.Max(1, savedQuest.amount);
+        int minRewardValue = Mathf.Max(0, savedQuest.minRewardValue);
+        int attemptsLeft = Mathf.Max(0, savedQuest.attemptsLeft);
+
+        ActiveQuest quest = new ActiveQuest
+        {
+            npc = npc,
+            ingredient = ingredient,
+            amount = amount,
+            minRewardValue = minRewardValue,
+            attemptsLeft = attemptsLeft
+        };
+
+        if (savedState == AdventurerState.InProgress)
+        {
+            float remaining = Mathf.Max(0f, savedQuest.remainingReturnSeconds);
+
+            if (remaining <= 0f)
+            {
+                // If remaining time is already zero, the adventurer should be treated as returned.
+                quest.returnAtTime = float.MaxValue;
+                npc.SetState(AdventurerState.WaitingReward);
+
+                if (adventurerSpawner != null)
+                    adventurerSpawner.NotifyAdventurerReturned(npc);
+                else
+                    npc.ShowAdventurer();
+
+                Debug.Log("[QUEST LOAD] InProgress quest already finished. NPC set to WaitingReward: " + GetNpcDebugName(npc));
+            }
+            else
+            {
+                // Continue the timer from the current Time.time.
+                quest.returnAtTime = Time.time + remaining;
+                npc.SetState(AdventurerState.InProgress);
+                npc.HideAdventurer();
+
+                Debug.Log(
+                    "[QUEST LOAD] Restored InProgress quest. NPC: " +
+                    GetNpcDebugName(npc) +
+                    " | remaining: " +
+                    remaining
+                );
+            }
+        }
+        else if (savedState == AdventurerState.WaitingReward)
+        {
+            quest.returnAtTime = float.MaxValue;
+            npc.SetState(AdventurerState.WaitingReward);
+
+            // The spawner / save manager should decide queue placement.
+            // As fallback, show the NPC if no spawner exists.
+            if (adventurerSpawner == null)
+                npc.ShowAdventurer();
+
+            Debug.Log("[QUEST LOAD] Restored WaitingReward quest. NPC: " + GetNpcDebugName(npc));
+        }
+        else
+        {
+            quest.returnAtTime = float.MaxValue;
+            npc.SetState(savedState);
+
+            if (adventurerSpawner == null)
+                npc.ShowAdventurer();
+
+            Debug.Log(
+                "[QUEST LOAD] Restored quest with state: " +
+                savedState +
+                " | NPC: " +
+                GetNpcDebugName(npc)
+            );
+        }
+
+        activeQuests[npc] = quest;
+
+        Debug.Log(
+            "[QUEST LOAD] Active quest restored for NPC: " +
+            GetNpcDebugName(npc) +
+            " | ingredient: " +
+            ingredient.id +
+            " | amount: " +
+            amount +
+            " | minRewardValue: " +
+            minRewardValue +
+            " | attemptsLeft: " +
+            attemptsLeft +
+            " | activeQuests count: " +
+            activeQuests.Count
+        );
+    }
+
+    // ------------------ Bag logic ------------------
 
     private QuestTarget PickTargetFromRecipes()
     {
-        var fallback = new QuestTarget
+        QuestTarget fallback = new QuestTarget
         {
             recipe = null,
             ingredient = defaultIngredient,
@@ -331,16 +609,17 @@ public class QuestManager : MonoBehaviour
         if (recipePool == null || recipePool.Count == 0)
             return fallback;
 
-        // Build/shuffle bag when empty or exhausted
+        // Build and shuffle the target bag when it is empty or exhausted.
         if (targetBag.Count == 0 || bagIndex >= targetBag.Count)
             RebuildAndShuffleTargetBag();
 
         if (targetBag.Count == 0)
             return fallback;
 
-        var t = targetBag[bagIndex];
+        QuestTarget target = targetBag[bagIndex];
         bagIndex++;
-        return t;
+
+        return target;
     }
 
     private void RebuildAndShuffleTargetBag()
@@ -348,25 +627,27 @@ public class QuestManager : MonoBehaviour
         targetBag.Clear();
         bagIndex = 0;
 
-        // Unique by ingredient (ItemData). One ingredient appears once in the bag.
-        var usedIngredients = new HashSet<ItemData>();
+        // Each ingredient appears only once in the bag.
+        HashSet<ItemData> usedIngredients = new HashSet<ItemData>();
 
-        foreach (var recipe in recipePool)
+        foreach (Recipe recipe in recipePool)
         {
-            if (recipe == null || recipe.ingredients == null) continue;
+            if (recipe == null || recipe.ingredients == null)
+                continue;
 
-            foreach (var ing in recipe.ingredients)
+            foreach (var ingredientEntry in recipe.ingredients)
             {
-                if (ing == null || ing.item == null) continue;
+                if (ingredientEntry == null || ingredientEntry.item == null)
+                    continue;
 
-                if (!usedIngredients.Add(ing.item))
+                if (!usedIngredients.Add(ingredientEntry.item))
                     continue;
 
                 targetBag.Add(new QuestTarget
                 {
                     recipe = recipe,
-                    ingredient = ing.item,
-                    amount = Mathf.Max(1, ing.amount)
+                    ingredient = ingredientEntry.item,
+                    amount = Mathf.Max(1, ingredientEntry.amount)
                 });
             }
         }
@@ -374,7 +655,7 @@ public class QuestManager : MonoBehaviour
         if (targetBag.Count == 0)
             return;
 
-        // Shuffle (Fisher–Yates)
+        // Fisher-Yates shuffle.
         for (int i = targetBag.Count - 1; i > 0; i--)
         {
             int j = UnityEngine.Random.Range(0, i + 1);
@@ -384,18 +665,60 @@ public class QuestManager : MonoBehaviour
 
     // ------------------ Internals ------------------
 
+    private void MarkAdventurerReturned(ActiveQuest quest)
+    {
+        if (quest == null || quest.npc == null)
+            return;
+
+        quest.returnAtTime = float.MaxValue;
+
+        AkUnitySoundEngine.PostEvent("Adventurer_Returns", gameObject);
+
+        quest.npc.SetState(AdventurerState.WaitingReward);
+
+        // The spawner controls where the returned adventurer should appear.
+        if (adventurerSpawner != null)
+        {
+            adventurerSpawner.NotifyAdventurerReturned(quest.npc);
+        }
+        else
+        {
+            quest.npc.ShowAdventurer();
+        }
+
+        OnAdventurerReturned?.Invoke(quest.npc);
+
+        Debug.Log("[QUEST] Adventurer returned: " + GetNpcDebugName(quest.npc));
+    }
+
     private void FinishQuest(AdventurerNPC npc)
     {
-        if (npc == null) return;
-
-        npc.SetState(AdventurerState.Offered);
-        npc.HideAdventurer();
+        if (npc == null)
+            return;
 
         activeQuests.Remove(npc);
         offerPreviews.Remove(npc);
 
         questUI?.CloseAll();
+
+        // The spawner will remove and destroy the adventurer object.
         OnQuestFinished?.Invoke(npc);
+
+        Debug.Log("[QUEST FINISHED] NPC: " + GetNpcDebugName(npc));
+    }
+
+    private void OpenReturnUIForQuest(AdventurerNPC npc, ActiveQuest quest)
+    {
+        if (npc == null || quest == null)
+            return;
+
+        questUI?.OpenReturnUI(npc, new ReturnInfo
+        {
+            ingredientName = quest.ingredient != null ? quest.ingredient.displayName : "Ingredient",
+            amount = quest.amount,
+            minRewardValue = quest.minRewardValue,
+            attemptsLeft = quest.attemptsLeft
+        });
     }
 
     private void LoadDialogueBank()
@@ -408,6 +731,7 @@ public class QuestManager : MonoBehaviour
                 outros = Array.Empty<QuestDialogueEntry>(),
                 hints = Array.Empty<QuestDialogueEntry>()
             };
+
             return;
         }
 
@@ -428,7 +752,8 @@ public class QuestManager : MonoBehaviour
 
     private static string ApplyTokens(string text, string ingredientName, int amount, string hintText)
     {
-        if (string.IsNullOrEmpty(text)) return "";
+        if (string.IsNullOrEmpty(text))
+            return "";
 
         return text
             .Replace("{ingredient}", ingredientName)
@@ -439,21 +764,25 @@ public class QuestManager : MonoBehaviour
     private bool TryGetItemValue(object item, out int value)
     {
         value = 0;
-        if (item == null) return false;
 
-        var t = item.GetType();
+        if (item == null)
+            return false;
 
-        var prop = t.GetProperty("value", BindingFlags.Public | BindingFlags.Instance | BindingFlags.IgnoreCase)
-               ?? t.GetProperty("Value", BindingFlags.Public | BindingFlags.Instance | BindingFlags.IgnoreCase);
+        Type type = item.GetType();
 
-        if (prop != null && prop.PropertyType == typeof(int))
+        PropertyInfo property =
+            type.GetProperty("value", BindingFlags.Public | BindingFlags.Instance | BindingFlags.IgnoreCase)
+            ?? type.GetProperty("Value", BindingFlags.Public | BindingFlags.Instance | BindingFlags.IgnoreCase);
+
+        if (property != null && property.PropertyType == typeof(int))
         {
-            value = (int)prop.GetValue(item);
+            value = (int)property.GetValue(item);
             return true;
         }
 
-        var field = t.GetField("value", BindingFlags.Public | BindingFlags.Instance | BindingFlags.IgnoreCase)
-                ?? t.GetField("Value", BindingFlags.Public | BindingFlags.Instance | BindingFlags.IgnoreCase);
+        FieldInfo field =
+            type.GetField("value", BindingFlags.Public | BindingFlags.Instance | BindingFlags.IgnoreCase)
+            ?? type.GetField("Value", BindingFlags.Public | BindingFlags.Instance | BindingFlags.IgnoreCase);
 
         if (field != null && field.FieldType == typeof(int))
         {
@@ -464,24 +793,14 @@ public class QuestManager : MonoBehaviour
         return false;
     }
 
-    public void DismissNpc(AdventurerNPC npc)
+    private string GetNpcDebugName(AdventurerNPC npc)
     {
-        Debug.Log($"[QuestManager] DismissNpc: {(npc ? npc.name : "NULL")}", this);
+        if (npc == null)
+            return "NULL";
 
-        if (npc == null) return;
+        if (npc.Data == null)
+            return npc.name + " / No AdventurerData";
 
-        // прибрати все що могло бути повʼязане з цим NPC
-        activeQuests.Remove(npc);
-        offerPreviews.Remove(npc);
-
-        questUI?.CloseAll();
-
-        // сховати NPC
-        npc.HideAdventurer();
-
-        // повідомити спавнер, щоб він видалив NPC і заспавнив наступного
-        OnQuestFinished?.Invoke(npc);
+        return npc.name + " / id: " + npc.Data.id + " / name: " + npc.Data.displayName;
     }
-
-
 }

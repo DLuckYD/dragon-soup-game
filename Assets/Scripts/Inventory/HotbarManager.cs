@@ -1,12 +1,35 @@
-﻿using NUnit.Framework.Internal.Execution;
+﻿using System.Collections.Generic;
 using UnityEngine;
 
 public class HotbarManager : MonoBehaviour
 {
+    public static HotbarManager Instance { get; private set; }
     public HotbarSlot[] slots;
+
+    [Header("Items Database")]
+    [SerializeField] private ItemDataBase itemDatabase;
 
     [Header("Drop Point for Items")]
     public Transform dropPoint;
+
+    private void Awake()
+    {
+        if (Instance != null && Instance != this)
+        {
+            Destroy(gameObject);
+            return;
+        }
+
+        Instance = this;
+    }
+
+    private void OnDestroy()
+    {
+        if (Instance == this)
+        {
+            Instance = null;
+        }
+    }
 
     public bool TryAddNonStackableItemToInventory(InventoryItem worldItem)
     {
@@ -199,7 +222,7 @@ public class HotbarManager : MonoBehaviour
         }
     }
 
-    public void addCookingDishToInventory(ItemData result)
+    public void AddCookingDishToInventory(ItemData result)
     {
         if (result == null)
         {
@@ -248,5 +271,89 @@ public class HotbarManager : MonoBehaviour
         }
 
         Debug.Log("addCookingDishToInventory: inventory is full");
+    }
+
+    public InventorySaveData CaptureSaveData()
+    {
+        InventorySaveData saveData = new InventorySaveData();
+
+        if (slots == null)
+        {
+            Debug.LogWarning("[HOTBAR SAVE] hotbarSlots is NULL.");
+            return saveData;
+        }
+
+        Debug.Log("[HOTBAR SAVE] Hotbar slots count: " + slots.Length);
+
+        for (int i = 0; i < slots.Length; i++)
+        {
+            HotbarSlot slot = slots[i];
+
+            if (slot == null || slot.itemData == null || slot.amount <= 0)
+                continue;
+
+            InventoryItemSaveData itemSaveData = new InventoryItemSaveData
+            {
+                slotIndex = i,
+                itemId = slot.itemData.id,
+                amount = slot.amount
+            };
+
+            saveData.items.Add(itemSaveData);
+        }
+
+        Debug.Log("Captured inventory save data with " + saveData.items.Count + " items.");
+
+        return saveData;
+    }
+
+    public void RestoreSaveData(InventorySaveData saveData)
+    {
+        ClearInventory();
+
+        if (saveData == null || saveData.items == null)
+            return;
+
+        foreach (InventoryItemSaveData savedItem in saveData.items)
+        {
+            ItemData itemData = itemDatabase.GetItemById(savedItem.itemId);
+
+            if (itemData == null)
+            {
+                Debug.LogWarning("Cannot restore inventory item. Missing item id: " + savedItem.itemId);
+                continue;
+            }
+
+            AddItemToSlot(savedItem.slotIndex, itemData, savedItem.amount);
+        }
+
+        for (int i = 0; i < slots.Length; i++)
+        {
+            if (slots[i] != null)
+                slots[i].UpdateUI();
+        }
+    }
+
+    private void ClearInventory()
+    {
+        foreach (HotbarSlot slot in slots)
+        {
+            slot.itemData = null;
+            slot.amount = 0;
+        }
+    }
+
+    private void AddItemToSlot(int slotIndex, ItemData itemData, int amount)
+    {
+        List<HotbarSlot> inventorySlots = new List<HotbarSlot>(slots);
+        while (slots.Length <= slotIndex)
+        {
+            inventorySlots.Add(new HotbarSlot());
+        }
+
+        inventorySlots[slotIndex].itemData = itemData;
+        inventorySlots[slotIndex].amount = amount;
+
+        slots = inventorySlots.ToArray();
     }
 }
