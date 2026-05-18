@@ -62,26 +62,70 @@ public class PlayerInteraction : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.TryGetComponent(out UpgradeStation workbench))
+        // NEW:
+        // We search for UpgradeStation not only on the collider object,
+        // but also on its parent.
+        //
+        // This is important because many stations have this hierarchy:
+        //
+        // MagicFridge
+        //   ├── UpgradeStation
+        //   └── InteractionTrigger
+        //        └── BoxCollider
+        //
+        // In that case "other" is InteractionTrigger, not MagicFridge.
+        
+        Debug.Log(
+            $"[TRIGGER ENTER RAW] other={other.name}, " +
+            $"root={other.transform.root.name}, " +
+            $"parent={(other.transform.parent != null ? other.transform.parent.name : "NULL")}, " +
+            $"layer={LayerMask.LayerToName(other.gameObject.layer)}, " +
+            $"isTrigger={other.isTrigger}"
+        );
+        
+        UpgradeStation station = other.GetComponentInParent<UpgradeStation>();
+
+        if (station != null)
         {
-            upgradeStation = workbench;
-            buttonPressedText.text = $"Press {upgradeKey} to upgrade item";
+            upgradeStation = station;
+
+            if (buttonPressedText != null)
+                buttonPressedText.text = $"Press {upgradeKey} to modify item";
+
+            Debug.Log($"[INTERACTION] Entered upgrade station: {station.name} through collider: {other.name}");
         }
 
-        if (other.TryGetComponent(out AdventurerNPC adventurer))
+        // Better to also use GetComponentInParent here,
+        // because AdventurerNPC may also have colliders on child objects.
+        AdventurerNPC adventurer = other.GetComponentInParent<AdventurerNPC>();
+
+        if (adventurer != null)
         {
             nearbyAdventurer = adventurer;
-            buttonPressedText.text = $"Press {talkKey} to talk to adventurer";
+
+            if (buttonPressedText != null)
+                buttonPressedText.text = $"Press {talkKey} to talk to adventurer";
+
+            Debug.Log($"[INTERACTION] Entered adventurer: {adventurer.name}");
         }
 
-        var cauldron = other.GetComponent<CookingStation>();
-        if(cauldron != null)
+        // Same idea for CookingStation.
+        // The trigger collider may be on a child object.
+        CookingStation cauldron = other.GetComponentInParent<CookingStation>();
+
+        if (cauldron != null)
         {
             cookingStation = cauldron;
-            buttonPressedText.text = $"Press {activateCookBook} to cook a dish";
+
+            if (buttonPressedText != null)
+                buttonPressedText.text = $"Press {activateCookBook} to cook a dish";
+
+            Debug.Log($"[INTERACTION] Entered cooking station: {cauldron.name}");
         }
 
-        var item = other.GetComponentInParent<InventoryItem>();
+        // Existing item debug check.
+        InventoryItem item = other.GetComponentInParent<InventoryItem>();
+
         if (item != null && item.itemData == null)
         {
             Debug.LogWarning($"InventoryItem '{item.name}' has NULL itemData (triggered by collider '{other.name}')");
@@ -91,28 +135,47 @@ public class PlayerInteraction : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
-        var workbench = other.GetComponent<UpgradeStation>();
-        if (workbench == upgradeStation)
+        // NEW:
+        // Again, use GetComponentInParent.
+        // Otherwise exiting from child trigger will not correctly clear upgradeStation.
+        UpgradeStation station = other.GetComponentInParent<UpgradeStation>();
+
+        if (station != null && station == upgradeStation)
         {
+            Debug.Log($"[INTERACTION] Exited upgrade station: {station.name}");
+
             upgradeStation = null;
-            buttonPressedText.text = "";
+
+            if (buttonPressedText != null)
+                buttonPressedText.text = "";
         }
 
-        if (other.TryGetComponent(out AdventurerNPC adventurer) &&
-            adventurer == nearbyAdventurer)
+        AdventurerNPC adventurer = other.GetComponentInParent<AdventurerNPC>();
+
+        if (adventurer != null && adventurer == nearbyAdventurer)
         {
+            Debug.Log($"[INTERACTION] Exited adventurer: {adventurer.name}");
+
             nearbyAdventurer = null;
-            buttonPressedText.text = "";
+
+            if (buttonPressedText != null)
+                buttonPressedText.text = "";
         }
 
-        var cauldron = other.GetComponent<CookingStation>();
-        if (cauldron == cookingStation)
+        CookingStation cauldron = other.GetComponentInParent<CookingStation>();
+
+        if (cauldron != null && cauldron == cookingStation)
         {
+            Debug.Log($"[INTERACTION] Exited cooking station: {cauldron.name}");
+
             cookingStation = null;
-            buttonPressedText.text = "";
+
+            if (buttonPressedText != null)
+                buttonPressedText.text = "";
         }
 
-        var item = other.GetComponent<InventoryItem>();
+        InventoryItem item = other.GetComponentInParent<InventoryItem>();
+
         if (item != null && item == nearbyItem)
         {
             nearbyItem = null;
@@ -400,6 +463,10 @@ public class PlayerInteraction : MonoBehaviour
             return;
         }
 
+        
+        Debug.Log($"[UPGRADE] Using station: {upgradeStation.name}");
+        Debug.Log($"[UPGRADE] Item before: {reward.name}, Value={reward.Value}, State={reward.CurrentState}");
+
         RewardItem result = upgradeStation.UpgradeItem(reward);
 
         if (result == null)
@@ -408,6 +475,10 @@ public class PlayerInteraction : MonoBehaviour
             heldItem = null;
             return;
         }
+        
+        
+        Debug.Log($"[UPGRADE] Item after: {result.name}, Value={result.Value}, State={result.CurrentState}");
+
         
         if (!upgradeStation.LastProcessSuccessful)
         {

@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 61c6d8b6229c9614091a5533826d0039, type: 3}
-  m_Name: AttachParticles_Ice
+  m_Name: PS_Alcohol
   m_EditorClassIdentifier: Assembly-CSharp::AttachParticlesEffect
-  particlePrefab: {fileID: 3980126460970264683, guid: 798626ec4c3d01e4fa058a86a028423f, type: 3}
+  particlePrefab: {fileID: 6263332664234396788, guid: 20ef0a9f7ac05d34b84ef6472afb47ce, type: 3}
   fitToItemBounds: 1
   sizeMultiplier: 1
   clampRadius: 1
