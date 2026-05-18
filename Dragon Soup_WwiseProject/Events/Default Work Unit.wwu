@@ -129,6 +129,27 @@
 						</Event>
 					</ChildrenList>
 				</Folder>
+				<Event Name="Player_Footstep" ID="{44E4A7D9-6DF6-4DFC-B55D-4E79CC6398B5}">
+					<ChildrenList>
+						<Action Name="" ID="{F3DC5EC6-AC47-41B7-A0F5-006397DA801E}" ShortID="614154416">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="player_footsteps" ID="{47741612-D81C-469D-B9F4-44FB4C227032}" WorkUnitID="{1D3CE180-6637-4348-B301-DDCBC094ECDF}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+						<Action Name="" ID="{6D27C88C-0308-47E9-B464-629280CA9E77}" ShortID="588092602">
+							<PropertyList>
+								<Property Name="Probability" Type="Real64" Value="5"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="object_floor_squeaking" ID="{582C8D66-08C7-470C-A355-C41E574A4205}" WorkUnitID="{1D3CE180-6637-4348-B301-DDCBC094ECDF}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
 			</ChildrenList>
 		</WorkUnit>
 	</Events>
