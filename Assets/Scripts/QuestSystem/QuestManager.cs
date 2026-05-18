@@ -14,7 +14,7 @@ public class QuestManager : MonoBehaviour
     [SerializeField] private AdventurerSpawner adventurerSpawner;
 
     [Header("Items Database")]
-    [SerializeField] private ItemDataBase itemDatabase;
+    [SerializeField] private ItemDatabase itemDatabase;
 
     [Header("Dialogue JSON")]
     [SerializeField] private TextAsset dialogueJsonFile;

@@ -6,7 +6,7 @@ public class CookingStation : MonoBehaviour
 {
     public List<Recipe> availableRecipes;
     public HotbarManager playerInventory;
-    public Cookbook cookBook;
+    public CookbookUI cookBook;
     private HashSet<string> cookedRecipes = new HashSet<string>();
 
     public bool CanCook(Recipe recipe, HotbarManager inventory)

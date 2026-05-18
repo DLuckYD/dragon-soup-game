@@ -15,7 +15,7 @@ MonoBehaviour:
   id: bug_nuggets
   displayName: Bug Nuggets
   ingredients:
-  - item: {fileID: 11400000, guid: 605ca43807d9cb74a899ab8a9d6bb570, type: 2}
+  - item: {fileID: 11400000, guid: 7cae254ae05213f4aa41d3560c991cee, type: 2}
     amount: 4
   - item: {fileID: 11400000, guid: 9482db1e69790284f963c863475da98a, type: 2}
     amount: 1

@@ -5,8 +5,8 @@ using UnityEngine;
 using UnityEditor;
 #endif
 
-[CreateAssetMenu(menuName = "Inventory/Item Database")]
-public class ItemDataBase : ScriptableObject
+[CreateAssetMenu(menuName = "Databases/Item Database")]
+public class ItemDatabase : ScriptableObject
 {
     [Header("Items")]
     [SerializeField] private List<IngredientData> items = new List<IngredientData>();

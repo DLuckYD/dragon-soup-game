@@ -4,7 +4,7 @@ public class SceneObjectsManager : MonoBehaviour
     public static SceneObjectsManager Instance { get; private set; }
 
     [Header("Items Database")]
-    [SerializeField] private ItemDataBase itemDatabase;
+    [SerializeField] private ItemDatabase itemDatabase;
 
     [SerializeField] private Transform worldItemsParent;
 

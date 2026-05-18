@@ -7,7 +7,7 @@ public class HotbarManager : MonoBehaviour
     public HotbarSlot[] slots;
 
     [Header("Items Database")]
-    [SerializeField] private ItemDataBase itemDatabase;
+    [SerializeField] private ItemDatabase itemDatabase;
 
     [Header("Drop Point for Items")]
     public Transform dropPoint;

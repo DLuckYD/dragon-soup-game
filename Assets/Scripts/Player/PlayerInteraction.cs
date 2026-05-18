@@ -23,7 +23,7 @@ public class PlayerInteraction : MonoBehaviour
 
     [Header("Cooking System")]
     public KeyCode activateCookBook = KeyCode.Tab;
-    public Cookbook cookBook;
+    public CookbookUI cookBook;
 
     private int activeHotbarIndex = -1;              // which hotbar slot is currently active
     private InventoryItem heldStackableVisual = null; // visual representation of stackable item in hands
