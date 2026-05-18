@@ -16,6 +16,11 @@ public class NotificationUI : MonoBehaviour
         GameSaveLoadManager.OnAutoSaveCompleted += ShowAutoSaveMessage;
         GameSaveLoadManager.OnManualSaveCompleted += ShowManualSaveMessage;
         GameSaveLoadManager.OnSaveFailed += ShowSaveFailedMessage;
+        WorkbenchStation.OnSuccessfulUpgrade += ShowUpgradeMessage;
+        WorkbenchStation.OnUnsuccessfulUpgrade += ShowDestroyedMassage;
+        
+        HouseSpawner.OnSpawned  += ShowSupplyMassage;
+
 
     }
 
@@ -25,6 +30,13 @@ public class NotificationUI : MonoBehaviour
         GameSaveLoadManager.OnAutoSaveCompleted -= ShowAutoSaveMessage;
         GameSaveLoadManager.OnManualSaveCompleted -= ShowManualSaveMessage;
         GameSaveLoadManager.OnSaveFailed -= ShowSaveFailedMessage;
+        
+        
+        
+        WorkbenchStation.OnSuccessfulUpgrade -= ShowUpgradeMessage;
+        WorkbenchStation.OnUnsuccessfulUpgrade -= ShowDestroyedMassage;
+        
+        HouseSpawner.OnSpawned  -= ShowSupplyMassage;
 
     }
 
@@ -53,6 +65,24 @@ public class NotificationUI : MonoBehaviour
         Debug.Log("Received save failed message: " + message);
         ShowMessage(message);
     }
+    
+    private void ShowSupplyMassage(string message)
+    {
+        Debug.Log("Received supply message: " + message);
+        ShowMessage(message);
+    }
+    private void ShowUpgradeMessage(string message)
+    {
+        Debug.Log("Received upgrade message: " + message);
+        ShowMessage(message);
+    }
+    
+    private void ShowDestroyedMassage(string message)
+    {
+        Debug.Log("Received destroyed message: " + message);
+        ShowMessage(message);
+    }
+    
 
     private void ShowMessage(string message)
     {
