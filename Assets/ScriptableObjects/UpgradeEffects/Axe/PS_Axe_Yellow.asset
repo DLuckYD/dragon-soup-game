@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 61c6d8b6229c9614091a5533826d0039, type: 3}
-  m_Name: AttachParticles_Fire
+  m_Name: PS_Axe_Yellow
   m_EditorClassIdentifier: Assembly-CSharp::AttachParticlesEffect
-  particlePrefab: {fileID: 3980126460970264683, guid: 4bc68c897c3e7fa44a9043a291f49b35, type: 3}
+  particlePrefab: {fileID: 0}
   fitToItemBounds: 1
   sizeMultiplier: 1
   clampRadius: 1
