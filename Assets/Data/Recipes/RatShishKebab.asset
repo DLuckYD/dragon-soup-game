@@ -30,6 +30,6 @@ MonoBehaviour:
   - effectType: 2
     targetId: forge_room
   - effectType: 1
-    targetId: workbench
+    targetId: axe_upgrade
   - effectType: 1
-    targetId: furnace
+    targetId: fireplace

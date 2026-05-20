@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 61c6d8b6229c9614091a5533826d0039, type: 3}
   m_Name: PS_Axe_Yellow
   m_EditorClassIdentifier: Assembly-CSharp::AttachParticlesEffect
-  particlePrefab: {fileID: 0}
+  particlePrefab: {fileID: 3848877863258375611, guid: a909965dbb9aab640b9b97346baa6275, type: 3}
   fitToItemBounds: 1
   sizeMultiplier: 1
   clampRadius: 1

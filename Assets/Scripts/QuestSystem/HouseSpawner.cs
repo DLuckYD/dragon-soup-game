@@ -1,13 +1,10 @@
 using UnityEngine;
 using System;
-
-
-
 public class HouseSpawner : MonoBehaviour
 {
     [SerializeField] private Transform[] spawnPoints;
     
-    public static HouseSpawner Instance { get; private set; }
+    //public static HouseSpawner Instance { get; private set; }
     public static event Action<string> OnSpawned;
     
 

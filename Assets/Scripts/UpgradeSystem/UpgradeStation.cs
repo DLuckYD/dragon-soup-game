@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class UpgradeStation : MonoBehaviour
 {
-    public static UpgradeStation Instance { get; private set; }
     public static event Action<string> OnSuccessfulUpgrade;
     public static event Action<string> OnUnsuccessfulUpgrade;
 
@@ -31,18 +30,6 @@ public class UpgradeStation : MonoBehaviour
     public bool CanInteract => canInteract;
     public string GetStationId => stationId;
     public bool LastProcessSuccessful { get; private set; }
-
-    private void Awake()
-    {
-        if (Instance != null && Instance != this)
-        {
-            Destroy(gameObject);
-            return;
-        }
-
-        Instance = this;
-        DontDestroyOnLoad(gameObject);
-    }
 
     public void SetInteractable(bool value)
     {

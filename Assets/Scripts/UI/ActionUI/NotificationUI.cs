@@ -10,6 +10,11 @@ public class NotificationUI : MonoBehaviour
 
     private Coroutine currentRoutine;
 
+    private void Awake()
+    {
+        Debug.Log("[NotificationUI] Awake");
+    }
+
     private void OnEnable()
     {
         Debug.Log("Subscribing to save events...");
@@ -36,6 +41,8 @@ public class NotificationUI : MonoBehaviour
         
         UpgradeStation.OnSuccessfulUpgrade -= ShowUpgradeMessage;
         UpgradeStation.OnUnsuccessfulUpgrade -= ShowDestroyedMassage;
+
+        RecipeProgressManager.OnSuccessfulUnlock -= ShowUnlockMessage;
 
         HouseSpawner.OnSpawned  -= ShowSupplyMassage;
 
@@ -115,7 +122,7 @@ public class NotificationUI : MonoBehaviour
     {
         notificationPanel.SetActive(true);
 
-        yield return new WaitForSeconds(showTime);
+        yield return new WaitForSecondsRealtime(showTime);
 
         notificationPanel.SetActive(false);
         notificationText.text = "";
