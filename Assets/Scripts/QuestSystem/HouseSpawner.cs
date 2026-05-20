@@ -11,7 +11,7 @@ public class HouseSpawner : MonoBehaviour
     public static event Action<string> OnSpawned;
     
 
-    public void SpawnObject(ItemData ingridient, int amount)
+    public void SpawnObject(IngredientData ingredient, int amount)
     {
 
         if (ingredient == null || spawnPoints == null)
@@ -27,7 +27,7 @@ public class HouseSpawner : MonoBehaviour
         for (int i = 0; i < amount; i++)
         {
             var v = spawnPoints[UnityEngine.Random.Range(0, spawnPoints.Length)];
-            Instantiate( ingridient.worldPrefab, v.position, v.rotation);
+            Instantiate(ingredient.worldPrefab, v.position, v.rotation);
             OnSpawned?.Invoke("Items added in supply box ");
             
 
