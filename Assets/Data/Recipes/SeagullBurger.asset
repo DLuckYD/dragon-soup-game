@@ -28,4 +28,4 @@ MonoBehaviour:
   - effectType: 0
     targetId: recipe_3
   - effectType: 1
-    targetId: magical_refrigerator
+    targetId: magic_fridge

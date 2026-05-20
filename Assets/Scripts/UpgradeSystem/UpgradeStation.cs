@@ -4,8 +4,12 @@ using UnityEngine;
 
 public class UpgradeStation : MonoBehaviour
 {
+    public static UpgradeStation Instance { get; private set; }
     public static event Action<string> OnSuccessfulUpgrade;
     public static event Action<string> OnUnsuccessfulUpgrade;
+
+    [Header("Station Settings")]
+    [SerializeField] private string stationId;
 
     [Header("Station State")]
     [SerializeField] private bool canInteract = true;
@@ -25,8 +29,20 @@ public class UpgradeStation : MonoBehaviour
     [SerializeField] private List<ItemEffect> effects = new List<ItemEffect>();
 
     public bool CanInteract => canInteract;
-
+    public string GetStationId => stationId;
     public bool LastProcessSuccessful { get; private set; }
+
+    private void Awake()
+    {
+        if (Instance != null && Instance != this)
+        {
+            Destroy(gameObject);
+            return;
+        }
+
+        Instance = this;
+        DontDestroyOnLoad(gameObject);
+    }
 
     public void SetInteractable(bool value)
     {

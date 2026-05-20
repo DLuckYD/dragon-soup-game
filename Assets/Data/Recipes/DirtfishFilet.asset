@@ -28,4 +28,4 @@ MonoBehaviour:
   - effectType: 0
     targetId: recipe_5
   - effectType: 1
-    targetId: painting_area
+    targetId: paint_station

@@ -77,18 +77,16 @@ public class CookbookUI : MonoBehaviour
             return;
         }
 
-        Recipe firstRecipe = recipes[0];
 
-        // set the first recipe for the used template card
         recipeCard.gameObject.SetActive(false);
-        recipeCard.SetRecipe(firstRecipe);
-        //set by default, cause this is the first recipe
-        recipeCard.SetCookButtonInteractable(true);
+        //recipeCard.SetRecipe(firstRecipe);
+        ////set by default, cause this is the first recipe
+        //recipeCard.SetCookButtonInteractable(true);
 
-        RegisterRecipeCard(firstRecipe, recipeCard);
+        //RegisterRecipeCard(firstRecipe, recipeCard);
 
         // other recipes will be generated as new cards
-        for (int i = 1; i < recipeCount; i++)
+        for (int i = 0; i < recipeCount; i++)
         {
             Recipe recipe = recipes[i];
 
@@ -98,8 +96,17 @@ public class CookbookUI : MonoBehaviour
             RecipeCardUI newCard = Instantiate(recipeCard, recipeListContainer);
             newCard.gameObject.SetActive(true);
             newCard.SetRecipe(recipe);
-            //set by default
-            newCard.SetCookButtonInteractable(false);
+
+            if (i == 0)
+            {
+                //set the first recipe for the used template card
+                newCard.SetCookButtonInteractable(true);
+            }
+            else
+            {
+                //set by default
+                newCard.SetCookButtonInteractable(false);
+            }
 
             RegisterRecipeCard(recipe, newCard);
         }

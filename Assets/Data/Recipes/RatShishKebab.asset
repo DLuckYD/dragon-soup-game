@@ -29,3 +29,7 @@ MonoBehaviour:
     targetId: recipe_2
   - effectType: 2
     targetId: forge_room
+  - effectType: 1
+    targetId: workbench
+  - effectType: 1
+    targetId: furnace

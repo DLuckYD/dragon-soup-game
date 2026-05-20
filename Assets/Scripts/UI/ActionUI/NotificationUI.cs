@@ -16,9 +16,12 @@ public class NotificationUI : MonoBehaviour
         GameSaveLoadManager.OnAutoSaveCompleted += ShowAutoSaveMessage;
         GameSaveLoadManager.OnManualSaveCompleted += ShowManualSaveMessage;
         GameSaveLoadManager.OnSaveFailed += ShowSaveFailedMessage;
-        WorkbenchStation.OnSuccessfulUpgrade += ShowUpgradeMessage;
-        WorkbenchStation.OnUnsuccessfulUpgrade += ShowDestroyedMassage;
+
+        UpgradeStation.OnSuccessfulUpgrade += ShowUpgradeMessage;
+        UpgradeStation.OnUnsuccessfulUpgrade += ShowDestroyedMassage;
         
+        RecipeProgressManager.OnSuccessfulUnlock += ShowUnlockMessage;
+
         HouseSpawner.OnSpawned  += ShowSupplyMassage;
 
 
@@ -31,11 +34,9 @@ public class NotificationUI : MonoBehaviour
         GameSaveLoadManager.OnManualSaveCompleted -= ShowManualSaveMessage;
         GameSaveLoadManager.OnSaveFailed -= ShowSaveFailedMessage;
         
-        
-        
-        WorkbenchStation.OnSuccessfulUpgrade -= ShowUpgradeMessage;
-        WorkbenchStation.OnUnsuccessfulUpgrade -= ShowDestroyedMassage;
-        
+        UpgradeStation.OnSuccessfulUpgrade -= ShowUpgradeMessage;
+        UpgradeStation.OnUnsuccessfulUpgrade -= ShowDestroyedMassage;
+
         HouseSpawner.OnSpawned  -= ShowSupplyMassage;
 
     }
@@ -76,7 +77,13 @@ public class NotificationUI : MonoBehaviour
         Debug.Log("Received upgrade message: " + message);
         ShowMessage(message);
     }
-    
+
+    private void ShowUnlockMessage(string message)
+    {
+        Debug.Log("Received unlock message: " + message);
+        ShowMessage(message);
+    }
+
     private void ShowDestroyedMassage(string message)
     {
         Debug.Log("Received destroyed message: " + message);

@@ -28,11 +28,7 @@ public class HouseSpawner : MonoBehaviour
         {
             var v = spawnPoints[UnityEngine.Random.Range(0, spawnPoints.Length)];
             Instantiate(ingredient.worldPrefab, v.position, v.rotation);
-            OnSpawned?.Invoke("Items added in supply box ");
-            
-
-
+            OnSpawned?.Invoke("Items added in supply box ");    
         }
-
     }
 }
