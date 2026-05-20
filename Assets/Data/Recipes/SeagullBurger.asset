@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7eaa5f4e5b4ce3344bf280ac66fa903c, type: 3}
   m_Name: SeagullBurger
   m_EditorClassIdentifier: Assembly-CSharp::Recipe
-  id: seagull_burger
+  id: recipe_2
   displayName: Seagull Burger
   ingredients:
   - item: {fileID: 11400000, guid: 34cbc41a21f06dc418d32d6f20654ede, type: 2}
@@ -24,3 +24,8 @@ MonoBehaviour:
   result: {fileID: 11400000, guid: 1ef096aa6df09be479e2257ad2ed28a0, type: 2}
   cookTime: 0
   icon: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
+  progressionEffects:
+  - effectType: 0
+    targetId: recipe_3
+  - effectType: 1
+    targetId: magical_refrigerator

@@ -43,4 +43,10 @@ public class RecipeCardUI : MonoBehaviour
 
         currentRecipe = recipe;
     }
+
+    public void SetCookButtonInteractable(bool interactable)
+    {
+        if (recipeCookButton != null)
+            recipeCookButton.interactable = interactable;
+    }
 }

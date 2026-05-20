@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7eaa5f4e5b4ce3344bf280ac66fa903c, type: 3}
   m_Name: DirtfishFilet
   m_EditorClassIdentifier: Assembly-CSharp::Recipe
-  id: dirtfish_filet
+  id: recipe_4
   displayName: Dirtfish Filet
   ingredients:
   - item: {fileID: 11400000, guid: 8d9f93fa180beff4dbdd1328b2176f45, type: 2}
@@ -24,3 +24,8 @@ MonoBehaviour:
   result: {fileID: 11400000, guid: b8e9cc3b1d8d8e84db4c059f65e76937, type: 2}
   cookTime: 0
   icon: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
+  progressionEffects:
+  - effectType: 0
+    targetId: recipe_5
+  - effectType: 1
+    targetId: painting_area

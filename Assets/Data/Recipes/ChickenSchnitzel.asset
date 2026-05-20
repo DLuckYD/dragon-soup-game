@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7eaa5f4e5b4ce3344bf280ac66fa903c, type: 3}
   m_Name: ChickenSchnitzel
   m_EditorClassIdentifier: Assembly-CSharp::Recipe
-  id: chicken_schnitzel
+  id: recipe_5
   displayName: Chicken Schnitzel
   ingredients:
   - item: {fileID: 11400000, guid: 30e4e043fe15d394984e27e424de2bfe, type: 2}
@@ -24,3 +24,8 @@ MonoBehaviour:
   result: {fileID: 11400000, guid: 639ea99d66eec5346b2ddea96cf24f0e, type: 2}
   cookTime: 0
   icon: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
+  progressionEffects:
+  - effectType: 0
+    targetId: recipe_6
+  - effectType: 1
+    targetId: break_axe

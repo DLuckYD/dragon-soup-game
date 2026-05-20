@@ -1,3 +1,5 @@
+using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class CookbookUI : MonoBehaviour
@@ -13,6 +15,7 @@ public class CookbookUI : MonoBehaviour
 
     private bool isCookBookOpen = false;
     private bool recipesGenerated = false;
+    private Dictionary<string, RecipeCardUI> recipeCardsById = new Dictionary<string, RecipeCardUI>();
 
     private void Awake()
     {
@@ -64,7 +67,8 @@ public class CookbookUI : MonoBehaviour
             return;
         }
 
-        int recipeCount = recipeDatabase.GetAllRecipes().Count;
+        List<Recipe> recipes = recipeDatabase.GetAllRecipes();
+        int recipeCount = recipes.Count;
 
         if (recipeCount == 0)
         {
@@ -73,14 +77,20 @@ public class CookbookUI : MonoBehaviour
             return;
         }
 
+        Recipe firstRecipe = recipes[0];
+
         // set the first recipe for the used template card
-        recipeCard.gameObject.SetActive(true);
-        recipeCard.SetRecipe(recipeDatabase.GetAllRecipes()[0]);
+        recipeCard.gameObject.SetActive(false);
+        recipeCard.SetRecipe(firstRecipe);
+        //set by default, cause this is the first recipe
+        recipeCard.SetCookButtonInteractable(true);
+
+        RegisterRecipeCard(firstRecipe, recipeCard);
 
         // other recipes will be generated as new cards
         for (int i = 1; i < recipeCount; i++)
         {
-            Recipe recipe = recipeDatabase.GetAllRecipes()[i];
+            Recipe recipe = recipes[i];
 
             if (recipe == null)
                 continue;
@@ -88,6 +98,37 @@ public class CookbookUI : MonoBehaviour
             RecipeCardUI newCard = Instantiate(recipeCard, recipeListContainer);
             newCard.gameObject.SetActive(true);
             newCard.SetRecipe(recipe);
+            //set by default
+            newCard.SetCookButtonInteractable(false);
+
+            RegisterRecipeCard(recipe, newCard);
+        }
+    }
+
+    private void RegisterRecipeCard(Recipe recipe, RecipeCardUI newCard)
+    {
+        if (recipe == null || newCard == null)
+            return;
+
+        if (string.IsNullOrEmpty(recipe.id))
+        {
+            Debug.Log("Recipe id is null or empty");
+            return;
+        }
+
+        if (!recipeCardsById.ContainsKey(recipe.id))
+        {
+            recipeCardsById.Add(recipe.id, newCard);
+        }
+    }
+
+    internal void MarkRecipeAsInteractable(string recipeId, bool interactable)
+    {
+        if (string.IsNullOrEmpty(recipeId)) return;
+
+        if (recipeCardsById.TryGetValue(recipeId, out RecipeCardUI card))
+        {
+            card.SetCookButtonInteractable(interactable);
         }
     }
 }

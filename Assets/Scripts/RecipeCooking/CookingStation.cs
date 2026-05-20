@@ -4,9 +4,10 @@ using UnityEngine;
 
 public class CookingStation : MonoBehaviour
 {
-    public List<Recipe> availableRecipes;
     public HotbarManager playerInventory;
     public CookbookUI cookBook;
+    public RecipeProgressManager recipeProcessManager;
+
     private HashSet<string> cookedRecipes = new HashSet<string>();
 
     public bool CanCook(Recipe recipe, HotbarManager inventory)
@@ -45,6 +46,9 @@ public class CookingStation : MonoBehaviour
         playerInventory.AddCookingDishToInventory(recipe.result);
 
         cookedRecipes.Add(recipe.id);
+
+        if (recipeProcessManager != null)
+            recipeProcessManager.OnRecipeCooked(recipe, cookBook);
 
         if (cookBook != null)
             cookBook.CloseCookBook();

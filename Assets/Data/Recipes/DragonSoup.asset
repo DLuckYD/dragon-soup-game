@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7eaa5f4e5b4ce3344bf280ac66fa903c, type: 3}
   m_Name: DragonSoup
   m_EditorClassIdentifier: Assembly-CSharp::Recipe
-  id: dragon_soup
+  id: recipe_7
   displayName: Dragon Soup
   ingredients:
   - item: {fileID: 11400000, guid: 43575529b8a11cd4b9553713266b1d83, type: 2}
@@ -26,3 +26,6 @@ MonoBehaviour:
   result: {fileID: 11400000, guid: 9f221291b10806243ad9d6b4a38a883f, type: 2}
   cookTime: 0
   icon: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
+  progressionEffects:
+  - effectType: 3
+    targetId: 
