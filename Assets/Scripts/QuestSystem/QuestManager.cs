@@ -91,6 +91,9 @@ public class QuestManager : MonoBehaviour
 
         public IngredientData ingredient;
         public int amount;
+        public RewardItem pendingHaggleItem;
+        
+        
         public int minRewardValue;
         public float returnAtTime;
 
