@@ -52,4 +52,9 @@ public class RecipeCardUI : MonoBehaviour
             recipeCookButton.enabled = enabled;
         }
     }
+
+    public Recipe GetCurrentRecipe()
+    {
+        return currentRecipe;
+    }
 }
