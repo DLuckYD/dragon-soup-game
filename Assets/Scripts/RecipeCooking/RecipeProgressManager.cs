@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class RecipeProgressManager : MonoBehaviour
 {
-
     public static event Action<string> OnSuccessfulUnlock;
 
     private Dictionary<string, UpgradeStation> stationsById = new Dictionary<string, UpgradeStation>();

@@ -7,11 +7,6 @@ public abstract class InventoryItem : MonoBehaviour
     public bool isInInventory;
     public bool isHeld = false;
 
-    [Header("Save Data")]
-    [SerializeField] private string saveId;
-    public string SaveId => saveId;
-    public bool HasSaveId => !string.IsNullOrEmpty(saveId);
-
     protected Rigidbody rb;
     protected Transform objectGrabPointTransform;
 
@@ -22,31 +17,6 @@ public abstract class InventoryItem : MonoBehaviour
             rb = GetComponentInChildren<Rigidbody>();
 
     }
-
-    public void EnsureRuntimeSaveId()
-    {
-        if (string.IsNullOrEmpty(saveId))
-        {
-            saveId = System.Guid.NewGuid().ToString();
-        }
-    }
-
-    public void GenerateNewSaveId()
-    {
-        saveId = System.Guid.NewGuid().ToString();
-
-#if UNITY_EDITOR
-        UnityEditor.EditorUtility.SetDirty(this);
-#endif
-    }
-
-#if UNITY_EDITOR
-    [ContextMenu("Generate Save ID")]
-    private void GenerateSaveIdInEditor()
-    {
-        GenerateNewSaveId();
-    }
-#endif
 
     protected virtual void LateUpdate()
     {

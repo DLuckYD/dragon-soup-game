@@ -4,7 +4,6 @@ public class HouseSpawner : MonoBehaviour
 {
     [SerializeField] private Transform[] spawnPoints;
     
-    //public static HouseSpawner Instance { get; private set; }
     public static event Action<string> OnSpawned;
     
 
@@ -25,7 +24,7 @@ public class HouseSpawner : MonoBehaviour
         {
             var v = spawnPoints[UnityEngine.Random.Range(0, spawnPoints.Length)];
             Instantiate(ingredient.worldPrefab, v.position, v.rotation);
-            OnSpawned?.Invoke("Items added in supply box ");    
+            OnSpawned?.Invoke("Items added to supply box");    
         }
     }
 }

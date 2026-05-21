@@ -16,6 +16,7 @@ public class RoomDoor : MonoBehaviour
     private Vector3 closedPosition;
     private Quaternion closedRotation;
     public string GetDoorId => doorId;
+    public bool IsLocked => isLocked;
 
     private void Awake()
     {
@@ -51,7 +52,7 @@ public class RoomDoor : MonoBehaviour
         transform.position = hingePoint.position + rotation * directionFromHinge;
         transform.rotation = rotation * closedRotation;
 
-        if(interactionDoorCollider != null)
+        if (interactionDoorCollider != null)
         {
             interactionDoorCollider.enabled = false;
         }
