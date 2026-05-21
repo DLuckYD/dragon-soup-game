@@ -1253,12 +1253,12 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1414167485}
-  m_Father: {fileID: 1522692782}
+  m_Father: {fileID: 240478883}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 15, y: -15}
-  m_SizeDelta: {x: -30, y: -30}
+  m_AnchoredPosition: {x: -235.00005, y: 85.00003}
+  m_SizeDelta: {x: 470, y: 170}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &183946238
 MonoBehaviour:
@@ -1502,6 +1502,42 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6856649130744557486, guid: 06ad683a707c4384c96f99a148f4ee9f, type: 3}
   m_PrefabInstance: {fileID: 2094568386}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &240478882
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 240478883}
+  m_Layer: 5
+  m_Name: CookBookUI
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &240478883
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 240478882}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 183946237}
+  m_Father: {fileID: 1522692782}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &244978608
 GameObject:
   m_ObjectHideFlags: 0
@@ -1535,10 +1571,10 @@ RectTransform:
   - {fileID: 1341491390}
   m_Father: {fileID: 1414167485}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 285, y: -40}
-  m_SizeDelta: {x: 570, y: 80}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &244978610
 MonoBehaviour:
@@ -1860,7 +1896,7 @@ MonoBehaviour:
   hotbarManager: {fileID: 950630261}
   buttonPressedText: {fileID: 548663555}
   activateCookBook: 9
-  cookBook: {fileID: 691506230}
+  cookBook: {fileID: 1522692786}
 --- !u!114 &267349055
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5688,7 +5724,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CookingStation
   playerInventory: {fileID: 950630261}
-  cookBook: {fileID: 691506230}
+  cookBook: {fileID: 0}
   recipeProcessManager: {fileID: 734968605}
 --- !u!114 &680585411
 MonoBehaviour:
@@ -5755,55 +5791,6 @@ MonoBehaviour:
   scalingFactor: 1
   m_posOffsetData: {fileID: 0}
   listenerMask: 1
---- !u!1 &691506229
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 691506231}
-  - component: {fileID: 691506230}
-  m_Layer: 0
-  m_Name: CookingSystem
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &691506230
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 691506229}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a1425dad4fe9e014788df5e400356f5f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Cookbook
-  cookBookPanel: {fileID: 1522692781}
-  cameraScript: {fileID: 330585548}
-  recipeDatabase: {fileID: 11400000, guid: 29417aea8e2ce8b4580475c417e9a371, type: 2}
-  recipeListContainer: {fileID: 1414167485}
-  recipeCard: {fileID: 244978610}
---- !u!4 &691506231
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 691506229}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 6.06281, y: 0.14813, z: 9.11044}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &727492614
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -9652,7 +9639,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 285, y: 0.00003359104}
-  m_SizeDelta: {x: 570, y: 80}
+  m_SizeDelta: {x: 570, y: 0}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!114 &1414167486
 MonoBehaviour:
@@ -10066,13 +10053,14 @@ GameObject:
   - component: {fileID: 1522692785}
   - component: {fileID: 1522692784}
   - component: {fileID: 1522692783}
+  - component: {fileID: 1522692786}
   m_Layer: 5
-  m_Name: CookBookUI
+  m_Name: CookBook
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1522692782
 RectTransform:
   m_ObjectHideFlags: 0
@@ -10085,7 +10073,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 183946237}
+  - {fileID: 240478883}
   m_Father: {fileID: 1669753889}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -10161,6 +10149,23 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1522692781}
   m_CullTransparentMesh: 1
+--- !u!114 &1522692786
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1522692781}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a1425dad4fe9e014788df5e400356f5f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Cookbook
+  cookBookPanel: {fileID: 1522692781}
+  cameraScript: {fileID: 330585548}
+  recipeDatabase: {fileID: 11400000, guid: 29417aea8e2ce8b4580475c417e9a371, type: 2}
+  recipeListContainer: {fileID: 1414167485}
+  recipeCard: {fileID: 244978610}
 --- !u!4 &1555169028 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8575629945645458829, guid: 227aae3785930364b971abf308d4d38c, type: 3}
@@ -20285,7 +20290,6 @@ SceneRoots:
   - {fileID: 1243949181}
   - {fileID: 257155101}
   - {fileID: 1746862847}
-  - {fileID: 691506231}
   - {fileID: 2146820019}
   - {fileID: 1051022460}
   - {fileID: 96462442}

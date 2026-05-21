@@ -8,6 +8,9 @@ public class RecipeProgressManager : MonoBehaviour
 
     private Dictionary<string, UpgradeStation> stationsById = new Dictionary<string, UpgradeStation>();
     private Dictionary<string, RoomDoor> doorsById = new Dictionary<string, RoomDoor>();
+    private Recipe currentActiveRecipe;
+
+    public Recipe CurrentActiveRecipe => currentActiveRecipe;
 
     private string unlockMessage = "New content unlocked";
 
@@ -15,6 +18,12 @@ public class RecipeProgressManager : MonoBehaviour
     {
         RegisterStations();
         RegisterDoors();
+    }
+
+    public void SetFirstRecipe(Recipe recipe)
+    {
+        currentActiveRecipe = recipe;
+        Debug.Log("[RECIPE PROGRESSION] Active recipe set to: " + recipe.displayName);
     }
 
     private void RegisterStations()
@@ -66,7 +75,7 @@ public class RecipeProgressManager : MonoBehaviour
     public void OnRecipeCooked(Recipe recipe, CookbookUI cookBook)
     {
         // Update the cookbook UI with the newly cooked recipe
-        if(cookBook != null)
+        if (cookBook != null)
         {
             cookBook.MarkRecipeAsInteractable(recipe.id, false);
         }
@@ -85,6 +94,18 @@ public class RecipeProgressManager : MonoBehaviour
                         targetId = effect.targetId;
                         cookBook.MarkRecipeAsInteractable(targetId, true);
                         OnSuccessfulUnlock?.Invoke(unlockMessage);
+
+                        currentActiveRecipe = cookBook.GetRecipeById(targetId);
+                        Debug.Log("[RECIPE PROGRESSION] Active recipe set to: " + recipe.displayName);
+
+                        if (currentActiveRecipe != null)
+                        {
+
+                            if (QuestManager.Instance != null)
+                            {
+                                QuestManager.Instance.SetCurrentActiveRecipe(currentActiveRecipe);
+                            }
+                        }
                     }
 
                     if (effect.effectType == EffectType.UnlockUpdateStation)

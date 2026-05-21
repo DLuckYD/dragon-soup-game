@@ -13,6 +13,8 @@ public class CookbookUI : MonoBehaviour
     [SerializeField] private Transform recipeListContainer;
     [SerializeField] private RecipeCardUI recipeCard;
 
+    [SerializeField] private RecipeProgressManager recipeProgressManager;
+
     private bool isCookBookOpen = false;
     private bool recipesGenerated = false;
     private Dictionary<string, RecipeCardUI> recipeCardsById = new Dictionary<string, RecipeCardUI>();
@@ -23,6 +25,12 @@ public class CookbookUI : MonoBehaviour
 
         if (cookBookPanel != null)
             cookBookPanel.SetActive(false);
+
+        if (!recipesGenerated)
+        {
+            GenerateRecipeCards();
+            recipesGenerated = true;
+        }
     }
 
     public void OpenCookBook()
@@ -36,11 +44,7 @@ public class CookbookUI : MonoBehaviour
         isCookBookOpen = true;
         cookBookPanel.SetActive(true);
 
-        if(!recipesGenerated)
-        {
-            GenerateRecipeCards();
-            recipesGenerated = true;
-        }
+
     }
 
     public bool IsOpened()
@@ -79,11 +83,6 @@ public class CookbookUI : MonoBehaviour
 
 
         recipeCard.gameObject.SetActive(false);
-        //recipeCard.SetRecipe(firstRecipe);
-        ////set by default, cause this is the first recipe
-        //recipeCard.SetCookButtonInteractable(true);
-
-        //RegisterRecipeCard(firstRecipe, recipeCard);
 
         // other recipes will be generated as new cards
         for (int i = 0; i < recipeCount; i++)
@@ -101,6 +100,7 @@ public class CookbookUI : MonoBehaviour
             {
                 //set the first recipe for the used template card
                 newCard.SetCookButtonInteractable(true);
+                recipeProgressManager.SetFirstRecipe(recipe);
             }
             else
             {
@@ -137,5 +137,15 @@ public class CookbookUI : MonoBehaviour
         {
             card.SetCookButtonInteractable(interactable);
         }
+    }
+
+    public Recipe GetRecipeById(string recipeId)
+    {
+        if (string.IsNullOrEmpty(recipeId)) return null;
+        if (recipeCardsById.TryGetValue(recipeId, out RecipeCardUI card))
+        {
+            return card.GetCurrentRecipe();
+        }
+        return null;
     }
 }

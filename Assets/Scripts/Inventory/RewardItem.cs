@@ -71,7 +71,7 @@ public class RewardItem : InventoryItem
 
         for (int i = 0; i < renderers.Length; i++)
         {
-            Debug.Log($"[{name}] Renderer[{i}] = {GetFullPath(renderers[i].transform)} enabled={renderers[i].enabled}");
+            //Debug.Log($"[{name}] Renderer[{i}] = {GetFullPath(renderers[i].transform)} enabled={renderers[i].enabled}");
         }
     }
     
