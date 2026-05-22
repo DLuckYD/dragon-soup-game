@@ -14,5 +14,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::AdventurerData
   id: 2
   displayName: Ira
-  skinSprite: {fileID: 21300000, guid: 7cf66550e0a2e3147ae785bcf7083d4b, type: 3}
   classType: Witch
+  skinSprite: {fileID: 21300000, guid: 7cf66550e0a2e3147ae785bcf7083d4b, type: 3}
+  faceSprite: {fileID: 0}
+  bodySprite: {fileID: 0}
+  weaponSprite: {fileID: 0}
+  preferredRewardItemId: butter_knife
+  preferredItemState: 3
+  difficultyModifier: 0
+  viceId: 

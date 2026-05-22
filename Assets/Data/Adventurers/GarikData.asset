@@ -14,5 +14,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::AdventurerData
   id: 3
   displayName: Garik
-  skinSprite: {fileID: 21300000, guid: 6022695ab8702a34bbd9e79af0efee43, type: 3}
   classType: Cat
+  skinSprite: {fileID: 21300000, guid: 6022695ab8702a34bbd9e79af0efee43, type: 3}
+  faceSprite: {fileID: 0}
+  bodySprite: {fileID: 0}
+  weaponSprite: {fileID: 0}
+  preferredRewardItemId: chair_leg
+  preferredItemState: 2
+  difficultyModifier: 0
+  viceId: 
