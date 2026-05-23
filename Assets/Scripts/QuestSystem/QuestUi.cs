@@ -8,17 +8,21 @@ public class QuestUI : MonoBehaviour
     [SerializeField] private GameObject offerPanel;
     [SerializeField] private GameObject returnPanel;
 
-    // -------- OFFER DIALOG --------
-    [Header("Adventurer Image")]
-    [SerializeField] private Image adventurerImage;
+    // -------- ADVENTURER MODULAR PREVIEW --------
+    [Header("Adventurer Preview")]
+    [SerializeField] private GameObject adventurerPreviewRoot;
+    [SerializeField] private Image adventurerBodyImage;
+    [SerializeField] private Image adventurerHeadImage;
+    [SerializeField] private Image adventurerWeaponImage;
 
+    // -------- OFFER DIALOG --------
     [Header("Offer: Blocks")]
     [SerializeField] private TMP_Text offerIntroText;
     [SerializeField] private TMP_Text offerOutroText;
 
     [Header("Offer: Goal Card")]
     [SerializeField] private Image offerIngredientIcon;
-    [SerializeField] private TMP_Text offerIngredientLine; // "Milk x3"
+    [SerializeField] private TMP_Text offerIngredientLine;
 
     [Header("Offer: Buttons")]
     [SerializeField] private Button giveQuestButton;
@@ -36,10 +40,11 @@ public class QuestUI : MonoBehaviour
     [SerializeField] private Button goAwayButton;
     [SerializeField] private Button rollHaggleButton;
 
+    [Header("Player Camera")]
+    [SerializeField] private FirstPersonCamera cameraScript;
+
     private QuestManager questManager;
     private AdventurerNPC currentNpc;
-
-    public FirstPersonCamera cameraScript;
 
     public void Initialize(QuestManager qm)
     {
@@ -63,41 +68,20 @@ public class QuestUI : MonoBehaviour
         CloseAll();
     }
 
-    public void OnOfferAbandonPressed()
-    {
-        Debug.Log($"[QuestUI] Offer Abandon pressed currentNpc={(currentNpc ? currentNpc.name : "NULL")}", this);
-
-        if (questManager == null || currentNpc == null)
-            return;
-
-        questManager.DismissNpc(currentNpc);
-    }
-
-    // --- First dialog: adventurer offers quest ---
     public void OpenOfferUIPanel(AdventurerNPC npc)
     {
         currentNpc = npc;
 
-        if (offerPanel != null)
-            offerPanel.SetActive(true);
-
-        if (returnPanel != null)
-            returnPanel.SetActive(false);
+        SetPanelState(showOffer: true, showReturn: false);
 
         SetReturnFeedback("");
         SetRollHaggleButtonVisible(false);
 
         FreezeGame();
 
+        ApplyAdventurerPreview(npc);
+
         QuestManager.OfferPreview preview = questManager.GetOrCreateOfferPreview(npc);
-
-        if (adventurerImage != null)
-        {
-            Sprite sprite = npc != null && npc.Data != null ? npc.Data.skinSprite : null;
-
-            adventurerImage.enabled = sprite != null;
-            adventurerImage.sprite = sprite;
-        }
 
         if (offerIntroText != null)
             offerIntroText.text = preview.intro;
@@ -115,21 +99,18 @@ public class QuestUI : MonoBehaviour
         }
     }
 
-    // --- Second dialog: adventurer returned and asks for reward ---
     public void OpenReturnUI(AdventurerNPC npc, QuestManager.ReturnInfo info)
     {
         currentNpc = npc;
 
-        if (offerPanel != null)
-            offerPanel.SetActive(false);
+        SetPanelState(showOffer: false, showReturn: true);
 
-        if (returnPanel != null)
-            returnPanel.SetActive(true);
+        SetReturnFeedback("");
+        SetRollHaggleButtonVisible(false);
 
         FreezeGame();
 
-        SetRollHaggleButtonVisible(false);
-        SetReturnFeedback("");
+        ApplyAdventurerPreview(npc);
 
         string preferredRewardItemId = "Unknown";
         string preferredItemState = "None";
@@ -198,7 +179,7 @@ public class QuestUI : MonoBehaviour
                 SetRollHaggleButtonVisible(false);
 
                 SetReturnFeedback(
-                    $"✓ Haggle succeeded!\n" +
+                    "✓ Haggle succeeded!\n" +
                     $"D20 roll: {result.roll}\n" +
                     "The adventurer accepts the reward."
                 );
@@ -208,7 +189,7 @@ public class QuestUI : MonoBehaviour
                 SetRollHaggleButtonVisible(true);
 
                 SetReturnFeedback(
-                    $"✗ Haggle failed.\n" +
+                    "✗ Haggle failed.\n" +
                     $"D20 roll: {result.roll}\n" +
                     $"Attempts left: {result.attemptsLeft}\n" +
                     "You can roll one more time."
@@ -219,7 +200,7 @@ public class QuestUI : MonoBehaviour
                 SetRollHaggleButtonVisible(false);
 
                 SetReturnFeedback(
-                    $"✗ Haggle failed.\n" +
+                    "✗ Haggle failed.\n" +
                     $"D20 roll: {result.roll}\n" +
                     "No attempts left. The adventurer leaves."
                 );
@@ -238,14 +219,11 @@ public class QuestUI : MonoBehaviour
 
     public void CloseAll()
     {
-        if (offerPanel != null)
-            offerPanel.SetActive(false);
-
-        if (returnPanel != null)
-            returnPanel.SetActive(false);
+        SetPanelState(showOffer: false, showReturn: false);
 
         SetReturnFeedback("");
         SetRollHaggleButtonVisible(false);
+        ClearAdventurerPreview();
 
         Time.timeScale = 1f;
         Cursor.visible = false;
@@ -255,6 +233,16 @@ public class QuestUI : MonoBehaviour
             cameraScript.canLook = true;
 
         currentNpc = null;
+    }
+
+    public void OnOfferAbandonPressed()
+    {
+        Debug.Log($"[QuestUI] Offer Abandon pressed currentNpc={(currentNpc ? currentNpc.name : "NULL")}", this);
+
+        if (questManager == null || currentNpc == null)
+            return;
+
+        questManager.DismissNpc(currentNpc);
     }
 
     private void OnGiveQuestClicked()
@@ -271,10 +259,7 @@ public class QuestUI : MonoBehaviour
         if (questManager == null || currentNpc == null)
             return;
 
-        // The player refused to give a reward.
-        // The adventurer leaves and the quest fails.
         questManager.RejectReturnedAdventurer(currentNpc);
-
         CloseAll();
     }
 
@@ -284,6 +269,69 @@ public class QuestUI : MonoBehaviour
             return;
 
         questManager.TryRollHaggle(currentNpc);
+    }
+
+    private void ApplyAdventurerPreview(AdventurerNPC npc)
+    {
+        AdventurerData data = npc != null ? npc.Data : null;
+
+        if (data == null)
+        {
+            ClearAdventurerPreview();
+            return;
+        }
+
+        bool hasAnyPreviewSprite =
+            data.bodySprite != null ||
+            data.faceSprite != null ||
+            data.weaponSprite != null;
+
+        if (adventurerPreviewRoot != null)
+            adventurerPreviewRoot.SetActive(hasAnyPreviewSprite);
+
+        ApplyPreviewSprite(adventurerBodyImage, data.bodySprite);
+        ApplyPreviewSprite(adventurerHeadImage, data.faceSprite);
+        ApplyPreviewSprite(adventurerWeaponImage, data.weaponSprite);
+    }
+
+    private void ApplyPreviewSprite(Image image, Sprite sprite)
+    {
+        if (image == null)
+            return;
+
+        image.sprite = sprite;
+        image.enabled = sprite != null;
+        image.gameObject.SetActive(sprite != null);
+        image.preserveAspect = true;
+    }
+
+    private void ClearAdventurerPreview()
+    {
+        if (adventurerPreviewRoot != null)
+            adventurerPreviewRoot.SetActive(false);
+
+        ClearPreviewImage(adventurerBodyImage);
+        ClearPreviewImage(adventurerHeadImage);
+        ClearPreviewImage(adventurerWeaponImage);
+    }
+
+    private void ClearPreviewImage(Image image)
+    {
+        if (image == null)
+            return;
+
+        image.sprite = null;
+        image.enabled = false;
+        image.gameObject.SetActive(false);
+    }
+
+    private void SetPanelState(bool showOffer, bool showReturn)
+    {
+        if (offerPanel != null)
+            offerPanel.SetActive(showOffer);
+
+        if (returnPanel != null)
+            returnPanel.SetActive(showReturn);
     }
 
     private void SetReturnFeedback(string text)

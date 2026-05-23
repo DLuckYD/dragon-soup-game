@@ -1,11 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
 using UnityEngine;
+
 public class AdventurerSpawner : MonoBehaviour
 {
     [Header("Refs")]
     [SerializeField] private QuestManager questManager;
     [SerializeField] private QuestUI questUI;
+
+    [Header("Database")]
+    [SerializeField] private AdventurerDatabase adventurerDatabase;
 
     [Header("Spawn")]
     [SerializeField] private AdventurerNPC adventurerPrefab;
@@ -15,8 +19,6 @@ public class AdventurerSpawner : MonoBehaviour
 
     [Tooltip("Queue points near the window. Index 0 is the active interaction position.")]
     [SerializeField] private List<Transform> queuePoints = new();
-
-    [SerializeField] private List<AdventurerData> adventurerPool = new();
 
     [Header("Spawn Timing")]
     [SerializeField] private float minDelay = 8f;
@@ -69,8 +71,8 @@ public class AdventurerSpawner : MonoBehaviour
     {
         if (questManager != null)
         {
-            // This event already exists in your current QuestManager.
-            // It should be fired when the adventurer quest cycle is fully finished.
+            // QuestManager fires this when the full quest cycle is finished
+            // and the adventurer object can be removed.
             questManager.OnQuestFinished += HandleQuestFinished;
         }
     }
@@ -94,13 +96,17 @@ public class AdventurerSpawner : MonoBehaviour
 
     private void ScheduleNextSpawn()
     {
-        // Do not schedule a new spawn if all queue points are already occupied.
         if (!HasFreeQueueSlot())
             return;
 
-        // Avoid multiple Invoke calls stacking on top of each other.
         if (spawnScheduled)
             return;
+
+        if (!HasAvailableAdventurerData())
+        {
+            Debug.Log("[ADVENTURER SPAWNER] No available adventurer data to schedule.");
+            return;
+        }
 
         float delay = UnityEngine.Random.Range(minDelay, maxDelay);
 
@@ -114,8 +120,7 @@ public class AdventurerSpawner : MonoBehaviour
     {
         spawnScheduled = false;
 
-        // Before spawning a new offered adventurer,
-        // returned adventurers should get priority in the queue.
+        // Returned adventurers should always get priority over newly spawned offered adventurers.
         TryPlacePendingReturnAdventurers();
 
         if (!HasFreeQueueSlot())
@@ -134,7 +139,7 @@ public class AdventurerSpawner : MonoBehaviour
 
         if (data == null)
         {
-            Debug.LogWarning("[ADVENTURER SPAWNER] No available AdventurerData found in pool.", this);
+            Debug.LogWarning("[ADVENTURER SPAWNER] No available AdventurerData found in AdventurerDatabase.", this);
             return;
         }
 
@@ -166,18 +171,21 @@ public class AdventurerSpawner : MonoBehaviour
             spawnedAdventurers.Count
         );
 
-        // If there is still free space in the queue, schedule another adventurer.
         ScheduleNextSpawn();
     }
 
     private AdventurerData PickRandomAvailableAdventurerData()
     {
-        if (adventurerPool == null || adventurerPool.Count == 0)
+        if (adventurerDatabase == null ||
+            adventurerDatabase.adventurers == null ||
+            adventurerDatabase.adventurers.Count == 0)
+        {
             return null;
+        }
 
         List<AdventurerData> available = new List<AdventurerData>();
 
-        foreach (AdventurerData data in adventurerPool)
+        foreach (AdventurerData data in adventurerDatabase.adventurers)
         {
             if (data == null)
                 continue;
@@ -188,9 +196,9 @@ public class AdventurerSpawner : MonoBehaviour
                 continue;
             }
 
-            // For the current save/load design, every active adventurer should have a unique id.
-            // If you later want duplicates of the same AdventurerData,
-            // we will need to add a runtime instance id.
+            // Current save/load design assumes that each active adventurer has a unique data id.
+            // If we ever want duplicates of the same AdventurerData at the same time,
+            // we will need a separate runtime instance id.
             if (!IsAdventurerDataAlreadySpawned(data.id))
             {
                 available.Add(data);
@@ -201,6 +209,30 @@ public class AdventurerSpawner : MonoBehaviour
             return null;
 
         return available[UnityEngine.Random.Range(0, available.Count)];
+    }
+
+    private bool HasAvailableAdventurerData()
+    {
+        if (adventurerDatabase == null ||
+            adventurerDatabase.adventurers == null ||
+            adventurerDatabase.adventurers.Count == 0)
+        {
+            return false;
+        }
+
+        foreach (AdventurerData data in adventurerDatabase.adventurers)
+        {
+            if (data == null)
+                continue;
+
+            if (string.IsNullOrEmpty(data.id))
+                continue;
+
+            if (!IsAdventurerDataAlreadySpawned(data.id))
+                return true;
+        }
+
+        return false;
     }
 
     private bool IsAdventurerDataAlreadySpawned(string adventurerId)
@@ -285,12 +317,12 @@ public class AdventurerSpawner : MonoBehaviour
             npc.ShowAdventurer();
 
             // Only the first adventurer in the queue should be interactable.
-            // The second adventurer is visible but waits for their turn.
+            // Other visible adventurers wait for their turn.
             npc.SetInteractionEnabled(i == 0);
 
             Debug.Log(
                 "[ADVENTURER SPAWNER] Queue position updated. NPC: " +
-                npc.Data.id +
+                GetNpcDebugId(npc) +
                 " | Queue index: " +
                 i
             );
@@ -320,8 +352,8 @@ public class AdventurerSpawner : MonoBehaviour
         }
     }
 
-    // This method should be called by QuestManager when the player accepts a quest.
-    // The adventurer leaves the window queue and becomes hidden while the quest timer runs.
+    // Called by QuestManager when the player accepts a quest.
+    // The adventurer leaves the queue and becomes hidden while the quest timer runs.
     public void NotifyQuestAccepted(AdventurerNPC npc)
     {
         if (npc == null)
@@ -332,14 +364,14 @@ public class AdventurerSpawner : MonoBehaviour
         npc.SetState(AdventurerState.InProgress);
         npc.HideAdventurer();
 
-        Debug.Log("[ADVENTURER SPAWNER] Adventurer accepted quest and left queue: " + npc.Data.id);
+        Debug.Log("[ADVENTURER SPAWNER] Adventurer accepted quest and left queue: " + GetNpcDebugId(npc));
 
         TryPlacePendingReturnAdventurers();
         RebuildQueuePositions();
         ScheduleNextSpawn();
     }
 
-    // This method should be called by QuestManager when the adventurer return timer finishes.
+    // Called by QuestManager when the adventurer return timer finishes.
     // If the queue has space, the adventurer appears near the window.
     // If the queue is full, the adventurer waits hidden in pendingReturnAdventurers.
     public void NotifyAdventurerReturned(AdventurerNPC npc)
@@ -357,10 +389,7 @@ public class AdventurerSpawner : MonoBehaviour
         if (HasFreeQueueSlot())
         {
             AddToQueue(npc, addToFront: true);
-
-            OnReturn?.Invoke("An adventurer has returned from a quest!");
-
-            Debug.Log("[ADVENTURER SPAWNER] Returned adventurer added to queue: " + npc.Data.id);
+            Debug.Log("[ADVENTURER SPAWNER] Returned adventurer added to queue: " + GetNpcDebugId(npc));
         }
         else
         {
@@ -369,7 +398,7 @@ public class AdventurerSpawner : MonoBehaviour
             if (!pendingReturnAdventurers.Contains(npc))
                 pendingReturnAdventurers.Add(npc);
 
-            Debug.Log("[ADVENTURER SPAWNER] Returned adventurer is waiting for queue space: " + npc.Data.id);
+            Debug.Log("[ADVENTURER SPAWNER] Returned adventurer is waiting for queue space: " + GetNpcDebugId(npc));
         }
 
         RebuildQueuePositions();
@@ -384,7 +413,7 @@ public class AdventurerSpawner : MonoBehaviour
         pendingReturnAdventurers.Remove(npc);
         spawnedAdventurers.Remove(npc);
 
-        Debug.Log("[ADVENTURER SPAWNER] Quest fully finished. Removing adventurer: " + npc.Data.id);
+        Debug.Log("[ADVENTURER SPAWNER] Quest fully finished. Removing adventurer: " + GetNpcDebugId(npc));
 
         Destroy(npc.gameObject);
 
@@ -406,7 +435,15 @@ public class AdventurerSpawner : MonoBehaviour
         if (string.IsNullOrEmpty(adventurerId))
             return null;
 
-        foreach (AdventurerData data in adventurerPool)
+        if (adventurerDatabase == null ||
+            adventurerDatabase.adventurers == null ||
+            adventurerDatabase.adventurers.Count == 0)
+        {
+            Debug.LogWarning("[ADVENTURER SPAWNER] AdventurerDatabase is missing or empty.");
+            return null;
+        }
+
+        foreach (AdventurerData data in adventurerDatabase.adventurers)
         {
             if (data == null)
                 continue;
@@ -418,7 +455,7 @@ public class AdventurerSpawner : MonoBehaviour
         return null;
     }
 
-    // This will be useful later for save/load.
+    // Used by save/load.
     public AdventurerNPC SpawnAdventurerFromSave(string adventurerId, AdventurerState state, int queueIndex)
     {
         AdventurerData data = GetAdventurerDataById(adventurerId);
@@ -429,7 +466,7 @@ public class AdventurerSpawner : MonoBehaviour
             return null;
         }
 
-        Transform point = queueIndex >= 0 ? GetQueuePoint(Mathf.Clamp(queueIndex, 0, QueueCapacity - 1)) : spawnPoint;
+        Transform point = GetRestoreSpawnPoint(queueIndex);
 
         if (point == null)
         {
@@ -478,6 +515,20 @@ public class AdventurerSpawner : MonoBehaviour
         return npc;
     }
 
+    private Transform GetRestoreSpawnPoint(int queueIndex)
+    {
+        if (queueIndex >= 0 && QueueCapacity > 0)
+        {
+            int clampedIndex = Mathf.Clamp(queueIndex, 0, QueueCapacity - 1);
+            Transform queuePoint = GetQueuePoint(clampedIndex);
+
+            if (queuePoint != null)
+                return queuePoint;
+        }
+
+        return spawnPoint;
+    }
+
     private void InsertIntoQueueAt(AdventurerNPC npc, int queueIndex)
     {
         if (npc == null)
@@ -502,7 +553,7 @@ public class AdventurerSpawner : MonoBehaviour
         RebuildQueuePositions();
     }
 
-    // This will be useful before loading save data.
+    // Used before loading save data.
     public void ClearAllAdventurersForLoad()
     {
         CancelInvoke(nameof(SpawnNow));
@@ -519,5 +570,16 @@ public class AdventurerSpawner : MonoBehaviour
         pendingReturnAdventurers.Clear();
 
         Debug.Log("[ADVENTURER SPAWNER] Cleared all spawned adventurers for load.");
+    }
+
+    private string GetNpcDebugId(AdventurerNPC npc)
+    {
+        if (npc == null)
+            return "NULL";
+
+        if (npc.Data == null)
+            return npc.name + " / No AdventurerData";
+
+        return npc.Data.id;
     }
 }
