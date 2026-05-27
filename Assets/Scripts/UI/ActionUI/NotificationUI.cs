@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using TMPro;
 using UnityEngine;
@@ -10,34 +11,49 @@ public class NotificationUI : MonoBehaviour
 
     private Coroutine currentRoutine;
 
+    private void Awake()
+    {
+        Debug.Log("[NotificationUI] Awake");
+    }
+
     private void OnEnable()
     {
         Debug.Log("Subscribing to save events...");
-        GameSaveLoadManager.OnAutoSaveCompleted += ShowAutoSaveMessage;
-        GameSaveLoadManager.OnManualSaveCompleted += ShowManualSaveMessage;
-        GameSaveLoadManager.OnSaveFailed += ShowSaveFailedMessage;
-        WorkbenchStation.OnSuccessfulUpgrade += ShowUpgradeMessage;
-        WorkbenchStation.OnUnsuccessfulUpgrade += ShowDestroyedMassage;
-        
-        HouseSpawner.OnSpawned  += ShowSupplyMassage;
+        GameSaveLoadManager.OnAutoSaveCompleted += ShowMessage;
+        GameSaveLoadManager.OnManualSaveCompleted += ShowMessage;
+        GameSaveLoadManager.OnSaveFailed += ShowMessage;
 
+        UpgradeStation.OnSuccessfulUpgrade += ShowMessage;
+        UpgradeStation.OnUnsuccessfulUpgrade += ShowMessage;
 
+        RecipeProgressManager.OnSuccessfulUnlock += ShowMessage;
+
+        HouseSpawner.OnSpawned  += ShowMessage;
+
+        PlayerInteraction.OnLockedItemInteraction += ShowMessage;
+
+        AdventurerSpawner.OnSpawned += ShowMessage;
+        AdventurerSpawner.OnReturn += ShowMessage;
     }
 
     private void OnDisable()
     {
         Debug.Log("Unsubscribing from save events...");
-        GameSaveLoadManager.OnAutoSaveCompleted -= ShowAutoSaveMessage;
-        GameSaveLoadManager.OnManualSaveCompleted -= ShowManualSaveMessage;
-        GameSaveLoadManager.OnSaveFailed -= ShowSaveFailedMessage;
+        GameSaveLoadManager.OnAutoSaveCompleted -= ShowMessage;
+        GameSaveLoadManager.OnManualSaveCompleted -= ShowMessage;
+        GameSaveLoadManager.OnSaveFailed -= ShowMessage;
         
-        
-        
-        WorkbenchStation.OnSuccessfulUpgrade -= ShowUpgradeMessage;
-        WorkbenchStation.OnUnsuccessfulUpgrade -= ShowDestroyedMassage;
-        
-        HouseSpawner.OnSpawned  -= ShowSupplyMassage;
+        UpgradeStation.OnSuccessfulUpgrade -= ShowMessage;
+        UpgradeStation.OnUnsuccessfulUpgrade -= ShowMessage;
 
+        RecipeProgressManager.OnSuccessfulUnlock -= ShowMessage;
+
+        HouseSpawner.OnSpawned  -= ShowMessage;
+
+        PlayerInteraction.OnLockedItemInteraction -= ShowMessage;
+
+        AdventurerSpawner.OnSpawned -= ShowMessage;
+        AdventurerSpawner.OnReturn -= ShowMessage;
     }
 
     void Start()
@@ -48,40 +64,52 @@ public class NotificationUI : MonoBehaviour
         }
     }
 
-    private void ShowAutoSaveMessage(string message)
-    {
-        Debug.Log("Received auto save message: " + message);
-        ShowMessage(message);
-    }
+    //private void ShowAutoSaveMessage(string message)
+    //{
+    //    Debug.Log("Received auto save message: " + message);
+    //    ShowMessage(message);
+    //}
 
-    private void ShowManualSaveMessage(string message)
-    {
-        Debug.Log("Received manual save message: " + message);
-        ShowMessage(message);
-    }
+    //private void ShowManualSaveMessage(string message)
+    //{
+    //    Debug.Log("Received manual save message: " + message);
+    //    ShowMessage(message);
+    //}
 
-    private void ShowSaveFailedMessage(string message)
-    {
-        Debug.Log("Received save failed message: " + message);
-        ShowMessage(message);
-    }
-    
-    private void ShowSupplyMassage(string message)
-    {
-        Debug.Log("Received supply message: " + message);
-        ShowMessage(message);
-    }
-    private void ShowUpgradeMessage(string message)
-    {
-        Debug.Log("Received upgrade message: " + message);
-        ShowMessage(message);
-    }
-    
-    private void ShowDestroyedMassage(string message)
-    {
-        Debug.Log("Received destroyed message: " + message);
-        ShowMessage(message);
-    }
+    //private void ShowSaveFailedMessage(string message)
+    //{
+    //    Debug.Log("Received save failed message: " + message);
+    //    ShowMessage(message);
+    //}
+
+    //private void ShowSupplyMessage(string message)
+    //{
+    //    Debug.Log("Received supply message: " + message);
+    //    ShowMessage(message);
+    //}
+    //private void ShowUpgradeMessage(string message)
+    //{
+    //    Debug.Log("Received upgrade message: " + message);
+    //    ShowMessage(message);
+    //}
+
+    //private void ShowUnlockMessage(string message)
+    //{
+    //    Debug.Log("Received unlock message: " + message);
+    //    ShowMessage(message);
+    //}
+
+    //private void ShowLockedItemMessage(string message)
+    //{
+    //    Debug.Log("Received locked message: " + message);
+    //    ShowMessage(message);
+    //}
+
+    //private void ShowDestroyedMessage(string message)
+    //{
+    //    Debug.Log("Received destroyed message: " + message);
+    //    ShowMessage(message);
+    //}
     
 
     private void ShowMessage(string message)
@@ -108,7 +136,7 @@ public class NotificationUI : MonoBehaviour
     {
         notificationPanel.SetActive(true);
 
-        yield return new WaitForSeconds(showTime);
+        yield return new WaitForSecondsRealtime(showTime);
 
         notificationPanel.SetActive(false);
         notificationText.text = "";

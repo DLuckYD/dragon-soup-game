@@ -7,16 +7,19 @@ public class UpgradeStation : MonoBehaviour
     public static event Action<string> OnSuccessfulUpgrade;
     public static event Action<string> OnUnsuccessfulUpgrade;
 
+    [Header("Station Settings")]
+    [SerializeField] private string stationId;
+
     [Header("Station State")]
     [SerializeField] private bool canInteract = true;
-    [SerializeField] private string disabledMessage = "This station cannot be used right now.";
+    [SerializeField] private string disabledMessage = "Station is locked";
 
     [Header("Audio")]
     [SerializeField] private string useSoundEvent;
 
     [Header("Messages")]
-    [SerializeField] private string successMessage = "Item modified.";
-    [SerializeField] private string noItemMessage = "No item to modify.";
+    [SerializeField] private string successMessage = "Item modified";
+    [SerializeField] private string noItemMessage = "No item to modify";
 
     [Header("Conditions")]
     [SerializeField] private StationConditionSettings conditions = new StationConditionSettings();
@@ -25,7 +28,7 @@ public class UpgradeStation : MonoBehaviour
     [SerializeField] private List<ItemEffect> effects = new List<ItemEffect>();
 
     public bool CanInteract => canInteract;
-
+    public string GetStationId => stationId;
     public bool LastProcessSuccessful { get; private set; }
 
     public void SetInteractable(bool value)
