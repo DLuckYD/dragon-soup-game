@@ -1,10 +1,10 @@
-using UnityEngine;
-
 using System;
-using System.IO;
-using UnityEngine.SceneManagement;
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
+using System.Linq;
+using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameSaveLoadManager : MonoBehaviour
 {
@@ -89,8 +89,7 @@ public class GameSaveLoadManager : MonoBehaviour
             return;
         }
 
-        string json = File.ReadAllText(path);
-        GameSaveData data = JsonUtility.FromJson<GameSaveData>(json);
+        GameSaveData data = GetSaveFileData(path);
 
         if (data == null)
         {
@@ -111,6 +110,14 @@ public class GameSaveLoadManager : MonoBehaviour
         }
     }
 
+    public GameSaveData GetSaveFileData(string path)
+    {
+        string json = File.ReadAllText(path);
+        GameSaveData data = JsonUtility.FromJson<GameSaveData>(json);
+
+        return data;
+    }
+
     public void StartNewGame()
     {
         pendingLoadData = null;
@@ -119,7 +126,50 @@ public class GameSaveLoadManager : MonoBehaviour
 
     public void ContinueGame()
     {
-        LoadGame("autosave");
+        string lastSavePath = GetTheLastSaveFilePath();
+        if (lastSavePath == null || string.IsNullOrEmpty(lastSavePath))
+        {
+            AutoSave();
+        }
+        lastSavePath = GetTheLastSaveFilePath();
+        LoadGame(lastSavePath);
+    }
+
+    public string GetTheLastSaveFilePath()
+    {
+        if (!Directory.Exists(savesFolderPath))
+            return null;
+
+        string[] saveFiles = Directory.GetFiles(savesFolderPath, "*.json");
+        if (saveFiles.Length == 0)
+            return null;
+
+        GameSaveData latestData = GetSortedSaveFiles().FirstOrDefault();
+
+        return latestData?.saveName;
+    }
+
+    public List<GameSaveData> GetSortedSaveFiles()
+    {
+        string[] saveFiles = Directory.GetFiles(savesFolderPath, "*.json");
+
+        List<GameSaveData> saves = new List<GameSaveData>();
+
+        foreach (string filePath in saveFiles)
+        {
+            GameSaveData data = GetSaveFileData(filePath);
+
+            if (data != null)
+            {
+                saves.Add(data);
+            }
+        }
+
+        saves = saves
+            .OrderByDescending(save => save.savedAt)
+            .ToList();
+
+        return saves;
     }
 
     public bool SaveGame(string saveFileName)
@@ -361,5 +411,19 @@ public class GameSaveLoadManager : MonoBehaviour
 
 
         Debug.Log("Game loaded: " + data.saveName);
+    }
+
+    public void DeleteSaveFile(string saveFileName)
+    {
+        string path = Path.Combine(savesFolderPath, saveFileName + ".json");
+        if (File.Exists(path))
+        {
+            File.Delete(path);
+            Debug.Log("Deleted save file: " + path);
+        }
+        else
+        {
+            Debug.LogWarning("Save file not found for deletion: " + path);
+        }
     }
 }
