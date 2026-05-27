@@ -7,12 +7,14 @@ public class SaveFileUI : MonoBehaviour
     [Header("UI References")]
     [SerializeField] private TMP_Text fileName;
     [SerializeField] private TMP_Text fileDescription;
+    [SerializeField] private Button fileButton;
     [SerializeField] private Button deleteButton;
 
     GameSaveData saveData;
 
     void Start()
     {
+        fileButton.onClick.AddListener(() => GameSaveLoadManager.Instance.LoadGame(saveData.saveName));
         deleteButton.onClick.AddListener(OnDeleteButtonClicked);
     }
 
