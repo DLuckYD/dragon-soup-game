@@ -23,6 +23,7 @@ public class ListSaveFilesPanelUI : MonoBehaviour
 
     private void OnBackToMenuButtonClicked()
     {
+        WwiseAudioManager.Instance.PostEvent("Ui_Button_Clicked", gameObject);
         gameObject.SetActive(false);
         playScreenPanel.SetActive(true);
     }
