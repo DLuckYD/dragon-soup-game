@@ -27,26 +27,22 @@ public class PlayScreenPanelController : MonoBehaviour
 
     public void LoadSaveFile()
     {
-        WwiseAudioManager.Instance.PostEvent("Ui_Button_Clicked", gameObject);
         gameObject.SetActive(false);
         saveFilesPanel.SetActive(true);
     }
 
     public void ContinueLastGame()
     {
-        WwiseAudioManager.Instance.PostEvent("Ui_Button_Clicked", gameObject);
         GameSaveLoadManager.Instance.ContinueGame();
     }
 
     public void CreateNewGame()
     {
-        WwiseAudioManager.Instance.PostEvent("Ui_Button_Clicked", gameObject);
         GameSaveLoadManager.Instance.StartNewGame();
     }
 
     public void OnBackPressed()
     {
-        WwiseAudioManager.Instance.PostEvent("Ui_Button_Clicked", gameObject);
         mainMenuManager.ShowStartScreen();
     }
 }

@@ -31,10 +31,6 @@ public class PlayerMovement : MonoBehaviour
     [Header("Ground Check")]
     public float playerHeight;
     public LayerMask whatIsGround;
-
-    [Header("Footsteps")]
-    [SerializeField] private float footstepInterval = 0.2f;
-    private float footstepTimer;
     bool grounded;
 
     public Transform orientation;
@@ -76,8 +72,6 @@ public class PlayerMovement : MonoBehaviour
         GroundCheck();
         StateHandler();
         SpeedControl();
-
-        HandleFootsteps();
     }
 
     private void FixedUpdate()
@@ -123,28 +117,6 @@ public class PlayerMovement : MonoBehaviour
         if (Input.GetKeyUp(crouchKey))
         {
             transform.localScale = new Vector3(transform.localScale.x, startYScale, transform.localScale.z);
-        }
-    }
-
-    private void HandleFootsteps()
-    {
-        Vector3 horizontalVelocity = new Vector3(rb.linearVelocity.x, 0f, rb.linearVelocity.z);
-
-        bool isMoving = horizontalVelocity.magnitude > 0.1f;
-
-        if (!grounded || !isMoving)
-        {
-            footstepTimer = 0f;
-            return;
-        }
-
-        footstepTimer -= Time.deltaTime;
-
-        if (footstepTimer <= 0f)
-        {
-            Debug.Log(Time.time);
-            WwiseAudioManager.Instance.PostEvent("Player_Footstep", gameObject);
-            footstepTimer = footstepInterval;
         }
     }
 

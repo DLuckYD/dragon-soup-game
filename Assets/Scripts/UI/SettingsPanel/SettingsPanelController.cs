@@ -64,7 +64,6 @@ public class SettingsPanelController: MonoBehaviour
 
     public void ShowAudioPanel()
     {
-        WwiseAudioManager.Instance.PostEvent("Ui_Button_Clicked", gameObject);
         HideAllPanels();
         ResetButtons();
         audioPanel.SetActive(true);
@@ -75,7 +74,6 @@ public class SettingsPanelController: MonoBehaviour
 
     public void ShowVideoPanel()
     {
-        WwiseAudioManager.Instance.PostEvent("Ui_Button_Clicked", gameObject);
         HideAllPanels();
         ResetButtons();
         videoPanel.SetActive(true);
@@ -84,7 +82,6 @@ public class SettingsPanelController: MonoBehaviour
 
     public void ShowInputPanel()
     {
-        WwiseAudioManager.Instance.PostEvent("Ui_Button_Clicked", gameObject);
         HideAllPanels();
         ResetButtons();
         inputPanel.SetActive(true);
@@ -93,7 +90,6 @@ public class SettingsPanelController: MonoBehaviour
 
     public void ShowOthersPanel()
     {
-        WwiseAudioManager.Instance.PostEvent("Ui_Button_Clicked", gameObject);
         HideAllPanels();
         ResetButtons();
         othersPanel.SetActive(true);
@@ -101,7 +97,6 @@ public class SettingsPanelController: MonoBehaviour
     }
     public void BackToMenu()
     {
-        WwiseAudioManager.Instance.PostEvent("Ui_Button_Clicked", gameObject);
         SettingsSaveLoadManager.Instance.SaveSettings();
         this.gameObject.SetActive(false);
 

@@ -1923,7 +1923,6 @@ MonoBehaviour:
   whatIsGround:
     serializedVersion: 2
     m_Bits: 1024
-  footstepInterval: 0.5
   orientation: {fileID: 1785632102}
   state: 0
 --- !u!54 &267349052
@@ -6998,50 +6997,6 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 1478115445}
   m_SourcePrefab: {fileID: 100100000, guid: e77b502b3aec13d4fadc7951a135772d, type: 3}
---- !u!1 &1018927758
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1018927760}
-  - component: {fileID: 1018927759}
-  m_Layer: 0
-  m_Name: WwiseAudioManager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &1018927759
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1018927758}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2fce39fd7b553f447bfae7a5622064cf, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::WwiseAudioManager
---- !u!4 &1018927760
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1018927758}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.04341, y: 1.12781, z: -5.57227}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &1039325026 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 738748457748913162, guid: 2152944387c7d1b4e92dd50f3599c717, type: 3}
@@ -8385,7 +8340,7 @@ MonoBehaviour:
   stationId: axe_upgrade
   canInteract: 0
   disabledMessage: This station cannot be used right now.
-  useSoundEventName: 
+  useSoundEvent: 
   successMessage: Item modified.
   noItemMessage: No item to modify.
   conditions:
@@ -8457,58 +8412,68 @@ GameObject:
 --- !u!114 &1292459453
 MonoBehaviour:
   m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1292459452}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dc1dfddedb44e154191e8bdefa0da266, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::UpgradeStation
-  stationId: fireplace
-  canInteract: 1
-  disabledMessage: This station cannot be used right now.
-  useSoundEventName: 
-  successMessage: Item modified.
-  noItemMessage: No item to modify.
-  conditions:
-    requireCanBeModified: 1
-    stateRequirement: 1
-    requiredState: 0
-    useTypeFilter: 0
-    allowedTypes: 
-  effects:
-  - {fileID: 11400000, guid: 1356b78930293dc4596a1b7a5489e54e, type: 2}
-  - {fileID: 11400000, guid: 3088951d48a2d3b49aa58aa212b33586, type: 2}
-  - {fileID: 11400000, guid: 1d4863b876f7e1946a42f9e9e61637a4, type: 2}
---- !u!4 &1292459456 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: caffafa52d73ea04fa8a875ab1584c2d, type: 3}
-  m_PrefabInstance: {fileID: 1930442334}
-  m_PrefabAsset: {fileID: 0}
---- !u!64 &1292459457
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1292459452}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 5
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 7468015023165876698, guid: 6c3be6083b2e96842af5d694b24b897d, type: 3}
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 1728883534}
+    m_Modifications:
+    - target: {fileID: 1760939412263181026, guid: e22ce7adce317a942b6138a63b986eda, type: 3}
+      propertyPath: type
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1760939412263181026, guid: e22ce7adce317a942b6138a63b986eda, type: 3}
+      propertyPath: saveId
+      value: fedf96c2-81d0-4105-bb91-d01bed7d953d
+      objectReference: {fileID: 0}
+    - target: {fileID: 3515560965016840299, guid: e22ce7adce317a942b6138a63b986eda, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -8.895104
+      objectReference: {fileID: 0}
+    - target: {fileID: 3515560965016840299, guid: e22ce7adce317a942b6138a63b986eda, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.036597013
+      objectReference: {fileID: 0}
+    - target: {fileID: 3515560965016840299, guid: e22ce7adce317a942b6138a63b986eda, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -19.41089
+      objectReference: {fileID: 0}
+    - target: {fileID: 3515560965016840299, guid: e22ce7adce317a942b6138a63b986eda, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3515560965016840299, guid: e22ce7adce317a942b6138a63b986eda, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3515560965016840299, guid: e22ce7adce317a942b6138a63b986eda, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3515560965016840299, guid: e22ce7adce317a942b6138a63b986eda, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3515560965016840299, guid: e22ce7adce317a942b6138a63b986eda, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3515560965016840299, guid: e22ce7adce317a942b6138a63b986eda, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3515560965016840299, guid: e22ce7adce317a942b6138a63b986eda, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4288017003035144913, guid: e22ce7adce317a942b6138a63b986eda, type: 3}
+      propertyPath: m_Name
+      value: Butter Knife (3)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: e22ce7adce317a942b6138a63b986eda, type: 3}
 --- !u!1 &1304465533 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8503229913167042580, guid: 2b3442917f31f3a41a87afa943484e30, type: 3}
@@ -19782,5 +19747,12 @@ SceneRoots:
   - {fileID: 1051022460}
   - {fileID: 96462442}
   - {fileID: 1439279855}
-  - {fileID: 734968606}
-  - {fileID: 1018927760}
+  - {fileID: 9209432781334861564}
+  - {fileID: 2556940864187289393}
+  - {fileID: 8025473122999116309}
+  - {fileID: 423887880}
+  - {fileID: 2162415303716133688}
+  - {fileID: 1418690022}
+  - {fileID: 93447143}
+  - {fileID: 1060620018}
+  - {fileID: 1166558657}
