@@ -45,31 +45,35 @@ public class MainMenuUIManager : MonoBehaviour
 
     public void ShowPlayScreen()
     {
+        WwiseAudioManager.Instance.PostEvent("Ui_Button_Clicked", gameObject);
         HideAllScreens();
         playScreenPanel.SetActive(true);
     }
 
     public void ShowSettingsScreen()
     {
-        Debug.Log("ShowSettingsScreen called");
+        WwiseAudioManager.Instance.PostEvent("Ui_Button_Clicked", gameObject);
         HideAllScreens();
         settingsScreenPanel.SetActive(true);
     }
 
     public void ShowAchievementsScreen()
     {
+        WwiseAudioManager.Instance.PostEvent("Ui_Button_Clicked", gameObject);
         HideAllScreens();
         achievementsScreenPanel.SetActive(true);
     }
 
     public void ShowCreditsScreen()
     {
+        WwiseAudioManager.Instance.PostEvent("Ui_Button_Clicked", gameObject);
         HideAllScreens();
         creditsScreenPanel.SetActive(true);
     }
 
     public void QuitGame()
     {
+        WwiseAudioManager.Instance.PostEvent("Ui_Button_Clicked", gameObject);
         Debug.Log("Quit Game");
         Application.Quit();
     }
