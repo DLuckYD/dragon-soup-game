@@ -3,20 +3,9 @@
 	<Events>
 		<WorkUnit Name="Default Work Unit" ID="{22EBAD7D-DAAB-4BD0-813B-5BEE554941E4}" PersistMode="Standalone">
 			<ChildrenList>
-				<Event Name="Workbench_Use" ID="{89A69C19-FCCA-4CE9-8BC0-1A0B27D54392}">
-					<ChildrenList>
-						<Action Name="" ID="{8AA13DAE-B0AF-415A-9429-CA99100545FB}" ShortID="323673419">
-							<ReferenceList>
-								<Reference Name="Target">
-									<ObjectRef Name="Workbench_Use" ID="{188749C4-961B-446E-B77E-5A400F33B930}" WorkUnitID="{1D3CE180-6637-4348-B301-DDCBC094ECDF}"/>
-								</Reference>
-							</ReferenceList>
-						</Action>
-					</ChildrenList>
-				</Event>
 				<Folder Name="First_Level" ID="{59C13C14-75D3-4BB7-9518-6F99C4C419E5}" ShortID="281223633">
 					<ChildrenList>
-						<Event Name="Adventurer_Arrives" ID="{6F18ED6B-F52E-4B36-A9B8-40B926735565}">
+						<Event Name="Adventurer_Arrived" ID="{6F18ED6B-F52E-4B36-A9B8-40B926735565}">
 							<ChildrenList>
 								<Action Name="" ID="{3A419E9F-10E9-45CE-A336-9AD04D1E1650}" ShortID="263986256">
 									<ReferenceList>
@@ -27,7 +16,7 @@
 								</Action>
 							</ChildrenList>
 						</Event>
-						<Event Name="Adventurer_Returns" ID="{DD608CF2-C506-4778-8135-FD906EE3A277}">
+						<Event Name="Adventurer_Returned" ID="{DD608CF2-C506-4778-8135-FD906EE3A277}">
 							<ChildrenList>
 								<Action Name="" ID="{640C5F5E-7D12-4EE0-A3C1-A964A2E551DB}" ShortID="852130886">
 									<ReferenceList>
@@ -96,6 +85,38 @@
 								</Action>
 							</ChildrenList>
 						</Event>
+						<Event Name="Player_Footstep" ID="{44E4A7D9-6DF6-4DFC-B55D-4E79CC6398B5}">
+							<ChildrenList>
+								<Action Name="" ID="{F3DC5EC6-AC47-41B7-A0F5-006397DA801E}" ShortID="614154416">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="player_footsteps" ID="{47741612-D81C-469D-B9F4-44FB4C227032}" WorkUnitID="{1D3CE180-6637-4348-B301-DDCBC094ECDF}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+								<Action Name="" ID="{6D27C88C-0308-47E9-B464-629280CA9E77}" ShortID="588092602">
+									<PropertyList>
+										<Property Name="Probability" Type="Real64" Value="5"/>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="object_floor_squeaking" ID="{582C8D66-08C7-470C-A355-C41E574A4205}" WorkUnitID="{1D3CE180-6637-4348-B301-DDCBC094ECDF}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
+						<Event Name="Workbench_Use" ID="{89A69C19-FCCA-4CE9-8BC0-1A0B27D54392}">
+							<ChildrenList>
+								<Action Name="" ID="{8AA13DAE-B0AF-415A-9429-CA99100545FB}" ShortID="323673419">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="Workbench_Use" ID="{188749C4-961B-446E-B77E-5A400F33B930}" WorkUnitID="{1D3CE180-6637-4348-B301-DDCBC094ECDF}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
 					</ChildrenList>
 				</Folder>
 				<Folder Name="Main_Menu" ID="{A3AD14D7-A532-4A9F-9B01-EE881BDEA8DA}" ShortID="715734465">
@@ -129,27 +150,21 @@
 						</Event>
 					</ChildrenList>
 				</Folder>
-				<Event Name="Player_Footstep" ID="{44E4A7D9-6DF6-4DFC-B55D-4E79CC6398B5}">
+				<Folder Name="General" ID="{399F1F06-E38A-4901-8F19-9C28D465A007}" ShortID="777239969">
 					<ChildrenList>
-						<Action Name="" ID="{F3DC5EC6-AC47-41B7-A0F5-006397DA801E}" ShortID="614154416">
-							<ReferenceList>
-								<Reference Name="Target">
-									<ObjectRef Name="player_footsteps" ID="{47741612-D81C-469D-B9F4-44FB4C227032}" WorkUnitID="{1D3CE180-6637-4348-B301-DDCBC094ECDF}"/>
-								</Reference>
-							</ReferenceList>
-						</Action>
-						<Action Name="" ID="{6D27C88C-0308-47E9-B464-629280CA9E77}" ShortID="588092602">
-							<PropertyList>
-								<Property Name="Probability" Type="Real64" Value="5"/>
-							</PropertyList>
-							<ReferenceList>
-								<Reference Name="Target">
-									<ObjectRef Name="object_floor_squeaking" ID="{582C8D66-08C7-470C-A355-C41E574A4205}" WorkUnitID="{1D3CE180-6637-4348-B301-DDCBC094ECDF}"/>
-								</Reference>
-							</ReferenceList>
-						</Action>
+						<Event Name="Ui_Button_Clicked" ID="{B020B332-C236-434F-9262-955D2686B485}">
+							<ChildrenList>
+								<Action Name="" ID="{A3125BD9-4269-4A09-8A41-9499E628C08B}" ShortID="223345316">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="ui_button_clicked" ID="{A8B4CA19-6FD1-43EC-B224-BEAF409C1D14}" WorkUnitID="{1D3CE180-6637-4348-B301-DDCBC094ECDF}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
 					</ChildrenList>
-				</Event>
+				</Folder>
 			</ChildrenList>
 		</WorkUnit>
 	</Events>

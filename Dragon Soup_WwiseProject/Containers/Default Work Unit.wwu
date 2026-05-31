@@ -564,9 +564,15 @@
 									<ChildrenList>
 										<Sound Name="object_floor_squeaking" ID="{582C8D66-08C7-470C-A355-C41E574A4205}" ShortID="500107801">
 											<PropertyList>
+												<Property Name="IsGlobalLimit" Type="int16" Value="1"/>
 												<Property Name="Lowpass" Type="int16">
 													<ValueList>
 														<Value>29</Value>
+													</ValueList>
+												</Property>
+												<Property Name="MaxSoundPerInstance" Type="int16">
+													<ValueList>
+														<Value>1</Value>
 													</ValueList>
 												</Property>
 												<Property Name="Pitch" Type="int32">
@@ -581,6 +587,11 @@
 															</Modifier>
 														</ModifierInfo>
 													</ModifierList>
+												</Property>
+												<Property Name="Volume" Type="Real64">
+													<ValueList>
+														<Value>-5</Value>
+													</ValueList>
 												</Property>
 												<Property Name="Weight" Type="Real64">
 													<ValueList>
@@ -610,6 +621,14 @@
 											</ActiveSourceList>
 										</Sound>
 										<RandomSequenceContainer Name="player_footsteps" ID="{47741612-D81C-469D-B9F4-44FB4C227032}" ShortID="383201534">
+											<PropertyList>
+												<Property Name="IsGlobalLimit" Type="int16" Value="1"/>
+												<Property Name="MaxSoundPerInstance" Type="int16">
+													<ValueList>
+														<Value>1</Value>
+													</ValueList>
+												</Property>
+											</PropertyList>
 											<ReferenceList>
 												<Reference Name="Conversion">
 													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{27F70A5B-D7C2-4BA9-9793-BA39E1BC8B1D}"/>
@@ -652,6 +671,11 @@
 													</ReferenceList>
 													<ChildrenList>
 														<AudioFileSource Name="player_foodstep_wood_02" ID="{EBF9BF3D-F469-4519-98B7-B43675585C54}">
+															<PropertyList>
+																<Property Name="FadeInDuration" Type="Real64" Value="0.01968"/>
+																<Property Name="FadeOutDuration" Type="Real64" Value="0.04659"/>
+																<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+															</PropertyList>
 															<Language>SFX</Language>
 															<AudioFile>SFX\player_foodstep_wood_02.wav</AudioFile>
 															<MediaIDList>
@@ -674,6 +698,11 @@
 													</ReferenceList>
 													<ChildrenList>
 														<AudioFileSource Name="player_footstep_wood_03" ID="{547EFF07-1881-473B-ADA0-9D59E48DFA75}">
+															<PropertyList>
+																<Property Name="FadeInDuration" Type="Real64" Value="0.00754"/>
+																<Property Name="FadeOutDuration" Type="Real64" Value="0.081"/>
+																<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+															</PropertyList>
 															<Language>SFX</Language>
 															<AudioFile>SFX\player_footstep_wood_03.wav</AudioFile>
 															<MediaIDList>

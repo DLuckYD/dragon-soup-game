@@ -16,13 +16,13 @@ public class AudioSlider : MonoBehaviour
         switch (type)
         {
             case AudioType.Music:
-                AkUnitySoundEngine.SetRTPCValue("Music_Volume", slider.value);
+                WwiseAudioManager.Instance.SetRTPCValue("Music_Volume", slider.value);
                 break;
             case AudioType.SFX:
-                AkUnitySoundEngine.SetRTPCValue("SFX_Volume", slider.value);
+                WwiseAudioManager.Instance.SetRTPCValue("SFX_Volume", slider.value);
                 break;
             case AudioType.Main:
-                AkUnitySoundEngine.SetRTPCValue("Master_Volume", slider.value);
+                WwiseAudioManager.Instance.SetRTPCValue("Master_Volume", slider.value);
                 break;
 
         }
