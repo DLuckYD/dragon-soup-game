@@ -15,7 +15,7 @@ public class UpgradeStation : MonoBehaviour
     [SerializeField] private string disabledMessage = "Station is locked";
 
     [Header("Audio")]
-    [SerializeField] private string useSoundEvent;
+    [SerializeField] private string useSoundEventName;
 
     [Header("Messages")]
     [SerializeField] private string successMessage = "Item modified";
@@ -66,9 +66,9 @@ public class UpgradeStation : MonoBehaviour
             return item;
         }
 
-        if (!string.IsNullOrEmpty(useSoundEvent))
+        if (!string.IsNullOrEmpty(useSoundEventName))
         {
-            AkUnitySoundEngine.PostEvent(useSoundEvent, gameObject);
+            WwiseAudioManager.Instance.PostEvent(useSoundEventName, gameObject);
         }
 
         foreach (ItemEffect effect in effects)

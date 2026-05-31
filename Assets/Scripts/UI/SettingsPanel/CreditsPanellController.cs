@@ -15,8 +15,8 @@ public class CreditsPanellController : MonoBehaviour
 
     private void BackToMenu()
     {
+        WwiseAudioManager.Instance.PostEvent("Ui_Button_Clicked", this.gameObject);
         this.gameObject.SetActive(false);
-
         mainMenuManager.ShowStartScreen();
     }
 }
