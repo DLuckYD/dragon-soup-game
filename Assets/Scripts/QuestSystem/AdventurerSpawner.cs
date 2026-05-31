@@ -1,6 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
+
 public class AdventurerSpawner : MonoBehaviour
 {
     [Header("Refs")]
@@ -41,9 +41,6 @@ public class AdventurerSpawner : MonoBehaviour
 
     public IReadOnlyList<AdventurerNPC> SpawnedAdventurers => spawnedAdventurers;
     public IReadOnlyList<AdventurerNPC> QueueAdventurers => queueAdventurers;
-
-    public static event Action<string> OnSpawned;
-    public static event Action<string> OnReturn;
 
     private int QueueCapacity
     {
@@ -102,7 +99,7 @@ public class AdventurerSpawner : MonoBehaviour
         if (spawnScheduled)
             return;
 
-        float delay = UnityEngine.Random.Range(minDelay, maxDelay);
+        float delay = Random.Range(minDelay, maxDelay);
 
         spawnScheduled = true;
         Invoke(nameof(SpawnNow), delay);
@@ -153,9 +150,7 @@ public class AdventurerSpawner : MonoBehaviour
         spawnedAdventurers.Add(npc);
         AddToQueue(npc, addToFront: false);
 
-        OnSpawned?.Invoke("A new adventurer has arrived!");
-
-        WwiseAudioManager.Instance.PostEvent("Adventurer_Arrived", npc.gameObject);
+        AkUnitySoundEngine.PostEvent("Adventurer_Arrives", gameObject);
 
         Debug.Log(
             "[ADVENTURER SPAWNER] Spawned adventurer: " +
@@ -200,7 +195,7 @@ public class AdventurerSpawner : MonoBehaviour
         if (available.Count == 0)
             return null;
 
-        return available[UnityEngine.Random.Range(0, available.Count)];
+        return available[Random.Range(0, available.Count)];
     }
 
     private bool IsAdventurerDataAlreadySpawned(string adventurerId)
@@ -315,8 +310,6 @@ public class AdventurerSpawner : MonoBehaviour
                 pendingReturnAdventurers.Insert(0, npc);
                 break;
             }
-
-            OnReturn?.Invoke("An adventurer has returned from a quest!");
         }
     }
 
@@ -357,9 +350,6 @@ public class AdventurerSpawner : MonoBehaviour
         if (HasFreeQueueSlot())
         {
             AddToQueue(npc, addToFront: true);
-
-            OnReturn?.Invoke("An adventurer has returned from a quest!");
-
             Debug.Log("[ADVENTURER SPAWNER] Returned adventurer added to queue: " + npc.Data.id);
         }
         else

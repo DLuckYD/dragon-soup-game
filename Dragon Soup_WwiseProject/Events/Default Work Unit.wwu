@@ -3,168 +3,97 @@
 	<Events>
 		<WorkUnit Name="Default Work Unit" ID="{22EBAD7D-DAAB-4BD0-813B-5BEE554941E4}" PersistMode="Standalone">
 			<ChildrenList>
-				<Folder Name="First_Level" ID="{59C13C14-75D3-4BB7-9518-6F99C4C419E5}" ShortID="281223633">
+				<Event Name="Ambient_Cauldron" ID="{27BE2CF3-F98F-480F-AB53-C4F996384CD0}">
 					<ChildrenList>
-						<Event Name="Adventurer_Arrived" ID="{6F18ED6B-F52E-4B36-A9B8-40B926735565}">
-							<ChildrenList>
-								<Action Name="" ID="{3A419E9F-10E9-45CE-A336-9AD04D1E1650}" ShortID="263986256">
-									<ReferenceList>
-										<Reference Name="Target">
-											<ObjectRef Name="New_Quest" ID="{0B327329-F0A4-44F5-84FA-87BFCEA47995}" WorkUnitID="{1D3CE180-6637-4348-B301-DDCBC094ECDF}"/>
-										</Reference>
-									</ReferenceList>
-								</Action>
-							</ChildrenList>
-						</Event>
-						<Event Name="Adventurer_Returned" ID="{DD608CF2-C506-4778-8135-FD906EE3A277}">
-							<ChildrenList>
-								<Action Name="" ID="{640C5F5E-7D12-4EE0-A3C1-A964A2E551DB}" ShortID="852130886">
-									<ReferenceList>
-										<Reference Name="Target">
-											<ObjectRef Name="Adventurer_Returned" ID="{C3A8F51F-0EE3-49D3-99D2-14ADC8262E70}" WorkUnitID="{1D3CE180-6637-4348-B301-DDCBC094ECDF}"/>
-										</Reference>
-									</ReferenceList>
-								</Action>
-							</ChildrenList>
-						</Event>
-						<Event Name="Play_First_Level_Music" ID="{E5E0F4D8-F41D-4389-9799-A48988D5B6F0}">
-							<ChildrenList>
-								<Action Name="" ID="{7D2F07BB-2F83-4C10-9819-5DD1634C46BF}" ShortID="260705708">
-									<ReferenceList>
-										<Reference Name="Target">
-											<ObjectRef Name="First_Level" ID="{E859CA17-1FF6-48FA-B1F0-9032B4341C20}" WorkUnitID="{1D3CE180-6637-4348-B301-DDCBC094ECDF}"/>
-										</Reference>
-									</ReferenceList>
-								</Action>
-							</ChildrenList>
-						</Event>
-						<Event Name="Item_Pickup" ID="{759B72CC-E1D9-4281-B6C6-565FF54DD6FA}">
-							<ChildrenList>
-								<Action Name="" ID="{4CFDB54C-D56B-4D80-9C6C-FE96034A91F1}" ShortID="987918396">
-									<ReferenceList>
-										<Reference Name="Target">
-											<ObjectRef Name="Item_Pickup" ID="{F12981C1-6036-407D-BF0B-6CBC1D0DC0B4}" WorkUnitID="{1D3CE180-6637-4348-B301-DDCBC094ECDF}"/>
-										</Reference>
-									</ReferenceList>
-								</Action>
-							</ChildrenList>
-						</Event>
-						<Event Name="Stop_First_Level_Music" ID="{797992A4-7021-45A2-B2DE-322467C9A48F}">
-							<ChildrenList>
-								<Action Name="" ID="{D58AFDCA-5F67-4331-85E6-1202DEC6AC09}" ShortID="837717366">
-									<PropertyList>
-										<Property Name="ActionType" Type="int16" Value="2"/>
-									</PropertyList>
-									<ReferenceList>
-										<Reference Name="Target">
-											<ObjectRef Name="First_Level" ID="{E859CA17-1FF6-48FA-B1F0-9032B4341C20}" WorkUnitID="{1D3CE180-6637-4348-B301-DDCBC094ECDF}"/>
-										</Reference>
-									</ReferenceList>
-								</Action>
-							</ChildrenList>
-						</Event>
-						<Event Name="Item_Drop" ID="{815002B8-5DEA-4306-8AD2-72379A5F5E3D}">
-							<ChildrenList>
-								<Action Name="" ID="{8CAE5B78-3A79-4131-B1CB-1D5C1BF86723}" ShortID="554291970">
-									<ReferenceList>
-										<Reference Name="Target">
-											<ObjectRef Name="Item_Drop" ID="{013DFB31-7C5D-458A-B41A-86FE35C26EF2}" WorkUnitID="{1D3CE180-6637-4348-B301-DDCBC094ECDF}"/>
-										</Reference>
-									</ReferenceList>
-								</Action>
-							</ChildrenList>
-						</Event>
-						<Event Name="Ambient_Cauldron" ID="{27BE2CF3-F98F-480F-AB53-C4F996384CD0}">
-							<ChildrenList>
-								<Action Name="" ID="{54D70A75-2196-4C8C-B9B3-DAEC3DC70A96}" ShortID="979250582">
-									<ReferenceList>
-										<Reference Name="Target">
-											<ObjectRef Name="Cauldron" ID="{75B394B4-4E71-4B83-A2E5-D4CF27FBE279}" WorkUnitID="{1D3CE180-6637-4348-B301-DDCBC094ECDF}"/>
-										</Reference>
-									</ReferenceList>
-								</Action>
-							</ChildrenList>
-						</Event>
-						<Event Name="Player_Footstep" ID="{44E4A7D9-6DF6-4DFC-B55D-4E79CC6398B5}">
-							<ChildrenList>
-								<Action Name="" ID="{F3DC5EC6-AC47-41B7-A0F5-006397DA801E}" ShortID="614154416">
-									<ReferenceList>
-										<Reference Name="Target">
-											<ObjectRef Name="player_footsteps" ID="{47741612-D81C-469D-B9F4-44FB4C227032}" WorkUnitID="{1D3CE180-6637-4348-B301-DDCBC094ECDF}"/>
-										</Reference>
-									</ReferenceList>
-								</Action>
-								<Action Name="" ID="{6D27C88C-0308-47E9-B464-629280CA9E77}" ShortID="588092602">
-									<PropertyList>
-										<Property Name="Probability" Type="Real64" Value="5"/>
-									</PropertyList>
-									<ReferenceList>
-										<Reference Name="Target">
-											<ObjectRef Name="object_floor_squeaking" ID="{582C8D66-08C7-470C-A355-C41E574A4205}" WorkUnitID="{1D3CE180-6637-4348-B301-DDCBC094ECDF}"/>
-										</Reference>
-									</ReferenceList>
-								</Action>
-							</ChildrenList>
-						</Event>
-						<Event Name="Workbench_Use" ID="{89A69C19-FCCA-4CE9-8BC0-1A0B27D54392}">
-							<ChildrenList>
-								<Action Name="" ID="{8AA13DAE-B0AF-415A-9429-CA99100545FB}" ShortID="323673419">
-									<ReferenceList>
-										<Reference Name="Target">
-											<ObjectRef Name="Workbench_Use" ID="{188749C4-961B-446E-B77E-5A400F33B930}" WorkUnitID="{1D3CE180-6637-4348-B301-DDCBC094ECDF}"/>
-										</Reference>
-									</ReferenceList>
-								</Action>
-							</ChildrenList>
-						</Event>
+						<Action Name="" ID="{54D70A75-2196-4C8C-B9B3-DAEC3DC70A96}" ShortID="979250582">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Cauldron" ID="{75B394B4-4E71-4B83-A2E5-D4CF27FBE279}" WorkUnitID="{1D3CE180-6637-4348-B301-DDCBC094ECDF}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
 					</ChildrenList>
-				</Folder>
-				<Folder Name="Main_Menu" ID="{A3AD14D7-A532-4A9F-9B01-EE881BDEA8DA}" ShortID="715734465">
+				</Event>
+				<Event Name="Play_First_Level_Music" ID="{E5E0F4D8-F41D-4389-9799-A48988D5B6F0}">
 					<ChildrenList>
-						<Event Name="Play_Menu_Music" ID="{41A5B1F1-CC0B-4546-BB79-4622499C2320}">
-							<ChildrenList>
-								<Action Name="" ID="{59CE1257-E7BD-4478-8D0A-DE2BE202A0A7}" ShortID="315797388">
-									<ReferenceList>
-										<Reference Name="Target">
-											<ObjectRef Name="Main_Menu" ID="{7DD389A1-3170-444F-A10D-A8ABA29CD199}" WorkUnitID="{1D3CE180-6637-4348-B301-DDCBC094ECDF}"/>
-										</Reference>
-									</ReferenceList>
-								</Action>
-							</ChildrenList>
-						</Event>
-						<Event Name="Stop_Menu_Music" ID="{12918CFF-C382-47C4-9435-2D39B8F10EAD}">
-							<ChildrenList>
-								<Action Name="" ID="{D3420820-422F-43BB-BFB1-8B50CFB25EB5}" ShortID="223554956">
-									<PropertyList>
-										<Property Name="ActionType" Type="int16" Value="2"/>
-										<Property Name="FadeTime" Type="Real64" Value="0.2"/>
-										<Property Name="Scope" Type="int16" Value="1"/>
-									</PropertyList>
-									<ReferenceList>
-										<Reference Name="Target">
-											<ObjectRef Name="Main_Menu" ID="{7DD389A1-3170-444F-A10D-A8ABA29CD199}" WorkUnitID="{1D3CE180-6637-4348-B301-DDCBC094ECDF}"/>
-										</Reference>
-									</ReferenceList>
-								</Action>
-							</ChildrenList>
-						</Event>
+						<Action Name="" ID="{7D2F07BB-2F83-4C10-9819-5DD1634C46BF}" ShortID="260705708">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="First_Level" ID="{E859CA17-1FF6-48FA-B1F0-9032B4341C20}" WorkUnitID="{1D3CE180-6637-4348-B301-DDCBC094ECDF}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
 					</ChildrenList>
-				</Folder>
-				<Folder Name="General" ID="{399F1F06-E38A-4901-8F19-9C28D465A007}" ShortID="777239969">
+				</Event>
+				<Event Name="Stop_First_Level_Music" ID="{797992A4-7021-45A2-B2DE-322467C9A48F}">
 					<ChildrenList>
-						<Event Name="Ui_Button_Clicked" ID="{B020B332-C236-434F-9262-955D2686B485}">
-							<ChildrenList>
-								<Action Name="" ID="{A3125BD9-4269-4A09-8A41-9499E628C08B}" ShortID="223345316">
-									<ReferenceList>
-										<Reference Name="Target">
-											<ObjectRef Name="ui_button_clicked" ID="{A8B4CA19-6FD1-43EC-B224-BEAF409C1D14}" WorkUnitID="{1D3CE180-6637-4348-B301-DDCBC094ECDF}"/>
-										</Reference>
-									</ReferenceList>
-								</Action>
-							</ChildrenList>
-						</Event>
+						<Action Name="" ID="{D58AFDCA-5F67-4331-85E6-1202DEC6AC09}" ShortID="837717366">
+							<PropertyList>
+								<Property Name="ActionType" Type="int16" Value="2"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="First_Level" ID="{E859CA17-1FF6-48FA-B1F0-9032B4341C20}" WorkUnitID="{1D3CE180-6637-4348-B301-DDCBC094ECDF}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
 					</ChildrenList>
-				</Folder>
+				</Event>
+				<Event Name="Workbench_Use" ID="{89A69C19-FCCA-4CE9-8BC0-1A0B27D54392}">
+					<ChildrenList>
+						<Action Name="" ID="{8AA13DAE-B0AF-415A-9429-CA99100545FB}" ShortID="323673419">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Workbench_Use" ID="{188749C4-961B-446E-B77E-5A400F33B930}" WorkUnitID="{1D3CE180-6637-4348-B301-DDCBC094ECDF}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Adventurer_Arrives" ID="{6F18ED6B-F52E-4B36-A9B8-40B926735565}">
+					<ChildrenList>
+						<Action Name="" ID="{3A419E9F-10E9-45CE-A336-9AD04D1E1650}" ShortID="263986256">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="New_Quest" ID="{0B327329-F0A4-44F5-84FA-87BFCEA47995}" WorkUnitID="{1D3CE180-6637-4348-B301-DDCBC094ECDF}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Adventurer_Returns" ID="{DD608CF2-C506-4778-8135-FD906EE3A277}">
+					<ChildrenList>
+						<Action Name="" ID="{640C5F5E-7D12-4EE0-A3C1-A964A2E551DB}" ShortID="852130886">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Adventurer_Returned" ID="{C3A8F51F-0EE3-49D3-99D2-14ADC8262E70}" WorkUnitID="{1D3CE180-6637-4348-B301-DDCBC094ECDF}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Item_Pickup" ID="{759B72CC-E1D9-4281-B6C6-565FF54DD6FA}">
+					<ChildrenList>
+						<Action Name="" ID="{4CFDB54C-D56B-4D80-9C6C-FE96034A91F1}" ShortID="987918396">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Item_Pickup" ID="{F12981C1-6036-407D-BF0B-6CBC1D0DC0B4}" WorkUnitID="{1D3CE180-6637-4348-B301-DDCBC094ECDF}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Item_Drop" ID="{815002B8-5DEA-4306-8AD2-72379A5F5E3D}">
+					<ChildrenList>
+						<Action Name="" ID="{8CAE5B78-3A79-4131-B1CB-1D5C1BF86723}" ShortID="554291970">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Item_Drop" ID="{013DFB31-7C5D-458A-B41A-86FE35C26EF2}" WorkUnitID="{1D3CE180-6637-4348-B301-DDCBC094ECDF}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
 			</ChildrenList>
 		</WorkUnit>
 	</Events>

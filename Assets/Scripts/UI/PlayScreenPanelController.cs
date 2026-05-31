@@ -13,7 +13,6 @@ public class PlayScreenPanelController : MonoBehaviour
     [SerializeField] private Button continueButton;
     [SerializeField] private Button newGameButton;
     [SerializeField] private Button backButton;
-    [SerializeField] private GameObject saveFilesPanel;
 
     [SerializeField] private MainMenuUIManager mainMenuManager;
 
@@ -27,26 +26,34 @@ public class PlayScreenPanelController : MonoBehaviour
 
     public void LoadSaveFile()
     {
-        WwiseAudioManager.Instance.PostEvent("Ui_Button_Clicked", gameObject);
-        gameObject.SetActive(false);
-        saveFilesPanel.SetActive(true);
+#if UNITY_EDITOR
+        string path = EditorUtility.OpenFilePanel(
+            "Select Save File",
+            Path.Combine(Application.persistentDataPath, "Saves"),
+            "json"
+        );
+
+        if (!string.IsNullOrEmpty(path))
+        {
+            GameSaveLoadManager.Instance.LoadTheSaveFile(path);
+        }
+#else
+    Debug.LogWarning("OpenFilePanel works only in Unity Editor. Use in-game save list for builds.");
+#endif
     }
 
     public void ContinueLastGame()
     {
-        WwiseAudioManager.Instance.PostEvent("Ui_Button_Clicked", gameObject);
         GameSaveLoadManager.Instance.ContinueGame();
     }
 
     public void CreateNewGame()
     {
-        WwiseAudioManager.Instance.PostEvent("Ui_Button_Clicked", gameObject);
         GameSaveLoadManager.Instance.StartNewGame();
     }
 
     public void OnBackPressed()
     {
-        WwiseAudioManager.Instance.PostEvent("Ui_Button_Clicked", gameObject);
         mainMenuManager.ShowStartScreen();
     }
 }

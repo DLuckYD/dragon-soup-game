@@ -5,16 +5,7 @@
 			<ChildrenList>
 				<SoundBank Name="main" ID="{BA897FD3-BFD2-4CDD-B5A9-A6F6B772CDC3}">
 					<ObjectInclusionList>
-						<ObjectRef Name="General" ID="{399F1F06-E38A-4901-8F19-9C28D465A007}" WorkUnitID="{22EBAD7D-DAAB-4BD0-813B-5BEE554941E4}" Origin="Manual" Filter="7"/>
-						<ObjectRef Name="First_Level" ID="{59C13C14-75D3-4BB7-9518-6F99C4C419E5}" WorkUnitID="{22EBAD7D-DAAB-4BD0-813B-5BEE554941E4}" Origin="Manual" Filter="7"/>
-					</ObjectInclusionList>
-					<ObjectExclusionList/>
-					<GameSyncExclusionList/>
-				</SoundBank>
-				<SoundBank Name="menu" ID="{479CF7B1-3409-498E-81BF-7CE23988384F}">
-					<ObjectInclusionList>
-						<ObjectRef Name="General" ID="{399F1F06-E38A-4901-8F19-9C28D465A007}" WorkUnitID="{22EBAD7D-DAAB-4BD0-813B-5BEE554941E4}" Origin="Manual" Filter="7"/>
-						<ObjectRef Name="Main_Menu" ID="{A3AD14D7-A532-4A9F-9B01-EE881BDEA8DA}" WorkUnitID="{22EBAD7D-DAAB-4BD0-813B-5BEE554941E4}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="Default Work Unit" ID="{22EBAD7D-DAAB-4BD0-813B-5BEE554941E4}" WorkUnitID="{22EBAD7D-DAAB-4BD0-813B-5BEE554941E4}" Origin="Manual" Filter="7"/>
 					</ObjectInclusionList>
 					<ObjectExclusionList/>
 					<GameSyncExclusionList/>

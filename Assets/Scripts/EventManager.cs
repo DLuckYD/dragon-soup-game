@@ -20,7 +20,7 @@ public class EventManager : MonoBehaviour
         OnItemDropped?.Invoke(item);
     }
 
-    public static void CallItemModified(RewardItem item, UpgradeStation station)
+    public static void CallItemUpgraded(RewardItem item, UpgradeStation station)
     {
         OnItemUpgraded?.Invoke(item, station);
     }

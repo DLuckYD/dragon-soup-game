@@ -4,7 +4,7 @@ public class SceneObjectsManager : MonoBehaviour
     public static SceneObjectsManager Instance { get; private set; }
 
     [Header("Items Database")]
-    [SerializeField] private ItemDatabase itemDatabase;
+    [SerializeField] private ItemDataBase itemDatabase;
 
     [SerializeField] private Transform worldItemsParent;
 
@@ -150,11 +150,11 @@ public class SceneObjectsManager : MonoBehaviour
 
     private void SpawnItemFromSave(SceneItemSaveData savedItem)
     {
-        IngredientData itemData = itemDatabase.GetItemById(savedItem.itemId);
+        ItemData itemData = itemDatabase.GetItemById(savedItem.itemId);
 
         if (itemData == null)
         {
-            Debug.LogWarning("[SCENE LOAD] Cannot spawn item. Missing IngredientData with id: " + savedItem.itemId);
+            Debug.LogWarning("[SCENE LOAD] Cannot spawn item. Missing ItemData with id: " + savedItem.itemId);
             return;
         }
 

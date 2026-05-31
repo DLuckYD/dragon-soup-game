@@ -12,24 +12,21 @@ public class QuestManager : MonoBehaviour
     [SerializeField] private HouseSpawner houseSpawner;
     [SerializeField] private HotbarManager playerInventory;
     [SerializeField] private AdventurerSpawner adventurerSpawner;
-    [SerializeField] private RecipeProgressManager recipeProgressManager;
 
     [Header("Items Database")]
-    [SerializeField] private ItemDatabase itemDatabase;
+    [SerializeField] private ItemDataBase itemDatabase;
 
     [Header("Dialogue JSON")]
     [SerializeField] private TextAsset dialogueJsonFile;
 
     [Header("Quest Generation (MVP)")]
-    [SerializeField] private IngredientData defaultIngredient;
+    [SerializeField] private ItemData defaultIngredient;
     [SerializeField] private int defaultAmount = 3;
     [SerializeField] private int defaultMinRewardValue = 10;
     [SerializeField] private float defaultReturnDelaySeconds = 15f;
 
     [Header("Recipe Pool")]
     [SerializeField] private List<Recipe> recipePool = new();
-
-    private Recipe currentActiveRecipe;
 
     // Fired when an item reward was consumed by the quest system.
     public event Action<object> OnRewardConsumed;
@@ -72,7 +69,7 @@ public class QuestManager : MonoBehaviour
         public string hintText;
 
         public Recipe recipe;
-        public IngredientData ingredientData;
+        public ItemData ingredientData;
         public string ingredientName;
         public Sprite ingredientIcon;
         public int amount;
@@ -84,7 +81,7 @@ public class QuestManager : MonoBehaviour
     private struct QuestTarget
     {
         public Recipe recipe;
-        public IngredientData ingredient;
+        public ItemData ingredient;
         public int amount;
     }
 
@@ -92,7 +89,7 @@ public class QuestManager : MonoBehaviour
     {
         public AdventurerNPC npc;
 
-        public IngredientData ingredient;
+        public ItemData ingredient;
         public int amount;
         public int minRewardValue;
         public float returnAtTime;
@@ -134,18 +131,7 @@ public class QuestManager : MonoBehaviour
         if (questUI != null)
             questUI.Initialize(this);
 
-        if (recipeProgressManager == null)
-            recipeProgressManager = FindFirstObjectByType<RecipeProgressManager>();
-
         LoadDialogueBank();
-    }
-
-    private void Start()
-    {
-        if (recipeProgressManager != null)
-        {
-            SetCurrentActiveRecipe(recipeProgressManager.CurrentActiveRecipe);
-        }
     }
 
     private void Update()
@@ -201,26 +187,6 @@ public class QuestManager : MonoBehaviour
         return true;
     }
 
-    public void SetCurrentActiveRecipe(Recipe recipe)
-    {
-        if (recipe == null)
-        {
-            Debug.LogWarning("[QUEST] Cannot set active recipe. Recipe is null.");
-            return;
-        }
-
-        currentActiveRecipe = recipe;
-
-        // Important: old bag was generated from previous recipe
-        targetBag.Clear();
-        bagIndex = 0;
-
-        // Optional, but useful: old offer previews may contain ingredients from previous recipe
-        offerPreviews.Clear();
-
-        Debug.Log("[QUEST] Active recipe set to: " + recipe.displayName);
-    }
-
     public OfferPreview GetOrCreateOfferPreview(AdventurerNPC npc)
     {
         if (npc == null)
@@ -232,7 +198,7 @@ public class QuestManager : MonoBehaviour
         // Pick quest target from the bag system.
         QuestTarget target = PickTargetFromRecipes();
 
-        IngredientData ingredient = target.ingredient != null ? target.ingredient : defaultIngredient;
+        ItemData ingredient = target.ingredient != null ? target.ingredient : defaultIngredient;
         int amount = Mathf.Max(1, target.amount);
 
         if (ingredient == null)
@@ -514,7 +480,7 @@ public class QuestManager : MonoBehaviour
             return;
         }
 
-        IngredientData ingredient = null;
+        ItemData ingredient = null;
 
         if (itemDatabase != null && !string.IsNullOrEmpty(savedQuest.ingredientId))
         {
@@ -640,20 +606,12 @@ public class QuestManager : MonoBehaviour
             amount = Mathf.Max(1, defaultAmount)
         };
 
-        if (currentActiveRecipe == null)
-        {
-            Debug.LogWarning("[QUEST] No active recipe set. Using default ingredient.");
+        if (recipePool == null || recipePool.Count == 0)
             return fallback;
-        }
 
-        if (currentActiveRecipe.ingredients == null || currentActiveRecipe.ingredients.Count == 0)
-        {
-            Debug.LogWarning("[QUEST] Active recipe has no ingredients: " + currentActiveRecipe.displayName);
-            return fallback;
-        }
-
+        // Build and shuffle the target bag when it is empty or exhausted.
         if (targetBag.Count == 0 || bagIndex >= targetBag.Count)
-            RebuildAndShuffleTargetBagFromActiveRecipe();
+            RebuildAndShuffleTargetBag();
 
         if (targetBag.Count == 0)
             return fallback;
@@ -664,30 +622,40 @@ public class QuestManager : MonoBehaviour
         return target;
     }
 
-    private void RebuildAndShuffleTargetBagFromActiveRecipe()
+    private void RebuildAndShuffleTargetBag()
     {
         targetBag.Clear();
         bagIndex = 0;
 
-        if (currentActiveRecipe == null || currentActiveRecipe.ingredients == null)
-            return;
+        // Each ingredient appears only once in the bag.
+        HashSet<ItemData> usedIngredients = new HashSet<ItemData>();
 
-        foreach (var ingredientEntry in currentActiveRecipe.ingredients)
+        foreach (Recipe recipe in recipePool)
         {
-            if (ingredientEntry == null || ingredientEntry.item == null)
+            if (recipe == null || recipe.ingredients == null)
                 continue;
 
-            targetBag.Add(new QuestTarget
+            foreach (var ingredientEntry in recipe.ingredients)
             {
-                recipe = currentActiveRecipe,
-                ingredient = ingredientEntry.item,
-                amount = Mathf.Max(1, ingredientEntry.amount)
-            });
+                if (ingredientEntry == null || ingredientEntry.item == null)
+                    continue;
+
+                if (!usedIngredients.Add(ingredientEntry.item))
+                    continue;
+
+                targetBag.Add(new QuestTarget
+                {
+                    recipe = recipe,
+                    ingredient = ingredientEntry.item,
+                    amount = Mathf.Max(1, ingredientEntry.amount)
+                });
+            }
         }
 
         if (targetBag.Count == 0)
             return;
 
+        // Fisher-Yates shuffle.
         for (int i = targetBag.Count - 1; i > 0; i--)
         {
             int j = UnityEngine.Random.Range(0, i + 1);
@@ -704,7 +672,7 @@ public class QuestManager : MonoBehaviour
 
         quest.returnAtTime = float.MaxValue;
 
-        WwiseAudioManager.Instance.PostEvent("Adventurer_Returned", quest.npc.gameObject);
+        AkUnitySoundEngine.PostEvent("Adventurer_Returns", gameObject);
 
         quest.npc.SetState(AdventurerState.WaitingReward);
 

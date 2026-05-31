@@ -1,9 +1,9 @@
-﻿using System;
-using TMPro;
+﻿using TMPro;
 using UnityEngine;
 
 public class PlayerInteraction : MonoBehaviour
 {
+
     private UpgradeStation upgradeStation;
     private InventoryItem heldItem;
 
@@ -23,7 +23,7 @@ public class PlayerInteraction : MonoBehaviour
 
     [Header("Cooking System")]
     public KeyCode activateCookBook = KeyCode.Tab;
-    public CookbookUI cookBook;
+    public Cookbook cookBook;
 
     private int activeHotbarIndex = -1;              // which hotbar slot is currently active
     private InventoryItem heldStackableVisual = null; // visual representation of stackable item in hands
@@ -31,13 +31,6 @@ public class PlayerInteraction : MonoBehaviour
     private CookingStation cookingStation;
     private InventoryItem nearbyItem; // item near the player for pickup
     private AdventurerNPC nearbyAdventurer;
-
-    // Events for key interactions
-    public static event Action<string> OnInteraction;
-    public static event Action OnEndedInteraction;
-
-    // Event for in game changes
-    public static event Action<string> OnLockedItemInteraction;
 
     void Update()
     {
@@ -69,164 +62,60 @@ public class PlayerInteraction : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        // NEW:
-        // We search for UpgradeStation not only on the collider object,
-        // but also on its parent.
-        //
-        // This is important because many stations have this hierarchy:
-        //
-        // MagicFridge
-        //   ├── UpgradeStation
-        //   └── InteractionTrigger
-        //        └── BoxCollider
-        //
-        // In that case "other" is InteractionTrigger, not MagicFridge.
-        
-        Debug.Log(
-            $"[TRIGGER ENTER RAW] other={other.name}, " +
-            $"root={other.transform.root.name}, " +
-            $"parent={(other.transform.parent != null ? other.transform.parent.name : "NULL")}, " +
-            $"layer={LayerMask.LayerToName(other.gameObject.layer)}, " +
-            $"isTrigger={other.isTrigger}"
-        );
-        
-        UpgradeStation station = other.GetComponentInParent<UpgradeStation>();
-
-        if (station != null)
+        if (other.TryGetComponent(out UpgradeStation workbench))
         {
-            upgradeStation = station;
-
-            if (!upgradeStation.CanInteract)
-            {
-                OnLockedItemInteraction?.Invoke($"This station is locked.");
-                Debug.Log($"[INTERACTION] Entered locked upgrade station: {station.name}");
-                return;
-            }
-            else
-            {
-                OnInteraction?.Invoke($"Press {upgradeKey} to modify item");
-            }
-
-            Debug.Log($"[INTERACTION] Entered upgrade station: {station.name} through collider: {other.name}");
+            upgradeStation = workbench;
+            buttonPressedText.text = $"Press {upgradeKey} to upgrade item";
         }
 
-        RoomDoor door = other.GetComponentInParent<RoomDoor>();
-
-        if (door != null)
-        {
-            if (door.IsLocked)
-            {
-                OnLockedItemInteraction?.Invoke($"The door is locked!");
-            }
-        }
-
-        // Better to also use GetComponentInParent here,
-        // because AdventurerNPC may also have colliders on child objects.
-        AdventurerNPC adventurer = other.GetComponentInParent<AdventurerNPC>();
-
-        if (adventurer != null)
+        if (other.TryGetComponent(out AdventurerNPC adventurer))
         {
             nearbyAdventurer = adventurer;
-
-            OnInteraction?.Invoke($"Press {talkKey} to talk to adventurer");
-
-            Debug.Log($"[INTERACTION] Entered adventurer: {adventurer.name}");
+            buttonPressedText.text = $"Press {talkKey} to talk to adventurer";
         }
 
-        // Same idea for CookingStation.
-        // The trigger collider may be on a child object.
-        CookingStation cauldron = other.GetComponentInParent<CookingStation>();
-
-        if (cauldron != null)
+        var cauldron = other.GetComponent<CookingStation>();
+        if(cauldron != null)
         {
             cookingStation = cauldron;
-
-            OnInteraction?.Invoke($"Press {activateCookBook} to cook a dish");
-
-            Debug.Log($"[INTERACTION] Entered cooking station: {cauldron.name}");
+            buttonPressedText.text = $"Press {activateCookBook} to cook a dish";
         }
 
-        // Existing item debug check.
-        FoodItem item = other.GetComponentInParent<FoodItem>();
-
-        if (item != null)
+        var item = other.GetComponentInParent<InventoryItem>();
+        if (item != null && item.itemData == null)
         {
-            if(!item.isHeld && !item.isInInventory)
-            {
-                nearbyItem = item;
-
-                OnInteraction?.Invoke($"Press {pickKey} to add to inventory");
-                Debug.Log($"[INTERACTION] Entered item pickup area: {item.name}");
-            }
-            return;
-        }
-
-        RewardItem reward = other.GetComponentInParent<RewardItem>();
-
-        if (reward != null)
-        {
-            if (!reward.isHeld && !reward.isInInventory)
-            {
-                nearbyItem = reward;
-
-                OnInteraction?.Invoke($"Press {pickKey} to pick up");
-                Debug.Log($"[INTERACTION] Entered item pickup area: {reward.name}");
-            }
-            Debug.LogWarning($"RewardItem '{reward.name}' has NULL itemData (triggered by collider '{other.name}')");
+            Debug.LogWarning($"InventoryItem '{item.name}' has NULL itemData (triggered by collider '{other.name}')");
             return;
         }
     }
 
     private void OnTriggerExit(Collider other)
     {
-        // NEW:
-        // Again, use GetComponentInParent.
-        // Otherwise exiting from child trigger will not correctly clear upgradeStation.
-        UpgradeStation station = other.GetComponentInParent<UpgradeStation>();
-
-        if (station != null && station == upgradeStation)
+        var workbench = other.GetComponent<UpgradeStation>();
+        if (workbench == upgradeStation)
         {
-            Debug.Log($"[INTERACTION] Exited upgrade station: {station.name}");
-
             upgradeStation = null;
-
-            OnEndedInteraction?.Invoke();
+            buttonPressedText.text = "";
         }
 
-        AdventurerNPC adventurer = other.GetComponentInParent<AdventurerNPC>();
-
-        if (adventurer != null && adventurer == nearbyAdventurer)
+        if (other.TryGetComponent(out AdventurerNPC adventurer) &&
+            adventurer == nearbyAdventurer)
         {
-            Debug.Log($"[INTERACTION] Exited adventurer: {adventurer.name}");
-
             nearbyAdventurer = null;
-
-            OnEndedInteraction?.Invoke();
+            buttonPressedText.text = "";
         }
 
-        CookingStation cauldron = other.GetComponentInParent<CookingStation>();
-
-        if (cauldron != null && cauldron == cookingStation)
+        var cauldron = other.GetComponent<CookingStation>();
+        if (cauldron == cookingStation)
         {
-            Debug.Log($"[INTERACTION] Exited cooking station: {cauldron.name}");
-
             cookingStation = null;
-
-            OnEndedInteraction?.Invoke();
+            buttonPressedText.text = "";
         }
 
-        InventoryItem item = other.GetComponentInParent<InventoryItem>();
-
-        if (item != null)
+        var item = other.GetComponent<InventoryItem>();
+        if (item != null && item == nearbyItem)
         {
-            if(nearbyItem != null && item == nearbyItem)
-            {
-                Debug.Log($"[INTERACTION] Exited food item: {item.name}");
-
-                nearbyItem = null;
-
-                OnEndedInteraction?.Invoke();
-            }
+            nearbyItem = null;
         }
     }
 
@@ -243,9 +132,6 @@ public class PlayerInteraction : MonoBehaviour
                         bool isAdded = hotbarManager.TryAddStackableItemToInventory(inventoryItem);
                         if (isAdded)
                         {
-                            nearbyItem = null;
-                            OnEndedInteraction?.Invoke();
-
                             Debug.Log("Stackable item added to inventory.");
                             return;
                         }
@@ -259,10 +145,6 @@ public class PlayerInteraction : MonoBehaviour
                         heldItem = inventoryItem;
                         heldItem.Grab(objectGrabPointTransform);
                         heldItem.isHeld = true;
-                        
-                        nearbyItem = null;
-                        OnInteraction?.Invoke($"Press {addToInventoryKey} to add to inventory");
-                        
 
                         EventManager.CallItemPickedUp(heldItem);
                         Debug.Log("Picked up ");
@@ -280,12 +162,10 @@ public class PlayerInteraction : MonoBehaviour
                 heldItem.Drop();
                 heldItem = null;
                 Debug.Log("Dropped held item");
-
-                OnEndedInteraction?.Invoke();
             }
             else
             {
-                OnInteraction?.Invoke($"Press {addToInventoryKey} to drop the item");
+                buttonPressedText.text = $"Use hotbar to drop the item";
             }
         }
     }
@@ -316,7 +196,6 @@ public class PlayerInteraction : MonoBehaviour
             {
                 heldItem.isHeld = false;
                 heldItem = null;
-                OnEndedInteraction?.Invoke();
 
                 Debug.Log("Item stored in inventory from world.");
             }
@@ -379,7 +258,6 @@ public class PlayerInteraction : MonoBehaviour
             activeHotbarIndex = -1;
 
             Debug.Log("Dropped non-stackable from inventory.");
-            OnEndedInteraction?.Invoke();
         }
     }
 
@@ -436,8 +314,6 @@ public class PlayerInteraction : MonoBehaviour
             ClearHands(dropWorldItem: dropWorld);
 
             activeHotbarIndex = -1;
-            OnEndedInteraction?.Invoke();
-
             Debug.Log("Selected empty hotbar slot, cleared hands");
             return;
         }
@@ -457,8 +333,6 @@ public class PlayerInteraction : MonoBehaviour
             heldItem.Grab(objectGrabPointTransform);
             heldItem.isHeld = true;
 
-            OnInteraction?.Invoke($"Press {addToInventoryKey} to drop from inventory");
-
             Debug.Log("Equipped NON-stackable from slot " + (index + 1));
             return;
         }
@@ -469,8 +343,6 @@ public class PlayerInteraction : MonoBehaviour
             activeHotbarIndex = index;
             EquipStackableFromSlot(slot);
 
-            OnInteraction?.Invoke($"Press {addToInventoryKey} to drop from inventory");
-
             Debug.Log("Equipped STACKABLE visual from slot " + (index + 1));
             return;
         }
@@ -480,8 +352,6 @@ public class PlayerInteraction : MonoBehaviour
         {
             activeHotbarIndex = index;
             EquipNonStackableFromSlot(slot);
-
-            OnInteraction?.Invoke($"Press {addToInventoryKey} to drop from inventory");
 
             Debug.Log("Equipped NON-stackable visual from itemData slot " + (index + 1));
             return;
@@ -506,60 +376,21 @@ public class PlayerInteraction : MonoBehaviour
 
     void TryUpgradeItem()
     {
-        if (upgradeStation == null)
+        if (upgradeStation != null && heldItem is RewardItem reward && reward.isInInventory && !reward.isUpgraded)
+        {
+            upgradeStation.UpgradeItem(reward);
+            Debug.Log("is upgraded value=" + reward.Value);
+            EventManager.CallItemUpgraded(reward, upgradeStation);
+        }
+        else if (upgradeStation != null && heldItem == null)
+        {
+            Debug.Log("There's nothing in hands, nothing to upgrade");
+        }
+        else
         {
             Debug.Log("There's no upgrade station");
-            return;
         }
-
-        if (heldItem == null)
-        {
-            Debug.Log("There's nothing in hands, nothing to modify");
-            return;
-        }
-
-        if (heldItem is not RewardItem reward)
-        {
-            Debug.Log("Held item is not a reward item");
-            return;
-        }
-
-        if (!reward.isInInventory)
-        {
-            Debug.Log("Item is not in inventory");
-            return;
-        }
-
-        
-        Debug.Log($"[UPGRADE] Using station: {upgradeStation.name}");
-        Debug.Log($"[UPGRADE] Item before: {reward.name}, Value={reward.Value}, State={reward.CurrentState}");
-
-        RewardItem result = upgradeStation.UpgradeItem(reward);
-
-        if (result == null)
-        {
-            Debug.Log("Item was destroyed or removed by station");
-            heldItem = null;
-            return;
-        }
-        
-        
-        Debug.Log($"[UPGRADE] Item after: {result.name}, Value={result.Value}, State={result.CurrentState}");
-
-        
-        if (!upgradeStation.LastProcessSuccessful)
-        {
-            Debug.Log("Station did not modify the item.");
-            return;
-        }
-
-        Debug.Log("Item processed. Current value = " + result.Value);
-
-        EventManager.CallItemModified(result, upgradeStation);
     }
-    
-    
-    
     private void OpenAndCloseCookBook()
     {
         if (cookingStation == null)
