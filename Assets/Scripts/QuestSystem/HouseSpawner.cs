@@ -1,25 +1,21 @@
 using UnityEngine;
 using System;
-
-
-
 public class HouseSpawner : MonoBehaviour
 {
     [SerializeField] private Transform[] spawnPoints;
     
-    public static HouseSpawner Instance { get; private set; }
     public static event Action<string> OnSpawned;
     
 
-    public void SpawnObject(ItemData ingridient, int amount)
+    public void SpawnObject(IngredientData ingredient, int amount)
     {
 
-        if (ingridient == null || spawnPoints == null)
+        if (ingredient == null || spawnPoints == null)
         {
-            Debug.Log("HouseSpawner: ingridien/spawnPoints is null or empty");
+            Debug.Log("HouseSpawner: ingredient/spawnPoints is null or empty");
         }
-        
-        if (ingridient == null || spawnPoints.Length == 0)
+
+        if (ingredient == null || spawnPoints.Length == 0)
         {
             Debug.Log("HouseSpawner: spawnPoints not assigned");
         }
@@ -27,12 +23,8 @@ public class HouseSpawner : MonoBehaviour
         for (int i = 0; i < amount; i++)
         {
             var v = spawnPoints[UnityEngine.Random.Range(0, spawnPoints.Length)];
-            Instantiate( ingridient.worldPrefab, v.position, v.rotation);
-            OnSpawned?.Invoke("Items added in supply box ");
-            
-
-
+            Instantiate(ingredient.worldPrefab, v.position, v.rotation);
+            OnSpawned?.Invoke("Items added to supply box");    
         }
-
     }
 }

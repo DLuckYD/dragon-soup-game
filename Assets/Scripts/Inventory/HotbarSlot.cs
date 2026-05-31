@@ -10,7 +10,7 @@ public class HotbarSlot : MonoBehaviour
     public TMP_Text amountText;
 
     [Header("Stackable Data")]
-    public ItemData itemData;
+    public IngredientData itemData;
     public int amount = 0;
     public Color originalColor;
 
@@ -36,7 +36,7 @@ public class HotbarSlot : MonoBehaviour
 
     public void UpdateUI()
     {
-        ItemData data = uniqueItem != null ? uniqueItem.itemData : itemData;
+        IngredientData data = uniqueItem != null ? uniqueItem.itemData : itemData;
 
         if (data == null || (uniqueItem == null && amount <= 0))
         {
