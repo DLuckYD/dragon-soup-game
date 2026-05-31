@@ -13,6 +13,7 @@ public class PlayScreenPanelController : MonoBehaviour
     [SerializeField] private Button continueButton;
     [SerializeField] private Button newGameButton;
     [SerializeField] private Button backButton;
+    [SerializeField] private GameObject saveFilesPanel;
 
     [SerializeField] private MainMenuUIManager mainMenuManager;
 
@@ -26,20 +27,8 @@ public class PlayScreenPanelController : MonoBehaviour
 
     public void LoadSaveFile()
     {
-#if UNITY_EDITOR
-        string path = EditorUtility.OpenFilePanel(
-            "Select Save File",
-            Path.Combine(Application.persistentDataPath, "Saves"),
-            "json"
-        );
-
-        if (!string.IsNullOrEmpty(path))
-        {
-            GameSaveLoadManager.Instance.LoadTheSaveFile(path);
-        }
-#else
-    Debug.LogWarning("OpenFilePanel works only in Unity Editor. Use in-game save list for builds.");
-#endif
+        gameObject.SetActive(false);
+        saveFilesPanel.SetActive(true);
     }
 
     public void ContinueLastGame()

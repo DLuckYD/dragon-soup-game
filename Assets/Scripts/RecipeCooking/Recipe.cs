@@ -2,10 +2,10 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-[System.Serializable]
+[Serializable]
 public class IngredientAmount
 {
-    public ItemData item;
+    public IngredientData item;
     public int amount;
 }
 
@@ -15,7 +15,8 @@ public class Recipe : ScriptableObject
     public string id;
     public string displayName;
     public List<IngredientAmount> ingredients;
-    public ItemData result;
+    public IngredientData result;
     public float cookTime;
     public Sprite icon;
+    public List<ProgressionEffect> progressionEffects;
 }
