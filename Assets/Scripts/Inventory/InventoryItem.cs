@@ -40,8 +40,8 @@ public abstract class InventoryItem : MonoBehaviour
         }
         if(name == "Bowl" || name == "Knife")
         {
-            WwiseAudioManager.Instance.SetSwitchValue("Item_Type", "Metal", gameObject);
-            WwiseAudioManager.Instance.PostEvent("Item_Pickup", gameObject);
+            AkUnitySoundEngine.SetSwitch("Item_Type", "Metal", gameObject);
+            AkUnitySoundEngine.PostEvent("Item_Pickup", gameObject);
         }
         Debug.Log($"[{name}] Grabbed");
     }
@@ -60,8 +60,8 @@ public abstract class InventoryItem : MonoBehaviour
 
         if (name == "Bowl" || name == "Knife")
         {
-            WwiseAudioManager.Instance.SetSwitchValue("Item_Type", "Metal", gameObject);
-            WwiseAudioManager.Instance.PostEvent("Item_Drop", gameObject);
+            AkUnitySoundEngine.SetSwitch("Item_Type", "Metal", gameObject);
+            AkUnitySoundEngine.PostEvent("Item_Drop", gameObject);
         }
 
         Debug.Log($"[{name}] Dropped");
