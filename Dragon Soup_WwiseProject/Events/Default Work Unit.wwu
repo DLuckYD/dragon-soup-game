@@ -157,7 +157,7 @@
 								<Action Name="" ID="{A3125BD9-4269-4A09-8A41-9499E628C08B}" ShortID="223345316">
 									<ReferenceList>
 										<Reference Name="Target">
-											<ObjectRef Name="ui_button_clicked" ID="{A8B4CA19-6FD1-43EC-B224-BEAF409C1D14}" WorkUnitID="{1D3CE180-6637-4348-B301-DDCBC094ECDF}"/>
+											<ObjectRef Name="ui_button_confirm" ID="{A8B4CA19-6FD1-43EC-B224-BEAF409C1D14}" WorkUnitID="{1D3CE180-6637-4348-B301-DDCBC094ECDF}"/>
 										</Reference>
 									</ReferenceList>
 								</Action>

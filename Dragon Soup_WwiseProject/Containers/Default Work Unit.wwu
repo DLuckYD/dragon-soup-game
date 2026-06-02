@@ -196,12 +196,17 @@
 								</Sound>
 							</ChildrenList>
 						</Folder>
-						<Folder Name="Crafting Stations" ID="{F9CA48CF-0223-446A-A74E-665C35544ED1}" ShortID="798909724">
+						<Folder Name="Upgrade Stations" ID="{F9CA48CF-0223-446A-A74E-665C35544ED1}" ShortID="798909724">
 							<ChildrenList>
 								<RandomSequenceContainer Name="Workbench_Use" ID="{188749C4-961B-446E-B77E-5A400F33B930}" ShortID="536561041">
 									<PropertyList>
 										<Property Name="PlayMechanismStepOrContinuous" Type="int16" Value="0"/>
 										<Property Name="RandomOrSequence" Type="int16" Value="0"/>
+										<Property Name="Volume" Type="Real64">
+											<ValueList>
+												<Value>7</Value>
+											</ValueList>
+										</Property>
 									</PropertyList>
 									<ReferenceList>
 										<Reference Name="Conversion">
@@ -286,6 +291,50 @@
 										</ObjectList>
 									</ObjectLists>
 								</RandomSequenceContainer>
+								<Sound Name="Fireplace_Fail" ID="{F8897164-92BA-42D5-98CA-CB513B56784C}" ShortID="270764039">
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{27F70A5B-D7C2-4BA9-9793-BA39E1BC8B1D}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{0C9031E4-8081-4B6E-AB6C-02891DDBDDA8}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<AudioFileSource Name="Fireplace_Fail" ID="{C88DBCE4-8413-4D3A-8F22-A8AC31013C3B}">
+											<Language>SFX</Language>
+											<AudioFile>SFX\Fireplace_Fail.wav</AudioFile>
+											<MediaIDList>
+												<MediaID ID="1017694766"/>
+											</MediaIDList>
+										</AudioFileSource>
+									</ChildrenList>
+									<ActiveSourceList>
+										<ActiveSource Name="Fireplace_Fail" ID="{C88DBCE4-8413-4D3A-8F22-A8AC31013C3B}" Platform="Linked"/>
+									</ActiveSourceList>
+								</Sound>
+								<Sound Name="Fireplace_Use" ID="{4CA9B0B7-87B2-4179-ADB1-D460026A38DC}" ShortID="1028231709">
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{27F70A5B-D7C2-4BA9-9793-BA39E1BC8B1D}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{0C9031E4-8081-4B6E-AB6C-02891DDBDDA8}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<AudioFileSource Name="Fireplace_Use" ID="{AD65E948-D757-4AD6-92F6-A73EB5DF91B4}">
+											<Language>SFX</Language>
+											<AudioFile>SFX\Fireplace_Use.wav</AudioFile>
+											<MediaIDList>
+												<MediaID ID="809256068"/>
+											</MediaIDList>
+										</AudioFileSource>
+									</ChildrenList>
+									<ActiveSourceList>
+										<ActiveSource Name="Fireplace_Use" ID="{AD65E948-D757-4AD6-92F6-A73EB5DF91B4}" Platform="Linked"/>
+									</ActiveSourceList>
+								</Sound>
 							</ChildrenList>
 						</Folder>
 						<Folder Name="Interactable Objects" ID="{5C635807-8E87-43C4-BF5C-B3797FD5993D}" ShortID="603045076">
@@ -534,7 +583,7 @@
 										<ActiveSource Name="New_Quest" ID="{42D802BD-FEA8-4ABF-B294-7A990FEF8F88}" Platform="Linked"/>
 									</ActiveSourceList>
 								</Sound>
-								<Sound Name="ui_button_clicked" ID="{A8B4CA19-6FD1-43EC-B224-BEAF409C1D14}" ShortID="681619158">
+								<Sound Name="ui_button_confirm" ID="{A8B4CA19-6FD1-43EC-B224-BEAF409C1D14}" ShortID="681619158">
 									<ReferenceList>
 										<Reference Name="Conversion">
 											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{27F70A5B-D7C2-4BA9-9793-BA39E1BC8B1D}"/>
@@ -554,6 +603,40 @@
 									</ChildrenList>
 									<ActiveSourceList>
 										<ActiveSource Name="ui_menu_item_selected" ID="{497AF643-9B9D-4523-B058-3170F0AC2888}" Platform="Linked"/>
+									</ActiveSourceList>
+								</Sound>
+								<Sound Name="ui_button_cancel" ID="{FDBAA6B3-DDC8-4ACF-9ABA-DE972A92F7B7}" ShortID="959940441">
+									<PropertyList>
+										<Property Name="Highpass" Type="int16">
+											<ValueList>
+												<Value>19</Value>
+											</ValueList>
+										</Property>
+										<Property Name="Pitch" Type="int32">
+											<ValueList>
+												<Value>250</Value>
+											</ValueList>
+										</Property>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{27F70A5B-D7C2-4BA9-9793-BA39E1BC8B1D}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{0C9031E4-8081-4B6E-AB6C-02891DDBDDA8}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<AudioFileSource Name="ui_menu_back" ID="{74C0AE6D-80C9-4BD6-87F8-F8D6066044D8}">
+											<Language>SFX</Language>
+											<AudioFile>SFX\ui_menu_back.wav</AudioFile>
+											<MediaIDList>
+												<MediaID ID="296110718"/>
+											</MediaIDList>
+										</AudioFileSource>
+									</ChildrenList>
+									<ActiveSourceList>
+										<ActiveSource Name="ui_menu_back" ID="{74C0AE6D-80C9-4BD6-87F8-F8D6066044D8}" Platform="Linked"/>
 									</ActiveSourceList>
 								</Sound>
 							</ChildrenList>
