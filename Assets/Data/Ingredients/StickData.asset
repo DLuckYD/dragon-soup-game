@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ItemData
   id: stick
   displayName: Stick
-  icon: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
+  icon: {fileID: 21300000, guid: ff278e1394377d647a02c86dbdcd9a68, type: 3}
   isStackable: 1
   maxStackSize: 12
   worldPrefab: {fileID: 8955708383824330551, guid: 227aae3785930364b971abf308d4d38c, type: 3}

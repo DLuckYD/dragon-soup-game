@@ -157,11 +157,11 @@ MonoBehaviour:
   itemData: {fileID: 11400000, guid: f9dd8e86ffc6e2d4a9fd5e17f0530380, type: 2}
   isInInventory: 0
   isHeld: 0
-  type: 2
-  Value: 3
+  type: 1
+  Value: 1
+  canBeModified: 1
+  currentState: 0
   isUpgraded: 0
-  canBeUpgrated: 1
-  defaultMat: {fileID: -876546973899608171, guid: 97899fcd38592594ea3ad0854e29c43b, type: 3}
   upgradedMat: {fileID: 15303, guid: 0000000000000000f000000000000000, type: 0}
 --- !u!54 &6168853285216965811
 Rigidbody:

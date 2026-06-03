@@ -1,6 +1,5 @@
 using System;
 using System.Collections.Generic;
-using System.Reflection;
 using UnityEngine;
 
 public class QuestManager : MonoBehaviour
@@ -13,6 +12,7 @@ public class QuestManager : MonoBehaviour
     [SerializeField] private HotbarManager playerInventory;
     [SerializeField] private AdventurerSpawner adventurerSpawner;
     [SerializeField] private RecipeProgressManager recipeProgressManager;
+    [SerializeField] private RewardTradeManager rewardTradeManager;
 
     [Header("Items Database")]
     [SerializeField] private ItemDatabase itemDatabase;
@@ -23,7 +23,7 @@ public class QuestManager : MonoBehaviour
     [Header("Quest Generation (MVP)")]
     [SerializeField] private IngredientData defaultIngredient;
     [SerializeField] private int defaultAmount = 3;
-    [SerializeField] private int defaultMinRewardValue = 10;
+    [SerializeField] private int defaultDifficultyLevel = 1;
     [SerializeField] private float defaultReturnDelaySeconds = 15f;
 
     [Header("Recipe Pool")]
@@ -77,7 +77,7 @@ public class QuestManager : MonoBehaviour
         public Sprite ingredientIcon;
         public int amount;
 
-        public int minRewardValue;
+        public int difficultyLevel;
         public float returnDelaySeconds;
     }
 
@@ -94,10 +94,11 @@ public class QuestManager : MonoBehaviour
 
         public IngredientData ingredient;
         public int amount;
-        public int minRewardValue;
-        public float returnAtTime;
+        
+        // Difficulty comes from the recipe used for this quest.
+        public int difficultyLevel;
 
-        public int attemptsLeft;
+        public float returnAtTime;
 
         public string introId;
         public string outroId;
@@ -109,8 +110,9 @@ public class QuestManager : MonoBehaviour
     {
         public string ingredientName;
         public int amount;
-        public int minRewardValue;
-        public int attemptsLeft;
+        
+        public int difficultyLevel;
+        public int haggleAttemptsLeft;
     }
 
     // ------------------ Unity ------------------
@@ -136,6 +138,9 @@ public class QuestManager : MonoBehaviour
 
         if (recipeProgressManager == null)
             recipeProgressManager = FindFirstObjectByType<RecipeProgressManager>();
+        
+        if (rewardTradeManager == null)
+            rewardTradeManager = FindFirstObjectByType<RewardTradeManager>();
 
         LoadDialogueBank();
     }
@@ -193,8 +198,8 @@ public class QuestManager : MonoBehaviour
         {
             ingredientName = quest.ingredient != null ? quest.ingredient.displayName : "Ingredient",
             amount = quest.amount,
-            minRewardValue = quest.minRewardValue,
-            attemptsLeft = quest.attemptsLeft
+            difficultyLevel = quest.difficultyLevel,
+            haggleAttemptsLeft = rewardTradeManager.GetAttemptsLeft(npc) 
         };
 
         questUI.OpenReturnUI(npc, info);
@@ -221,6 +226,20 @@ public class QuestManager : MonoBehaviour
         Debug.Log("[QUEST] Active recipe set to: " + recipe.displayName);
     }
 
+    
+    private int GetDifficultyLevelFromRecipe(Recipe recipe)
+    {
+        if (recipe != null)
+            return Mathf.Max(1, recipe.difficultyLevel);
+
+        if (currentActiveRecipe != null)
+            return Mathf.Max(1, currentActiveRecipe.difficultyLevel);
+
+        Debug.LogWarning("[QUEST] Recipe is missing. Using default difficulty level.");
+
+        return Mathf.Max(1, defaultDifficultyLevel);
+    }
+    
     public OfferPreview GetOrCreateOfferPreview(AdventurerNPC npc)
     {
         if (npc == null)
@@ -241,7 +260,7 @@ public class QuestManager : MonoBehaviour
         if (amount <= 0)
             amount = Mathf.Max(1, defaultAmount);
 
-        int minValue = Mathf.Max(0, defaultMinRewardValue);
+        int difficultyLevel = GetDifficultyLevelFromRecipe(target.recipe);
         float delay = Mathf.Max(1f, defaultReturnDelaySeconds);
 
         // Pick dialogue lines.
@@ -278,7 +297,7 @@ public class QuestManager : MonoBehaviour
             ingredientIcon = ingredientIcon,
             amount = amount,
 
-            minRewardValue = minValue,
+            difficultyLevel = difficultyLevel,
             returnDelaySeconds = delay
         };
 
@@ -305,9 +324,8 @@ public class QuestManager : MonoBehaviour
             npc = npc,
             ingredient = preview.ingredientData != null ? preview.ingredientData : defaultIngredient,
             amount = Mathf.Max(1, preview.amount),
-            minRewardValue = Mathf.Max(0, preview.minRewardValue),
+            difficultyLevel = Mathf.Max(1, preview.difficultyLevel),
             returnAtTime = Time.time + Mathf.Max(1f, preview.returnDelaySeconds),
-            attemptsLeft = 2,
 
             introId = preview.introId,
             outroId = preview.outroId,
@@ -337,7 +355,7 @@ public class QuestManager : MonoBehaviour
             "[QUEST ACCEPTED] NPC: " + GetNpcDebugName(npc) +
             " | ingredient: " + (quest.ingredient != null ? quest.ingredient.id : "NULL") +
             " | amount: " + quest.amount +
-            " | minRewardValue: " + quest.minRewardValue +
+            " | difficultyLevel: " + quest.difficultyLevel +
             " | returnAtTime: " + quest.returnAtTime +
             " | remaining: " + (quest.returnAtTime - Time.time) +
             " | activeQuests count: " + activeQuests.Count
@@ -369,55 +387,102 @@ public class QuestManager : MonoBehaviour
         if (npc.State != AdventurerState.WaitingReward)
             return;
 
-        if (playerInteraction == null || playerInteraction.getHeldItem() == null)
+        if (rewardTradeManager == null)
         {
+            Debug.LogError("[QUEST] RewardTradeManager is missing.");
             OpenReturnUIForQuest(npc, quest);
             return;
         }
 
-        object heldItem = playerInteraction.getHeldItem();
+        InventoryItem heldItem = playerInteraction != null ? playerInteraction.getHeldItem() : null;
 
-        if (!TryGetItemValue(heldItem, out int value))
+        RewardTradeSubmitResult tradeResult = rewardTradeManager.SubmitReward(
+            npc,
+            heldItem,
+            quest.difficultyLevel
+        );
+
+        Debug.Log("[QUEST TRADE] " + tradeResult.message);
+
+        switch (tradeResult.outcome)
         {
-            OpenReturnUIForQuest(npc, quest);
-            return;
-        }
+            case RewardTradeSubmitOutcome.Accepted:
+                // RewardTradeManager decided that the item is accepted.
+                // QuestManager is still responsible for consuming the item,
+                // spawning the ingredient, and finishing the quest.
+                questUI?.ShowRewardTradeFeedback(tradeResult);
+                CompleteSuccessfulTrade(npc, quest, tradeResult.rewardItem);
+                break;
 
-        quest.attemptsLeft--;
-
-        if (value >= quest.minRewardValue)
-        {
-            // Success: consume reward item.
-            InventoryItem rewardItem = playerInteraction.getHeldItem();
-
-            if (rewardItem != null)
-            {
-                OnRewardConsumed?.Invoke(rewardItem);
-
-                if (rewardItem.isInInventory && playerInventory != null)
-                {
-                    playerInventory.RemoveItemDataAmount(rewardItem.itemData, 1);
-                }
-
-                Destroy(rewardItem.gameObject);
-            }
-
-            // Spawn requested ingredients in the house.
-            houseSpawner?.SpawnObject(quest.ingredient, quest.amount);
-
-            FinishQuest(npc);
-        }
-        else
-        {
-            // Failed attempt.
-            if (quest.attemptsLeft <= 0)
-            {
-                FinishQuest(npc);
-            }
-            else
-            {
+            case RewardTradeSubmitOutcome.HaggleRequired:
+                // RewardTradeManager stored the pending reward item.
+                // UI should now show yellow question mark and Roll D20 button.
                 OpenReturnUIForQuest(npc, quest);
-            }
+                questUI?.ShowRewardTradeFeedback(tradeResult);
+                break;
+
+            case RewardTradeSubmitOutcome.Refused:
+                // The item was refused.
+                // No haggle attempt is consumed here.
+                // Player can try another reward item.
+                OpenReturnUIForQuest(npc, quest);
+                questUI?.ShowRewardTradeFeedback(tradeResult);
+                break;
+        }
+    }
+    
+    public void TryRollHaggle(AdventurerNPC npc)
+    {
+        if (npc == null)
+            return;
+
+        if (!activeQuests.TryGetValue(npc, out ActiveQuest quest) || quest == null)
+            return;
+
+        if (npc.State != AdventurerState.WaitingReward)
+            return;
+
+        if (rewardTradeManager == null)
+        {
+            Debug.LogError("[QUEST] RewardTradeManager is missing.");
+            OpenReturnUIForQuest(npc, quest);
+            return;
+        }
+
+        HaggleRollResult rollResult = rewardTradeManager.RollHaggle(npc);
+
+        Debug.Log(
+            "[QUEST HAGGLE] " +
+            rollResult.message +
+            " | Roll: " + rollResult.roll +
+            " | Attempts left: " + rollResult.attemptsLeft
+        );
+
+        switch (rollResult.outcome)
+        {
+            case HaggleRollOutcome.Success:
+                // Successful haggle means the adventurer accepts the pending item.
+                questUI?.ShowHaggleRollFeedback(rollResult);
+                CompleteSuccessfulTrade(npc, quest, rollResult.rewardItem);
+                break;
+
+            case HaggleRollOutcome.FailedCanRetry:
+                // First failed roll. Player can roll one more time.
+                OpenReturnUIForQuest(npc, quest);
+                questUI?.ShowHaggleRollFeedback(rollResult);
+                break;
+
+            case HaggleRollOutcome.FailedNoAttemptsLeft:
+                // Failed twice. Adventurer leaves without giving the ingredient.
+                questUI?.ShowHaggleRollFeedback(rollResult);
+                FinishQuest(npc);
+                break;
+
+            case HaggleRollOutcome.NoPendingHaggle:
+                // Player tried to roll without a valid pending item.
+                OpenReturnUIForQuest(npc, quest);
+                questUI?.ShowHaggleRollFeedback(rollResult);
+                break;
         }
     }
 
@@ -431,6 +496,7 @@ public class QuestManager : MonoBehaviour
         // Remove all temporary quest data related to this NPC.
         activeQuests.Remove(npc);
         offerPreviews.Remove(npc);
+        rewardTradeManager?.ClearSession(npc);
 
         questUI?.CloseAll();
 
@@ -451,6 +517,7 @@ public class QuestManager : MonoBehaviour
     {
         activeQuests.Clear();
         offerPreviews.Clear();
+        rewardTradeManager?.ClearAllSessions();
 
         Debug.Log("[QUEST LOAD] Quest runtime state cleared.");
     }
@@ -474,13 +541,17 @@ public class QuestManager : MonoBehaviour
             remainingReturnSeconds = Mathf.Max(0f, quest.returnAtTime - Time.time);
         }
 
+        int haggleAttemptsLeft = rewardTradeManager != null
+            ? rewardTradeManager.GetAttemptsLeft(npc)
+            : RewardTradeManager.DefaultHaggleAttempts;
+
         saveData = new ActiveQuestSaveData
         {
             ingredientId = quest.ingredient != null ? quest.ingredient.id : "",
             amount = quest.amount,
-            minRewardValue = quest.minRewardValue,
+            difficultyLevel = quest.difficultyLevel,
             remainingReturnSeconds = remainingReturnSeconds,
-            attemptsLeft = quest.attemptsLeft
+            haggleAttemptsLeft = haggleAttemptsLeft
         };
 
         Debug.Log(
@@ -539,16 +610,15 @@ public class QuestManager : MonoBehaviour
         }
 
         int amount = Mathf.Max(1, savedQuest.amount);
-        int minRewardValue = Mathf.Max(0, savedQuest.minRewardValue);
-        int attemptsLeft = Mathf.Max(0, savedQuest.attemptsLeft);
+        int difficultyLevel = Mathf.Max(1, savedQuest.difficultyLevel);
+        int haggleAttemptsLeft = Mathf.Max(0, savedQuest.haggleAttemptsLeft);
 
         ActiveQuest quest = new ActiveQuest
         {
             npc = npc,
             ingredient = ingredient,
             amount = amount,
-            minRewardValue = minRewardValue,
-            attemptsLeft = attemptsLeft
+            difficultyLevel = difficultyLevel
         };
 
         if (savedState == AdventurerState.InProgress)
@@ -612,6 +682,15 @@ public class QuestManager : MonoBehaviour
         }
 
         activeQuests[npc] = quest;
+        
+        if (savedState == AdventurerState.WaitingReward)
+        {
+            rewardTradeManager?.RestoreSessionState(npc, difficultyLevel, haggleAttemptsLeft);
+        }
+        else
+        {
+            rewardTradeManager?.ClearSession(npc);
+        }
 
         Debug.Log(
             "[QUEST LOAD] Active quest restored for NPC: " +
@@ -620,10 +699,10 @@ public class QuestManager : MonoBehaviour
             ingredient.id +
             " | amount: " +
             amount +
-            " | minRewardValue: " +
-            minRewardValue +
-            " | attemptsLeft: " +
-            attemptsLeft +
+            " | difficultyLevel: " + 
+            difficultyLevel +
+            " | haggleAttemptsLeft : " +
+            haggleAttemptsLeft  +
             " | activeQuests count: " +
             activeQuests.Count
         );
@@ -723,6 +802,40 @@ public class QuestManager : MonoBehaviour
         Debug.Log("[QUEST] Adventurer returned: " + GetNpcDebugName(quest.npc));
     }
 
+    
+    private void CompleteSuccessfulTrade(
+        AdventurerNPC npc,
+        ActiveQuest quest,
+        InventoryItem rewardItem)
+    {
+        if (npc == null || quest == null)
+            return;
+
+        if (rewardItem != null)
+        {
+            // Notify other systems that the reward item was consumed.
+            OnRewardConsumed?.Invoke(rewardItem);
+
+            // Remove one item amount from inventory data if this item is stored in inventory.
+            if (rewardItem.isInInventory && playerInventory != null)
+            {
+                playerInventory.RemoveItemDataAmount(rewardItem.itemData, 1);
+            }
+
+            // Destroy the physical/held reward item object.
+            Destroy(rewardItem.gameObject);
+        }
+
+        // The adventurer accepted the reward.
+        // Now give the promised ingredient to the player.
+        houseSpawner?.SpawnObject(quest.ingredient, quest.amount);
+
+        // Trade session is no longer needed.
+        rewardTradeManager?.ClearSession(npc);
+
+        FinishQuest(npc);
+    }
+    
     private void FinishQuest(AdventurerNPC npc)
     {
         if (npc == null)
@@ -730,6 +843,7 @@ public class QuestManager : MonoBehaviour
 
         activeQuests.Remove(npc);
         offerPreviews.Remove(npc);
+        rewardTradeManager?.ClearSession(npc);
 
         questUI?.CloseAll();
 
@@ -744,12 +858,18 @@ public class QuestManager : MonoBehaviour
         if (npc == null || quest == null)
             return;
 
+        int attemptsLeft = rewardTradeManager != null
+            ? rewardTradeManager.GetAttemptsLeft(npc)
+            : RewardTradeManager.DefaultHaggleAttempts;
+
         questUI?.OpenReturnUI(npc, new ReturnInfo
         {
             ingredientName = quest.ingredient != null ? quest.ingredient.displayName : "Ingredient",
             amount = quest.amount,
-            minRewardValue = quest.minRewardValue,
-            attemptsLeft = quest.attemptsLeft
+
+            difficultyLevel = quest.difficultyLevel,
+
+            haggleAttemptsLeft = attemptsLeft
         });
     }
 
@@ -792,38 +912,7 @@ public class QuestManager : MonoBehaviour
             .Replace("{amount}", amount.ToString())
             .Replace("{hint}", hintText ?? "");
     }
-
-    private bool TryGetItemValue(object item, out int value)
-    {
-        value = 0;
-
-        if (item == null)
-            return false;
-
-        Type type = item.GetType();
-
-        PropertyInfo property =
-            type.GetProperty("value", BindingFlags.Public | BindingFlags.Instance | BindingFlags.IgnoreCase)
-            ?? type.GetProperty("Value", BindingFlags.Public | BindingFlags.Instance | BindingFlags.IgnoreCase);
-
-        if (property != null && property.PropertyType == typeof(int))
-        {
-            value = (int)property.GetValue(item);
-            return true;
-        }
-
-        FieldInfo field =
-            type.GetField("value", BindingFlags.Public | BindingFlags.Instance | BindingFlags.IgnoreCase)
-            ?? type.GetField("Value", BindingFlags.Public | BindingFlags.Instance | BindingFlags.IgnoreCase);
-
-        if (field != null && field.FieldType == typeof(int))
-        {
-            value = (int)field.GetValue(item);
-            return true;
-        }
-
-        return false;
-    }
+    
 
     private string GetNpcDebugName(AdventurerNPC npc)
     {

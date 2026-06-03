@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ItemData
   id: dragon_tail
   displayName: Dragon Tail
-  icon: {fileID: 10901, guid: 0000000000000000f000000000000000, type: 0}
+  icon: {fileID: 21300000, guid: bf93b8b6d3e6a2c4097c12526498cc38, type: 3}
   isStackable: 1
   maxStackSize: 12
   worldPrefab: {fileID: 3770998553903870174, guid: b74a43b6ea7eb6b4d9b603e7e08a6c25, type: 3}
