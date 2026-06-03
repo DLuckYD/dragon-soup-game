@@ -2447,10 +2447,10 @@ MonoBehaviour:
   giveQuestButton: {fileID: 306524730}
   abandonOfferButton: {fileID: 167733746}
   returnMainText: {fileID: 1632504482}
-  returnFeedbackText: {fileID: 819259670}
+  returnFeedbackText: {fileID: 0}
   okayOneMinuteButton: {fileID: 1259011803}
   goAwayButton: {fileID: 501162010}
-  rollHaggleButton: {fileID: 1589497331}
+  rollHaggleButton: {fileID: 0}
   cameraScript: {fileID: 330585548}
 --- !u!1 &311868351
 GameObject:
@@ -7099,13 +7099,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 982528118}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: 1, z: -0, w: 0}
-  m_LocalPosition: {x: 19.644, y: 1, z: 3.23}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 19.644, y: 0.65, z: 3.23}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1912251385}
-  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &983550642 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3181669641967751901, guid: 2b1268b272192954ca017eb727534d9c, type: 3}
@@ -7518,13 +7518,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1049669706}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: 1, z: -0, w: 0}
-  m_LocalPosition: {x: 20.249, y: 1, z: 3.5289998}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 20.249, y: 0.65, z: 3.5289998}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1912251385}
-  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1051022458
 GameObject:
   m_ObjectHideFlags: 0
@@ -11930,13 +11930,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1682758879}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: 1, z: -0, w: 0}
-  m_LocalPosition: {x: 18.44, y: 1, z: 2.8200002}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 18.44, y: 0.65, z: 2.8200002}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1912251385}
-  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &1687652859 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 5aadc15f24ad48f45811778069aac8ff, type: 3}
@@ -13230,7 +13230,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::AdventurerSpawner
   questManager: {fileID: 2146820018}
   questUI: {fileID: 310633487}
-  adventurerDatabase: {fileID: 0}
+  adventurerDatabase: {fileID: 11400000, guid: d0c8970c8302c8a4b8cd0537285d2410, type: 2}
   adventurerPrefab: {fileID: 4826028933367974865, guid: f5cd89dd203c6b5428d9adb96e6f3bb7, type: 3}
   spawnPoint: {fileID: 0}
   queuePoints:
@@ -20162,7 +20162,7 @@ MeshCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 5
   m_Convex: 0
   m_CookingOptions: 30

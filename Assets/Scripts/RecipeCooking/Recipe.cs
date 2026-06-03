@@ -18,5 +18,6 @@ public class Recipe : ScriptableObject
     public IngredientData result;
     public float cookTime;
     public Sprite icon;
+    public int difficultyLevel = 1;
     public List<ProgressionEffect> progressionEffects;
 }
