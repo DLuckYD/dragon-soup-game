@@ -6,9 +6,17 @@ public class NavigationNotificationUI : MonoBehaviour
     [SerializeField] private GameObject notificationPanel;
     [SerializeField] private TMP_Text notificationText;
 
-    private void Awake()
+    private void Start()
     {
-        Debug.Log("[Bottom NotificationUI] Awake");
+        Debug.Log("[NavigationNotificationUI] Start");
+        if (notificationPanel != null)
+        {
+            notificationPanel.SetActive(false);
+        }
+        else
+        {
+            Debug.LogWarning("[NavigationNotificationUI] Notification panel is not assigned.");
+        }
     }
 
     private void OnEnable()

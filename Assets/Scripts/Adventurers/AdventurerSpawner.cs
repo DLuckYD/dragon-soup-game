@@ -160,7 +160,7 @@ public class AdventurerSpawner : MonoBehaviour
 
         OnSpawned?.Invoke("A new adventurer has arrived!");
 
-        AkUnitySoundEngine.PostEvent("Adventurer_Arrives", gameObject);
+        WwiseAudioManager.Instance.PostEvent("Adventurer_Arrived", npc.gameObject);
 
         Debug.Log(
             "[ADVENTURER SPAWNER] Spawned adventurer: " +

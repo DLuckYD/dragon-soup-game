@@ -783,7 +783,7 @@ public class QuestManager : MonoBehaviour
 
         quest.returnAtTime = float.MaxValue;
 
-        AkUnitySoundEngine.PostEvent("Adventurer_Returns", gameObject);
+        WwiseAudioManager.Instance.PostEvent("Adventurer_Returned", quest.npc.gameObject);
 
         quest.npc.SetState(AdventurerState.WaitingReward);
 
