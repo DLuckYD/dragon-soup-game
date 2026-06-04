@@ -142,7 +142,7 @@ public class PlayerMovement : MonoBehaviour
 
         if (footstepTimer <= 0f)
         {
-            Debug.Log(Time.time);
+            //Debug.Log(Time.time);
             WwiseAudioManager.Instance.PostEvent("Player_Footstep", gameObject);
             footstepTimer = footstepInterval;
         }
