@@ -115,8 +115,7 @@ public class PlayerMovement : MonoBehaviour
         //start crouch
         if (Input.GetKeyDown(crouchKey) && grounded)
         {
-            transform.localScale = new Vector3(transform.localScale.x, crouchYScale, transform.localScale.z);
-            rb.AddForce(Vector3.down * 5f, ForceMode.Impulse);
+            Crouch();
         }
 
         //stop crouch
@@ -222,8 +221,8 @@ public class PlayerMovement : MonoBehaviour
 
     private void Crouch()
     {
-        rb.linearVelocity = new Vector3(rb.linearVelocity.x, 0f, rb.linearVelocity.z);
-        rb.AddForce(transform.up * jumpForce, ForceMode.Impulse);
+        transform.localScale = new Vector3(transform.localScale.x, crouchYScale, transform.localScale.z);
+        rb.AddForce(Vector3.down * 5f, ForceMode.Impulse);
     }
 }
 

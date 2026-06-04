@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public abstract class InventoryItem : MonoBehaviour
@@ -10,12 +11,31 @@ public abstract class InventoryItem : MonoBehaviour
     protected Rigidbody rb;
     protected Transform objectGrabPointTransform;
 
+    private Collider[] allColliders;
+    private Collider[] physicalColliders;
+    private Collider[] triggerColliders;
+
     protected virtual void Awake()
     {
         rb = GetComponent<Rigidbody>();
         if (rb == null)
             rb = GetComponentInChildren<Rigidbody>();
 
+        allColliders = GetComponentsInChildren<Collider>(true);
+
+        List<Collider> physical = new List<Collider>();
+        List<Collider> triggers = new List<Collider>();
+
+        foreach (Collider col in allColliders)
+        {
+            if (col.isTrigger)
+                triggers.Add(col);
+            else
+                physical.Add(col);
+        }
+
+        physicalColliders = physical.ToArray();
+        triggerColliders = triggers.ToArray();
     }
 
     protected virtual void LateUpdate()
@@ -32,18 +52,15 @@ public abstract class InventoryItem : MonoBehaviour
         objectGrabPointTransform = grabPoint;
         isHeld = true;
 
-        if (rb != null)
-        {
-            rb.isKinematic = true;
-            rb.useGravity = false;
-            rb.linearVelocity = Vector3.zero;
-        }
-        if(name == "Bowl" || name == "Knife")
+        SetHeldPhysicsState(true);
+
+
+        if (name == "Bowl" || name == "Knife")
         {
             WwiseAudioManager.Instance.SetSwitchValue("Item_Type", "Metal", gameObject);
             WwiseAudioManager.Instance.PostEvent("Item_Pickup", gameObject);
         }
-        Debug.Log($"[{name}] Grabbed");
+        //Debug.Log($"[{name}] Grabbed");
     }
 
     public virtual void Drop()
@@ -51,12 +68,7 @@ public abstract class InventoryItem : MonoBehaviour
         objectGrabPointTransform = null;
         isHeld = false;
 
-        if (rb != null)
-        {
-            rb.isKinematic = false;
-            rb.useGravity = true;
-            rb.linearVelocity = Vector3.zero;
-        }
+        SetHeldPhysicsState(false);
 
         if (name == "Bowl" || name == "Knife")
         {
@@ -64,7 +76,7 @@ public abstract class InventoryItem : MonoBehaviour
             WwiseAudioManager.Instance.PostEvent("Item_Drop", gameObject);
         }
 
-        Debug.Log($"[{name}] Dropped");
+        //Debug.Log($"[{name}] Dropped");
     }
 
     public bool isStackable()
@@ -80,5 +92,28 @@ public abstract class InventoryItem : MonoBehaviour
     public Sprite GetIcon()
     {
         return itemData != null ? itemData.icon : null;
+    }
+
+    private void SetHeldPhysicsState(bool held)
+    {
+        if (rb != null)
+        {
+            rb.isKinematic = held;
+            rb.useGravity = !held;
+            rb.linearVelocity = Vector3.zero;
+            rb.angularVelocity = Vector3.zero;
+        }
+
+        foreach (Collider col in physicalColliders)
+        {
+            if (col != null)
+                col.enabled = !held;
+        }
+
+        foreach (Collider col in triggerColliders)
+        {
+            if (col != null)
+                col.enabled = !held;
+        }
     }
 }
