@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ItemData
   id: chicken_schnitzel
   displayName: Chicken Schnitzel
-  icon: {fileID: 10901, guid: 0000000000000000f000000000000000, type: 0}
+  icon: {fileID: 21300000, guid: 94d932badf1d71b4481844c7621fe3a7, type: 3}
   isStackable: 1
   maxStackSize: 12
   worldPrefab: {fileID: 3609085205059398615, guid: c4360d36d739f7d418691af91775f415, type: 3}

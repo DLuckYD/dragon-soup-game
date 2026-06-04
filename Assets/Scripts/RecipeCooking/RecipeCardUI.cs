@@ -38,8 +38,8 @@ public class RecipeCardUI : MonoBehaviour
             }
             descriptionText.text = $"Ingredients:\n{ingredientsList}";
         }
-        if (icon != null)
-            icon.sprite = recipe.icon;
+
+        icon.sprite = recipe.icon;
 
         currentRecipe = recipe;
     }

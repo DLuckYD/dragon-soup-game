@@ -19,7 +19,7 @@ public class CookbookUI : MonoBehaviour
     private bool recipesGenerated = false;
     private Dictionary<string, RecipeCardUI> recipeCardsById = new Dictionary<string, RecipeCardUI>();
 
-    private void Awake()
+    private void Start()
     {
         isCookBookOpen = false;
 
@@ -33,6 +33,17 @@ public class CookbookUI : MonoBehaviour
         }
     }
 
+    private void OnEnable()
+    {
+        RecipeProgressManager.OnCurrentRecipeChanged += HandleCurrentRecipeChanged;
+        Debug.Log("[COOKBOOK UI] Subscribed to RecipeProgressManager.OnCurrentRecipeChanged event.");
+    }
+
+    private void OnDisable()
+    {
+        RecipeProgressManager.OnCurrentRecipeChanged -= HandleCurrentRecipeChanged;
+    }
+
     public void OpenCookBook()
     {
         Time.timeScale = 0f;
@@ -43,8 +54,6 @@ public class CookbookUI : MonoBehaviour
 
         isCookBookOpen = true;
         cookBookPanel.SetActive(true);
-
-
     }
 
     public bool IsOpened()
@@ -96,20 +105,49 @@ public class CookbookUI : MonoBehaviour
             newCard.gameObject.SetActive(true);
             newCard.SetRecipe(recipe);
 
-            if (i == 0)
+            Recipe activeRecipe = recipeProgressManager.CurrentActiveRecipe;
+            Debug.Log($"[COOKBOOK UI] Setting up card for recipe '{recipe.id}'. Active recipe: {(activeRecipe != null ? activeRecipe.id : "NULL")}");
+            if (activeRecipe == null)
             {
-                //set the first recipe for the used template card
-                newCard.SetCookButtonInteractable(true);
-                recipeProgressManager.SetFirstRecipe(recipe);
+                newCard.SetCookButtonInteractable(i == 0);
+
+                if (i == 0)
+                    recipeProgressManager.SetCurrentRecipe(recipe);
             }
             else
             {
-                //set by default
-                newCard.SetCookButtonInteractable(false);
+                newCard.SetCookButtonInteractable(recipe.id == activeRecipe.id);
             }
 
             RegisterRecipeCard(recipe, newCard);
         }
+    }
+
+    private void HandleCurrentRecipeChanged(Recipe recipe)
+    {
+        Debug.Log("[COOKBOOK UI] Current active recipe changed to: " + (recipe != null ? recipe.id : "NULL"));
+        RefreshRecipeCards();
+    }
+
+    public void RefreshRecipeCards()
+    {
+        Debug.Log("[COOKBOOK UI] Refreshing recipe cards...");
+        if (recipeProgressManager == null)
+            return;
+
+        Recipe activeRecipe = recipeProgressManager.CurrentActiveRecipe;
+
+        foreach (var pair in recipeCardsById)
+        {
+            string recipeId = pair.Key;
+            RecipeCardUI card = pair.Value;
+
+            bool isActive = activeRecipe != null && recipeId == activeRecipe.id;
+            card.SetCookButtonInteractable(isActive);
+        }
+
+        Debug.Log("[COOKBOOK UI] Refreshed cards. Active recipe: " +
+                  (activeRecipe != null ? activeRecipe.id : "NULL"));
     }
 
     private void RegisterRecipeCard(Recipe recipe, RecipeCardUI newCard)

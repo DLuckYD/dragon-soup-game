@@ -5,6 +5,7 @@ using UnityEngine;
 public class RecipeProgressManager : MonoBehaviour
 {
     public static event Action<string> OnSuccessfulUnlock;
+    public static event Action<Recipe> OnCurrentRecipeChanged;
 
     private Dictionary<string, UpgradeStation> stationsById = new Dictionary<string, UpgradeStation>();
     private Dictionary<string, RoomDoor> doorsById = new Dictionary<string, RoomDoor>();
@@ -20,10 +21,19 @@ public class RecipeProgressManager : MonoBehaviour
         RegisterDoors();
     }
 
-    public void SetFirstRecipe(Recipe recipe)
+    public void SetCurrentRecipe(Recipe recipe)
     {
+        if (recipe == null)
+        {
+            Debug.LogWarning("[RECIPE PROGRESSION] Cannot set current recipe. Recipe is null.");
+            return;
+        }
+
         currentActiveRecipe = recipe;
+
         Debug.Log("[RECIPE PROGRESSION] Active recipe set to: " + recipe.displayName);
+
+        OnCurrentRecipeChanged?.Invoke(recipe);
     }
 
     private void RegisterStations()
@@ -72,6 +82,7 @@ public class RecipeProgressManager : MonoBehaviour
         }
     }
 
+    
     public void OnRecipeCooked(Recipe recipe, CookbookUI cookBook)
     {
         // Update the cookbook UI with the newly cooked recipe

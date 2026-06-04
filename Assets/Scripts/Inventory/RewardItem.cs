@@ -67,7 +67,7 @@ public class RewardItem : InventoryItem
         // Так система будет работать и с обычными mesh-объектами, и со skinned/animated objects.
         renderers = GetComponentsInChildren<Renderer>(true);
 
-        Debug.Log($"[{name}] Found Renderers: {renderers.Length}");
+        //Debug.Log($"[{name}] Found Renderers: {renderers.Length}");
 
         for (int i = 0; i < renderers.Length; i++)
         {

@@ -27,15 +27,6 @@ public class SceneObjectsManager : MonoBehaviour
         }
     }
 
-    // GameObject spawnedObject = Instantiate(itemData.worldPrefab, position, rotation);
-
-    // RewardItem rewardItem = spawnedObject.GetComponent<RewardItem>();
-
-// if (rewardItem != null)
-//{
-   // rewardItem.InitializeAsRuntimeSpawnedItem();
-//}
-
     public SceneSaveData CaptureSaveData()
     {
         SceneSaveData saveData = new SceneSaveData();
@@ -94,7 +85,7 @@ public class SceneObjectsManager : MonoBehaviour
             {
                 itemSaveData.isUpgraded = rewardItem.isUpgraded;
                 itemSaveData.value = rewardItem.Value;
-                itemSaveData.canBeUpgraded = rewardItem.canBeUpgrated;
+                itemSaveData.canBeUpgraded = rewardItem.canBeModified;
                 itemSaveData.itemType = rewardItem.type;
             }
             saveData.items.Add(itemSaveData);
@@ -193,7 +184,7 @@ public class SceneObjectsManager : MonoBehaviour
         {
             rewardItem.isUpgraded = savedItem.isUpgraded;
             rewardItem.Value = savedItem.value;
-            rewardItem.canBeUpgrated = savedItem.canBeUpgraded;
+            rewardItem.canBeModified = savedItem.canBeUpgraded;
             rewardItem.type = savedItem.itemType;
             rewardItem.UpdateVisual();
         }

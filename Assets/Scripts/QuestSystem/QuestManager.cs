@@ -26,9 +26,6 @@ public class QuestManager : MonoBehaviour
     [SerializeField] private int defaultDifficultyLevel = 1;
     [SerializeField] private float defaultReturnDelaySeconds = 15f;
 
-    [Header("Recipe Pool")]
-    [SerializeField] private List<Recipe> recipePool = new();
-
     private Recipe currentActiveRecipe;
 
     // Fired when an item reward was consumed by the quest system.
