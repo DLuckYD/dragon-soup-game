@@ -31,6 +31,7 @@ public class PlayerInteraction : MonoBehaviour
     private CookingStation cookingStation;
     private InventoryItem nearbyItem; // item near the player for pickup
     private AdventurerNPC nearbyAdventurer;
+    private DarkEntity darkEntity;
 
     // Events for key interactions
     public static event Action<string> OnInteraction;
@@ -60,7 +61,19 @@ public class PlayerInteraction : MonoBehaviour
 
         if (Input.GetKeyDown(talkKey))
         {
-            nearbyAdventurer.Interact(this);
+            if (nearbyAdventurer != null)
+            {
+                nearbyAdventurer.Interact(this);
+                return;
+            }
+
+            if (darkEntity != null)
+            {
+                darkEntity.Interact();
+                return;
+            }
+
+            Debug.Log("[INTERACTION] No talk target nearby.");
         }
 
         HandleHotbarNumberKeys();
@@ -132,6 +145,17 @@ public class PlayerInteraction : MonoBehaviour
 
             Debug.Log($"[INTERACTION] Entered adventurer: {adventurer.name}");
         }
+        
+        DarkEntity entity = other.GetComponentInParent<DarkEntity>();
+
+        if (entity != null)
+        {
+            darkEntity = entity;
+
+            OnInteraction?.Invoke($"Press {talkKey} to make a deal");
+
+            Debug.Log($"[INTERACTION] Entered dark entity: {entity.name}");
+        }
 
         // Same idea for CookingStation.
         // The trigger collider may be on a child object.
@@ -200,6 +224,17 @@ public class PlayerInteraction : MonoBehaviour
             Debug.Log($"[INTERACTION] Exited adventurer: {adventurer.name}");
 
             nearbyAdventurer = null;
+
+            OnEndedInteraction?.Invoke();
+        }
+        
+        DarkEntity entity = other.GetComponentInParent<DarkEntity>();
+
+        if (entity != null && entity == darkEntity)
+        {
+            Debug.Log($"[INTERACTION] Exited dark entity: {entity.name}");
+
+            darkEntity = null;
 
             OnEndedInteraction?.Invoke();
         }
