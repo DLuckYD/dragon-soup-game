@@ -23,7 +23,8 @@ MonoBehaviour:
     amount: 1
   result: {fileID: 11400000, guid: b8e9cc3b1d8d8e84db4c059f65e76937, type: 2}
   cookTime: 0
-  icon: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
+  icon: {fileID: 21300000, guid: 0ebd5cd5adb09924682c537868273c0f, type: 3}
+  difficultyLevel: 1
   progressionEffects:
   - effectType: 0
     targetId: recipe_5

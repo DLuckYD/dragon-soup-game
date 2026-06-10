@@ -34,11 +34,12 @@ public class ActiveQuestSaveData
 {
     public string ingredientId;
     public int amount;
-    public int minRewardValue;
+    public int difficultyLevel;
+    
 
     // We do not save returnAtTime directly because it depends on Time.time.
     // Instead, we save how much time is still left.
     public float remainingReturnSeconds;
 
-    public int attemptsLeft;
+    public int haggleAttemptsLeft;
 }
