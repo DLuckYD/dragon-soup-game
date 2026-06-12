@@ -21,7 +21,7 @@ MonoBehaviour:
     amount: 2
   - item: {fileID: 11400000, guid: 0a48fbd6642f2674c887be88387bd3ab, type: 2}
     amount: 1
-  - item: {fileID: 11400000, guid: 03e3e3064c0145c408673934d4d18f85, type: 2}
+  - item: {fileID: 11400000, guid: aee4710322dca304f8a9669bae792718, type: 2}
     amount: 1
   result: {fileID: 11400000, guid: 9f221291b10806243ad9d6b4a38a883f, type: 2}
   cookTime: 0

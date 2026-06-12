@@ -38,6 +38,7 @@ public class PlayerInteraction : MonoBehaviour
 
     // Event for in game changes
     public static event Action<string> OnLockedItemInteraction;
+    public static event Action<string> OnFullInventory;
 
     void Update()
     {
@@ -322,6 +323,7 @@ public class PlayerInteraction : MonoBehaviour
             }
             else
             {
+                OnFullInventory?.Invoke("Hotbar is full");
                 Debug.Log("No place in the inventory to store item.");
             }
 

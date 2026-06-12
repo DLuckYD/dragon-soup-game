@@ -5,13 +5,14 @@ using UnityEngine;
 public class CookbookUI : MonoBehaviour
 {
     [Header("CookBook")]
-    public GameObject cookBookPanel;
-    public FirstPersonCamera cameraScript;
+    [SerializeField] private GameObject cookBookPanel;
+    [SerializeField] private FirstPersonCamera cameraScript;
 
     [Header("Recipe UI")]
     [SerializeField] private RecipeDatabase recipeDatabase;
     [SerializeField] private Transform recipeListContainer;
     [SerializeField] private RecipeCardUI recipeCard;
+    [SerializeField] private CookingStation cookingStation;
 
     [SerializeField] private RecipeProgressManager recipeProgressManager;
 
@@ -102,6 +103,7 @@ public class CookbookUI : MonoBehaviour
                 continue;
 
             RecipeCardUI newCard = Instantiate(recipeCard, recipeListContainer);
+            newCard.Initialize(cookingStation);
             newCard.gameObject.SetActive(true);
             newCard.SetRecipe(recipe);
 

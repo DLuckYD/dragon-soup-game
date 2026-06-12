@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class HotbarManager : MonoBehaviour
@@ -11,6 +12,8 @@ public class HotbarManager : MonoBehaviour
 
     [Header("Drop Point for Items")]
     public Transform dropPoint;
+
+    private bool hasEmptySlot = true;
 
     private void Awake()
     {
@@ -156,28 +159,10 @@ public class HotbarManager : MonoBehaviour
         return -1;
     }
 
-    public InventoryItem GetItemInInventoryByPosition(int index)
-    {
-        if (index < 0 || index >= slots.Length) return null;
-        return slots[index].uniqueItem;
-    }
-
     public HotbarSlot GetSlotByPosition(int index)
     {
         if (index < 0 || index >= slots.Length) return null;
         return slots[index];
-    }
-
-    public bool HasItemInInventory(InventoryItem item)
-    {
-        if (item == null) return false;
-
-        for (int i = 0; i < slots.Length; i++)
-        {
-            if (slots[i].uniqueItem == item)
-                return true;
-        }
-        return false;
     }
 
     public bool HasItemDataAmount(IngredientData data, int requiredAmount)
