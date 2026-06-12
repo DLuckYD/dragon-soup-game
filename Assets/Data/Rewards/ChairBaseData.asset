@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ea32ced8bc60a6c409646b9f9909ae03, type: 3}
+  m_Name: ChairBaseData
+  m_EditorClassIdentifier: Assembly-CSharp::IngredientData
+  id: chair_base
+  displayName: Chair Base
+  icon: {fileID: 0}
+  isStackable: 0
+  maxStackSize: 1
+  worldPrefab: {fileID: 1547904958566441569, guid: 8a6b7bc720a28bb48ad8ca4d8501f5e0, type: 3}
