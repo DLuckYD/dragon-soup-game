@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::IngredientData
   id: bar_keg
   displayName: Bar Keg
-  icon: {fileID: 0}
+  icon: {fileID: 21300000, guid: 76ddadefb9cb5794eb862496b6628444, type: 3}
   isStackable: 0
   maxStackSize: 1
   worldPrefab: {fileID: 8013779221470408514, guid: 17148c8aef7e5cf49a79241fb706b7b5, type: 3}

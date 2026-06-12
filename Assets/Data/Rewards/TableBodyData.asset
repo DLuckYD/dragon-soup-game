@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::IngredientData
   id: table_body
   displayName: Table Body
-  icon: {fileID: 0}
+  icon: {fileID: 21300000, guid: 351550b5e351c664d9a6b6693f0d4a3f, type: 3}
   isStackable: 0
   maxStackSize: 1
   worldPrefab: {fileID: 6963246225920381644, guid: f34e79563b93f5f4ba94af26afb4eeec, type: 3}

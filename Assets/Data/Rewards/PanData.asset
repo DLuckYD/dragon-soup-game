@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::IngredientData
   id: pan
   displayName: Pan
-  icon: {fileID: 0}
+  icon: {fileID: 21300000, guid: 9c0338e564ad4ff4a87071bd6e9ec4af, type: 3}
   isStackable: 0
   maxStackSize: 1
   worldPrefab: {fileID: 8696164833587032392, guid: 96ec33a4dbb9a354caa86e6619685cf3, type: 3}

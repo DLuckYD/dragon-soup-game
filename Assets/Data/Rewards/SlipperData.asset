@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::IngredientData
   id: slipper
   displayName: Slipper
-  icon: {fileID: 0}
+  icon: {fileID: 21300000, guid: 245546b42ccd7a54caadfcaa6c176265, type: 3}
   isStackable: 0
   maxStackSize: 1
   worldPrefab: {fileID: 8983271029594468438, guid: ed1f4d5d4d844de4fa8de71af0e929b1, type: 3}

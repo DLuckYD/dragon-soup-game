@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::IngredientData
   id: leather_shoe
   displayName: Leather shoe
-  icon: {fileID: 0}
+  icon: {fileID: 21300000, guid: 3398aea611b3a3446804364d02f1468e, type: 3}
   isStackable: 0
   maxStackSize: 1
   worldPrefab: {fileID: 4838054257924320164, guid: ac718f269d7926d46a95a794ae0f9821, type: 3}

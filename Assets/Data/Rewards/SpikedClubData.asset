@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::IngredientData
   id: spiked_club
   displayName: Spiked Club
-  icon: {fileID: 0}
+  icon: {fileID: 21300000, guid: a48d1e8c3b77a444fb196b9987a52032, type: 3}
   isStackable: 0
   maxStackSize: 1
   worldPrefab: {fileID: 7945561924538679783, guid: 686812747c2b2a3439c4e338113b4807, type: 3}

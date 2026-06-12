@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: ChairBackData
   m_EditorClassIdentifier: Assembly-CSharp::IngredientData
   id: chair_back
-  displayName: Chair Backl
-  icon: {fileID: 0}
+  displayName: Chair Back
+  icon: {fileID: 21300000, guid: b1e6818a07bd6b841adfb73a2283d08c, type: 3}
   isStackable: 0
   maxStackSize: 1
   worldPrefab: {fileID: 7487745972946123886, guid: f62aa063e428707439b1f1486c52a6a4, type: 3}

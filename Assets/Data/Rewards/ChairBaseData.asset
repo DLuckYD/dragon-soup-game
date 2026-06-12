@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::IngredientData
   id: chair_base
   displayName: Chair Base
-  icon: {fileID: 0}
+  icon: {fileID: 21300000, guid: 5c7edab0f2b5d834cb7c2296e7c0221b, type: 3}
   isStackable: 0
   maxStackSize: 1
   worldPrefab: {fileID: 1547904958566441569, guid: 8a6b7bc720a28bb48ad8ca4d8501f5e0, type: 3}

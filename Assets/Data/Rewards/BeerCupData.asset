@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::IngredientData
   id: beer_cup
   displayName: Beer Cup
-  icon: {fileID: 0}
+  icon: {fileID: 21300000, guid: 7758ab8852b24be4fb8754efff585c9f, type: 3}
   isStackable: 0
   maxStackSize: 1
   worldPrefab: {fileID: 2369777005020118292, guid: 1d606af3cdcd4994fa39989e48718e25, type: 3}

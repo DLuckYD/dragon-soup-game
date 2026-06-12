@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::IngredientData
   id: table_leg
   displayName: Table Leg
-  icon: {fileID: 0}
+  icon: {fileID: 21300000, guid: ca78040d12632f74eadd6e162308c8b9, type: 3}
   isStackable: 0
   maxStackSize: 1
   worldPrefab: {fileID: 5942811695447930493, guid: e7027ae3580d9554da71b9ee98f800c7, type: 3}
