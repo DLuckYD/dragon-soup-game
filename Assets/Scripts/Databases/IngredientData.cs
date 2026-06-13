@@ -13,5 +13,7 @@ public class IngredientData : ScriptableObject
 
     [Header("World")]
     public GameObject worldPrefab;
+
+    public float cookingTime;
 }
 //add test comment 
