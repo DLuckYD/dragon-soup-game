@@ -48,6 +48,12 @@ public class PlayerInteraction : MonoBehaviour
         }
         if (Input.GetKeyDown(pickKey))
         {
+            if (cookingStation != null && cookingStation.IsWaitingForIngredient)
+            {
+                cookingStation.AddCurrentIngredient();
+                return;
+            }
+
             PickUpAndDrop();
         }
         if (Input.GetKeyDown(addToInventoryKey))
@@ -142,8 +148,8 @@ public class PlayerInteraction : MonoBehaviour
         {
             cookingStation = cauldron;
 
-            OnInteraction?.Invoke($"Press {activateCookBook} to cook a dish");
-
+            OnInteraction?.Invoke($"Press {activateCookBook} to interact with cookbook");
+            
             Debug.Log($"[INTERACTION] Entered cooking station: {cauldron.name}");
         }
 

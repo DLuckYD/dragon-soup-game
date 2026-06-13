@@ -16,6 +16,7 @@ public class PlayScreenPanelController : MonoBehaviour
     [SerializeField] private GameObject saveFilesPanel;
 
     [SerializeField] private MainMenuUIManager mainMenuManager;
+    [SerializeField] private CutsceneController cutsceneController;
 
     private void Start()
     {
@@ -41,7 +42,12 @@ public class PlayScreenPanelController : MonoBehaviour
     public void CreateNewGame()
     {
         WwiseAudioManager.Instance.PostEvent("Ui_Button_Clicked", gameObject);
-        GameSaveLoadManager.Instance.StartNewGame();
+        
+        this.gameObject.SetActive(false);
+        cutsceneController.PlayCutscene(() =>
+        {
+            GameSaveLoadManager.Instance.StartNewGame();
+        });
     }
 
     public void OnBackPressed()

@@ -34,3 +34,5 @@ MonoBehaviour:
     targetId: axe_upgrade
   - effectType: 1
     targetId: fireplace
+  - effectType: 3
+    targetId: 

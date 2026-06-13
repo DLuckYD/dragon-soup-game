@@ -17,6 +17,7 @@ public class CookbookUI : MonoBehaviour
     [SerializeField] private RecipeProgressManager recipeProgressManager;
 
     private bool isCookBookOpen = false;
+    public bool IsOpen => isCookBookOpen;
     private bool recipesGenerated = false;
     private Dictionary<string, RecipeCardUI> recipeCardsById = new Dictionary<string, RecipeCardUI>();
 

@@ -36,6 +36,10 @@ public class NotificationUI : MonoBehaviour
         AdventurerSpawner.OnSpawned += ShowMessage;
         AdventurerSpawner.OnReturn += ShowMessage;
 
+        CauldronUI.OnWaitingIngredients += ShowMessage;
+
+        CookingStation.OnMissingIngredients += ShowMessage;
+
     }
 
     private void OnDisable()
@@ -58,6 +62,9 @@ public class NotificationUI : MonoBehaviour
         AdventurerSpawner.OnSpawned -= ShowMessage;
         AdventurerSpawner.OnReturn -= ShowMessage;
 
+        CauldronUI.OnWaitingIngredients -= ShowMessage;
+
+        CookingStation.OnMissingIngredients -= ShowMessage;
     }
 
     void Start()

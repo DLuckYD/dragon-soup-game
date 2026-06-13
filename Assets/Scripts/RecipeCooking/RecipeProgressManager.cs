@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class RecipeProgressManager : MonoBehaviour
 {
@@ -43,7 +44,7 @@ public class RecipeProgressManager : MonoBehaviour
 
         foreach (UpgradeStation station in stations)
         {
-            if(string.IsNullOrEmpty(station.GetStationId))
+            if (string.IsNullOrEmpty(station.GetStationId))
             {
                 Debug.LogWarning($"Station {station.gameObject.name} has an empty ID and will not be registered.");
                 continue;
@@ -82,7 +83,7 @@ public class RecipeProgressManager : MonoBehaviour
         }
     }
 
-    
+
     public void OnRecipeCooked(Recipe recipe, CookbookUI cookBook)
     {
         // Update the cookbook UI with the newly cooked recipe
@@ -144,6 +145,19 @@ public class RecipeProgressManager : MonoBehaviour
                         else
                         {
                             Debug.LogWarning($"No room found with ID: {targetId} to unlock.");
+                        }
+                    }
+
+                    if (effect.effectType == EffectType.EndGame)
+                    {
+                        CutsceneController cutsceneController = FindObjectOfType<CutsceneController>();
+                        if (cutsceneController != null)
+                        {
+                            cutsceneController.PlayCutscene();
+                        }
+                        else
+                        {
+                            Debug.LogWarning("No CutsceneController found in the scene to play end game cutscene.");
                         }
                     }
                 }

@@ -18,3 +18,4 @@ MonoBehaviour:
   isStackable: 1
   maxStackSize: 12
   worldPrefab: {fileID: 1297841603501561295, guid: e234cc06171aa7c449a9a77aca91169f, type: 3}
+  cookingTime: 5
