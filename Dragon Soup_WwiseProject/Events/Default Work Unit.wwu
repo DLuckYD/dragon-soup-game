@@ -106,12 +106,34 @@
 								</Action>
 							</ChildrenList>
 						</Event>
-						<Event Name="Workbench_Use" ID="{89A69C19-FCCA-4CE9-8BC0-1A0B27D54392}">
+						<Event Name="Fridge" ID="{22E0FD9D-A79E-4D0E-8445-E2502F3B4182}">
 							<ChildrenList>
-								<Action Name="" ID="{8AA13DAE-B0AF-415A-9429-CA99100545FB}" ShortID="323673419">
+								<Action Name="" ID="{2FDE929C-01D7-4083-BF64-C5FCF65FB3FE}" ShortID="352858144">
 									<ReferenceList>
 										<Reference Name="Target">
-											<ObjectRef Name="Workbench_Use" ID="{188749C4-961B-446E-B77E-5A400F33B930}" WorkUnitID="{1D3CE180-6637-4348-B301-DDCBC094ECDF}"/>
+											<ObjectRef Name="Magic_Fridge_Use" ID="{5BFC68D7-3862-42C2-9E87-6AEEDF9B407B}" WorkUnitID="{1D3CE180-6637-4348-B301-DDCBC094ECDF}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
+						<Event Name="Upgrade_Station_Success" ID="{7AE0233C-98D6-4C61-9903-FE6364FE6995}">
+							<ChildrenList>
+								<Action Name="" ID="{667785EF-AE08-4AED-BABF-4EABC3931BE0}" ShortID="301992455">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="Upgrade_Station_Success" ID="{7B046A6D-119D-417B-9B18-98FE3DD7EE4B}" WorkUnitID="{1D3CE180-6637-4348-B301-DDCBC094ECDF}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
+						<Event Name="Upgrade_Station_Use" ID="{4186CD4F-308D-4E54-9AC4-8BF2896659DD}">
+							<ChildrenList>
+								<Action Name="" ID="{011CF380-46C6-46B1-893B-EEB7EE63ED8D}" ShortID="852483310">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="Upgrade_Station_Use" ID="{DAD6D09E-7ED6-4250-A8EF-D1533FDB1BB0}" WorkUnitID="{1D3CE180-6637-4348-B301-DDCBC094ECDF}"/>
 										</Reference>
 									</ReferenceList>
 								</Action>

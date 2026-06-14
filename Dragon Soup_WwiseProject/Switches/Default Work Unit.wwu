@@ -10,6 +10,15 @@
 						<Switch Name="Organic" ID="{AE872C70-B1F4-4392-9C1C-2B8C58E3D8ED}"/>
 					</ChildrenList>
 				</SwitchGroup>
+				<SwitchGroup Name="Upgrade_Station" ID="{27A21745-C77B-4991-991D-C1F242855C06}">
+					<ChildrenList>
+						<Switch Name="Workbench" ID="{3FD63DF2-1146-405B-A4CA-67B37581FEA9}"/>
+						<Switch Name="Fridge" ID="{5CCDCA80-F85F-4148-9F07-F4553EB786EF}"/>
+						<Switch Name="Fireplace" ID="{ECDF7BDB-417A-4891-9AC8-EE3B2717CE95}"/>
+						<Switch Name="Alcohol" ID="{2378E908-E36E-4362-AF43-034D8332DB46}"/>
+						<Switch Name="Painting" ID="{34857F0E-6CF8-40E5-8CF7-1E8D54F86256}"/>
+					</ChildrenList>
+				</SwitchGroup>
 			</ChildrenList>
 		</WorkUnit>
 	</Switches>

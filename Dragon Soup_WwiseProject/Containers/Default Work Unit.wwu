@@ -198,129 +198,6 @@
 						</Folder>
 						<Folder Name="Upgrade Stations" ID="{F9CA48CF-0223-446A-A74E-665C35544ED1}" ShortID="798909724">
 							<ChildrenList>
-								<Sound Name="Fireplace_Fail" ID="{F8897164-92BA-42D5-98CA-CB513B56784C}" ShortID="270764039">
-									<ReferenceList>
-										<Reference Name="Conversion">
-											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{27F70A5B-D7C2-4BA9-9793-BA39E1BC8B1D}"/>
-										</Reference>
-										<Reference Name="OutputBus">
-											<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{0C9031E4-8081-4B6E-AB6C-02891DDBDDA8}"/>
-										</Reference>
-									</ReferenceList>
-									<ChildrenList>
-										<AudioFileSource Name="Fireplace_Fail" ID="{C88DBCE4-8413-4D3A-8F22-A8AC31013C3B}">
-											<Language>SFX</Language>
-											<AudioFile>SFX\Fireplace_Fail.wav</AudioFile>
-											<MediaIDList>
-												<MediaID ID="1017694766"/>
-											</MediaIDList>
-										</AudioFileSource>
-									</ChildrenList>
-									<ActiveSourceList>
-										<ActiveSource Name="Fireplace_Fail" ID="{C88DBCE4-8413-4D3A-8F22-A8AC31013C3B}" Platform="Linked"/>
-									</ActiveSourceList>
-								</Sound>
-								<Sound Name="Fireplace_Use" ID="{4CA9B0B7-87B2-4179-ADB1-D460026A38DC}" ShortID="1028231709">
-									<ReferenceList>
-										<Reference Name="Conversion">
-											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{27F70A5B-D7C2-4BA9-9793-BA39E1BC8B1D}"/>
-										</Reference>
-										<Reference Name="OutputBus">
-											<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{0C9031E4-8081-4B6E-AB6C-02891DDBDDA8}"/>
-										</Reference>
-									</ReferenceList>
-									<ChildrenList>
-										<AudioFileSource Name="Fireplace_Use" ID="{AD65E948-D757-4AD6-92F6-A73EB5DF91B4}">
-											<PropertyList>
-												<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
-											</PropertyList>
-											<Language>SFX</Language>
-											<AudioFile>SFX\Fireplace_Use.wav</AudioFile>
-											<MediaIDList>
-												<MediaID ID="809256068"/>
-											</MediaIDList>
-										</AudioFileSource>
-									</ChildrenList>
-									<ActiveSourceList>
-										<ActiveSource Name="Fireplace_Use" ID="{AD65E948-D757-4AD6-92F6-A73EB5DF91B4}" Platform="Linked"/>
-									</ActiveSourceList>
-								</Sound>
-								<Sound Name="Magic_Fridge_Use" ID="{5BFC68D7-3862-42C2-9E87-6AEEDF9B407B}" ShortID="432615120">
-									<ReferenceList>
-										<Reference Name="Conversion">
-											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{27F70A5B-D7C2-4BA9-9793-BA39E1BC8B1D}"/>
-										</Reference>
-										<Reference Name="OutputBus">
-											<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{0C9031E4-8081-4B6E-AB6C-02891DDBDDA8}"/>
-										</Reference>
-									</ReferenceList>
-									<ChildrenList>
-										<AudioFileSource Name="Magic_Fridge_Use" ID="{9EF4026B-60EF-4ADE-8300-BD07ABFAF16D}">
-											<PropertyList>
-												<Property Name="FadeOutDuration" Type="Real64" Value="1.78347"/>
-												<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
-												<Property Name="TrimEnd" Type="Real64" Value="5.50891"/>
-											</PropertyList>
-											<Language>SFX</Language>
-											<AudioFile>SFX\Magic_Fridge_Use.wav</AudioFile>
-											<MediaIDList>
-												<MediaID ID="82111434"/>
-											</MediaIDList>
-										</AudioFileSource>
-									</ChildrenList>
-									<ActiveSourceList>
-										<ActiveSource Name="Magic_Fridge_Use" ID="{9EF4026B-60EF-4ADE-8300-BD07ABFAF16D}" Platform="Linked"/>
-									</ActiveSourceList>
-								</Sound>
-								<Sound Name="Magic_Fridge_Fail" ID="{1349D11D-E351-4BB6-9D0B-1117CC3FA0FE}" ShortID="1009545477">
-									<ReferenceList>
-										<Reference Name="Conversion">
-											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{27F70A5B-D7C2-4BA9-9793-BA39E1BC8B1D}"/>
-										</Reference>
-										<Reference Name="OutputBus">
-											<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{0C9031E4-8081-4B6E-AB6C-02891DDBDDA8}"/>
-										</Reference>
-									</ReferenceList>
-									<ChildrenList>
-										<AudioFileSource Name="Magic_Fridge_Fail" ID="{0A9B22C9-3775-4506-97E4-BA1E39320D7D}">
-											<PropertyList>
-												<Property Name="FadeOutDuration" Type="Real64" Value="1.03539"/>
-												<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
-												<Property Name="TrimEnd" Type="Real64" Value="2.46704"/>
-											</PropertyList>
-											<Language>SFX</Language>
-											<AudioFile>SFX\Magic_Fridge_Fail.wav</AudioFile>
-											<MediaIDList>
-												<MediaID ID="334798409"/>
-											</MediaIDList>
-										</AudioFileSource>
-									</ChildrenList>
-									<ActiveSourceList>
-										<ActiveSource Name="Magic_Fridge_Fail" ID="{0A9B22C9-3775-4506-97E4-BA1E39320D7D}" Platform="Linked"/>
-									</ActiveSourceList>
-								</Sound>
-								<Sound Name="Workbench_Fail" ID="{2B90655D-CDB1-4358-BAF7-06233E2AB16C}" ShortID="248224836">
-									<ReferenceList>
-										<Reference Name="Conversion">
-											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{27F70A5B-D7C2-4BA9-9793-BA39E1BC8B1D}"/>
-										</Reference>
-										<Reference Name="OutputBus">
-											<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{0C9031E4-8081-4B6E-AB6C-02891DDBDDA8}"/>
-										</Reference>
-									</ReferenceList>
-									<ChildrenList>
-										<AudioFileSource Name="Workbench_Fail" ID="{FFD96F96-804C-4A18-A8F8-4427F3BC8124}">
-											<Language>SFX</Language>
-											<AudioFile>SFX\Workbench_Fail.wav</AudioFile>
-											<MediaIDList>
-												<MediaID ID="1030519550"/>
-											</MediaIDList>
-										</AudioFileSource>
-									</ChildrenList>
-									<ActiveSourceList>
-										<ActiveSource Name="Workbench_Fail" ID="{FFD96F96-804C-4A18-A8F8-4427F3BC8124}" Platform="Linked"/>
-									</ActiveSourceList>
-								</Sound>
 								<RandomSequenceContainer Name="Alc_Rack_Fail" ID="{D0685D96-4110-4A3C-A9D0-B52417B60BEA}" ShortID="354634999">
 									<ReferenceList>
 										<Reference Name="Conversion">
@@ -421,34 +298,7 @@
 										</Sound>
 									</ChildrenList>
 								</RandomSequenceContainer>
-								<Sound Name="Workbench_Use" ID="{183CAFFF-E345-4CDB-A6F4-71D46EC6CBA3}" ShortID="1013836347">
-									<ReferenceList>
-										<Reference Name="Conversion">
-											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{27F70A5B-D7C2-4BA9-9793-BA39E1BC8B1D}"/>
-										</Reference>
-										<Reference Name="OutputBus">
-											<ObjectRef Name="SFX" ID="{553FBE0F-6F3D-46D3-B60B-CF458887C1C1}" WorkUnitID="{0C9031E4-8081-4B6E-AB6C-02891DDBDDA8}"/>
-										</Reference>
-									</ReferenceList>
-									<ChildrenList>
-										<AudioFileSource Name="Workbench" ID="{2B03CBCF-571F-4681-BA87-25564D8D4DB0}">
-											<PropertyList>
-												<Property Name="FadeOutDuration" Type="Real64" Value="0.0873907615480649"/>
-												<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
-												<Property Name="TrimEnd" Type="Real64" Value="1.79151061173532"/>
-											</PropertyList>
-											<Language>SFX</Language>
-											<AudioFile>Workbench.wav</AudioFile>
-											<MediaIDList>
-												<MediaID ID="679575562"/>
-											</MediaIDList>
-										</AudioFileSource>
-									</ChildrenList>
-									<ActiveSourceList>
-										<ActiveSource Name="Workbench" ID="{2B03CBCF-571F-4681-BA87-25564D8D4DB0}" Platform="Linked"/>
-									</ActiveSourceList>
-								</Sound>
-								<BlendContainer Name="Fireplace_Success" ID="{A10407A0-4305-4164-85E8-695C3D505EA8}" ShortID="688077626">
+								<SwitchContainer Name="Upgrade_Station_Success" ID="{7B046A6D-119D-417B-9B18-98FE3DD7EE4B}" ShortID="967178054">
 									<ReferenceList>
 										<Reference Name="Conversion">
 											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{27F70A5B-D7C2-4BA9-9793-BA39E1BC8B1D}"/>
@@ -456,16 +306,12 @@
 										<Reference Name="OutputBus">
 											<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{0C9031E4-8081-4B6E-AB6C-02891DDBDDA8}"/>
 										</Reference>
+										<Reference Name="SwitchGroupOrStateGroup">
+											<ObjectRef Name="Upgrade_Station" ID="{27A21745-C77B-4991-991D-C1F242855C06}" WorkUnitID="{7A779D49-F71E-49DD-846C-A08BC43EB70B}"/>
+										</Reference>
 									</ReferenceList>
 									<ChildrenList>
-										<Sound Name="Item_Crafted" ID="{BC826B57-557B-4DDF-A6D2-736C74314B3A}" ShortID="1065932294">
-											<PropertyList>
-												<Property Name="Volume" Type="Real64">
-													<ValueList>
-														<Value>4</Value>
-													</ValueList>
-												</Property>
-											</PropertyList>
+										<Sound Name="Item_Crafted" ID="{0A902C83-0627-4473-A5D7-43ED9FA2DAC7}" ShortID="417944207">
 											<ReferenceList>
 												<Reference Name="Conversion">
 													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{27F70A5B-D7C2-4BA9-9793-BA39E1BC8B1D}"/>
@@ -475,7 +321,7 @@
 												</Reference>
 											</ReferenceList>
 											<ChildrenList>
-												<AudioFileSource Name="Item_Crafted" ID="{4E774237-A161-4078-A17B-DDBFAB195CDB}">
+												<AudioFileSource Name="Item_Crafted" ID="{90340074-7F87-40C2-A8F8-729055423A49}">
 													<PropertyList>
 														<Property Name="FadeOutDuration" Type="Real64" Value="1.06866416978777"/>
 														<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
@@ -489,34 +335,264 @@
 												</AudioFileSource>
 											</ChildrenList>
 											<ActiveSourceList>
-												<ActiveSource Name="Item_Crafted" ID="{4E774237-A161-4078-A17B-DDBFAB195CDB}" Platform="Linked"/>
+												<ActiveSource Name="Item_Crafted" ID="{90340074-7F87-40C2-A8F8-729055423A49}" Platform="Linked"/>
 											</ActiveSourceList>
 										</Sound>
-										<Sound Name="Fireplace_Success" ID="{5E3CD4F3-4FB9-4F13-A50B-0B17936B1596}" ShortID="186132167">
+										<BlendContainer Name="Magic_Fridge_Success" ID="{7F216E6D-9BDB-4BE4-8AAF-EFB22861519D}" ShortID="284991090">
 											<ReferenceList>
 												<Reference Name="Conversion">
 													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{27F70A5B-D7C2-4BA9-9793-BA39E1BC8B1D}"/>
 												</Reference>
 												<Reference Name="OutputBus">
-													<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{0C9031E4-8081-4B6E-AB6C-02891DDBDDA8}"/>
+													<ObjectRef Name="SFX" ID="{553FBE0F-6F3D-46D3-B60B-CF458887C1C1}" WorkUnitID="{0C9031E4-8081-4B6E-AB6C-02891DDBDDA8}"/>
 												</Reference>
 											</ReferenceList>
 											<ChildrenList>
-												<AudioFileSource Name="Fireplace_Success" ID="{E458ED46-0DF4-4174-8839-BF39EA816015}">
-													<Language>SFX</Language>
-													<AudioFile>SFX\Fireplace_Success.wav</AudioFile>
-													<MediaIDList>
-														<MediaID ID="823941386"/>
-													</MediaIDList>
-												</AudioFileSource>
+												<Sound Name="Magic_Fridge_Succes" ID="{177C574F-B98F-493E-901A-AC312977D498}" ShortID="419293151">
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{27F70A5B-D7C2-4BA9-9793-BA39E1BC8B1D}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="SFX" ID="{553FBE0F-6F3D-46D3-B60B-CF458887C1C1}" WorkUnitID="{0C9031E4-8081-4B6E-AB6C-02891DDBDDA8}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="Magic_Fridge_Success" ID="{F7C2B696-916D-407D-A1EF-E25E50DC25AE}">
+															<Language>SFX</Language>
+															<AudioFile>SFX\Magic_Fridge_Success.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="26478889"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ActiveSourceList>
+														<ActiveSource Name="Magic_Fridge_Success" ID="{F7C2B696-916D-407D-A1EF-E25E50DC25AE}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+												<Sound Name="Item_Crafted" ID="{F629E8A5-B592-4936-8F5A-20B49C60A932}" ShortID="293724552">
+													<PropertyList>
+														<Property Name="Volume" Type="Real64">
+															<ValueList>
+																<Value>4</Value>
+															</ValueList>
+														</Property>
+													</PropertyList>
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{27F70A5B-D7C2-4BA9-9793-BA39E1BC8B1D}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="SFX" ID="{553FBE0F-6F3D-46D3-B60B-CF458887C1C1}" WorkUnitID="{0C9031E4-8081-4B6E-AB6C-02891DDBDDA8}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="Item_Crafted" ID="{065A0631-D7CD-4CF9-828D-B1368A53A9B2}">
+															<PropertyList>
+																<Property Name="FadeOutDuration" Type="Real64" Value="1.06866416978777"/>
+																<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+																<Property Name="TrimEnd" Type="Real64" Value="2.5518102372035"/>
+															</PropertyList>
+															<Language>SFX</Language>
+															<AudioFile>Item_Crafted.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="27399822"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ActiveSourceList>
+														<ActiveSource Name="Item_Crafted" ID="{065A0631-D7CD-4CF9-828D-B1368A53A9B2}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
 											</ChildrenList>
-											<ActiveSourceList>
-												<ActiveSource Name="Fireplace_Success" ID="{E458ED46-0DF4-4174-8839-BF39EA816015}" Platform="Linked"/>
-											</ActiveSourceList>
-										</Sound>
+										</BlendContainer>
+										<BlendContainer Name="Painting_Station_Success" ID="{31E8B137-70C9-4E01-B367-99BC78C302F9}" ShortID="597627102">
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{27F70A5B-D7C2-4BA9-9793-BA39E1BC8B1D}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="SFX" ID="{553FBE0F-6F3D-46D3-B60B-CF458887C1C1}" WorkUnitID="{0C9031E4-8081-4B6E-AB6C-02891DDBDDA8}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<Sound Name="Painting_Station_Success" ID="{C07E0875-F850-4770-974B-B0342E900711}" ShortID="388945720">
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{27F70A5B-D7C2-4BA9-9793-BA39E1BC8B1D}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="SFX" ID="{553FBE0F-6F3D-46D3-B60B-CF458887C1C1}" WorkUnitID="{0C9031E4-8081-4B6E-AB6C-02891DDBDDA8}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="Painting_Station_Success" ID="{37047CFB-4C21-4F43-9713-C1B85DCD3D10}">
+															<Language>SFX</Language>
+															<AudioFile>SFX\Painting_Station_Success.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="784012248"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ActiveSourceList>
+														<ActiveSource Name="Painting_Station_Success" ID="{37047CFB-4C21-4F43-9713-C1B85DCD3D10}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+												<Sound Name="Item_Crafted" ID="{C9001FB2-256E-49C4-9018-9A05BB2B69D3}" ShortID="583833829">
+													<PropertyList>
+														<Property Name="InitialDelay" Type="Real64">
+															<ValueList>
+																<Value>0.25</Value>
+															</ValueList>
+														</Property>
+													</PropertyList>
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{27F70A5B-D7C2-4BA9-9793-BA39E1BC8B1D}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="SFX" ID="{553FBE0F-6F3D-46D3-B60B-CF458887C1C1}" WorkUnitID="{0C9031E4-8081-4B6E-AB6C-02891DDBDDA8}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="Item_Crafted" ID="{3B0D4DE7-A74E-487C-A14B-CD53C0F86913}">
+															<PropertyList>
+																<Property Name="FadeOutDuration" Type="Real64" Value="1.06866416978777"/>
+																<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+																<Property Name="TrimEnd" Type="Real64" Value="2.5518102372035"/>
+															</PropertyList>
+															<Language>SFX</Language>
+															<AudioFile>Item_Crafted.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="27399822"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ActiveSourceList>
+														<ActiveSource Name="Item_Crafted" ID="{3B0D4DE7-A74E-487C-A14B-CD53C0F86913}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+											</ChildrenList>
+										</BlendContainer>
+										<BlendContainer Name="Fireplace_Success" ID="{A10407A0-4305-4164-85E8-695C3D505EA8}" ShortID="688077626">
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{27F70A5B-D7C2-4BA9-9793-BA39E1BC8B1D}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="SFX" ID="{553FBE0F-6F3D-46D3-B60B-CF458887C1C1}" WorkUnitID="{0C9031E4-8081-4B6E-AB6C-02891DDBDDA8}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<Sound Name="Item_Crafted" ID="{BC826B57-557B-4DDF-A6D2-736C74314B3A}" ShortID="1065932294">
+													<PropertyList>
+														<Property Name="Volume" Type="Real64">
+															<ValueList>
+																<Value>4</Value>
+															</ValueList>
+														</Property>
+													</PropertyList>
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{27F70A5B-D7C2-4BA9-9793-BA39E1BC8B1D}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="SFX" ID="{553FBE0F-6F3D-46D3-B60B-CF458887C1C1}" WorkUnitID="{0C9031E4-8081-4B6E-AB6C-02891DDBDDA8}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="Item_Crafted" ID="{4E774237-A161-4078-A17B-DDBFAB195CDB}">
+															<PropertyList>
+																<Property Name="FadeOutDuration" Type="Real64" Value="1.06866416978777"/>
+																<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+																<Property Name="TrimEnd" Type="Real64" Value="2.5518102372035"/>
+															</PropertyList>
+															<Language>SFX</Language>
+															<AudioFile>Item_Crafted.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="27399822"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ActiveSourceList>
+														<ActiveSource Name="Item_Crafted" ID="{4E774237-A161-4078-A17B-DDBFAB195CDB}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+												<Sound Name="Fireplace_Success" ID="{5E3CD4F3-4FB9-4F13-A50B-0B17936B1596}" ShortID="186132167">
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{27F70A5B-D7C2-4BA9-9793-BA39E1BC8B1D}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{0C9031E4-8081-4B6E-AB6C-02891DDBDDA8}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="Fireplace_Success" ID="{E458ED46-0DF4-4174-8839-BF39EA816015}">
+															<Language>SFX</Language>
+															<AudioFile>SFX\Fireplace_Success.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="823941386"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ActiveSourceList>
+														<ActiveSource Name="Fireplace_Success" ID="{E458ED46-0DF4-4174-8839-BF39EA816015}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+											</ChildrenList>
+										</BlendContainer>
 									</ChildrenList>
-								</BlendContainer>
-								<BlendContainer Name="Magic_Fridge_Success" ID="{7F216E6D-9BDB-4BE4-8AAF-EFB22861519D}" ShortID="284991090">
+									<GroupingInfo>
+										<GroupingBehaviorList>
+											<GroupingBehavior>
+												<ItemRef Name="Painting_Station_Success" ID="{31E8B137-70C9-4E01-B367-99BC78C302F9}"/>
+											</GroupingBehavior>
+											<GroupingBehavior>
+												<ItemRef Name="Magic_Fridge_Success" ID="{7F216E6D-9BDB-4BE4-8AAF-EFB22861519D}"/>
+											</GroupingBehavior>
+											<GroupingBehavior>
+												<ItemRef Name="Item_Crafted" ID="{0A902C83-0627-4473-A5D7-43ED9FA2DAC7}"/>
+											</GroupingBehavior>
+											<GroupingBehavior>
+												<ItemRef Name="Fireplace_Success" ID="{A10407A0-4305-4164-85E8-695C3D505EA8}"/>
+											</GroupingBehavior>
+										</GroupingBehaviorList>
+										<GroupingList>
+											<Grouping>
+												<SwitchRef Name="Alcohol" ID="{2378E908-E36E-4362-AF43-034D8332DB46}"/>
+												<ItemList>
+													<ItemRef Name="Item_Crafted" ID="{0A902C83-0627-4473-A5D7-43ED9FA2DAC7}"/>
+												</ItemList>
+											</Grouping>
+											<Grouping>
+												<SwitchRef Name="Painting" ID="{34857F0E-6CF8-40E5-8CF7-1E8D54F86256}"/>
+												<ItemList>
+													<ItemRef Name="Painting_Station_Success" ID="{31E8B137-70C9-4E01-B367-99BC78C302F9}"/>
+												</ItemList>
+											</Grouping>
+											<Grouping>
+												<SwitchRef Name="Fridge" ID="{5CCDCA80-F85F-4148-9F07-F4553EB786EF}"/>
+												<ItemList>
+													<ItemRef Name="Magic_Fridge_Success" ID="{7F216E6D-9BDB-4BE4-8AAF-EFB22861519D}"/>
+												</ItemList>
+											</Grouping>
+											<Grouping>
+												<SwitchRef Name="Fireplace" ID="{ECDF7BDB-417A-4891-9AC8-EE3B2717CE95}"/>
+												<ItemList>
+													<ItemRef Name="Fireplace_Success" ID="{A10407A0-4305-4164-85E8-695C3D505EA8}"/>
+												</ItemList>
+											</Grouping>
+											<Grouping>
+												<SwitchRef Name="Workbench" ID="{3FD63DF2-1146-405B-A4CA-67B37581FEA9}"/>
+												<ItemList>
+													<ItemRef Name="Item_Crafted" ID="{0A902C83-0627-4473-A5D7-43ED9FA2DAC7}"/>
+												</ItemList>
+											</Grouping>
+										</GroupingList>
+									</GroupingInfo>
+								</SwitchContainer>
+								<SwitchContainer Name="Upgrade_Station_Use" ID="{DAD6D09E-7ED6-4250-A8EF-D1533FDB1BB0}" ShortID="47609133">
 									<ReferenceList>
 										<Reference Name="Conversion">
 											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{27F70A5B-D7C2-4BA9-9793-BA39E1BC8B1D}"/>
@@ -524,9 +600,12 @@
 										<Reference Name="OutputBus">
 											<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{0C9031E4-8081-4B6E-AB6C-02891DDBDDA8}"/>
 										</Reference>
+										<Reference Name="SwitchGroupOrStateGroup">
+											<ObjectRef Name="Upgrade_Station" ID="{27A21745-C77B-4991-991D-C1F242855C06}" WorkUnitID="{7A779D49-F71E-49DD-846C-A08BC43EB70B}"/>
+										</Reference>
 									</ReferenceList>
 									<ChildrenList>
-										<Sound Name="Magic_Fridge_Succes" ID="{177C574F-B98F-493E-901A-AC312977D498}" ShortID="419293151">
+										<Sound Name="Fireplace_Use" ID="{4CA9B0B7-87B2-4179-ADB1-D460026A38DC}" ShortID="1028231709">
 											<ReferenceList>
 												<Reference Name="Conversion">
 													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{27F70A5B-D7C2-4BA9-9793-BA39E1BC8B1D}"/>
@@ -536,87 +615,22 @@
 												</Reference>
 											</ReferenceList>
 											<ChildrenList>
-												<AudioFileSource Name="Magic_Fridge_Success" ID="{F7C2B696-916D-407D-A1EF-E25E50DC25AE}">
-													<Language>SFX</Language>
-													<AudioFile>SFX\Magic_Fridge_Success.wav</AudioFile>
-													<MediaIDList>
-														<MediaID ID="26478889"/>
-													</MediaIDList>
-												</AudioFileSource>
-											</ChildrenList>
-											<ActiveSourceList>
-												<ActiveSource Name="Magic_Fridge_Success" ID="{F7C2B696-916D-407D-A1EF-E25E50DC25AE}" Platform="Linked"/>
-											</ActiveSourceList>
-										</Sound>
-										<Sound Name="Item_Crafted" ID="{F629E8A5-B592-4936-8F5A-20B49C60A932}" ShortID="293724552">
-											<PropertyList>
-												<Property Name="Volume" Type="Real64">
-													<ValueList>
-														<Value>4</Value>
-													</ValueList>
-												</Property>
-											</PropertyList>
-											<ReferenceList>
-												<Reference Name="Conversion">
-													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{27F70A5B-D7C2-4BA9-9793-BA39E1BC8B1D}"/>
-												</Reference>
-												<Reference Name="OutputBus">
-													<ObjectRef Name="SFX" ID="{553FBE0F-6F3D-46D3-B60B-CF458887C1C1}" WorkUnitID="{0C9031E4-8081-4B6E-AB6C-02891DDBDDA8}"/>
-												</Reference>
-											</ReferenceList>
-											<ChildrenList>
-												<AudioFileSource Name="Item_Crafted" ID="{065A0631-D7CD-4CF9-828D-B1368A53A9B2}">
+												<AudioFileSource Name="Fireplace_Use" ID="{AD65E948-D757-4AD6-92F6-A73EB5DF91B4}">
 													<PropertyList>
-														<Property Name="FadeOutDuration" Type="Real64" Value="1.06866416978777"/>
 														<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
-														<Property Name="TrimEnd" Type="Real64" Value="2.5518102372035"/>
 													</PropertyList>
 													<Language>SFX</Language>
-													<AudioFile>Item_Crafted.wav</AudioFile>
+													<AudioFile>SFX\Fireplace_Use.wav</AudioFile>
 													<MediaIDList>
-														<MediaID ID="27399822"/>
+														<MediaID ID="809256068"/>
 													</MediaIDList>
 												</AudioFileSource>
 											</ChildrenList>
 											<ActiveSourceList>
-												<ActiveSource Name="Item_Crafted" ID="{065A0631-D7CD-4CF9-828D-B1368A53A9B2}" Platform="Linked"/>
+												<ActiveSource Name="Fireplace_Use" ID="{AD65E948-D757-4AD6-92F6-A73EB5DF91B4}" Platform="Linked"/>
 											</ActiveSourceList>
 										</Sound>
-									</ChildrenList>
-								</BlendContainer>
-								<Sound Name="Painting_Station_Use" ID="{86FA4D19-389A-4AFB-8860-48A82B18FB5C}" ShortID="954528278">
-									<ReferenceList>
-										<Reference Name="Conversion">
-											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{27F70A5B-D7C2-4BA9-9793-BA39E1BC8B1D}"/>
-										</Reference>
-										<Reference Name="OutputBus">
-											<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{0C9031E4-8081-4B6E-AB6C-02891DDBDDA8}"/>
-										</Reference>
-									</ReferenceList>
-									<ChildrenList>
-										<AudioFileSource Name="Painting_Station_Use" ID="{3875CA40-D28F-4AB8-B27E-962E919E45EC}">
-											<Language>SFX</Language>
-											<AudioFile>SFX\Painting_Station_Use.wav</AudioFile>
-											<MediaIDList>
-												<MediaID ID="940804682"/>
-											</MediaIDList>
-										</AudioFileSource>
-									</ChildrenList>
-									<ActiveSourceList>
-										<ActiveSource Name="Painting_Station_Use" ID="{3875CA40-D28F-4AB8-B27E-962E919E45EC}" Platform="Linked"/>
-									</ActiveSourceList>
-								</Sound>
-								<BlendContainer Name="Painting_Station_Success" ID="{31E8B137-70C9-4E01-B367-99BC78C302F9}" ShortID="597627102">
-									<ReferenceList>
-										<Reference Name="Conversion">
-											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{27F70A5B-D7C2-4BA9-9793-BA39E1BC8B1D}"/>
-										</Reference>
-										<Reference Name="OutputBus">
-											<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{0C9031E4-8081-4B6E-AB6C-02891DDBDDA8}"/>
-										</Reference>
-									</ReferenceList>
-									<ChildrenList>
-										<Sound Name="Painting_Station_Success" ID="{C07E0875-F850-4770-974B-B0342E900711}" ShortID="388945720">
+										<Sound Name="Painting_Station_Use" ID="{86FA4D19-389A-4AFB-8860-48A82B18FB5C}" ShortID="954528278">
 											<ReferenceList>
 												<Reference Name="Conversion">
 													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{27F70A5B-D7C2-4BA9-9793-BA39E1BC8B1D}"/>
@@ -626,26 +640,19 @@
 												</Reference>
 											</ReferenceList>
 											<ChildrenList>
-												<AudioFileSource Name="Painting_Station_Success" ID="{37047CFB-4C21-4F43-9713-C1B85DCD3D10}">
+												<AudioFileSource Name="Painting_Station_Use" ID="{3875CA40-D28F-4AB8-B27E-962E919E45EC}">
 													<Language>SFX</Language>
-													<AudioFile>SFX\Painting_Station_Success.wav</AudioFile>
+													<AudioFile>SFX\Painting_Station_Use.wav</AudioFile>
 													<MediaIDList>
-														<MediaID ID="784012248"/>
+														<MediaID ID="940804682"/>
 													</MediaIDList>
 												</AudioFileSource>
 											</ChildrenList>
 											<ActiveSourceList>
-												<ActiveSource Name="Painting_Station_Success" ID="{37047CFB-4C21-4F43-9713-C1B85DCD3D10}" Platform="Linked"/>
+												<ActiveSource Name="Painting_Station_Use" ID="{3875CA40-D28F-4AB8-B27E-962E919E45EC}" Platform="Linked"/>
 											</ActiveSourceList>
 										</Sound>
-										<Sound Name="Item_Crafted" ID="{C9001FB2-256E-49C4-9018-9A05BB2B69D3}" ShortID="583833829">
-											<PropertyList>
-												<Property Name="InitialDelay" Type="Real64">
-													<ValueList>
-														<Value>0.25</Value>
-													</ValueList>
-												</Property>
-											</PropertyList>
+										<Sound Name="Magic_Fridge_Use" ID="{5BFC68D7-3862-42C2-9E87-6AEEDF9B407B}" ShortID="432615120">
 											<ReferenceList>
 												<Reference Name="Conversion">
 													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{27F70A5B-D7C2-4BA9-9793-BA39E1BC8B1D}"/>
@@ -655,52 +662,130 @@
 												</Reference>
 											</ReferenceList>
 											<ChildrenList>
-												<AudioFileSource Name="Item_Crafted" ID="{3B0D4DE7-A74E-487C-A14B-CD53C0F86913}">
+												<AudioFileSource Name="Magic_Fridge_Use" ID="{9EF4026B-60EF-4ADE-8300-BD07ABFAF16D}">
 													<PropertyList>
-														<Property Name="FadeOutDuration" Type="Real64" Value="1.06866416978777"/>
+														<Property Name="FadeOutDuration" Type="Real64" Value="1.78347"/>
 														<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
-														<Property Name="TrimEnd" Type="Real64" Value="2.5518102372035"/>
+														<Property Name="TrimEnd" Type="Real64" Value="5.50891"/>
 													</PropertyList>
 													<Language>SFX</Language>
-													<AudioFile>Item_Crafted.wav</AudioFile>
+													<AudioFile>SFX\Magic_Fridge_Use.wav</AudioFile>
 													<MediaIDList>
-														<MediaID ID="27399822"/>
+														<MediaID ID="82111434"/>
 													</MediaIDList>
 												</AudioFileSource>
 											</ChildrenList>
 											<ActiveSourceList>
-												<ActiveSource Name="Item_Crafted" ID="{3B0D4DE7-A74E-487C-A14B-CD53C0F86913}" Platform="Linked"/>
+												<ActiveSource Name="Magic_Fridge_Use" ID="{9EF4026B-60EF-4ADE-8300-BD07ABFAF16D}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+										<Sound Name="Workbench_Use" ID="{183CAFFF-E345-4CDB-A6F4-71D46EC6CBA3}" ShortID="1013836347">
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{27F70A5B-D7C2-4BA9-9793-BA39E1BC8B1D}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="SFX" ID="{553FBE0F-6F3D-46D3-B60B-CF458887C1C1}" WorkUnitID="{0C9031E4-8081-4B6E-AB6C-02891DDBDDA8}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="Workbench" ID="{2B03CBCF-571F-4681-BA87-25564D8D4DB0}">
+													<PropertyList>
+														<Property Name="FadeOutDuration" Type="Real64" Value="0.0873907615480649"/>
+														<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+														<Property Name="TrimEnd" Type="Real64" Value="1.79151061173532"/>
+													</PropertyList>
+													<Language>SFX</Language>
+													<AudioFile>Workbench.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="679575562"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ActiveSourceList>
+												<ActiveSource Name="Workbench" ID="{2B03CBCF-571F-4681-BA87-25564D8D4DB0}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+										<Sound Name="Alc_Rack_Use" ID="{9B6FA091-C8ED-40C4-9291-E5872B318289}" ShortID="1065830757">
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{27F70A5B-D7C2-4BA9-9793-BA39E1BC8B1D}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="SFX" ID="{553FBE0F-6F3D-46D3-B60B-CF458887C1C1}" WorkUnitID="{0C9031E4-8081-4B6E-AB6C-02891DDBDDA8}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="Alc_Rack_Use" ID="{8368B5DC-3C47-49EE-9DBE-91FAD7D4CDAE}">
+													<PropertyList>
+														<Property Name="FadeOutDuration" Type="Real64" Value="0.72937"/>
+														<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+													</PropertyList>
+													<Language>SFX</Language>
+													<AudioFile>SFX\Alc_Rack_Use.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="698120775"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ActiveSourceList>
+												<ActiveSource Name="Alc_Rack_Use" ID="{8368B5DC-3C47-49EE-9DBE-91FAD7D4CDAE}" Platform="Linked"/>
 											</ActiveSourceList>
 										</Sound>
 									</ChildrenList>
-								</BlendContainer>
-								<Sound Name="Alc_Rack_Use" ID="{9B6FA091-C8ED-40C4-9291-E5872B318289}" ShortID="1065830757">
-									<ReferenceList>
-										<Reference Name="Conversion">
-											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{27F70A5B-D7C2-4BA9-9793-BA39E1BC8B1D}"/>
-										</Reference>
-										<Reference Name="OutputBus">
-											<ObjectRef Name="SFX" ID="{553FBE0F-6F3D-46D3-B60B-CF458887C1C1}" WorkUnitID="{0C9031E4-8081-4B6E-AB6C-02891DDBDDA8}"/>
-										</Reference>
-									</ReferenceList>
-									<ChildrenList>
-										<AudioFileSource Name="Alc_Rack_Use" ID="{8368B5DC-3C47-49EE-9DBE-91FAD7D4CDAE}">
-											<PropertyList>
-												<Property Name="FadeOutDuration" Type="Real64" Value="0.72937"/>
-												<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
-											</PropertyList>
-											<Language>SFX</Language>
-											<AudioFile>SFX\Alc_Rack_Use.wav</AudioFile>
-											<MediaIDList>
-												<MediaID ID="698120775"/>
-											</MediaIDList>
-										</AudioFileSource>
-									</ChildrenList>
-									<ActiveSourceList>
-										<ActiveSource Name="Alc_Rack_Use" ID="{8368B5DC-3C47-49EE-9DBE-91FAD7D4CDAE}" Platform="Linked"/>
-									</ActiveSourceList>
-								</Sound>
-								<Sound Name="Painting_Station_Fail" ID="{30F640DC-3B90-47FC-A7BA-072513E25991}" ShortID="281779255">
+									<GroupingInfo>
+										<GroupingBehaviorList>
+											<GroupingBehavior>
+												<ItemRef Name="Painting_Station_Use" ID="{86FA4D19-389A-4AFB-8860-48A82B18FB5C}"/>
+											</GroupingBehavior>
+											<GroupingBehavior>
+												<ItemRef Name="Alc_Rack_Use" ID="{9B6FA091-C8ED-40C4-9291-E5872B318289}"/>
+											</GroupingBehavior>
+											<GroupingBehavior>
+												<ItemRef Name="Fireplace_Use" ID="{4CA9B0B7-87B2-4179-ADB1-D460026A38DC}"/>
+											</GroupingBehavior>
+											<GroupingBehavior>
+												<ItemRef Name="Magic_Fridge_Use" ID="{5BFC68D7-3862-42C2-9E87-6AEEDF9B407B}"/>
+											</GroupingBehavior>
+											<GroupingBehavior>
+												<ItemRef Name="Workbench_Use" ID="{183CAFFF-E345-4CDB-A6F4-71D46EC6CBA3}"/>
+											</GroupingBehavior>
+										</GroupingBehaviorList>
+										<GroupingList>
+											<Grouping>
+												<SwitchRef Name="Alcohol" ID="{2378E908-E36E-4362-AF43-034D8332DB46}"/>
+												<ItemList>
+													<ItemRef Name="Alc_Rack_Use" ID="{9B6FA091-C8ED-40C4-9291-E5872B318289}"/>
+												</ItemList>
+											</Grouping>
+											<Grouping>
+												<SwitchRef Name="Painting" ID="{34857F0E-6CF8-40E5-8CF7-1E8D54F86256}"/>
+												<ItemList>
+													<ItemRef Name="Painting_Station_Use" ID="{86FA4D19-389A-4AFB-8860-48A82B18FB5C}"/>
+												</ItemList>
+											</Grouping>
+											<Grouping>
+												<SwitchRef Name="Fridge" ID="{5CCDCA80-F85F-4148-9F07-F4553EB786EF}"/>
+												<ItemList>
+													<ItemRef Name="Magic_Fridge_Use" ID="{5BFC68D7-3862-42C2-9E87-6AEEDF9B407B}"/>
+												</ItemList>
+											</Grouping>
+											<Grouping>
+												<SwitchRef Name="Fireplace" ID="{ECDF7BDB-417A-4891-9AC8-EE3B2717CE95}"/>
+												<ItemList>
+													<ItemRef Name="Fireplace_Use" ID="{4CA9B0B7-87B2-4179-ADB1-D460026A38DC}"/>
+												</ItemList>
+											</Grouping>
+											<Grouping>
+												<SwitchRef Name="Workbench" ID="{3FD63DF2-1146-405B-A4CA-67B37581FEA9}"/>
+												<ItemList>
+													<ItemRef Name="Workbench_Use" ID="{183CAFFF-E345-4CDB-A6F4-71D46EC6CBA3}"/>
+												</ItemList>
+											</Grouping>
+										</GroupingList>
+									</GroupingInfo>
+								</SwitchContainer>
+								<SwitchContainer Name="Upgrade_Station_Fail" ID="{7CBF9C7A-E3FA-48EB-8C92-17EDA45CB563}" ShortID="698788966">
 									<ReferenceList>
 										<Reference Name="Conversion">
 											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{27F70A5B-D7C2-4BA9-9793-BA39E1BC8B1D}"/>
@@ -708,20 +793,148 @@
 										<Reference Name="OutputBus">
 											<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{0C9031E4-8081-4B6E-AB6C-02891DDBDDA8}"/>
 										</Reference>
+										<Reference Name="SwitchGroupOrStateGroup">
+											<ObjectRef Name="Upgrade_Station" ID="{27A21745-C77B-4991-991D-C1F242855C06}" WorkUnitID="{7A779D49-F71E-49DD-846C-A08BC43EB70B}"/>
+										</Reference>
 									</ReferenceList>
 									<ChildrenList>
-										<AudioFileSource Name="Painting_Station_Fail" ID="{FFEA43E3-6374-4452-9E33-520665339B7E}">
-											<Language>SFX</Language>
-											<AudioFile>SFX\Painting_Station_Fail.wav</AudioFile>
-											<MediaIDList>
-												<MediaID ID="760151221"/>
-											</MediaIDList>
-										</AudioFileSource>
+										<Sound Name="Workbench_Fail" ID="{2B90655D-CDB1-4358-BAF7-06233E2AB16C}" ShortID="248224836">
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{27F70A5B-D7C2-4BA9-9793-BA39E1BC8B1D}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="SFX" ID="{553FBE0F-6F3D-46D3-B60B-CF458887C1C1}" WorkUnitID="{0C9031E4-8081-4B6E-AB6C-02891DDBDDA8}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="Workbench_Fail" ID="{FFD96F96-804C-4A18-A8F8-4427F3BC8124}">
+													<Language>SFX</Language>
+													<AudioFile>SFX\Workbench_Fail.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="1030519550"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ActiveSourceList>
+												<ActiveSource Name="Workbench_Fail" ID="{FFD96F96-804C-4A18-A8F8-4427F3BC8124}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+										<Sound Name="Painting_Station_Fail" ID="{30F640DC-3B90-47FC-A7BA-072513E25991}" ShortID="281779255">
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{27F70A5B-D7C2-4BA9-9793-BA39E1BC8B1D}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="SFX" ID="{553FBE0F-6F3D-46D3-B60B-CF458887C1C1}" WorkUnitID="{0C9031E4-8081-4B6E-AB6C-02891DDBDDA8}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="Painting_Station_Fail" ID="{FFEA43E3-6374-4452-9E33-520665339B7E}">
+													<Language>SFX</Language>
+													<AudioFile>SFX\Painting_Station_Fail.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="760151221"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ActiveSourceList>
+												<ActiveSource Name="Painting_Station_Fail" ID="{FFEA43E3-6374-4452-9E33-520665339B7E}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+										<Sound Name="Fireplace_Fail" ID="{F8897164-92BA-42D5-98CA-CB513B56784C}" ShortID="270764039">
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{27F70A5B-D7C2-4BA9-9793-BA39E1BC8B1D}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="SFX" ID="{553FBE0F-6F3D-46D3-B60B-CF458887C1C1}" WorkUnitID="{0C9031E4-8081-4B6E-AB6C-02891DDBDDA8}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="Fireplace_Fail" ID="{C88DBCE4-8413-4D3A-8F22-A8AC31013C3B}">
+													<Language>SFX</Language>
+													<AudioFile>SFX\Fireplace_Fail.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="1017694766"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ActiveSourceList>
+												<ActiveSource Name="Fireplace_Fail" ID="{C88DBCE4-8413-4D3A-8F22-A8AC31013C3B}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+										<Sound Name="Magic_Fridge_Fail" ID="{1349D11D-E351-4BB6-9D0B-1117CC3FA0FE}" ShortID="1009545477">
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{27F70A5B-D7C2-4BA9-9793-BA39E1BC8B1D}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="SFX" ID="{553FBE0F-6F3D-46D3-B60B-CF458887C1C1}" WorkUnitID="{0C9031E4-8081-4B6E-AB6C-02891DDBDDA8}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="Magic_Fridge_Fail" ID="{0A9B22C9-3775-4506-97E4-BA1E39320D7D}">
+													<PropertyList>
+														<Property Name="FadeOutDuration" Type="Real64" Value="1.03539"/>
+														<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+														<Property Name="TrimEnd" Type="Real64" Value="2.46704"/>
+													</PropertyList>
+													<Language>SFX</Language>
+													<AudioFile>SFX\Magic_Fridge_Fail.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="334798409"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ActiveSourceList>
+												<ActiveSource Name="Magic_Fridge_Fail" ID="{0A9B22C9-3775-4506-97E4-BA1E39320D7D}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
 									</ChildrenList>
-									<ActiveSourceList>
-										<ActiveSource Name="Painting_Station_Fail" ID="{FFEA43E3-6374-4452-9E33-520665339B7E}" Platform="Linked"/>
-									</ActiveSourceList>
-								</Sound>
+									<GroupingInfo>
+										<GroupingBehaviorList>
+											<GroupingBehavior>
+												<ItemRef Name="Magic_Fridge_Fail" ID="{1349D11D-E351-4BB6-9D0B-1117CC3FA0FE}"/>
+											</GroupingBehavior>
+											<GroupingBehavior>
+												<ItemRef Name="Workbench_Fail" ID="{2B90655D-CDB1-4358-BAF7-06233E2AB16C}"/>
+											</GroupingBehavior>
+											<GroupingBehavior>
+												<ItemRef Name="Fireplace_Fail" ID="{F8897164-92BA-42D5-98CA-CB513B56784C}"/>
+											</GroupingBehavior>
+											<GroupingBehavior>
+												<ItemRef Name="Painting_Station_Fail" ID="{30F640DC-3B90-47FC-A7BA-072513E25991}"/>
+											</GroupingBehavior>
+										</GroupingBehaviorList>
+										<GroupingList>
+											<Grouping>
+												<SwitchRef Name="Painting" ID="{34857F0E-6CF8-40E5-8CF7-1E8D54F86256}"/>
+												<ItemList>
+													<ItemRef Name="Painting_Station_Fail" ID="{30F640DC-3B90-47FC-A7BA-072513E25991}"/>
+												</ItemList>
+											</Grouping>
+											<Grouping>
+												<SwitchRef Name="Fridge" ID="{5CCDCA80-F85F-4148-9F07-F4553EB786EF}"/>
+												<ItemList>
+													<ItemRef Name="Magic_Fridge_Fail" ID="{1349D11D-E351-4BB6-9D0B-1117CC3FA0FE}"/>
+												</ItemList>
+											</Grouping>
+											<Grouping>
+												<SwitchRef Name="Fireplace" ID="{ECDF7BDB-417A-4891-9AC8-EE3B2717CE95}"/>
+												<ItemList>
+													<ItemRef Name="Fireplace_Fail" ID="{F8897164-92BA-42D5-98CA-CB513B56784C}"/>
+												</ItemList>
+											</Grouping>
+											<Grouping>
+												<SwitchRef Name="Workbench" ID="{3FD63DF2-1146-405B-A4CA-67B37581FEA9}"/>
+												<ItemList>
+													<ItemRef Name="Workbench_Fail" ID="{2B90655D-CDB1-4358-BAF7-06233E2AB16C}"/>
+												</ItemList>
+											</Grouping>
+										</GroupingList>
+									</GroupingInfo>
+								</SwitchContainer>
 							</ChildrenList>
 						</Folder>
 						<Folder Name="Interactable Objects" ID="{5C635807-8E87-43C4-BF5C-B3797FD5993D}" ShortID="603045076">

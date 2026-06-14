@@ -8727,7 +8727,7 @@ MonoBehaviour:
   stationId: axe_upgrade
   canInteract: 0
   disabledMessage: This station cannot be used right now.
-  useSoundEventName: 
+  WwiseSwitchName: 
   successMessage: Item modified.
   noItemMessage: No item to modify.
   conditions:
@@ -8886,7 +8886,7 @@ MonoBehaviour:
   stationId: fireplace
   canInteract: 1
   disabledMessage: This station cannot be used right now.
-  useSoundEventName: 
+  WwiseSwitchName: 
   successMessage: Item modified.
   noItemMessage: No item to modify.
   conditions:
@@ -20673,6 +20673,10 @@ PrefabInstance:
       propertyPath: canInteract
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2226447768803869318, guid: ad1fd6eb0b1f50e488b025b785957b75, type: 3}
+      propertyPath: WwiseSwitchName
+      value: Fridge
+      objectReference: {fileID: 0}
     - target: {fileID: 8224911737512047174, guid: ad1fd6eb0b1f50e488b025b785957b75, type: 3}
       propertyPath: m_LocalPosition.x
       value: 9.43755
@@ -20737,6 +20741,10 @@ PrefabInstance:
     - target: {fileID: 3384306519837773068, guid: 01b0738ff39302040a8335bfea49118b, type: 3}
       propertyPath: canInteract
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3384306519837773068, guid: 01b0738ff39302040a8335bfea49118b, type: 3}
+      propertyPath: WwiseSwitchName
+      value: Workbench
       objectReference: {fileID: 0}
     - target: {fileID: 6198552688646859097, guid: 01b0738ff39302040a8335bfea49118b, type: 3}
       propertyPath: m_Name
