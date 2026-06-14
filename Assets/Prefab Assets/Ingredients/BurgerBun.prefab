@@ -11,7 +11,8 @@ GameObject:
   - component: {fileID: 1700261822523439862}
   - component: {fileID: 2482504152607697644}
   - component: {fileID: 7678222551241243735}
-  - component: {fileID: 499480044862964239}
+  - component: {fileID: 2857665688402118373}
+  - component: {fileID: 1078189001223048809}
   m_Layer: 0
   m_Name: Bun Bottom
   m_TagString: Untagged
@@ -28,7 +29,7 @@ Transform:
   m_GameObject: {fileID: 2132310430304815878}
   serializedVersion: 2
   m_LocalRotation: {x: 0.70710665, y: -1.5700922e-16, z: 1.5700922e-16, w: 0.7071069}
-  m_LocalPosition: {x: 0.3645978, y: -0.12335658, z: 0.069355965}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 20, y: 20, z: 20}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -67,7 +68,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  - {fileID: 2100000, guid: ce3f002b8e8de4c4cb9ce6cef4785f46, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -90,8 +91,31 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &499480044862964239
-BoxCollider:
+--- !u!136 &2857665688402118373
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2132310430304815878}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.009967478
+  m_Height: 0.019934958
+  m_Direction: 1
+  m_Center: {x: -0.000000003259629, y: 0.0000000027939673, z: 0.002242599}
+--- !u!136 &1078189001223048809
+CapsuleCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -108,9 +132,11 @@ BoxCollider:
   m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 0.019934956, y: 0.019934958, z: 0.0047431435}
-  m_Center: {x: -0.000000003259629, y: 0.0000000027939673, z: 0.0022426026}
+  serializedVersion: 2
+  m_Radius: 0.009967478
+  m_Height: 0.019934958
+  m_Direction: 1
+  m_Center: {x: -0.000000003259629, y: 0.0000000027939673, z: 0.002242599}
 --- !u!1 &3770998553903870174
 GameObject:
   m_ObjectHideFlags: 0
@@ -121,6 +147,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2653394368406763354}
   - component: {fileID: 3970672612836088521}
+  - component: {fileID: 4785936665895540736}
   m_Layer: 0
   m_Name: BurgerBun
   m_TagString: Untagged
@@ -171,3 +198,18 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &4785936665895540736
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3770998553903870174}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 23f27ba16c0b87d4cbf39b5d266e07b5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::FoodItem
+  itemData: {fileID: 11400000, guid: 4732b847b128c584cb21d301bd951518, type: 2}
+  isInInventory: 0
+  isHeld: 0

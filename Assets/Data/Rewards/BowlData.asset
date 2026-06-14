@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ItemData
   id: bowl
   displayName: Bowl
-  icon: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
+  icon: {fileID: 21300000, guid: bcabfc4257f8d2845bcd6348fa70cdff, type: 3}
   isStackable: 0
   maxStackSize: 1
   worldPrefab: {fileID: 6083350046688245012, guid: 06ad683a707c4384c96f99a148f4ee9f, type: 3}
