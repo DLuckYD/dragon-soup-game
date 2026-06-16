@@ -1914,7 +1914,7 @@ MonoBehaviour:
   whatIsGround:
     serializedVersion: 2
     m_Bits: 1024
-  footstepInterval: 0.2
+  footstepInterval: 0.5
   orientation: {fileID: 1785632102}
   state: 0
 --- !u!54 &267349052
@@ -6514,6 +6514,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 128316333}
     m_Modifications:
+    - target: {fileID: 5883485384551739936, guid: 0f08be17b82fbe9419299bb5e8b244d7, type: 3}
+      propertyPath: WwiseSwitchName
+      value: Alcohol
+      objectReference: {fileID: 0}
     - target: {fileID: 6075122160255051570, guid: 0f08be17b82fbe9419299bb5e8b244d7, type: 3}
       propertyPath: m_Name
       value: Alcohol Rack Bottle
@@ -20386,6 +20390,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 128316333}
     m_Modifications:
+    - target: {fileID: 4426006503612516857, guid: 98f69ad2cb21b2e4786a5ba294ac75c8, type: 3}
+      propertyPath: WwiseSwitchName
+      value: Fireplace
+      objectReference: {fileID: 0}
     - target: {fileID: 4999815318309615246, guid: 98f69ad2cb21b2e4786a5ba294ac75c8, type: 3}
       propertyPath: m_Name
       value: Fireplace New
@@ -20599,6 +20607,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 128316333}
     m_Modifications:
+    - target: {fileID: 1081271276457894514, guid: ade39511bb5c20b4aaa4ea55020601ad, type: 3}
+      propertyPath: WwiseSwitchName
+      value: Painting
+      objectReference: {fileID: 0}
     - target: {fileID: 6037151131461926930, guid: ade39511bb5c20b4aaa4ea55020601ad, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
