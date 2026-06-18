@@ -16,9 +16,9 @@ MonoBehaviour:
   displayName: Rodovar Veilmark
   classType: Archer
   skinSprite: {fileID: 0}
-  faceSprite: {fileID: 21300000, guid: 35cf4c0347450b446a40bfd5ecfd2917, type: 3}
-  bodySprite: {fileID: 21300000, guid: 265f50d62ea85f846bd66cdb71acdf13, type: 3}
-  weaponSprite: {fileID: 21300000, guid: 2ad66675f1d47d9468268261f15956a1, type: 3}
+  faceSprite: {fileID: 21300000, guid: 7b22dac2e57c50840818af6e1a89ec47, type: 3}
+  bodySprite: {fileID: 21300000, guid: 9222f88fd6464dc4eae05874f1db7214, type: 3}
+  weaponSprite: {fileID: 0}
   preferredRewardItemId: stick
   preferredItemState: 5
   difficultyModifier: 0

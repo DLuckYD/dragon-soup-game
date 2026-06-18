@@ -21,6 +21,15 @@ public class UpgradeStation : MonoBehaviour
     [SerializeField] private string successMessage = "Item modified";
     [SerializeField] private string noItemMessage = "No item to modify";
 
+    [Header("Destroy Rules")]
+    [Tooltip("If true, this station will destroy items listed below before applying normal effects.")]
+    [SerializeField] private bool destroyListedItems = false;
+
+    [Tooltip("Concrete IngredientData items that this station should destroy.")]
+    [SerializeField] private List<IngredientData> itemsToDestroy = new List<IngredientData>();
+
+    [SerializeField] private string itemDestroyedMessage = "Item destroyed";
+
     [Header("Conditions")]
     [SerializeField] private StationConditionSettings conditions = new StationConditionSettings();
 
@@ -29,7 +38,12 @@ public class UpgradeStation : MonoBehaviour
 
     public bool CanInteract => canInteract;
     public string GetStationId => stationId;
+
     public bool LastProcessSuccessful { get; private set; }
+
+    // This is useful for PlayerInteraction to understand that result == null
+    // happened because the station destroyed the item.
+    public bool LastItemWasDestroyed { get; private set; }
 
     public void SetInteractable(bool value)
     {
@@ -44,6 +58,7 @@ public class UpgradeStation : MonoBehaviour
     public virtual RewardItem ProcessItem(RewardItem item)
     {
         LastProcessSuccessful = false;
+        LastItemWasDestroyed = false;
 
         if (!canInteract)
         {
@@ -59,6 +74,29 @@ public class UpgradeStation : MonoBehaviour
             return null;
         }
 
+        // IMPORTANT:
+        // Destroy check happens before normal conditions and effects.
+        //
+        // Example:
+        // Metal Pipe + Axe = destroyed.
+        // In that case we do not want SetState / SetTint / Particles to run.
+        if (ShouldDestroyItem(item))
+        {
+            PlayStationSound();
+
+            LastProcessSuccessful = true;
+            LastItemWasDestroyed = true;
+
+            OnSuccessfulUpgrade?.Invoke(itemDestroyedMessage);
+
+            Debug.Log($"[{name}] Destroyed item '{item.name}' with itemData '{item.itemData.name}'.");
+
+            Destroy(item.gameObject);
+
+            // Returning null tells PlayerInteraction that the item no longer exists.
+            return null;
+        }
+
         if (!conditions.IsValid(item, out string failMessage))
         {
             OnUnsuccessfulUpgrade?.Invoke(failMessage);
@@ -66,11 +104,7 @@ public class UpgradeStation : MonoBehaviour
             return item;
         }
 
-        if (!string.IsNullOrEmpty(WwiseSwitchName))
-        {
-            WwiseAudioManager.Instance.SetSwitchValue("Upgrade_Station", WwiseSwitchName, gameObject);
-            WwiseAudioManager.Instance.PostEvent("Upgrade_Station_Success", gameObject);
-        }
+        PlayStationSound();
 
         foreach (ItemEffect effect in effects)
         {
@@ -86,5 +120,34 @@ public class UpgradeStation : MonoBehaviour
         Debug.Log(successMessage);
 
         return item;
+    }
+
+    private bool ShouldDestroyItem(RewardItem item)
+    {
+        if (!destroyListedItems)
+            return false;
+
+        if (item == null)
+            return false;
+
+        if (item.itemData == null)
+        {
+            Debug.LogWarning($"[{name}] Cannot check destroy list because item '{item.name}' has null itemData.");
+            return false;
+        }
+
+        if (itemsToDestroy == null || itemsToDestroy.Count == 0)
+            return false;
+
+        return itemsToDestroy.Contains(item.itemData);
+    }
+
+    private void PlayStationSound()
+    {
+        if (string.IsNullOrEmpty(WwiseSwitchName))
+            return;
+
+        WwiseAudioManager.Instance.SetSwitchValue("Upgrade_Station", WwiseSwitchName, gameObject);
+        WwiseAudioManager.Instance.PostEvent("Upgrade_Station_Success", gameObject);
     }
 }
