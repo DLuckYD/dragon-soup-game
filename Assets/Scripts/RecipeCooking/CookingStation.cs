@@ -1,7 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-
 public class CookingStation : MonoBehaviour
 {
     public HotbarManager playerInventory;

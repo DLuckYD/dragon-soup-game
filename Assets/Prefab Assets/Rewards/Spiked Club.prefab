@@ -137,7 +137,7 @@ MonoBehaviour:
   isInInventory: 0
   isHeld: 0
   type: 1
-  Value: 0
+  Value: 1
   canBeModified: 1
   currentState: 0
   isUpgraded: 0

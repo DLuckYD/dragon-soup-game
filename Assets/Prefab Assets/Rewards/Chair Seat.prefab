@@ -76,8 +76,8 @@ MonoBehaviour:
   itemData: {fileID: 11400000, guid: 9e37e498027a7c045b72025a068e1a9c, type: 2}
   isInInventory: 0
   isHeld: 0
-  type: 0
-  Value: 0
+  type: 1
+  Value: 1
   canBeModified: 1
   currentState: 0
   isUpgraded: 0

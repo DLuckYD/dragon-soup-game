@@ -1,10 +1,12 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class RecipeProgressManager : MonoBehaviour
 {
     public static event Action<string> OnSuccessfulUnlock;
+    public static event Action<Recipe> OnCurrentRecipeChanged;
 
     private Dictionary<string, UpgradeStation> stationsById = new Dictionary<string, UpgradeStation>();
     private Dictionary<string, RoomDoor> doorsById = new Dictionary<string, RoomDoor>();
@@ -20,10 +22,19 @@ public class RecipeProgressManager : MonoBehaviour
         RegisterDoors();
     }
 
-    public void SetFirstRecipe(Recipe recipe)
+    public void SetCurrentRecipe(Recipe recipe)
     {
+        if (recipe == null)
+        {
+            Debug.LogWarning("[RECIPE PROGRESSION] Cannot set current recipe. Recipe is null.");
+            return;
+        }
+
         currentActiveRecipe = recipe;
+
         Debug.Log("[RECIPE PROGRESSION] Active recipe set to: " + recipe.displayName);
+
+        OnCurrentRecipeChanged?.Invoke(recipe);
     }
 
     private void RegisterStations()
@@ -33,7 +44,7 @@ public class RecipeProgressManager : MonoBehaviour
 
         foreach (UpgradeStation station in stations)
         {
-            if(string.IsNullOrEmpty(station.GetStationId))
+            if (string.IsNullOrEmpty(station.GetStationId))
             {
                 Debug.LogWarning($"Station {station.gameObject.name} has an empty ID and will not be registered.");
                 continue;
@@ -71,6 +82,7 @@ public class RecipeProgressManager : MonoBehaviour
             }
         }
     }
+
 
     public void OnRecipeCooked(Recipe recipe, CookbookUI cookBook)
     {
@@ -133,6 +145,19 @@ public class RecipeProgressManager : MonoBehaviour
                         else
                         {
                             Debug.LogWarning($"No room found with ID: {targetId} to unlock.");
+                        }
+                    }
+
+                    if (effect.effectType == EffectType.EndGame)
+                    {
+                        CutsceneController cutsceneController = FindObjectOfType<CutsceneController>();
+                        if (cutsceneController != null)
+                        {
+                            cutsceneController.PlayCutscene();
+                        }
+                        else
+                        {
+                            Debug.LogWarning("No CutsceneController found in the scene to play end game cutscene.");
                         }
                     }
                 }
