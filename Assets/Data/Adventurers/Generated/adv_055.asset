@@ -18,7 +18,7 @@ MonoBehaviour:
   skinSprite: {fileID: 0}
   faceSprite: {fileID: 21300000, guid: 498759675a1a3b24d81be8e3fffd2953, type: 3}
   bodySprite: {fileID: 21300000, guid: 9222f88fd6464dc4eae05874f1db7214, type: 3}
-  weaponSprite: {fileID: 21300000, guid: 4bd8d6c9b1d71ce4cb9381038fc1d59f, type: 3}
+  weaponSprite: {fileID: 0}
   preferredRewardItemId: bar_keg
   preferredItemState: 1
   difficultyModifier: 0

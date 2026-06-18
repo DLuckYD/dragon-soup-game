@@ -587,7 +587,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7749126182597189687, guid: 542e479d0dc93f34bb98d0b461cd4746, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -2.7589002
+      value: -2.878
       objectReference: {fileID: 0}
     - target: {fileID: 7749126182597189687, guid: 542e479d0dc93f34bb98d0b461cd4746, type: 3}
       propertyPath: m_LocalPosition.z
@@ -621,6 +621,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 90
       objectReference: {fileID: 0}
+    - target: {fileID: 8917481203829676888, guid: 542e479d0dc93f34bb98d0b461cd4746, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: a4d0c1b73b778fe458d691e8d8c04f63, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -6822,6 +6826,34 @@ PrefabInstance:
       propertyPath: m_Name
       value: 'Dark entity '
       objectReference: {fileID: 0}
+    - target: {fileID: 5753498706168128044, guid: e121f65ac925b174c9e88ee73ea984ae, type: 3}
+      propertyPath: ShapeModule.type
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 5753498706168128044, guid: e121f65ac925b174c9e88ee73ea984ae, type: 3}
+      propertyPath: ShapeModule.angle
+      value: 14.53
+      objectReference: {fileID: 0}
+    - target: {fileID: 5753498706168128044, guid: e121f65ac925b174c9e88ee73ea984ae, type: 3}
+      propertyPath: ShapeModule.radiusThickness
+      value: 1.0000
+      objectReference: {fileID: 0}
+    - target: {fileID: 5974436777158882497, guid: e121f65ac925b174c9e88ee73ea984ae, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -1.01
+      objectReference: {fileID: 0}
+    - target: {fileID: 5974436777158882497, guid: e121f65ac925b174c9e88ee73ea984ae, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.71202606
+      objectReference: {fileID: 0}
+    - target: {fileID: 5974436777158882497, guid: e121f65ac925b174c9e88ee73ea984ae, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.702153
+      objectReference: {fileID: 0}
+    - target: {fileID: 5974436777158882497, guid: e121f65ac925b174c9e88ee73ea984ae, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: -89.2
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 104685096367875497, guid: e121f65ac925b174c9e88ee73ea984ae, type: 3}
     m_RemovedGameObjects: []
@@ -10952,6 +10984,9 @@ MonoBehaviour:
   WwiseSwitchName: 
   successMessage: Item modified.
   noItemMessage: No item to modify.
+  destroyListedItems: 0
+  itemsToDestroy: []
+  itemDestroyedMessage: Item destroyed
   conditions:
     requireCanBeModified: 1
     stateRequirement: 1
@@ -23517,6 +23552,30 @@ PrefabInstance:
       propertyPath: WwiseSwitchName
       value: Fireplace
       objectReference: {fileID: 0}
+    - target: {fileID: 4426006503612516857, guid: 98f69ad2cb21b2e4786a5ba294ac75c8, type: 3}
+      propertyPath: destroyListedItems
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4426006503612516857, guid: 98f69ad2cb21b2e4786a5ba294ac75c8, type: 3}
+      propertyPath: itemsToDestroy.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4426006503612516857, guid: 98f69ad2cb21b2e4786a5ba294ac75c8, type: 3}
+      propertyPath: 'itemsToDestroy.Array.data[0]'
+      value: 
+      objectReference: {fileID: 11400000, guid: bbca52fb7dd2faf45beb31fecc705b7d, type: 2}
+    - target: {fileID: 4426006503612516857, guid: 98f69ad2cb21b2e4786a5ba294ac75c8, type: 3}
+      propertyPath: 'itemsToDestroy.Array.data[1]'
+      value: 
+      objectReference: {fileID: 11400000, guid: 5bf6d256927305d42979a9a2f745ace2, type: 2}
+    - target: {fileID: 4426006503612516857, guid: 98f69ad2cb21b2e4786a5ba294ac75c8, type: 3}
+      propertyPath: 'itemsToDestroy.Array.data[2]'
+      value: 
+      objectReference: {fileID: 11400000, guid: cbaf4f4f90a6dc246b9b0650d0146e17, type: 2}
+    - target: {fileID: 4426006503612516857, guid: 98f69ad2cb21b2e4786a5ba294ac75c8, type: 3}
+      propertyPath: 'itemsToDestroy.Array.data[3]'
+      value: 
+      objectReference: {fileID: 11400000, guid: 9e37e498027a7c045b72025a068e1a9c, type: 2}
     - target: {fileID: 4999815318309615246, guid: 98f69ad2cb21b2e4786a5ba294ac75c8, type: 3}
       propertyPath: m_Name
       value: Fireplace New
@@ -23902,6 +23961,26 @@ PrefabInstance:
       propertyPath: WwiseSwitchName
       value: Fridge
       objectReference: {fileID: 0}
+    - target: {fileID: 2226447768803869318, guid: ad1fd6eb0b1f50e488b025b785957b75, type: 3}
+      propertyPath: destroyListedItems
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2226447768803869318, guid: ad1fd6eb0b1f50e488b025b785957b75, type: 3}
+      propertyPath: itemsToDestroy.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2226447768803869318, guid: ad1fd6eb0b1f50e488b025b785957b75, type: 3}
+      propertyPath: 'itemsToDestroy.Array.data[0]'
+      value: 
+      objectReference: {fileID: 11400000, guid: f5f5bd89b12eebe4ea273004d2b24445, type: 2}
+    - target: {fileID: 2226447768803869318, guid: ad1fd6eb0b1f50e488b025b785957b75, type: 3}
+      propertyPath: 'itemsToDestroy.Array.data[1]'
+      value: 
+      objectReference: {fileID: 11400000, guid: a7b3a36c786323c41b51196d871aae9f, type: 2}
+    - target: {fileID: 2226447768803869318, guid: ad1fd6eb0b1f50e488b025b785957b75, type: 3}
+      propertyPath: 'itemsToDestroy.Array.data[2]'
+      value: 
+      objectReference: {fileID: 11400000, guid: ada25916d9891cc4ba1f41a2bdae843b, type: 2}
     - target: {fileID: 8224911737512047174, guid: ad1fd6eb0b1f50e488b025b785957b75, type: 3}
       propertyPath: m_LocalPosition.x
       value: 9.43755
@@ -24141,6 +24220,58 @@ PrefabInstance:
       propertyPath: m_Name
       value: Axe Upgrade
       objectReference: {fileID: 0}
+    - target: {fileID: 6052438219179394080, guid: 2930500f2e3ee744fabcc780888c0921, type: 3}
+      propertyPath: destroyListedItems
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6052438219179394080, guid: 2930500f2e3ee744fabcc780888c0921, type: 3}
+      propertyPath: itemsToDestroy.Array.size
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 6052438219179394080, guid: 2930500f2e3ee744fabcc780888c0921, type: 3}
+      propertyPath: 'itemsToDestroy.Array.data[0]'
+      value: 
+      objectReference: {fileID: 11400000, guid: 64be6ad573a51c344b44d050e8b4464b, type: 2}
+    - target: {fileID: 6052438219179394080, guid: 2930500f2e3ee744fabcc780888c0921, type: 3}
+      propertyPath: 'itemsToDestroy.Array.data[1]'
+      value: 
+      objectReference: {fileID: 11400000, guid: e5229585616e33846a80dbb35d1c9332, type: 2}
+    - target: {fileID: 6052438219179394080, guid: 2930500f2e3ee744fabcc780888c0921, type: 3}
+      propertyPath: 'itemsToDestroy.Array.data[2]'
+      value: 
+      objectReference: {fileID: 11400000, guid: d8ab261328deb754b8b02aff00167109, type: 2}
+    - target: {fileID: 6052438219179394080, guid: 2930500f2e3ee744fabcc780888c0921, type: 3}
+      propertyPath: 'itemsToDestroy.Array.data[3]'
+      value: 
+      objectReference: {fileID: 11400000, guid: 0fe3c5aba1538eb4e8218d7d567413d7, type: 2}
+    - target: {fileID: 6052438219179394080, guid: 2930500f2e3ee744fabcc780888c0921, type: 3}
+      propertyPath: 'itemsToDestroy.Array.data[4]'
+      value: 
+      objectReference: {fileID: 11400000, guid: 98ff38b6fcdc2964dac5cb3c74f5b864, type: 2}
+    - target: {fileID: 6052438219179394080, guid: 2930500f2e3ee744fabcc780888c0921, type: 3}
+      propertyPath: 'itemsToDestroy.Array.data[5]'
+      value: 
+      objectReference: {fileID: 11400000, guid: ada25916d9891cc4ba1f41a2bdae843b, type: 2}
+    - target: {fileID: 6052438219179394080, guid: 2930500f2e3ee744fabcc780888c0921, type: 3}
+      propertyPath: 'itemsToDestroy.Array.data[6]'
+      value: 
+      objectReference: {fileID: 11400000, guid: 5bf6d256927305d42979a9a2f745ace2, type: 2}
+    - target: {fileID: 6052438219179394080, guid: 2930500f2e3ee744fabcc780888c0921, type: 3}
+      propertyPath: 'itemsToDestroy.Array.data[7]'
+      value: 
+      objectReference: {fileID: 11400000, guid: cbaf4f4f90a6dc246b9b0650d0146e17, type: 2}
+    - target: {fileID: 6052438219179394080, guid: 2930500f2e3ee744fabcc780888c0921, type: 3}
+      propertyPath: 'itemsToDestroy.Array.data[8]'
+      value: 
+      objectReference: {fileID: 11400000, guid: 9e37e498027a7c045b72025a068e1a9c, type: 2}
+    - target: {fileID: 6052438219179394080, guid: 2930500f2e3ee744fabcc780888c0921, type: 3}
+      propertyPath: 'itemsToDestroy.Array.data[9]'
+      value: 
+      objectReference: {fileID: 11400000, guid: a7b3a36c786323c41b51196d871aae9f, type: 2}
+    - target: {fileID: 6052438219179394080, guid: 2930500f2e3ee744fabcc780888c0921, type: 3}
+      propertyPath: 'itemsToDestroy.Array.data[10]'
+      value: 
+      objectReference: {fileID: 11400000, guid: f5f5bd89b12eebe4ea273004d2b24445, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -24517,6 +24648,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: -53.147
       objectReference: {fileID: 0}
+    - target: {fileID: 8917481203829676888, guid: 542e479d0dc93f34bb98d0b461cd4746, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: a4d0c1b73b778fe458d691e8d8c04f63, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

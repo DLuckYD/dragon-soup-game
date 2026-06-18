@@ -16,10 +16,10 @@ MonoBehaviour:
   displayName: Cassira Mirethorn
   classType: Warrior
   skinSprite: {fileID: 0}
-  faceSprite: {fileID: 21300000, guid: d35cc316d0538864abc416d5e749fcbf, type: 3}
-  bodySprite: {fileID: 21300000, guid: 9042c36ef7e69e74db180128a01c82f3, type: 3}
+  faceSprite: {fileID: 21300000, guid: 498759675a1a3b24d81be8e3fffd2953, type: 3}
+  bodySprite: {fileID: 21300000, guid: 29a90af661dd85c47abab6e4ab9a1422, type: 3}
   weaponSprite: {fileID: 21300000, guid: db86bfdfe2943e748867b4e524d22a4e, type: 3}
-  preferredRewardItemId: table_body
+  preferredRewardItemId: chair_back
   preferredItemState: 4
   difficultyModifier: 0
   viceId: lazy

@@ -1304,7 +1304,15 @@ public class PlayerInteraction : MonoBehaviour
             return;
         }
 
-        
+        // We remember the slot before processing.
+        // If the station destroys the item, we need to clear this slot manually.
+        int itemSlotIndex = -1;
+
+        if (hotbarManager != null)
+        {
+            itemSlotIndex = hotbarManager.GetItemPositionInInventory(reward);
+        }
+
         Debug.Log($"[UPGRADE] Using station: {upgradeStation.name}");
         Debug.Log($"[UPGRADE] Item before: {reward.name}, Value={reward.Value}, State={reward.CurrentState}");
 
@@ -1313,14 +1321,31 @@ public class PlayerInteraction : MonoBehaviour
         if (result == null)
         {
             Debug.Log("Item was destroyed or removed by station");
+
+            // If the station destroyed the item, remove the old reference from hotbar.
+            if (upgradeStation.LastItemWasDestroyed && itemSlotIndex != -1 && hotbarManager != null)
+            {
+                HotbarSlot slot = hotbarManager.GetSlotByPosition(itemSlotIndex);
+
+                if (slot != null)
+                {
+                    slot.Clear();
+                    Debug.Log($"[UPGRADE] Cleared destroyed item from hotbar slot {itemSlotIndex}");
+                }
+
+                if (activeHotbarIndex == itemSlotIndex)
+                {
+                    activeHotbarIndex = -1;
+                }
+            }
+
             heldItem = null;
+
             return;
         }
-        
-        
+
         Debug.Log($"[UPGRADE] Item after: {result.name}, Value={result.Value}, State={result.CurrentState}");
 
-        
         if (!upgradeStation.LastProcessSuccessful)
         {
             Debug.Log("Station did not modify the item.");

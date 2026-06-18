@@ -17,8 +17,8 @@ MonoBehaviour:
   classType: Warrior
   skinSprite: {fileID: 0}
   faceSprite: {fileID: 21300000, guid: 7b22dac2e57c50840818af6e1a89ec47, type: 3}
-  bodySprite: {fileID: 21300000, guid: 29a90af661dd85c47abab6e4ab9a1422, type: 3}
-  weaponSprite: {fileID: 21300000, guid: fd40373b29d026640a818fece3be9976, type: 3}
+  bodySprite: {fileID: 21300000, guid: 9222f88fd6464dc4eae05874f1db7214, type: 3}
+  weaponSprite: {fileID: 21300000, guid: db86bfdfe2943e748867b4e524d22a4e, type: 3}
   preferredRewardItemId: food_plate
   preferredItemState: 4
   difficultyModifier: 0

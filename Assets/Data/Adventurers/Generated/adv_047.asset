@@ -16,9 +16,9 @@ MonoBehaviour:
   displayName: Malrec Gorseveil
   classType: Archer
   skinSprite: {fileID: 0}
-  faceSprite: {fileID: 21300000, guid: 498759675a1a3b24d81be8e3fffd2953, type: 3}
-  bodySprite: {fileID: 21300000, guid: 9222f88fd6464dc4eae05874f1db7214, type: 3}
-  weaponSprite: {fileID: 21300000, guid: 4bd8d6c9b1d71ce4cb9381038fc1d59f, type: 3}
+  faceSprite: {fileID: 21300000, guid: d35cc316d0538864abc416d5e749fcbf, type: 3}
+  bodySprite: {fileID: 21300000, guid: 29a90af661dd85c47abab6e4ab9a1422, type: 3}
+  weaponSprite: {fileID: 21300000, guid: db86bfdfe2943e748867b4e524d22a4e, type: 3}
   preferredRewardItemId: table_leg
   preferredItemState: 5
   difficultyModifier: 0
