@@ -22,8 +22,8 @@ public class AchievementsPanelController : MonoBehaviour
 
         public void BackToMenu()
         {
+            WwiseAudioManager.Instance.PostEvent("Ui_Button_Cancel", this.gameObject);
             this.gameObject.SetActive(false);
-
             mainMenuManager.ShowStartScreen();
         }
     }

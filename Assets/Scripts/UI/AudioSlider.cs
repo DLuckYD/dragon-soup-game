@@ -10,6 +10,10 @@ public class AudioSlider : MonoBehaviour
         SFX,
         Main
     }
+    private void Start()
+    {
+        slider.value = slider.maxValue;
+    }
     public AudioType type;
     public void OnSliderChange()
     {

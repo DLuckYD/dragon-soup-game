@@ -101,7 +101,7 @@ public class SettingsPanelController: MonoBehaviour
     }
     public void BackToMenu()
     {
-        WwiseAudioManager.Instance.PostEvent("Ui_Button_Clicked", gameObject);
+        WwiseAudioManager.Instance.PostEvent("Ui_Button_Cancel", gameObject);
         SettingsSaveLoadManager.Instance.SaveSettings();
         this.gameObject.SetActive(false);
 
