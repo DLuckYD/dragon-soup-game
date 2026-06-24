@@ -1590,11 +1590,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f04118ab448d770459f9046a1970f609, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::RecipeCardUI
-  cookingStation: {fileID: 680585410}
   recipeCookButton: {fileID: 1341491391}
   recipeNameText: {fileID: 966678079}
-  descriptionText: {fileID: 1005525315}
   icon: {fileID: 1581048736}
+  ingredientsContainer: {fileID: 0}
+  ingredientCardPrefab: {fileID: 0}
 --- !u!114 &244978611
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1844,6 +1844,7 @@ MonoBehaviour:
   whatIsGround:
     serializedVersion: 2
     m_Bits: 1024
+  footstepInterval: 0.2
   orientation: {fileID: 1785632102}
   state: 0
 --- !u!54 &267349052
@@ -8617,9 +8618,12 @@ MonoBehaviour:
   stationId: axe_upgrade
   canInteract: 0
   disabledMessage: This station cannot be used right now.
-  useSoundEvent: 
+  WwiseSwitchName: 
   successMessage: Item modified.
   noItemMessage: No item to modify.
+  destroyListedItems: 0
+  itemsToDestroy: []
+  itemDestroyedMessage: Item destroyed
   conditions:
     requireCanBeModified: 1
     stateRequirement: 1
@@ -8776,9 +8780,12 @@ MonoBehaviour:
   stationId: fireplace
   canInteract: 1
   disabledMessage: This station cannot be used right now.
-  useSoundEvent: 
+  WwiseSwitchName: 
   successMessage: Item modified.
   noItemMessage: No item to modify.
+  destroyListedItems: 0
+  itemsToDestroy: []
+  itemDestroyedMessage: Item destroyed
   conditions:
     requireCanBeModified: 1
     stateRequirement: 1
@@ -10477,6 +10484,7 @@ MonoBehaviour:
   recipeDatabase: {fileID: 11400000, guid: 29417aea8e2ce8b4580475c417e9a371, type: 2}
   recipeListContainer: {fileID: 1414167485}
   recipeCard: {fileID: 244978610}
+  cookingStation: {fileID: 0}
   recipeProgressManager: {fileID: 734968605}
 --- !u!4 &1555169028 stripped
 Transform:
@@ -20655,6 +20663,63 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7a93d89c4fb581d49b2f042ada603fdb, type: 3}
+--- !u!1001 &7421312956978935177
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 2842825075506055017, guid: 97e861bd8d3b8784cb43986d60b27990, type: 3}
+      propertyPath: m_Name
+      value: Axe Station
+      objectReference: {fileID: 0}
+    - target: {fileID: 2922648100650793875, guid: 97e861bd8d3b8784cb43986d60b27990, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -2.69
+      objectReference: {fileID: 0}
+    - target: {fileID: 2922648100650793875, guid: 97e861bd8d3b8784cb43986d60b27990, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 3.86
+      objectReference: {fileID: 0}
+    - target: {fileID: 2922648100650793875, guid: 97e861bd8d3b8784cb43986d60b27990, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.56
+      objectReference: {fileID: 0}
+    - target: {fileID: 2922648100650793875, guid: 97e861bd8d3b8784cb43986d60b27990, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2922648100650793875, guid: 97e861bd8d3b8784cb43986d60b27990, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2922648100650793875, guid: 97e861bd8d3b8784cb43986d60b27990, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2922648100650793875, guid: 97e861bd8d3b8784cb43986d60b27990, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2922648100650793875, guid: 97e861bd8d3b8784cb43986d60b27990, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2922648100650793875, guid: 97e861bd8d3b8784cb43986d60b27990, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2922648100650793875, guid: 97e861bd8d3b8784cb43986d60b27990, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 97e861bd8d3b8784cb43986d60b27990, type: 3}
 --- !u!1001 &7659382473512842985
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -20847,3 +20912,4 @@ SceneRoots:
   - {fileID: 1400203828}
   - {fileID: 428662500}
   - {fileID: 2026791535}
+  - {fileID: 7421312956978935177}
