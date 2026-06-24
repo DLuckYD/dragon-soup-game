@@ -14,11 +14,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::AdventurerData
   id: adv_002
   displayName: Mordren Blacktallow
-  classType: Warrior
+  classType: Archer
   skinSprite: {fileID: 0}
   faceSprite: {fileID: 21300000, guid: 7b22dac2e57c50840818af6e1a89ec47, type: 3}
   bodySprite: {fileID: 21300000, guid: 29a90af661dd85c47abab6e4ab9a1422, type: 3}
-  weaponSprite: {fileID: 0}
+  weaponSprite: {fileID: 21300000, guid: 28208409d1fe8614ca11adc81ede9a79, type: 3}
   preferredRewardItemId: table_leg
   preferredItemState: 2
   difficultyModifier: 0

@@ -2,69 +2,105 @@
   "intros": [
     {
       "id": "intro_001",
-      "text": "Oh, hello there! It's good to see a friendly face around here. Could you bring me {amount}× {ingredient}?"
+      "text": "Greetings! I am a great warrior from the Southern Kingdom. I have come here on a quest for honor. After my quest, I will have items I don't need, and I can give you {amount}× {ingredient}. Would you be interested in giving me something in kind?"
     },
     {
       "id": "intro_002",
-      "text": "Hey! I was just about to start cooking, but I'm missing something important. I need {amount}× {ingredient}."
+      "text": "Hey, you. I am an archer in the Northern Republic. I was sent here by my commander on a secret mission. After my job, I won't need some items, so I can give you {amount}× {ingredient}. However, what's in it for me?"
     },
     {
       "id": "intro_003",
-      "text": "Excuse me, traveler. I have a small request. Could you find {amount}× {ingredient} for me?"
-    },
-    {
-      "id": "intro_004",
-      "text": "You look like someone who knows their way around. I could really use {amount}× {ingredient}."
-    },
-    {
-      "id": "intro_005",
-      "text": "Perfect timing! I need a bit of help. I'm looking for {amount}× {ingredient}."
+      "text": "Hello, cursed one. I am a mighty witch from the bog swamps to the west. I am going to fight the enemies to our north and south to protect my coven. I don't need {amount}× {ingredient}, though, and can give them to you if you help me."
     }
   ],
 
   "outros": [
     {
       "id": "outro_001",
-      "text": "I really need this to keep things going here. I'd appreciate your help."
+      "text": "I need a short, blunt weapon on my quest, for I prefer close combat."
     },
     {
       "id": "outro_002",
-      "text": "Without it, I won't be able to finish what I started. I'm counting on you."
+      "text": "I want a long, blunt weapon like a club. My enemies need to be far but not too far."
     },
     {
       "id": "outro_003",
-      "text": "It may not sound like much, but it's very important to me."
+      "text": "I want a strong, metal item that can withstand pressure. I will need it for climbing... and fighting."
     },
     {
       "id": "outro_004",
-      "text": "If you manage to find it, I'll make sure it's worth your time."
+      "text": "A small knife never hurt anyone, except those on its wrong end. That will do nicely."
     },
     {
       "id": "outro_005",
-      "text": "Let me know once you have it. I'll be waiting right here."
+      "text": "I need a shield I can rely on. It must be large and imposing."
+    },
+    {
+      "id": "outro_006",
+      "text": "I forgot my food bowl. I know, it sounds stupid, but my journey is long and I need something to eat out of."
+    },
+    {
+      "id": "outro_007",
+      "text": "I need a small buckler or any similar metal shield that can help me move without restriction."
+    },
+    {
+      "id": "outro_008",
+      "text": "I will get into a serious fight, and I need an actual weapon. Something with spikes."
+    },
+    {
+      "id": "outro_009",
+      "text": "My mother's slipper is the deadliest weapon I ever knew. Do you have one?"
+    },
+    {
+      "id": "outro_010",
+      "text": "I need a large container to put stuff in. Definitely not someone."
+    },
+    {
+      "id": "outro_011",
+      "text": "I am going to need something that can hold small things down, like a fork. I will probably stab things I shouldn't."
+    },
+    {
+      "id": "outro_012",
+      "text": "I need a shield, adequate. Not too big and not too small. Perfectly adequate."
+    },
+    {
+      "id": "outro_013",
+      "text": "I need a chair. No, wait, not a chair, just its back. You know, the part you rest your back on. Yes, I need it. NOW!"
+    },
+    {
+      "id": "outro_014",
+      "text": "My boots have holes in them and I need replacements. Do you have a free pair?"
+    },
+    {
+      "id": "outro_015",
+      "text": "I need something that I can break on someone's head and they will get knocked out, like ones in those cool theater plays!"
     }
   ],
 
   "hints": [
     {
       "id": "hint_001",
-      "text": "somewhere in the nearby forest"
+      "text": "I have no specialty, but if you can get me a fancy looking item, I would be extra grateful."
     },
     {
       "id": "hint_002",
-      "text": "close to the river beyond the hills"
+      "text": "I LOVE fire. Can you imagine everything hot and burning! I can! It is awesome!"
     },
     {
       "id": "hint_003",
-      "text": "around the old mill outside the village"
+      "text": "I'm a chill person. I prefer the cold of ice to the warmth of... well, anything, really."
     },
     {
       "id": "hint_004",
-      "text": "not far from the main road"
+      "text": "I am an artisan at heart, forced into this conflict. If something has that soul in it, I am happy."
     },
     {
       "id": "hint_005",
-      "text": "in the surrounding area, if you look carefully"
+      "text": "I am not really precise with my weapons. So long as I hit someone, however, the poison does the job. That's what I like."
+    },
+    {
+      "id": "hint_006",
+      "text": "I need it to be sharp. Like me. My mind. Sharp. Everything has to be sharp to survive in this land."
     }
   ]
 }

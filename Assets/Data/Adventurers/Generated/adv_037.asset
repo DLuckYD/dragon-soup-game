@@ -18,7 +18,7 @@ MonoBehaviour:
   skinSprite: {fileID: 0}
   faceSprite: {fileID: 21300000, guid: 35cf4c0347450b446a40bfd5ecfd2917, type: 3}
   bodySprite: {fileID: 21300000, guid: 29a90af661dd85c47abab6e4ab9a1422, type: 3}
-  weaponSprite: {fileID: 0}
+  weaponSprite: {fileID: 21300000, guid: 70b3e80d0f8054243be9dd2f2a90a5a5, type: 3}
   preferredRewardItemId: food_plate
   preferredItemState: 1
   difficultyModifier: 0
