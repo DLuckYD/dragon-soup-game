@@ -14,6 +14,7 @@ public class RewardItem : InventoryItem
     [Header("Item Settings")]
     public ItemType type;
     public int Value;
+    public bool canBeTraded = true;
 
     [Header("Modification Control")]
 
@@ -21,6 +22,7 @@ public class RewardItem : InventoryItem
     // Через FormerlySerializedAs Unity сохранит старые значения из поля canBeUpgrated в prefab-ах.
     [FormerlySerializedAs("canBeUpgrated")]
     public bool canBeModified = true;
+    
 
     // Временная совместимость со старым кодом.
     // Если где-то ещё используется item.canBeUpgrated, проект не сломается.

@@ -884,7 +884,7 @@ public class PlayerInteraction : MonoBehaviour
 
             Debug.Log($"[INTERACTION] Entered adventurer: {adventurer.name}");
         }
-
+        
         DarkEntity entity = other.GetComponentInParent<DarkEntity>();
 
         if (entity != null)
@@ -895,6 +895,7 @@ public class PlayerInteraction : MonoBehaviour
 
             Debug.Log($"[INTERACTION] Entered dark entity: {entity.name}");
         }
+        
 
         // Same idea for CookingStation.
         // The trigger collider may be on a child object.
@@ -966,7 +967,7 @@ public class PlayerInteraction : MonoBehaviour
 
             OnEndedInteraction?.Invoke();
         }
-
+        
         DarkEntity entity = other.GetComponentInParent<DarkEntity>();
 
         if (entity != null && entity == darkEntity)

@@ -10,7 +10,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: a22c7c22460dcef40a8f20bc44de845f, type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.36
+      value: 0.35999998
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: a22c7c22460dcef40a8f20bc44de845f, type: 3}
       propertyPath: m_LocalScale.y
@@ -26,7 +26,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: a22c7c22460dcef40a8f20bc44de845f, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.618
+      value: 0.521
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: a22c7c22460dcef40a8f20bc44de845f, type: 3}
       propertyPath: m_LocalPosition.z
@@ -82,9 +82,15 @@ PrefabInstance:
     - {fileID: 65702495048144492, guid: a22c7c22460dcef40a8f20bc44de845f, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: a22c7c22460dcef40a8f20bc44de845f, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 8401131898691259495}
     - targetCorrespondingSourceObject: {fileID: -7029948723529949830, guid: a22c7c22460dcef40a8f20bc44de845f, type: 3}
       insertIndex: -1
       addedObject: {fileID: 6693378166368575100}
+    - targetCorrespondingSourceObject: {fileID: -7029948723529949830, guid: a22c7c22460dcef40a8f20bc44de845f, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 8743095328395250002}
   m_SourcePrefab: {fileID: 100100000, guid: a22c7c22460dcef40a8f20bc44de845f, type: 3}
 --- !u!1 &567664523112369307 stripped
 GameObject:
@@ -113,3 +119,45 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: -462981019419857548, guid: a22c7c22460dcef40a8f20bc44de845f, type: 3}
+--- !u!65 &8743095328395250002
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 567664523112369307}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 2.0000002, y: 2.3099377, z: 3.547805}
+  m_Center: {x: 5.279356e-22, y: -0.15496886, z: 0.31163812}
+--- !u!1 &1536093406150798512 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: a22c7c22460dcef40a8f20bc44de845f, type: 3}
+  m_PrefabInstance: {fileID: 1842012936294175201}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &8401131898691259495
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1536093406150798512}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2bd182111dc26cf46a7e6a9bca2bc943, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DismantleTarget
+  recipe: {fileID: 11400000, guid: 3c14a0e743c418c4ba3abb7847999eb1, type: 2}
+  dismantleTime: 2
+  spawnRadius: 0.6
+  spawnUpOffset: 0.2

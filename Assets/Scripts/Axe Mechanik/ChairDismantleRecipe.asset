@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1365c29e4fe880b49abee338212d0d0b, type: 3}
+  m_Name: ChairDismantleRecipe
+  m_EditorClassIdentifier: Assembly-CSharp::DismantleRecipe
+  outputs:
+  - itemData: {fileID: 11400000, guid: f9dd8e86ffc6e2d4a9fd5e17f0530380, type: 2}
+    amount: 4
+  - itemData: {fileID: 11400000, guid: cbaf4f4f90a6dc246b9b0650d0146e17, type: 2}
+    amount: 1
+  - itemData: {fileID: 11400000, guid: 9e37e498027a7c045b72025a068e1a9c, type: 2}
+    amount: 1
