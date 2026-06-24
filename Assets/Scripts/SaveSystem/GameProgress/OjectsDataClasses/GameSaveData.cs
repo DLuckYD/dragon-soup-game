@@ -10,6 +10,7 @@ public class GameSaveData
     public InventorySaveData inventory = new InventorySaveData();
     public SceneSaveData sceneObjects = new SceneSaveData();
     public PlayerSaveData player = new PlayerSaveData();
+    public RecipeSaveData recipe = new RecipeSaveData();
     public QuestSaveData quests = new QuestSaveData();
 
 }

@@ -84,9 +84,6 @@ PrefabInstance:
       addedObject: {fileID: 167373802801073591}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: f91f6de68e8cd6a44b8360a3756190a0, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 8627022457340855163}
-    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: f91f6de68e8cd6a44b8360a3756190a0, type: 3}
-      insertIndex: -1
       addedObject: {fileID: 1422226319255343264}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: f91f6de68e8cd6a44b8360a3756190a0, type: 3}
       insertIndex: -1
@@ -139,18 +136,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &8627022457340855163
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2840749928107575399}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 619681397785af944bc6daea35693cfa, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::CollisionDetection
 --- !u!136 &1422226319255343264
 CapsuleCollider:
   m_ObjectHideFlags: 0

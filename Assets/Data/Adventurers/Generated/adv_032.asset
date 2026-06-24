@@ -17,8 +17,8 @@ MonoBehaviour:
   classType: Archer
   skinSprite: {fileID: 0}
   faceSprite: {fileID: 21300000, guid: d35cc316d0538864abc416d5e749fcbf, type: 3}
-  bodySprite: {fileID: 21300000, guid: 9042c36ef7e69e74db180128a01c82f3, type: 3}
-  weaponSprite: {fileID: 21300000, guid: db86bfdfe2943e748867b4e524d22a4e, type: 3}
+  bodySprite: {fileID: 21300000, guid: 265f50d62ea85f846bd66cdb71acdf13, type: 3}
+  weaponSprite: {fileID: 21300000, guid: 4bd8d6c9b1d71ce4cb9381038fc1d59f, type: 3}
   preferredRewardItemId: table_leg
   preferredItemState: 2
   difficultyModifier: 0

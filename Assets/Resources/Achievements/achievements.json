@@ -1,59 +1,99 @@
 {
   "achievements": [
     {
-      "id": "test_first_recipe",
+      "id": "first_recipe",
       "number": 1,
       "iconId": "achievement_001",
-      "title": "*TEST* First Soup Attempt",
-      "description": "Prepare your first simple soup in the tavern kitchen.",
-      "unlocked": true
+      "title": "Kitchen Adept",
+      "description": "Prepare your first food. It tastes horrible, but it also reminds you of something familiar... You've done this before.",
+      "unlocked": false
     },
     {
-      "id": "test_first_adventurer",
+      "id": "first_adventurer",
       "number": 2,
       "iconId": "achievement_002",
-      "title": "*TEST* First Adventurer Served",
-      "description": "Give a reward to an adventurer after completing a quest.",
-      "unlocked": true
+      "title": "The Customer is Always Right",
+      "description": "Reward an adventurer for fetching you ingredients. Your trade used to be this... Yes, you were a tavern keeper, but where is your staff?",
+      "unlocked": false
     },
     {
-      "id": "test_first_ingredient",
+      "id": "first_ingredient",
       "number": 3,
       "iconId": "achievement_003",
-      "title": "*TEST* Fresh Ingredients",
-      "description": "Receive your first ingredient from a completed quest.",
+      "title": "Fresh Ingredients",
+      "description": "Get ingredients from an adventurer. You think you are fine, but your body tells you otherwise. You feel a dire sickness in you. You need to find a cure, and do it soon.",
       "unlocked": false
     },
     {
-      "id": "test_first_upgrade",
+      "id": "first_upgrade",
       "number": 4,
       "iconId": "achievement_004",
-      "title": "*TEST* Better Than Before",
-      "description": "Upgrade an item at one of the tavern upgrade stations.",
-      "unlocked": true
-    },
-    {
-      "id": "test_new_room_unlocked",
-      "number": 5,
-      "iconId": "achievement_005",
-      "title": "*TEST* Behind the Next Door",
-      "description": "Unlock a new room inside the tavern.",
+      "title": "Better Than Before",
+      "description": "Upgrade an item. It is a cheap trick to swindle adventurers, but it must be done. After all, it was your trade until your disease ruined your business and ruined your tavern. Literally.",
       "unlocked": false
     },
     {
-      "id": "test_manual_save",
-      "number": 6,
-      "iconId": "achievement_006",
-      "title": "*TEST* Progress Secured",
-      "description": "Create a manual save during the game.",
-      "unlocked": true
+      "id": "new_room_unlocked",
+      "number": 5,
+      "iconId": "achievement_005",
+      "title": "No Stone Unturned",
+      "description": "Unlock a new room ins the tavern. This place has a fireplace and an art rack? so you must not just be a tavern keeper. Who are you?",
+      "unlocked": false
     },
     {
-      "id": "test_dragon_soup_progress",
+      "id": "manual_save",
+      "number": 6,
+      "iconId": "achievement_006",
+      "title": "Time Flies",
+      "description": "Save the game. Interesting... It feels as if the rules of time and space bend around you, but by whose grace does this happen?",
+      "unlocked": false
+    },
+    {
+      "id": "good_ending",
       "number": 7,
       "iconId": "achievement_007",
-      "title": "*TEST* One Step Closer",
-      "description": "Make progress toward preparing the legendary Dragon Soup.",
+      "title": "The Dragon Soup",
+      "description": "The number of recipes you cooked without the Dark Entity are greater than those with. Now you remember! The entity in your tavern had erased your mind and cursed you with this disease to control your body! However, with the mighty Dragon Soup, you are... cured?",
+      "unlocked": false
+    },
+    {
+      "id": "bad_ending",
+      "number": 8,
+      "iconId": "achievement_008",
+      "title": "Slave of Fortune",
+      "description": "Trust the entity. The cosmic forces have taken hold of you, and now you remember. How you were cursed by this evil creature, and had your mind erased. Now, you must be its host for eternity.",
+      "unlocked": false
+    },
+    {
+      "id": "failed_upgrade",
+      "number": 9,
+      "iconId": "achievement_009",
+      "title": "Broken, Bent, Bowed",
+      "description": "Destroy an item with an incorrect upgrade choice. Not everything seems to hold strength in your hands. Perhaps that's why you are so desperate to save yourself, hm?",
+      "unlocked": false
+    },
+    {
+      "id": "wait",
+      "number": 10,
+      "iconId": "achievement_010",
+      "title": "Patience, Old One",
+      "description": "Play the game for 30 minutes. You feel your illness is grave, but at the same time something is holding its spread. It feels as if something is holding you hostage, to get you to do something. But what? And Who?",
+      "unlocked": false
+    },
+    {
+      "id": "destroy",
+      "number": 11,
+      "iconId": "achievement_011",
+      "title": "Destroyer of Chairs",
+      "description": "Destroy an item with the axe. You are strangely good at this. You were either a retired adventurer, or a very good woodcutter.",
+      "unlocked": false
+    },
+    {
+      "id": "no_dark_entity",
+      "number": 12,
+      "iconId": "achievement_012",
+      "title": "No One But Me",
+      "description": "Do not take the Dark Entity's help even once in a playthrough. Your name and self are now restored. You were a famous adventurer, retired due to a past injury and opened this tavern. The Dark Entity is none other than your last enemy, the Dragon God, who wanted to trick you and inherit your body, as you were its slayer.",
       "unlocked": false
     }
   ]
