@@ -40,6 +40,7 @@ public class NotificationUI : MonoBehaviour
         HouseSpawner.OnSpawned += ShowMessage;
 
         PlayerInteraction.OnLockedItemInteraction += ShowMessage;
+        PlayerInteraction.OnFullInventory += ShowMessage;
 
         AdventurerSpawner.OnSpawned += ShowMessage;
         AdventurerSpawner.OnReturn += ShowMessage;
@@ -63,6 +64,7 @@ public class NotificationUI : MonoBehaviour
         HouseSpawner.OnSpawned -= ShowMessage;
 
         PlayerInteraction.OnLockedItemInteraction -= ShowMessage;
+        PlayerInteraction.OnFullInventory -= ShowMessage;
 
         AdventurerSpawner.OnSpawned -= ShowMessage;
         AdventurerSpawner.OnReturn -= ShowMessage;
