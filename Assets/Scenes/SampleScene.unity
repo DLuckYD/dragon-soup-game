@@ -23558,7 +23558,7 @@ MonoBehaviour:
   recipeDatabase: {fileID: 11400000, guid: 29417aea8e2ce8b4580475c417e9a371, type: 2}
   recipeListContainer: {fileID: 1462490105}
   recipeCard: {fileID: 6748853389866980551, guid: 1a9eb335f050e6c4e92791d9c46c39b7, type: 3}
-  cookingStation: {fileID: 0}
+  cookingStation: {fileID: 680585410}
   recipeProgressManager: {fileID: 734968605}
 --- !u!114 &2115300315
 MonoBehaviour:
