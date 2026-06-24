@@ -895,17 +895,7 @@ public class PlayerInteraction : MonoBehaviour
 
             Debug.Log($"[INTERACTION] Entered dark entity: {entity.name}");
         }
-
-        DarkEntity entity = other.GetComponentInParent<DarkEntity>();
-
-        if (entity != null)
-        {
-            darkEntity = entity;
-
-            OnInteraction?.Invoke($"Press {talkKey} to make a deal");
-
-            Debug.Log($"[INTERACTION] Entered dark entity: {entity.name}");
-        }
+        
 
         // Same idea for CookingStation.
         // The trigger collider may be on a child object.
@@ -978,17 +968,6 @@ public class PlayerInteraction : MonoBehaviour
             OnEndedInteraction?.Invoke();
         }
         
-        DarkEntity entity = other.GetComponentInParent<DarkEntity>();
-
-        if (entity != null && entity == darkEntity)
-        {
-            Debug.Log($"[INTERACTION] Exited dark entity: {entity.name}");
-
-            darkEntity = null;
-
-            OnEndedInteraction?.Invoke();
-        }
-
         DarkEntity entity = other.GetComponentInParent<DarkEntity>();
 
         if (entity != null && entity == darkEntity)

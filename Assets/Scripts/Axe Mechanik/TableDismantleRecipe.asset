@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: TableDismantleRecipe
   m_EditorClassIdentifier: Assembly-CSharp::DismantleRecipe
   outputs:
-  - itemData: {fileID: 11400000, guid: 64be6ad573a51c344b44d050e8b4464b, type: 2}
+  - itemData: {fileID: 11400000, guid: 2e74fea90517ecc4eba864a70d29ee9f, type: 2}
     amount: 4
-  - itemData: {fileID: 11400000, guid: e5229585616e33846a80dbb35d1c9332, type: 2}
+  - itemData: {fileID: 11400000, guid: bbca52fb7dd2faf45beb31fecc705b7d, type: 2}
     amount: 1
