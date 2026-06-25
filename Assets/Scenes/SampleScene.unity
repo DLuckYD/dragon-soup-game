@@ -837,7 +837,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 4405141593115904989, guid: 1d606af3cdcd4994fa39989e48718e25, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8480626520536686735, guid: 1d606af3cdcd4994fa39989e48718e25, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 5276360338747287733, guid: 1d606af3cdcd4994fa39989e48718e25, type: 3}
+    - {fileID: 8210513333671104928, guid: 1d606af3cdcd4994fa39989e48718e25, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -1406,6 +1416,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 257155101}
     m_Modifications:
+    - target: {fileID: 5483586148509852145, guid: f34e79563b93f5f4ba94af26afb4eeec, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6963246225920381644, guid: f34e79563b93f5f4ba94af26afb4eeec, type: 3}
       propertyPath: m_Name
       value: Table Body
@@ -2058,6 +2072,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 257155101}
     m_Modifications:
+    - target: {fileID: 598073183692902681, guid: 17148c8aef7e5cf49a79241fb706b7b5, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3012381020191906508, guid: 17148c8aef7e5cf49a79241fb706b7b5, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -2122,11 +2140,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7372418373070300598, guid: 17148c8aef7e5cf49a79241fb706b7b5, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8013779221470408514, guid: 17148c8aef7e5cf49a79241fb706b7b5, type: 3}
       propertyPath: m_Name
       value: Bar Keg (2)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 9089423220539251639, guid: 17148c8aef7e5cf49a79241fb706b7b5, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -4751,7 +4774,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 4405141593115904989, guid: 1d606af3cdcd4994fa39989e48718e25, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8480626520536686735, guid: 1d606af3cdcd4994fa39989e48718e25, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 5276360338747287733, guid: 1d606af3cdcd4994fa39989e48718e25, type: 3}
+    - {fileID: 8210513333671104928, guid: 1d606af3cdcd4994fa39989e48718e25, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -5125,7 +5158,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 4405141593115904989, guid: 1d606af3cdcd4994fa39989e48718e25, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8480626520536686735, guid: 1d606af3cdcd4994fa39989e48718e25, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 5276360338747287733, guid: 1d606af3cdcd4994fa39989e48718e25, type: 3}
+    - {fileID: 8210513333671104928, guid: 1d606af3cdcd4994fa39989e48718e25, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -5318,6 +5361,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 257155101}
     m_Modifications:
+    - target: {fileID: 598073183692902681, guid: 17148c8aef7e5cf49a79241fb706b7b5, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3012381020191906508, guid: 17148c8aef7e5cf49a79241fb706b7b5, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -5382,11 +5429,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7372418373070300598, guid: 17148c8aef7e5cf49a79241fb706b7b5, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8013779221470408514, guid: 17148c8aef7e5cf49a79241fb706b7b5, type: 3}
       propertyPath: m_Name
       value: Bar Keg (8)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 9089423220539251639, guid: 17148c8aef7e5cf49a79241fb706b7b5, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -5977,6 +6029,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 257155101}
     m_Modifications:
+    - target: {fileID: 598073183692902681, guid: 17148c8aef7e5cf49a79241fb706b7b5, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3012381020191906508, guid: 17148c8aef7e5cf49a79241fb706b7b5, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -6007,7 +6063,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7241076896892859896, guid: 17148c8aef7e5cf49a79241fb706b7b5, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 2.957
+      value: 2.687
       objectReference: {fileID: 0}
     - target: {fileID: 7241076896892859896, guid: 17148c8aef7e5cf49a79241fb706b7b5, type: 3}
       propertyPath: m_LocalPosition.z
@@ -6041,11 +6097,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7372418373070300598, guid: 17148c8aef7e5cf49a79241fb706b7b5, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8013779221470408514, guid: 17148c8aef7e5cf49a79241fb706b7b5, type: 3}
       propertyPath: m_Name
       value: Bar Keg (7)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 9089423220539251639, guid: 17148c8aef7e5cf49a79241fb706b7b5, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -8334,7 +8395,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 4405141593115904989, guid: 1d606af3cdcd4994fa39989e48718e25, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8480626520536686735, guid: 1d606af3cdcd4994fa39989e48718e25, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 5276360338747287733, guid: 1d606af3cdcd4994fa39989e48718e25, type: 3}
+    - {fileID: 8210513333671104928, guid: 1d606af3cdcd4994fa39989e48718e25, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -9541,7 +9612,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 4405141593115904989, guid: 1d606af3cdcd4994fa39989e48718e25, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8480626520536686735, guid: 1d606af3cdcd4994fa39989e48718e25, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 5276360338747287733, guid: 1d606af3cdcd4994fa39989e48718e25, type: 3}
+    - {fileID: 8210513333671104928, guid: 1d606af3cdcd4994fa39989e48718e25, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -9700,7 +9781,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 4405141593115904989, guid: 1d606af3cdcd4994fa39989e48718e25, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8480626520536686735, guid: 1d606af3cdcd4994fa39989e48718e25, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 5276360338747287733, guid: 1d606af3cdcd4994fa39989e48718e25, type: 3}
+    - {fileID: 8210513333671104928, guid: 1d606af3cdcd4994fa39989e48718e25, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -9862,7 +9953,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 4405141593115904989, guid: 1d606af3cdcd4994fa39989e48718e25, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8480626520536686735, guid: 1d606af3cdcd4994fa39989e48718e25, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 5276360338747287733, guid: 1d606af3cdcd4994fa39989e48718e25, type: 3}
+    - {fileID: 8210513333671104928, guid: 1d606af3cdcd4994fa39989e48718e25, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -10068,7 +10169,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 4405141593115904989, guid: 1d606af3cdcd4994fa39989e48718e25, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8480626520536686735, guid: 1d606af3cdcd4994fa39989e48718e25, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 5276360338747287733, guid: 1d606af3cdcd4994fa39989e48718e25, type: 3}
+    - {fileID: 8210513333671104928, guid: 1d606af3cdcd4994fa39989e48718e25, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -11296,7 +11407,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 4405141593115904989, guid: 1d606af3cdcd4994fa39989e48718e25, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8480626520536686735, guid: 1d606af3cdcd4994fa39989e48718e25, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 5276360338747287733, guid: 1d606af3cdcd4994fa39989e48718e25, type: 3}
+    - {fileID: 8210513333671104928, guid: 1d606af3cdcd4994fa39989e48718e25, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -12008,6 +12129,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 257155101}
     m_Modifications:
+    - target: {fileID: 598073183692902681, guid: 17148c8aef7e5cf49a79241fb706b7b5, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3012381020191906508, guid: 17148c8aef7e5cf49a79241fb706b7b5, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -12072,11 +12197,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7372418373070300598, guid: 17148c8aef7e5cf49a79241fb706b7b5, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8013779221470408514, guid: 17148c8aef7e5cf49a79241fb706b7b5, type: 3}
       propertyPath: m_Name
       value: Bar Keg (5)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 9089423220539251639, guid: 17148c8aef7e5cf49a79241fb706b7b5, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -13112,7 +13242,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 4405141593115904989, guid: 1d606af3cdcd4994fa39989e48718e25, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8480626520536686735, guid: 1d606af3cdcd4994fa39989e48718e25, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 5276360338747287733, guid: 1d606af3cdcd4994fa39989e48718e25, type: 3}
+    - {fileID: 8210513333671104928, guid: 1d606af3cdcd4994fa39989e48718e25, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -13573,7 +13713,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 4405141593115904989, guid: 1d606af3cdcd4994fa39989e48718e25, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8480626520536686735, guid: 1d606af3cdcd4994fa39989e48718e25, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 5276360338747287733, guid: 1d606af3cdcd4994fa39989e48718e25, type: 3}
+    - {fileID: 8210513333671104928, guid: 1d606af3cdcd4994fa39989e48718e25, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -14419,6 +14569,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 257155101}
     m_Modifications:
+    - target: {fileID: 5483586148509852145, guid: f34e79563b93f5f4ba94af26afb4eeec, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6963246225920381644, guid: f34e79563b93f5f4ba94af26afb4eeec, type: 3}
       propertyPath: m_Name
       value: Table Body (1)
@@ -14654,7 +14808,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 4405141593115904989, guid: 1d606af3cdcd4994fa39989e48718e25, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8480626520536686735, guid: 1d606af3cdcd4994fa39989e48718e25, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 5276360338747287733, guid: 1d606af3cdcd4994fa39989e48718e25, type: 3}
+    - {fileID: 8210513333671104928, guid: 1d606af3cdcd4994fa39989e48718e25, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -16446,6 +16610,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 257155101}
     m_Modifications:
+    - target: {fileID: 598073183692902681, guid: 17148c8aef7e5cf49a79241fb706b7b5, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3012381020191906508, guid: 17148c8aef7e5cf49a79241fb706b7b5, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -16456,7 +16624,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3012381020191906508, guid: 17148c8aef7e5cf49a79241fb706b7b5, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0
+      value: 0.723
       objectReference: {fileID: 0}
     - target: {fileID: 7241076896892859896, guid: 17148c8aef7e5cf49a79241fb706b7b5, type: 3}
       propertyPath: m_LocalScale.x
@@ -16510,11 +16678,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7372418373070300598, guid: 17148c8aef7e5cf49a79241fb706b7b5, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8013779221470408514, guid: 17148c8aef7e5cf49a79241fb706b7b5, type: 3}
       propertyPath: m_Name
       value: Bar Keg (9)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 9089423220539251639, guid: 17148c8aef7e5cf49a79241fb706b7b5, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -23294,6 +23467,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 257155101}
     m_Modifications:
+    - target: {fileID: 598073183692902681, guid: 17148c8aef7e5cf49a79241fb706b7b5, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3012381020191906508, guid: 17148c8aef7e5cf49a79241fb706b7b5, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -23358,11 +23535,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7372418373070300598, guid: 17148c8aef7e5cf49a79241fb706b7b5, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8013779221470408514, guid: 17148c8aef7e5cf49a79241fb706b7b5, type: 3}
       propertyPath: m_Name
       value: Bar Keg (6)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 9089423220539251639, guid: 17148c8aef7e5cf49a79241fb706b7b5, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
