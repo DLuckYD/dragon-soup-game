@@ -46,6 +46,9 @@ public class NotificationUI : MonoBehaviour
         AdventurerSpawner.OnReturn += ShowMessage;
 
         DarkEntity.OnSpawned += ShowMessage;
+
+        CookingStation.OnMissingIngredients += ShowMessage;
+        CookingStation.OnNextIngredient += ShowMessage;
     }
 
     private void OnDisable()
@@ -70,6 +73,9 @@ public class NotificationUI : MonoBehaviour
         AdventurerSpawner.OnReturn -= ShowMessage;
 
         DarkEntity.OnSpawned -= ShowMessage;
+
+        CookingStation.OnMissingIngredients -= ShowMessage;
+        CookingStation.OnNextIngredient -= ShowMessage;
     }
 
     private void Start()

@@ -17,6 +17,7 @@ public class CookingStation : MonoBehaviour
     private HashSet<string> cookedRecipes = new HashSet<string>();
 
     public static event Action<string> OnMissingIngredients;
+    public static event Action<string> OnNextIngredient;
     public static event Action<string> OnSuccessfulCook;
 
     private Recipe activeRecipe;
@@ -63,6 +64,8 @@ public class CookingStation : MonoBehaviour
         if (cookingState == CookingState.CookingIngredient && timer <= 0f)
         {
             FinishCurrentIngredient();
+            OnNextIngredient?.Invoke("Add next ingredient to the cauldron");
+
         }
     }
 

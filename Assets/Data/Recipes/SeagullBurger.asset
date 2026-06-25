@@ -30,5 +30,3 @@ MonoBehaviour:
     targetId: recipe_3
   - effectType: 1
     targetId: magic_fridge
-  - effectType: 3
-    targetId: 

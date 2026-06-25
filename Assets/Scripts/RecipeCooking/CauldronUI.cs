@@ -37,7 +37,7 @@ public class CauldronUI : MonoBehaviour
 
     private void Update()
     {
-        //UpdateIconVisuals();
+        UpdateIconVisuals();
     }
 
     public void StartCookingUI(Recipe recipe)
