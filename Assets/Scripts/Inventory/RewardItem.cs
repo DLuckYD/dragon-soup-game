@@ -6,7 +6,8 @@ public enum ItemType
 {
     Metal,
     Wood,
-    Stone
+    Stone,
+    Texture
 }
 
 public class RewardItem : InventoryItem

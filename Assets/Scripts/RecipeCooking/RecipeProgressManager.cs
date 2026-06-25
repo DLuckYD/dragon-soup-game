@@ -150,14 +150,15 @@ public class RecipeProgressManager : MonoBehaviour
 
                     if (effect.effectType == EffectType.EndGame)
                     {
-                        CutsceneController cutsceneController = FindObjectOfType<CutsceneController>();
-                        if (cutsceneController != null)
+                        EndingCutsceneStarter endingCutsceneStarter = FindObjectOfType<EndingCutsceneStarter>();
+
+                        if (endingCutsceneStarter != null)
                         {
-                            cutsceneController.PlayCutscene();
+                            endingCutsceneStarter.PlayEnding();
                         }
                         else
                         {
-                            Debug.LogWarning("No CutsceneController found in the scene to play end game cutscene.");
+                            Debug.LogWarning("No EndingCutsceneStarter found in the scene to play end game cutscene.");
                         }
                     }
                 }

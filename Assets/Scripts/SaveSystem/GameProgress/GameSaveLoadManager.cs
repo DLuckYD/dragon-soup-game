@@ -118,9 +118,14 @@ public class GameSaveLoadManager : MonoBehaviour
         return data;
     }
 
-    public void StartNewGame()
+    public void PrepareNewGame()
     {
         pendingLoadData = null;
+    }
+
+    public void StartNewGame()
+    {
+        PrepareNewGame();
         SceneManager.LoadScene("SampleScene");
     }
 
