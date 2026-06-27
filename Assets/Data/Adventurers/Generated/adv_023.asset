@@ -18,7 +18,7 @@ MonoBehaviour:
   skinSprite: {fileID: 0}
   faceSprite: {fileID: 21300000, guid: 7b22dac2e57c50840818af6e1a89ec47, type: 3}
   bodySprite: {fileID: 21300000, guid: 9042c36ef7e69e74db180128a01c82f3, type: 3}
-  weaponSprite: {fileID: 0}
+  weaponSprite: {fileID: 21300000, guid: 70b3e80d0f8054243be9dd2f2a90a5a5, type: 3}
   preferredRewardItemId: spiked_club
   preferredItemState: 5
   difficultyModifier: 0

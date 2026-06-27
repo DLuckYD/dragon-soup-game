@@ -14,11 +14,13 @@ public class QuestUI : MonoBehaviour
     [SerializeField] private Image adventurerBodyImage;
     [SerializeField] private Image adventurerHeadImage;
     [SerializeField] private Image adventurerWeaponImage;
+    [SerializeField] private TMP_Text adventurerNameText;
 
     // -------- OFFER DIALOG --------
     [Header("Offer: Blocks")]
     [SerializeField] private TMP_Text offerIntroText;
     [SerializeField] private TMP_Text offerOutroText;
+    [SerializeField] private TMP_Text offerDebugText;
 
     [Header("Offer: Goal Card")]
     [SerializeField] private Image offerIngredientIcon;
@@ -88,6 +90,17 @@ public class QuestUI : MonoBehaviour
 
         if (offerOutroText != null)
             offerOutroText.text = preview.outro;
+
+        if (offerDebugText != null)
+        {
+            bool hasDebugInfo = !string.IsNullOrEmpty(preview.debugInfo);
+            offerDebugText.gameObject.SetActive(hasDebugInfo);
+            offerDebugText.text = hasDebugInfo ? preview.debugInfo : string.Empty;
+        }
+        else if (!string.IsNullOrEmpty(preview.debugInfo) && offerOutroText != null)
+        {
+            offerOutroText.text += "\n\n" + preview.debugInfo;
+        }
 
         if (offerIngredientLine != null)
             offerIngredientLine.text = $"{preview.ingredientName} x{preview.amount}";
@@ -225,6 +238,12 @@ public class QuestUI : MonoBehaviour
         SetRollHaggleButtonVisible(false);
         ClearAdventurerPreview();
 
+        if (offerDebugText != null)
+        {
+            offerDebugText.text = string.Empty;
+            offerDebugText.gameObject.SetActive(false);
+        }
+
         Time.timeScale = 1f;
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
@@ -292,6 +311,13 @@ public class QuestUI : MonoBehaviour
         ApplyPreviewSprite(adventurerBodyImage, data.bodySprite);
         ApplyPreviewSprite(adventurerHeadImage, data.faceSprite);
         ApplyPreviewSprite(adventurerWeaponImage, data.weaponSprite);
+
+        if (adventurerNameText != null)
+        {
+            adventurerNameText.text = data.displayName;
+            adventurerNameText.color = Color.white;
+            adventurerNameText.gameObject.SetActive(true);
+        }
     }
 
     private void ApplyPreviewSprite(Image image, Sprite sprite)
@@ -313,6 +339,12 @@ public class QuestUI : MonoBehaviour
         ClearPreviewImage(adventurerBodyImage);
         ClearPreviewImage(adventurerHeadImage);
         ClearPreviewImage(adventurerWeaponImage);
+
+        if (adventurerNameText != null)
+        {
+            adventurerNameText.text = string.Empty;
+            adventurerNameText.gameObject.SetActive(false);
+        }
     }
 
     private void ClearPreviewImage(Image image)
@@ -336,8 +368,8 @@ public class QuestUI : MonoBehaviour
 
     private void SetReturnFeedback(string text)
     {
-        if (returnFeedbackText != null)
-            returnFeedbackText.text = text;
+        if (returnMainText != null)
+            returnMainText.text += "\n" + text;
     }
 
     private void SetRollHaggleButtonVisible(bool visible)

@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using TMPro;
 
 public class AdventurerNPC : MonoBehaviour
 {
@@ -15,6 +16,11 @@ public class AdventurerNPC : MonoBehaviour
 
     [Header("Legacy Visual Fallback")]
     [SerializeField] private SpriteRenderer legacyRenderer;
+
+    [Header("Name Label")]
+    [SerializeField] private TMP_Text nameLabel;
+    [SerializeField] private Color offeredNameColor = Color.white;
+    [SerializeField] private Color waitingRewardNameColor = Color.yellow;
 
     [Header("Interaction")]
     [SerializeField] private Collider interactionCollider;
@@ -55,6 +61,7 @@ public class AdventurerNPC : MonoBehaviour
         this.questUI = questUI;
 
         ApplyVisual();
+        ApplyNameLabel();
 
         SetState(AdventurerState.Offered);
         ShowAdventurer();
@@ -63,6 +70,7 @@ public class AdventurerNPC : MonoBehaviour
     public void SetState(AdventurerState state)
     {
         this.state = state;
+        UpdateNameColor();
     }
 
     public void ShowAdventurer()
@@ -74,6 +82,11 @@ public class AdventurerNPC : MonoBehaviour
 
         if (interactionCollider != null)
             interactionCollider.enabled = true;
+
+        if (nameLabel != null)
+            nameLabel.gameObject.SetActive(true);
+
+        UpdateNameColor();
     }
 
     public void HideAdventurer()
@@ -83,6 +96,9 @@ public class AdventurerNPC : MonoBehaviour
 
         if (interactionCollider != null)
             interactionCollider.enabled = false;
+
+        if (nameLabel != null)
+            nameLabel.gameObject.SetActive(false);
     }
 
     public void Interact(PlayerInteraction player)
@@ -243,6 +259,42 @@ public class AdventurerNPC : MonoBehaviour
         {
             legacyRenderer.sprite = null;
             legacyRenderer.gameObject.SetActive(false);
+        }
+    }
+
+    private void ApplyNameLabel()
+    {
+        if (nameLabel == null)
+            return;
+
+        if (data != null)
+        {
+            nameLabel.text = data.displayName;
+            nameLabel.gameObject.SetActive(true);
+            UpdateNameColor();
+        }
+        else
+        {
+            nameLabel.text = "";
+            nameLabel.gameObject.SetActive(false);
+        }
+    }
+
+    private void UpdateNameColor()
+    {
+        if (nameLabel == null)
+            return;
+
+        switch (state)
+        {
+            case AdventurerState.WaitingReward:
+                nameLabel.color = waitingRewardNameColor;
+                break;
+
+            case AdventurerState.Offered:
+            default:
+                nameLabel.color = offeredNameColor;
+                break;
         }
     }
 }

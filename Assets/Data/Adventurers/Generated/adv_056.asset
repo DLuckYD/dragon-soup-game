@@ -18,7 +18,7 @@ MonoBehaviour:
   skinSprite: {fileID: 0}
   faceSprite: {fileID: 21300000, guid: 498759675a1a3b24d81be8e3fffd2953, type: 3}
   bodySprite: {fileID: 21300000, guid: 9222f88fd6464dc4eae05874f1db7214, type: 3}
-  weaponSprite: {fileID: 0}
+  weaponSprite: {fileID: 21300000, guid: 28208409d1fe8614ca11adc81ede9a79, type: 3}
   preferredRewardItemId: stick
   preferredItemState: 2
   difficultyModifier: 0
