@@ -368,8 +368,8 @@ public class QuestUI : MonoBehaviour
 
     private void SetReturnFeedback(string text)
     {
-        if (returnFeedbackText != null)
-            returnFeedbackText.text = text;
+        if (returnMainText != null)
+            returnMainText.text += "\n" + text;
     }
 
     private void SetRollHaggleButtonVisible(bool visible)

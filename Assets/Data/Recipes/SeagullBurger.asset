@@ -24,11 +24,9 @@ MonoBehaviour:
   result: {fileID: 11400000, guid: 1ef096aa6df09be479e2257ad2ed28a0, type: 2}
   cookTime: 0
   icon: {fileID: 21300000, guid: ad8af1d43bc319440b5a428f2f15e4fe, type: 3}
-  difficultyLevel: 3
+  difficultyLevel: 1
   progressionEffects:
   - effectType: 0
     targetId: recipe_3
   - effectType: 1
     targetId: magic_fridge
-  - effectType: 3
-    targetId: 
