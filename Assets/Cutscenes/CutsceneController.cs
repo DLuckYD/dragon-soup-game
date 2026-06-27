@@ -1,153 +1,171 @@
-using System;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.Video;
 
-public class CutsceneController : MonoBehaviour
+public class CutscenePlayer : MonoBehaviour
 {
-    private enum CutsceneEndAction
-    {
-        ShowFinalPanel,
-        LoadScene
-    }
+    [Header("Cutscene UI")]
+    [SerializeField] private GameObject cutsceneRoot;
 
-    [Header("Video")]
-    [SerializeField] private VideoPlayer videoPlayer;
-    [SerializeField] private GameObject videoPanel;
+    [Header("Objects To Hide")]
+    [SerializeField] private GameObject[] objectsToHideDuringCutscene;
 
-    [Header("After Video")]
-    [SerializeField] private CutsceneEndAction endAction = CutsceneEndAction.ShowFinalPanel;
-    [SerializeField] private GameObject finalPanel;
-    [SerializeField] private string sceneToLoad;
+    [Header("Components To Disable")]
+    [SerializeField] private MonoBehaviour[] componentsToDisableDuringCutscene;
 
     [Header("Settings")]
-    [SerializeField] private bool playOnStart = false;
-    [SerializeField] private bool unlockCursorAfterVideo = true;
+    [SerializeField] private bool pauseGameDuringCutscene = true;
+    [SerializeField] private bool hideCursorDuringCutscene = true;
+    [SerializeField] private bool showCursorBeforeLoadingScene = true;
 
-    private bool cutsceneStarted = false;
-    private Action onCutsceneFinished;
+    private VideoPlayer activePlayer;
+    private string sceneAfterVideo;
+    private bool isPlaying = false;
+    private float previousTimeScale = 1f;
+
+    private AsyncOperation preloadOperation;
+    private Coroutine preloadCoroutine;
 
     private void Awake()
     {
-        Time.timeScale = 1f;
+        if (cutsceneRoot != null)
+            cutsceneRoot.SetActive(false);
 
-        if (finalPanel != null)
-            finalPanel.SetActive(false);
-
-        if (videoPanel != null)
-            videoPanel.SetActive(false);
-
-        if (videoPlayer != null)
-        {
-            videoPlayer.playOnAwake = false;
-            videoPlayer.loopPointReached += OnVideoFinished;
-        }
-    }
-
-    private void Start()
-    {
-        if (playOnStart)
-        {
-            PlayCutscene();
-        }
+        Cursor.visible = true;
+        Cursor.lockState = CursorLockMode.None;
     }
 
     private void OnDestroy()
     {
-        if (videoPlayer != null)
-        {
-            videoPlayer.loopPointReached -= OnVideoFinished;
-        }
+        if (activePlayer != null)
+            activePlayer.loopPointReached -= OnVideoFinished;
     }
 
-    public void PlayCutscene(Action onFinished = null)
+    public void PlayAndLoadScene(VideoPlayer videoPlayer, string sceneName)
     {
-        if (cutsceneStarted)
+        if (isPlaying)
             return;
-
-        cutsceneStarted = true;
-        onCutsceneFinished = onFinished;
 
         if (videoPlayer == null)
         {
-            Debug.LogWarning("[CutsceneController] VideoPlayer is not assigned.");
-            FinishCutscene();
+            Debug.LogWarning("[CutscenePlayer] VideoPlayer is not assigned.");
             return;
         }
 
-        if (videoPanel != null)
-            videoPanel.SetActive(true);
+        if (string.IsNullOrEmpty(sceneName))
+        {
+            Debug.LogWarning("[CutscenePlayer] Scene name is empty.");
+            return;
+        }
 
-        if (finalPanel != null)
-            finalPanel.SetActive(false);
+        isPlaying = true;
+        activePlayer = videoPlayer;
+        sceneAfterVideo = sceneName;
+        preloadOperation = null;
 
-        Cursor.visible = false;
-        Cursor.lockState = CursorLockMode.Locked;
+        PrepareVideoPlayer(activePlayer);
+        PrepareCutsceneState();
 
-        videoPlayer.Stop();
-        videoPlayer.Play();
+        activePlayer.Stop();
+        activePlayer.Play();
 
-        Debug.Log("[CutsceneController] Cutscene started.");
+        preloadCoroutine = StartCoroutine(PreloadSceneAsync(sceneAfterVideo));
+
+        Debug.Log($"[CutscenePlayer] Playing video: {activePlayer.name}. Next scene: {sceneAfterVideo}");
+    }
+
+    private void PrepareVideoPlayer(VideoPlayer player)
+    {
+        player.playOnAwake = false;
+        player.isLooping = false;
+        player.timeUpdateMode = VideoTimeUpdateMode.UnscaledGameTime;
+
+        player.loopPointReached -= OnVideoFinished;
+        player.loopPointReached += OnVideoFinished;
+    }
+
+    private void PrepareCutsceneState()
+    {
+        previousTimeScale = Time.timeScale;
+
+        if (pauseGameDuringCutscene)
+            Time.timeScale = 0f;
+
+        if (cutsceneRoot != null)
+            cutsceneRoot.SetActive(true);
+
+        foreach (GameObject obj in objectsToHideDuringCutscene)
+        {
+            if (obj != null)
+                obj.SetActive(false);
+        }
+
+        foreach (MonoBehaviour component in componentsToDisableDuringCutscene)
+        {
+            if (component != null)
+                component.enabled = false;
+        }
+
+        if (hideCursorDuringCutscene)
+        {
+            Cursor.visible = false;
+            Cursor.lockState = CursorLockMode.Locked;
+        }
+    }
+
+    private IEnumerator PreloadSceneAsync(string sceneName)
+    {
+        Debug.Log($"[CutscenePlayer] Preloading scene: {sceneName}");
+
+        preloadOperation = SceneManager.LoadSceneAsync(sceneName);
+
+        if (preloadOperation == null)
+        {
+            Debug.LogWarning($"[CutscenePlayer] Failed to preload scene: {sceneName}");
+            yield break;
+        }
+
+        preloadOperation.allowSceneActivation = false;
+
+        while (preloadOperation.progress < 0.9f)
+        {
+            yield return null;
+        }
+
+        Debug.Log($"[CutscenePlayer] Scene preloaded and waiting for activation: {sceneName}");
     }
 
     private void OnVideoFinished(VideoPlayer source)
     {
-        Debug.Log("[CutsceneController] Cutscene finished.");
-
-        FinishCutscene();
-    }
-
-    private void FinishCutscene()
-    {
-        if (onCutsceneFinished != null)
-        {
-            Action callback = onCutsceneFinished;
-            onCutsceneFinished = null;
-
-            callback.Invoke();
+        if (source != activePlayer)
             return;
-        }
 
-        if (unlockCursorAfterVideo)
-        {
-            Cursor.visible = true;
-            Cursor.lockState = CursorLockMode.None;
-        }
+        Debug.Log("[CutscenePlayer] Video finished.");
 
-        if (endAction == CutsceneEndAction.ShowFinalPanel)
-        {
-            if (videoPanel != null)
-                videoPanel.SetActive(false);
+        source.loopPointReached -= OnVideoFinished;
 
-            ShowFinalPanel();
-        }
-        else if (endAction == CutsceneEndAction.LoadScene)
-        {
-            LoadNextScene();
-        }
+        StartCoroutine(LoadSceneAfterVideo());
     }
 
-    private void ShowFinalPanel()
+    private IEnumerator LoadSceneAfterVideo()
     {
-        if (finalPanel != null)
-        {
-            finalPanel.SetActive(true);
-        }
-        else
-        {
-            Debug.LogWarning("[CutsceneController] Final panel is not assigned.");
-        }
-    }
-
-    private void LoadNextScene()
-    {
-        if (string.IsNullOrEmpty(sceneToLoad))
-        {
-            Debug.LogWarning("[CutsceneController] Scene name is empty.");
-            return;
-        }
-
         Time.timeScale = 1f;
-        SceneManager.LoadScene(sceneToLoad);
+
+        if (preloadOperation == null)
+        {
+            Debug.LogWarning("[CutscenePlayer] Scene was not preloaded. Loading normally.");
+            SceneManager.LoadScene(sceneAfterVideo);
+            yield break;
+        }
+
+        while (preloadOperation.progress < 0.9f)
+        {
+            yield return null;
+        }
+
+        Debug.Log($"[CutscenePlayer] Activating scene: {sceneAfterVideo}");
+
+        preloadOperation.allowSceneActivation = true;
     }
 }
