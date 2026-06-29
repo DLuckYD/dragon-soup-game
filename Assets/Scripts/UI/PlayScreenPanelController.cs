@@ -16,6 +16,7 @@ public class PlayScreenPanelController : MonoBehaviour
     [SerializeField] private GameObject saveFilesPanel;
 
     [SerializeField] private MainMenuUIManager mainMenuManager;
+    [SerializeField] private IntroCutsceneStarter introCutsceneStarter;
 
     private void Start()
     {
@@ -41,7 +42,18 @@ public class PlayScreenPanelController : MonoBehaviour
     public void CreateNewGame()
     {
         WwiseAudioManager.Instance.PostEvent("Ui_Button_Clicked", gameObject);
-        GameSaveLoadManager.Instance.StartNewGame();
+
+        GameSaveLoadManager.Instance.PrepareNewGame();
+
+        if (introCutsceneStarter != null)
+        {
+            introCutsceneStarter.PlayIntro();
+        }
+        else
+        {
+            Debug.LogWarning("[MainMenu] IntroCutsceneStarter is not assigned. Loading SampleScene directly.");
+            GameSaveLoadManager.Instance.StartNewGame();
+        }
     }
 
     public void OnBackPressed()

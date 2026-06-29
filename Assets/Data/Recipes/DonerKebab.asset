@@ -24,7 +24,7 @@ MonoBehaviour:
   result: {fileID: 11400000, guid: b91f91400ea561944abaac33b4b34896, type: 2}
   cookTime: 0
   icon: {fileID: 21300000, guid: 79b966c90a3357a4ea6d7bf1ec918d96, type: 3}
-  difficultyLevel: 1
+  difficultyLevel: 3
   progressionEffects:
   - effectType: 0
     targetId: recipe_7

@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
@@ -7,8 +8,15 @@ public class NotificationUI : MonoBehaviour
 {
     [SerializeField] private GameObject notificationPanel;
     [SerializeField] private TMP_Text notificationText;
-    [SerializeField] private float showTime = 2f;
 
+    [Header("Timing")]
+    [SerializeField] private float showTime = 2f;
+    [SerializeField] private float minimumVisibleTime = 0.3f;
+
+    [Header("Queue")]
+    [SerializeField] private int maxQueueSize = 10;
+
+    private readonly Queue<string> messageQueue = new Queue<string>();
     private Coroutine currentRoutine;
 
     private void Awake()
@@ -19,6 +27,7 @@ public class NotificationUI : MonoBehaviour
     private void OnEnable()
     {
         Debug.Log("Subscribing to save events...");
+
         GameSaveLoadManager.OnAutoSaveCompleted += ShowMessage;
         GameSaveLoadManager.OnManualSaveCompleted += ShowMessage;
         GameSaveLoadManager.OnSaveFailed += ShowMessage;
@@ -28,35 +37,48 @@ public class NotificationUI : MonoBehaviour
 
         RecipeProgressManager.OnSuccessfulUnlock += ShowMessage;
 
-        HouseSpawner.OnSpawned  += ShowMessage;
+        HouseSpawner.OnSpawned += ShowMessage;
 
         PlayerInteraction.OnLockedItemInteraction += ShowMessage;
+        PlayerInteraction.OnFullInventory += ShowMessage;
 
         AdventurerSpawner.OnSpawned += ShowMessage;
         AdventurerSpawner.OnReturn += ShowMessage;
+
+        DarkEntity.OnSpawned += ShowMessage;
+
+        CookingStation.OnMissingIngredients += ShowMessage;
+        CookingStation.OnNextIngredient += ShowMessage;
     }
 
     private void OnDisable()
     {
         Debug.Log("Unsubscribing from save events...");
+
         GameSaveLoadManager.OnAutoSaveCompleted -= ShowMessage;
         GameSaveLoadManager.OnManualSaveCompleted -= ShowMessage;
         GameSaveLoadManager.OnSaveFailed -= ShowMessage;
-        
+
         UpgradeStation.OnSuccessfulUpgrade -= ShowMessage;
         UpgradeStation.OnUnsuccessfulUpgrade -= ShowMessage;
 
         RecipeProgressManager.OnSuccessfulUnlock -= ShowMessage;
 
-        HouseSpawner.OnSpawned  -= ShowMessage;
+        HouseSpawner.OnSpawned -= ShowMessage;
 
         PlayerInteraction.OnLockedItemInteraction -= ShowMessage;
+        PlayerInteraction.OnFullInventory -= ShowMessage;
 
         AdventurerSpawner.OnSpawned -= ShowMessage;
         AdventurerSpawner.OnReturn -= ShowMessage;
+
+        DarkEntity.OnSpawned -= ShowMessage;
+
+        CookingStation.OnMissingIngredients -= ShowMessage;
+        CookingStation.OnNextIngredient -= ShowMessage;
     }
 
-    void Start()
+    private void Start()
     {
         if (notificationPanel != null)
         {
@@ -64,57 +86,14 @@ public class NotificationUI : MonoBehaviour
         }
     }
 
-    //private void ShowAutoSaveMessage(string message)
-    //{
-    //    Debug.Log("Received auto save message: " + message);
-    //    ShowMessage(message);
-    //}
-
-    //private void ShowManualSaveMessage(string message)
-    //{
-    //    Debug.Log("Received manual save message: " + message);
-    //    ShowMessage(message);
-    //}
-
-    //private void ShowSaveFailedMessage(string message)
-    //{
-    //    Debug.Log("Received save failed message: " + message);
-    //    ShowMessage(message);
-    //}
-
-    //private void ShowSupplyMessage(string message)
-    //{
-    //    Debug.Log("Received supply message: " + message);
-    //    ShowMessage(message);
-    //}
-    //private void ShowUpgradeMessage(string message)
-    //{
-    //    Debug.Log("Received upgrade message: " + message);
-    //    ShowMessage(message);
-    //}
-
-    //private void ShowUnlockMessage(string message)
-    //{
-    //    Debug.Log("Received unlock message: " + message);
-    //    ShowMessage(message);
-    //}
-
-    //private void ShowLockedItemMessage(string message)
-    //{
-    //    Debug.Log("Received locked message: " + message);
-    //    ShowMessage(message);
-    //}
-
-    //private void ShowDestroyedMessage(string message)
-    //{
-    //    Debug.Log("Received destroyed message: " + message);
-    //    ShowMessage(message);
-    //}
-    
-
     private void ShowMessage(string message)
     {
-        Debug.Log("Showing notification: " + message);
+        if (string.IsNullOrWhiteSpace(message))
+        {
+            return;
+        }
+
+        Debug.Log("Queued notification: " + message);
 
         if (notificationPanel == null || notificationText == null)
         {
@@ -122,24 +101,59 @@ public class NotificationUI : MonoBehaviour
             return;
         }
 
-        notificationText.text = message;
+        EnqueueMessage(message);
 
-        if (currentRoutine != null)
+        if (currentRoutine == null)
         {
-            StopCoroutine(currentRoutine);
+            currentRoutine = StartCoroutine(ProcessMessageQueue());
         }
-
-        currentRoutine = StartCoroutine(ShowNotificationCoroutine());
     }
 
-    private IEnumerator ShowNotificationCoroutine()
+    private void EnqueueMessage(string message)
+    {
+        while (messageQueue.Count >= maxQueueSize)
+        {
+            string removedMessage = messageQueue.Dequeue();
+            Debug.Log("[NOTIFICATION UI] Queue is full. Removed oldest message: " + removedMessage);
+        }
+
+        messageQueue.Enqueue(message);
+    }
+
+    private IEnumerator ProcessMessageQueue()
     {
         notificationPanel.SetActive(true);
 
-        yield return new WaitForSecondsRealtime(showTime);
+        while (messageQueue.Count > 0)
+        {
+            string message = messageQueue.Dequeue();
+
+            notificationText.text = message;
+            Debug.Log("Showing notification: " + message);
+
+            float visibleTime = 0f;
+
+            while (visibleTime < showTime)
+            {
+                float step = 0.05f;
+
+                yield return new WaitForSecondsRealtime(step);
+
+                visibleTime += step;
+
+                bool canSwitchToNextMessage = visibleTime >= minimumVisibleTime;
+                bool hasWaitingMessages = messageQueue.Count > 0;
+
+                if (canSwitchToNextMessage && hasWaitingMessages)
+                {
+                    break;
+                }
+            }
+        }
 
         notificationPanel.SetActive(false);
         notificationText.text = "";
+
         currentRoutine = null;
     }
 }

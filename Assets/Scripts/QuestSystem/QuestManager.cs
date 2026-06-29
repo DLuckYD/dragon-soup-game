@@ -20,6 +20,9 @@ public class QuestManager : MonoBehaviour
     [Header("Dialogue JSON")]
     [SerializeField] private TextAsset dialogueJsonFile;
 
+    [Header("Dialogue Debug")]
+    [SerializeField] private bool showDialogueDebugInfo = false;
+
     [Header("Quest Generation (MVP)")]
     [SerializeField] private IngredientData defaultIngredient;
     [SerializeField] private int defaultAmount = 3;
@@ -70,6 +73,7 @@ public class QuestManager : MonoBehaviour
         public string outroId;
         public string hintId;
         public string hintText;
+        public string debugInfo;
 
         public Recipe recipe;
         public IngredientData ingredientData;
@@ -263,10 +267,11 @@ public class QuestManager : MonoBehaviour
         int difficultyLevel = GetDifficultyLevelFromRecipe(target.recipe);
         float delay = Mathf.Max(1f, defaultReturnDelaySeconds);
 
-        // Pick dialogue lines.
-        QuestDialogueEntry intro = PickRandom(bank?.intros);
-        QuestDialogueEntry outro = PickRandom(bank?.outros);
-        QuestDialogueEntry hint = PickRandom(bank?.hints);
+        // Pick dialogue lines based on AdventurerData preferences.
+        // classType -> intro, preferredRewardItemId -> outro, preferredItemState -> hint.
+        QuestDialogueEntry intro = PickIntroByAdventurerClass(npc);
+        QuestDialogueEntry outro = PickOutroByPreferredRewardItem(npc);
+        QuestDialogueEntry hint = PickHintByPreferredItemState(npc);
 
         string ingredientName = ingredient != null ? ingredient.displayName : "Ingredient";
         Sprite ingredientIcon = ingredient != null ? ingredient.icon : null;
@@ -281,6 +286,10 @@ public class QuestManager : MonoBehaviour
         if (!outroRaw.Contains("{hint}", StringComparison.OrdinalIgnoreCase) && !string.IsNullOrEmpty(hintText))
             outroText = $"Hint: {hintText}\n{outroText}";
 
+        string debugInfo = showDialogueDebugInfo
+            ? BuildDialogueDebugInfo(npc, intro, outro, hint)
+            : string.Empty;
+
         OfferPreview preview = new OfferPreview
         {
             intro = introText,
@@ -290,6 +299,7 @@ public class QuestManager : MonoBehaviour
             outroId = outro.id,
             hintId = hint.id,
             hintText = hintText,
+            debugInfo = debugInfo,
 
             recipe = target.recipe,
             ingredientData = ingredient,
@@ -706,6 +716,115 @@ public class QuestManager : MonoBehaviour
             " | activeQuests count: " +
             activeQuests.Count
         );
+    }
+
+    // ------------------ Dialogue selection by adventurer preferences ------------------
+
+    private QuestDialogueEntry PickIntroByAdventurerClass(AdventurerNPC npc)
+    {
+        string classType = npc != null && npc.Data != null ? npc.Data.classType : string.Empty;
+        string id = GetIntroIdByClass(classType);
+        return FindDialogueEntryById(bank?.intros, id);
+    }
+
+    private QuestDialogueEntry PickOutroByPreferredRewardItem(AdventurerNPC npc)
+    {
+        string itemId = npc != null && npc.Data != null ? npc.Data.preferredRewardItemId : string.Empty;
+        string id = GetOutroIdByRewardItem(itemId);
+        return FindDialogueEntryById(bank?.outros, id);
+    }
+
+    private QuestDialogueEntry PickHintByPreferredItemState(AdventurerNPC npc)
+    {
+        ItemState state = npc != null && npc.Data != null ? npc.Data.preferredItemState : ItemState.None;
+        string id = GetHintIdByState(state);
+        return FindDialogueEntryById(bank?.hints, id);
+    }
+
+    private QuestDialogueEntry FindDialogueEntryById(QuestDialogueEntry[] list, string id)
+    {
+        if (list == null || list.Length == 0)
+            return new QuestDialogueEntry { id = "none", text = string.Empty };
+
+        for (int i = 0; i < list.Length; i++)
+        {
+            if (list[i] != null && string.Equals(list[i].id, id, StringComparison.OrdinalIgnoreCase))
+                return list[i];
+        }
+
+        Debug.LogWarning("[QUEST DIALOGUE] Entry not found: " + id + ". Using first available entry.");
+        return list[0] ?? new QuestDialogueEntry { id = "none", text = string.Empty };
+    }
+
+    private string GetIntroIdByClass(string classType)
+    {
+        switch ((classType ?? string.Empty).Trim().ToLowerInvariant())
+        {
+            case "warrior": return "intro_001";
+            case "archer": return "intro_002";
+            case "witch": return "intro_003";
+            default:
+                Debug.LogWarning("[QUEST DIALOGUE] Unknown adventurer class: " + classType + ". Using intro_001.");
+                return "intro_001";
+        }
+    }
+
+    private string GetOutroIdByRewardItem(string itemId)
+    {
+        switch ((itemId ?? string.Empty).Trim().ToLowerInvariant())
+        {
+            case "chair_leg": return "outro_001";
+            case "table_leg": return "outro_002";
+            case "metal_pipe": return "outro_003";
+            case "butter_knife": return "outro_004";
+            case "table_body": return "outro_005";
+            case "bowl": return "outro_006";
+            case "food_plate": return "outro_007";
+            case "spiked_club": return "outro_008";
+            case "slipper": return "outro_009";
+            case "bar_keg": return "outro_010";
+            case "stick": return "outro_011";
+            case "chair_base": return "outro_012";
+            case "chair_back": return "outro_013";
+            case "leather_shoe": return "outro_014";
+            case "beer_cup": return "outro_015";
+            default:
+                Debug.LogWarning("[QUEST DIALOGUE] Unknown preferred reward item id: " + itemId + ". Using outro_001.");
+                return "outro_001";
+        }
+    }
+
+    private string GetHintIdByState(ItemState state)
+    {
+        switch (state)
+        {
+            case ItemState.Upgraded: return "hint_001";
+            case ItemState.Burned: return "hint_002";
+            case ItemState.Frozen: return "hint_003";
+            case ItemState.Painted: return "hint_004";
+            case ItemState.Poisoned: return "hint_005";
+            case ItemState.Sharpened: return "hint_006";
+            default:
+                Debug.LogWarning("[QUEST DIALOGUE] Unknown preferred item state: " + state + ". Using hint_001.");
+                return "hint_001";
+        }
+    }
+
+    private string BuildDialogueDebugInfo(
+        AdventurerNPC npc,
+        QuestDialogueEntry intro,
+        QuestDialogueEntry outro,
+        QuestDialogueEntry hint)
+    {
+        if (npc == null || npc.Data == null)
+            return "DEBUG INFO\nNPC data is missing.";
+
+        return
+            "DEBUG INFO\n" +
+            "Adventurer: " + npc.Data.displayName + "\n" +
+            "Class: " + npc.Data.classType + " -> " + intro.id + "\n" +
+            "Preferred item: " + npc.Data.preferredRewardItemId + " -> " + outro.id + "\n" +
+            "Preferred state: " + npc.Data.preferredItemState + " -> " + hint.id;
     }
 
     // ------------------ Bag logic ------------------
