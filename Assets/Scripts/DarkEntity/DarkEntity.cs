@@ -33,6 +33,8 @@ public class DarkEntity : MonoBehaviour
 
     public void Interact()
     {
+        AkUnitySoundEngine.SetState("Game_State", "Dark_Entity");
+        WwiseAudioManager.Instance.PostEvent("Dark_Entity_Interact", gameObject);
         if (recipeProgressManager == null)
         {
             Debug.LogWarning("[DARK ENTITY] RecipeProgressManager is missing.");
@@ -53,6 +55,8 @@ public class DarkEntity : MonoBehaviour
 
     public void AcceptDeal()
     {
+        AkUnitySoundEngine.SetState("Game_State", "In_Game");
+        WwiseAudioManager.Instance.PostEvent("Dark_Entity_Accept", gameObject);
         if (recipeProgressManager == null)
         {
             Debug.LogWarning("[DARK ENTITY] Cannot accept deal. RecipeProgressManager is missing.");
@@ -76,6 +80,8 @@ public class DarkEntity : MonoBehaviour
 
     public void DeclineDeal()
     {
+        AkUnitySoundEngine.SetState("Game_State", "In_Game");
+        WwiseAudioManager.Instance.PostEvent("Dark_Entity_Decline", gameObject);
         Debug.Log("[DARK ENTITY] Deal declined.");
     }
 

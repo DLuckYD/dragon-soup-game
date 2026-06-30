@@ -139,6 +139,39 @@
 								</Action>
 							</ChildrenList>
 						</Event>
+						<Event Name="Dark_Entity_Accept" ID="{83449EDD-0F57-45FE-8278-E32E0B2AC819}">
+							<ChildrenList>
+								<Action Name="" ID="{FFA7C5EC-40AE-4584-90DF-270321D33014}" ShortID="151029932">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="Dark_Entity_Accept" ID="{C2CD25ED-3163-4412-9CDF-B49EB44789EF}" WorkUnitID="{1D3CE180-6637-4348-B301-DDCBC094ECDF}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
+						<Event Name="Dark_Entity_Decline" ID="{EBD542EC-6910-48FC-8A3E-302FDF5AE0D5}">
+							<ChildrenList>
+								<Action Name="" ID="{B90C4352-5BAD-4656-9DA7-FC8624C6F873}" ShortID="255430997">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="Dark_Entity_Refuse" ID="{3C33CEDF-2C2D-4C77-B9AD-67DD8F0D0A90}" WorkUnitID="{1D3CE180-6637-4348-B301-DDCBC094ECDF}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
+						<Event Name="Dark_Entity_Interact" ID="{DDF1D9A5-7363-4BB4-8D75-A13AAF6EC14E}">
+							<ChildrenList>
+								<Action Name="" ID="{D2E71E53-B9F2-4110-B73B-2829F36AA927}" ShortID="986309277">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="Dark_Entity_Interact" ID="{FC85F1E8-9E2D-46F4-A0DA-DEB5E938B82C}" WorkUnitID="{1D3CE180-6637-4348-B301-DDCBC094ECDF}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
 					</ChildrenList>
 				</Folder>
 				<Folder Name="Main_Menu" ID="{A3AD14D7-A532-4A9F-9B01-EE881BDEA8DA}" ShortID="715734465"/>

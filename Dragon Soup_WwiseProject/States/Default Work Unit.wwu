@@ -10,6 +10,7 @@
 						<State Name="In_Menu" ID="{933F2F01-23B1-4D27-8B8D-A06BF09A10F8}"/>
 						<State Name="Pause" ID="{FED95F53-F5B4-4DA7-A3FA-D4E1A4A50296}"/>
 						<State Name="Cutscene" ID="{6591EEFD-B860-4757-BB88-A00348451334}"/>
+						<State Name="Dark_Entity" ID="{E88B4236-1B3E-4733-A2FA-E1A54A5DF244}"/>
 					</ChildrenList>
 				</StateGroup>
 			</ChildrenList>

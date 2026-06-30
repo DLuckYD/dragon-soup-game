@@ -2468,7 +2468,6 @@ Transform:
   - {fileID: 33244031}
   - {fileID: 519048214}
   - {fileID: 1172505725}
-  - {fileID: 259516221}
   - {fileID: 535314906}
   - {fileID: 2063664587}
   - {fileID: 402211020}
@@ -2479,7 +2478,6 @@ Transform:
   - {fileID: 1869594821}
   - {fileID: 289725946}
   - {fileID: 487680854}
-  - {fileID: 259961405}
   m_Father: {fileID: 1579576423}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &266275448
