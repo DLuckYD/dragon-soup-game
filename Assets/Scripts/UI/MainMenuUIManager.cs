@@ -73,7 +73,7 @@ public class MainMenuUIManager : MonoBehaviour
 
     public void QuitGame()
     {
-        WwiseAudioManager.Instance.PostEvent("Ui_Button_Clicked", gameObject);
+        WwiseAudioManager.Instance.PostEvent("Ui_Button_Cancel", gameObject);
         Debug.Log("Quit Game");
         Application.Quit();
     }

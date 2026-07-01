@@ -16,12 +16,14 @@ public static WwiseAudioManager Instance { get { return _instance; } }
         else
         {
             _instance = this;
+            UnityEngine.SceneManagement.SceneManager.sceneLoaded += OnSceneLoaded;
         }
     }
 
     private void Start()
     {
         DontDestroyOnLoad(gameObject);
+        PostEvent("Play_Music", gameObject);
     }
 
     public void PostEvent(string eventName, GameObject gameObject)
@@ -37,5 +39,20 @@ public static WwiseAudioManager Instance { get { return _instance; } }
     public void SetRTPCValue(string rtpcName, float value)
     {
         AkUnitySoundEngine.SetRTPCValue(rtpcName, value);
+    }
+
+    private void OnSceneLoaded(UnityEngine.SceneManagement.Scene scene, UnityEngine.SceneManagement.LoadSceneMode mode)
+    {
+        switch (scene.name)
+        {
+            case "MainMenu":
+                AkUnitySoundEngine.SetState("Game_State", "In_Menu");
+                break;
+            case "SampleScene":
+                AkUnitySoundEngine.SetState("Game_State", "In_Game");
+                break;
+            default:
+                break;
+        }
     }
 }

@@ -58,7 +58,7 @@ public class PlayScreenPanelController : MonoBehaviour
 
     public void OnBackPressed()
     {
-        WwiseAudioManager.Instance.PostEvent("Ui_Button_Clicked", gameObject);
+        WwiseAudioManager.Instance.PostEvent("Ui_Button_Cancel", gameObject);
         mainMenuManager.ShowStartScreen();
     }
 }

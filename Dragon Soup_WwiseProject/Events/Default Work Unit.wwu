@@ -139,32 +139,34 @@
 								</Action>
 							</ChildrenList>
 						</Event>
-					</ChildrenList>
-				</Folder>
-				<Folder Name="Main_Menu" ID="{A3AD14D7-A532-4A9F-9B01-EE881BDEA8DA}" ShortID="715734465">
-					<ChildrenList>
-						<Event Name="Play_Menu_Music" ID="{41A5B1F1-CC0B-4546-BB79-4622499C2320}">
+						<Event Name="Dark_Entity_Accept" ID="{83449EDD-0F57-45FE-8278-E32E0B2AC819}">
 							<ChildrenList>
-								<Action Name="" ID="{59CE1257-E7BD-4478-8D0A-DE2BE202A0A7}" ShortID="315797388">
+								<Action Name="" ID="{FFA7C5EC-40AE-4584-90DF-270321D33014}" ShortID="151029932">
 									<ReferenceList>
 										<Reference Name="Target">
-											<ObjectRef Name="Main_Menu" ID="{7DD389A1-3170-444F-A10D-A8ABA29CD199}" WorkUnitID="{1D3CE180-6637-4348-B301-DDCBC094ECDF}"/>
+											<ObjectRef Name="Dark_Entity_Accept" ID="{C2CD25ED-3163-4412-9CDF-B49EB44789EF}" WorkUnitID="{1D3CE180-6637-4348-B301-DDCBC094ECDF}"/>
 										</Reference>
 									</ReferenceList>
 								</Action>
 							</ChildrenList>
 						</Event>
-						<Event Name="Stop_Menu_Music" ID="{12918CFF-C382-47C4-9435-2D39B8F10EAD}">
+						<Event Name="Dark_Entity_Decline" ID="{EBD542EC-6910-48FC-8A3E-302FDF5AE0D5}">
 							<ChildrenList>
-								<Action Name="" ID="{D3420820-422F-43BB-BFB1-8B50CFB25EB5}" ShortID="223554956">
-									<PropertyList>
-										<Property Name="ActionType" Type="int16" Value="2"/>
-										<Property Name="FadeTime" Type="Real64" Value="0.2"/>
-										<Property Name="Scope" Type="int16" Value="1"/>
-									</PropertyList>
+								<Action Name="" ID="{B90C4352-5BAD-4656-9DA7-FC8624C6F873}" ShortID="255430997">
 									<ReferenceList>
 										<Reference Name="Target">
-											<ObjectRef Name="Main_Menu" ID="{7DD389A1-3170-444F-A10D-A8ABA29CD199}" WorkUnitID="{1D3CE180-6637-4348-B301-DDCBC094ECDF}"/>
+											<ObjectRef Name="Dark_Entity_Refuse" ID="{3C33CEDF-2C2D-4C77-B9AD-67DD8F0D0A90}" WorkUnitID="{1D3CE180-6637-4348-B301-DDCBC094ECDF}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
+						<Event Name="Dark_Entity_Interact" ID="{DDF1D9A5-7363-4BB4-8D75-A13AAF6EC14E}">
+							<ChildrenList>
+								<Action Name="" ID="{D2E71E53-B9F2-4110-B73B-2829F36AA927}" ShortID="986309277">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="Dark_Entity_Interact" ID="{FC85F1E8-9E2D-46F4-A0DA-DEB5E938B82C}" WorkUnitID="{1D3CE180-6637-4348-B301-DDCBC094ECDF}"/>
 										</Reference>
 									</ReferenceList>
 								</Action>
@@ -172,6 +174,7 @@
 						</Event>
 					</ChildrenList>
 				</Folder>
+				<Folder Name="Main_Menu" ID="{A3AD14D7-A532-4A9F-9B01-EE881BDEA8DA}" ShortID="715734465"/>
 				<Folder Name="General" ID="{399F1F06-E38A-4901-8F19-9C28D465A007}" ShortID="777239969">
 					<ChildrenList>
 						<Event Name="Ui_Button_Clicked" ID="{B020B332-C236-434F-9262-955D2686B485}">
@@ -180,6 +183,43 @@
 									<ReferenceList>
 										<Reference Name="Target">
 											<ObjectRef Name="ui_button_confirm" ID="{A8B4CA19-6FD1-43EC-B224-BEAF409C1D14}" WorkUnitID="{1D3CE180-6637-4348-B301-DDCBC094ECDF}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
+						<Event Name="Ui_Button_Cancel" ID="{5F232C68-B8FB-4495-A183-6891B4746353}">
+							<ChildrenList>
+								<Action Name="" ID="{D5C0F550-3FC5-4FB3-AB6E-F0471AC9B0B3}" ShortID="1019934962">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="ui_button_cancel" ID="{FDBAA6B3-DDC8-4ACF-9ABA-DE972A92F7B7}" WorkUnitID="{1D3CE180-6637-4348-B301-DDCBC094ECDF}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
+						<Event Name="Play_Music" ID="{41A5B1F1-CC0B-4546-BB79-4622499C2320}">
+							<ChildrenList>
+								<Action Name="" ID="{59CE1257-E7BD-4478-8D0A-DE2BE202A0A7}" ShortID="315797388">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="Jukebox" ID="{27778AFB-AC5D-4F11-AE80-896043B8AE67}" WorkUnitID="{1D3CE180-6637-4348-B301-DDCBC094ECDF}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
+						<Event Name="Stop_Music" ID="{12918CFF-C382-47C4-9435-2D39B8F10EAD}">
+							<ChildrenList>
+								<Action Name="" ID="{D3420820-422F-43BB-BFB1-8B50CFB25EB5}" ShortID="223554956">
+									<PropertyList>
+										<Property Name="ActionType" Type="int16" Value="2"/>
+										<Property Name="Scope" Type="int16" Value="1"/>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="Jukebox" ID="{27778AFB-AC5D-4F11-AE80-896043B8AE67}" WorkUnitID="{1D3CE180-6637-4348-B301-DDCBC094ECDF}"/>
 										</Reference>
 									</ReferenceList>
 								</Action>

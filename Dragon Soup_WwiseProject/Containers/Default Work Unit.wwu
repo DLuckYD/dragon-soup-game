@@ -198,106 +198,6 @@
 						</Folder>
 						<Folder Name="Upgrade Stations" ID="{F9CA48CF-0223-446A-A74E-665C35544ED1}" ShortID="798909724">
 							<ChildrenList>
-								<RandomSequenceContainer Name="Alc_Rack_Fail" ID="{D0685D96-4110-4A3C-A9D0-B52417B60BEA}" ShortID="354634999">
-									<ReferenceList>
-										<Reference Name="Conversion">
-											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{27F70A5B-D7C2-4BA9-9793-BA39E1BC8B1D}"/>
-										</Reference>
-										<Reference Name="OutputBus">
-											<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{0C9031E4-8081-4B6E-AB6C-02891DDBDDA8}"/>
-										</Reference>
-									</ReferenceList>
-									<ChildrenList>
-										<Sound Name="Alc_Rack_Fail_01" ID="{CF24991D-A73A-4AC7-B2EE-118BDB1F169E}" ShortID="227030715">
-											<ReferenceList>
-												<Reference Name="Conversion">
-													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{27F70A5B-D7C2-4BA9-9793-BA39E1BC8B1D}"/>
-												</Reference>
-												<Reference Name="OutputBus">
-													<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{0C9031E4-8081-4B6E-AB6C-02891DDBDDA8}"/>
-												</Reference>
-											</ReferenceList>
-											<ChildrenList>
-												<AudioFileSource Name="Alc_Rack_Fail_01" ID="{E815E4DA-B9FD-4B8E-8746-F07559592C76}">
-													<Language>SFX</Language>
-													<AudioFile>SFX\Alc_Rack_Fail_01.wav</AudioFile>
-													<MediaIDList>
-														<MediaID ID="818951279"/>
-													</MediaIDList>
-												</AudioFileSource>
-											</ChildrenList>
-											<ActiveSourceList>
-												<ActiveSource Name="Alc_Rack_Fail_01" ID="{E815E4DA-B9FD-4B8E-8746-F07559592C76}" Platform="Linked"/>
-											</ActiveSourceList>
-										</Sound>
-										<Sound Name="Alc_Rack_Fail_02" ID="{ECFB6EF6-8C3D-4111-A237-6D69B10620A6}" ShortID="483996308">
-											<ReferenceList>
-												<Reference Name="Conversion">
-													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{27F70A5B-D7C2-4BA9-9793-BA39E1BC8B1D}"/>
-												</Reference>
-												<Reference Name="OutputBus">
-													<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{0C9031E4-8081-4B6E-AB6C-02891DDBDDA8}"/>
-												</Reference>
-											</ReferenceList>
-											<ChildrenList>
-												<AudioFileSource Name="Alc_Rack_Fail_02" ID="{C9815364-9C90-443B-A868-B58A52405C6F}">
-													<Language>SFX</Language>
-													<AudioFile>SFX\Alc_Rack_Fail_02.wav</AudioFile>
-													<MediaIDList>
-														<MediaID ID="801227522"/>
-													</MediaIDList>
-												</AudioFileSource>
-											</ChildrenList>
-											<ActiveSourceList>
-												<ActiveSource Name="Alc_Rack_Fail_02" ID="{C9815364-9C90-443B-A868-B58A52405C6F}" Platform="Linked"/>
-											</ActiveSourceList>
-										</Sound>
-										<Sound Name="Alc_Rack_Fail_03" ID="{6709C845-8EEE-4B9E-B685-24406C87C913}" ShortID="671387852">
-											<ReferenceList>
-												<Reference Name="Conversion">
-													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{27F70A5B-D7C2-4BA9-9793-BA39E1BC8B1D}"/>
-												</Reference>
-												<Reference Name="OutputBus">
-													<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{0C9031E4-8081-4B6E-AB6C-02891DDBDDA8}"/>
-												</Reference>
-											</ReferenceList>
-											<ChildrenList>
-												<AudioFileSource Name="Alc_Rack_Fail_03" ID="{40905E5E-5466-400C-BCF1-4900E9CDD85D}">
-													<Language>SFX</Language>
-													<AudioFile>SFX\Alc_Rack_Fail_03.wav</AudioFile>
-													<MediaIDList>
-														<MediaID ID="952411046"/>
-													</MediaIDList>
-												</AudioFileSource>
-											</ChildrenList>
-											<ActiveSourceList>
-												<ActiveSource Name="Alc_Rack_Fail_03" ID="{40905E5E-5466-400C-BCF1-4900E9CDD85D}" Platform="Linked"/>
-											</ActiveSourceList>
-										</Sound>
-										<Sound Name="Alc_Rack_Fail_04" ID="{4DB8BA20-BFC3-4903-AEFF-6DFEDD2E9E31}" ShortID="96134655">
-											<ReferenceList>
-												<Reference Name="Conversion">
-													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{27F70A5B-D7C2-4BA9-9793-BA39E1BC8B1D}"/>
-												</Reference>
-												<Reference Name="OutputBus">
-													<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{0C9031E4-8081-4B6E-AB6C-02891DDBDDA8}"/>
-												</Reference>
-											</ReferenceList>
-											<ChildrenList>
-												<AudioFileSource Name="Alc_Rack_Fail_04" ID="{F2A5C636-AAC7-4034-A16B-3C66DEEF9E8F}">
-													<Language>SFX</Language>
-													<AudioFile>SFX\Alc_Rack_Fail_04.wav</AudioFile>
-													<MediaIDList>
-														<MediaID ID="234420786"/>
-													</MediaIDList>
-												</AudioFileSource>
-											</ChildrenList>
-											<ActiveSourceList>
-												<ActiveSource Name="Alc_Rack_Fail_04" ID="{F2A5C636-AAC7-4034-A16B-3C66DEEF9E8F}" Platform="Linked"/>
-											</ActiveSourceList>
-										</Sound>
-									</ChildrenList>
-								</RandomSequenceContainer>
 								<SwitchContainer Name="Upgrade_Station_Success" ID="{7B046A6D-119D-417B-9B18-98FE3DD7EE4B}" ShortID="967178054">
 									<ReferenceList>
 										<Reference Name="Conversion">
@@ -542,6 +442,135 @@
 												</Sound>
 											</ChildrenList>
 										</BlendContainer>
+										<BlendContainer Name="Workbench_Success" ID="{56EB31D7-3B57-4C34-A9EF-E5D187ACA019}" ShortID="884005770">
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{27F70A5B-D7C2-4BA9-9793-BA39E1BC8B1D}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{0C9031E4-8081-4B6E-AB6C-02891DDBDDA8}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<Sound Name="Workbench_Succes" ID="{37604275-92BC-42FD-BB77-A69CA6468FC8}" ShortID="478167109">
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{27F70A5B-D7C2-4BA9-9793-BA39E1BC8B1D}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="SFX" ID="{553FBE0F-6F3D-46D3-B60B-CF458887C1C1}" WorkUnitID="{0C9031E4-8081-4B6E-AB6C-02891DDBDDA8}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="Workbench_Success" ID="{09A956DD-1EA8-4CF7-97F5-4DFB9E5E2C30}">
+															<Language>SFX</Language>
+															<AudioFile>SFX\Workbench_Success.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="102961370"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ActiveSourceList>
+														<ActiveSource Name="Workbench_Success" ID="{09A956DD-1EA8-4CF7-97F5-4DFB9E5E2C30}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+												<Sound Name="Item_Crafted" ID="{BF0BD87C-18F8-446F-9201-0CA637771CC8}" ShortID="891359412">
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{27F70A5B-D7C2-4BA9-9793-BA39E1BC8B1D}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="SFX" ID="{553FBE0F-6F3D-46D3-B60B-CF458887C1C1}" WorkUnitID="{0C9031E4-8081-4B6E-AB6C-02891DDBDDA8}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="Item_Crafted" ID="{050E2D80-C9F1-4D9A-8CB7-74BAB2DDADE0}">
+															<PropertyList>
+																<Property Name="FadeOutDuration" Type="Real64" Value="1.06866416978777"/>
+																<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+																<Property Name="TrimEnd" Type="Real64" Value="2.5518102372035"/>
+															</PropertyList>
+															<Language>SFX</Language>
+															<AudioFile>Item_Crafted.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="27399822"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ActiveSourceList>
+														<ActiveSource Name="Item_Crafted" ID="{050E2D80-C9F1-4D9A-8CB7-74BAB2DDADE0}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+											</ChildrenList>
+										</BlendContainer>
+										<BlendContainer Name="Alc_Rack_Success" ID="{1A1BDE8F-DCE2-4458-935C-E8CEDA6930D1}" ShortID="1032886785">
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{27F70A5B-D7C2-4BA9-9793-BA39E1BC8B1D}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{0C9031E4-8081-4B6E-AB6C-02891DDBDDA8}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<Sound Name="Alc_Rack_Succes" ID="{727B0319-A0F0-46ED-9DAF-AC293A69151D}" ShortID="871923889">
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{27F70A5B-D7C2-4BA9-9793-BA39E1BC8B1D}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="SFX" ID="{553FBE0F-6F3D-46D3-B60B-CF458887C1C1}" WorkUnitID="{0C9031E4-8081-4B6E-AB6C-02891DDBDDA8}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="Alc_Rack_Success" ID="{94A245C0-65E9-4854-B52A-08DDA2FE6D01}">
+															<Language>SFX</Language>
+															<AudioFile>SFX\Alc_Rack_Success.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="108587739"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ActiveSourceList>
+														<ActiveSource Name="Alc_Rack_Success" ID="{94A245C0-65E9-4854-B52A-08DDA2FE6D01}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+												<Sound Name="Item_Crafted" ID="{C4941728-2036-4225-8AEA-19DB420A68CA}" ShortID="70933075">
+													<PropertyList>
+														<Property Name="InitialDelay" Type="Real64">
+															<ValueList>
+																<Value>0.4</Value>
+															</ValueList>
+														</Property>
+													</PropertyList>
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{27F70A5B-D7C2-4BA9-9793-BA39E1BC8B1D}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="SFX" ID="{553FBE0F-6F3D-46D3-B60B-CF458887C1C1}" WorkUnitID="{0C9031E4-8081-4B6E-AB6C-02891DDBDDA8}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="Item_Crafted" ID="{2A49C1FE-0209-414A-9323-FE5BBCBBA0D4}">
+															<PropertyList>
+																<Property Name="FadeOutDuration" Type="Real64" Value="1.06866416978777"/>
+																<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+																<Property Name="TrimEnd" Type="Real64" Value="2.5518102372035"/>
+															</PropertyList>
+															<Language>SFX</Language>
+															<AudioFile>Item_Crafted.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="27399822"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ActiveSourceList>
+														<ActiveSource Name="Item_Crafted" ID="{2A49C1FE-0209-414A-9323-FE5BBCBBA0D4}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+											</ChildrenList>
+										</BlendContainer>
 									</ChildrenList>
 									<GroupingInfo>
 										<GroupingBehaviorList>
@@ -555,14 +584,20 @@
 												<ItemRef Name="Item_Crafted" ID="{0A902C83-0627-4473-A5D7-43ED9FA2DAC7}"/>
 											</GroupingBehavior>
 											<GroupingBehavior>
+												<ItemRef Name="Alc_Rack_Success" ID="{1A1BDE8F-DCE2-4458-935C-E8CEDA6930D1}"/>
+											</GroupingBehavior>
+											<GroupingBehavior>
 												<ItemRef Name="Fireplace_Success" ID="{A10407A0-4305-4164-85E8-695C3D505EA8}"/>
+											</GroupingBehavior>
+											<GroupingBehavior>
+												<ItemRef Name="Workbench_Success" ID="{56EB31D7-3B57-4C34-A9EF-E5D187ACA019}"/>
 											</GroupingBehavior>
 										</GroupingBehaviorList>
 										<GroupingList>
 											<Grouping>
 												<SwitchRef Name="Alcohol" ID="{2378E908-E36E-4362-AF43-034D8332DB46}"/>
 												<ItemList>
-													<ItemRef Name="Item_Crafted" ID="{0A902C83-0627-4473-A5D7-43ED9FA2DAC7}"/>
+													<ItemRef Name="Alc_Rack_Success" ID="{1A1BDE8F-DCE2-4458-935C-E8CEDA6930D1}"/>
 												</ItemList>
 											</Grouping>
 											<Grouping>
@@ -586,7 +621,7 @@
 											<Grouping>
 												<SwitchRef Name="Workbench" ID="{3FD63DF2-1146-405B-A4CA-67B37581FEA9}"/>
 												<ItemList>
-													<ItemRef Name="Item_Crafted" ID="{0A902C83-0627-4473-A5D7-43ED9FA2DAC7}"/>
+													<ItemRef Name="Workbench_Success" ID="{56EB31D7-3B57-4C34-A9EF-E5D187ACA019}"/>
 												</ItemList>
 											</Grouping>
 										</GroupingList>
@@ -891,6 +926,106 @@
 												<ActiveSource Name="Magic_Fridge_Fail" ID="{0A9B22C9-3775-4506-97E4-BA1E39320D7D}" Platform="Linked"/>
 											</ActiveSourceList>
 										</Sound>
+										<RandomSequenceContainer Name="Alc_Rack_Fail" ID="{D0685D96-4110-4A3C-A9D0-B52417B60BEA}" ShortID="354634999">
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{27F70A5B-D7C2-4BA9-9793-BA39E1BC8B1D}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="SFX" ID="{553FBE0F-6F3D-46D3-B60B-CF458887C1C1}" WorkUnitID="{0C9031E4-8081-4B6E-AB6C-02891DDBDDA8}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<Sound Name="Alc_Rack_Fail_01" ID="{CF24991D-A73A-4AC7-B2EE-118BDB1F169E}" ShortID="227030715">
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{27F70A5B-D7C2-4BA9-9793-BA39E1BC8B1D}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{0C9031E4-8081-4B6E-AB6C-02891DDBDDA8}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="Alc_Rack_Fail_01" ID="{E815E4DA-B9FD-4B8E-8746-F07559592C76}">
+															<Language>SFX</Language>
+															<AudioFile>SFX\Alc_Rack_Fail_01.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="818951279"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ActiveSourceList>
+														<ActiveSource Name="Alc_Rack_Fail_01" ID="{E815E4DA-B9FD-4B8E-8746-F07559592C76}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+												<Sound Name="Alc_Rack_Fail_02" ID="{ECFB6EF6-8C3D-4111-A237-6D69B10620A6}" ShortID="483996308">
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{27F70A5B-D7C2-4BA9-9793-BA39E1BC8B1D}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{0C9031E4-8081-4B6E-AB6C-02891DDBDDA8}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="Alc_Rack_Fail_02" ID="{C9815364-9C90-443B-A868-B58A52405C6F}">
+															<Language>SFX</Language>
+															<AudioFile>SFX\Alc_Rack_Fail_02.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="801227522"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ActiveSourceList>
+														<ActiveSource Name="Alc_Rack_Fail_02" ID="{C9815364-9C90-443B-A868-B58A52405C6F}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+												<Sound Name="Alc_Rack_Fail_03" ID="{6709C845-8EEE-4B9E-B685-24406C87C913}" ShortID="671387852">
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{27F70A5B-D7C2-4BA9-9793-BA39E1BC8B1D}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{0C9031E4-8081-4B6E-AB6C-02891DDBDDA8}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="Alc_Rack_Fail_03" ID="{40905E5E-5466-400C-BCF1-4900E9CDD85D}">
+															<Language>SFX</Language>
+															<AudioFile>SFX\Alc_Rack_Fail_03.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="952411046"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ActiveSourceList>
+														<ActiveSource Name="Alc_Rack_Fail_03" ID="{40905E5E-5466-400C-BCF1-4900E9CDD85D}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+												<Sound Name="Alc_Rack_Fail_04" ID="{4DB8BA20-BFC3-4903-AEFF-6DFEDD2E9E31}" ShortID="96134655">
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{27F70A5B-D7C2-4BA9-9793-BA39E1BC8B1D}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{0C9031E4-8081-4B6E-AB6C-02891DDBDDA8}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="Alc_Rack_Fail_04" ID="{F2A5C636-AAC7-4034-A16B-3C66DEEF9E8F}">
+															<Language>SFX</Language>
+															<AudioFile>SFX\Alc_Rack_Fail_04.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="234420786"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ActiveSourceList>
+														<ActiveSource Name="Alc_Rack_Fail_04" ID="{F2A5C636-AAC7-4034-A16B-3C66DEEF9E8F}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+											</ChildrenList>
+										</RandomSequenceContainer>
 									</ChildrenList>
 									<GroupingInfo>
 										<GroupingBehaviorList>
@@ -904,10 +1039,19 @@
 												<ItemRef Name="Fireplace_Fail" ID="{F8897164-92BA-42D5-98CA-CB513B56784C}"/>
 											</GroupingBehavior>
 											<GroupingBehavior>
+												<ItemRef Name="Alc_Rack_Fail" ID="{D0685D96-4110-4A3C-A9D0-B52417B60BEA}"/>
+											</GroupingBehavior>
+											<GroupingBehavior>
 												<ItemRef Name="Painting_Station_Fail" ID="{30F640DC-3B90-47FC-A7BA-072513E25991}"/>
 											</GroupingBehavior>
 										</GroupingBehaviorList>
 										<GroupingList>
+											<Grouping>
+												<SwitchRef Name="Alcohol" ID="{2378E908-E36E-4362-AF43-034D8332DB46}"/>
+												<ItemList>
+													<ItemRef Name="Alc_Rack_Fail" ID="{D0685D96-4110-4A3C-A9D0-B52417B60BEA}"/>
+												</ItemList>
+											</Grouping>
 											<Grouping>
 												<SwitchRef Name="Painting" ID="{34857F0E-6CF8-40E5-8CF7-1E8D54F86256}"/>
 												<ItemList>
@@ -1184,6 +1328,13 @@
 									</ActiveSourceList>
 								</Sound>
 								<Sound Name="ui_button_confirm" ID="{A8B4CA19-6FD1-43EC-B224-BEAF409C1D14}" ShortID="681619158">
+									<PropertyList>
+										<Property Name="Volume" Type="Real64">
+											<ValueList>
+												<Value>-5</Value>
+											</ValueList>
+										</Property>
+									</PropertyList>
 									<ReferenceList>
 										<Reference Name="Conversion">
 											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{27F70A5B-D7C2-4BA9-9793-BA39E1BC8B1D}"/>
@@ -1215,6 +1366,11 @@
 										<Property Name="Pitch" Type="int32">
 											<ValueList>
 												<Value>250</Value>
+											</ValueList>
+										</Property>
+										<Property Name="Volume" Type="Real64">
+											<ValueList>
+												<Value>-5</Value>
 											</ValueList>
 										</Property>
 									</PropertyList>
@@ -1469,420 +1625,806 @@
 								</Folder>
 							</ChildrenList>
 						</Folder>
+						<Folder Name="Dark Entity" ID="{04EEC714-7386-4ADD-A921-8BF547065899}" ShortID="819989604">
+							<ChildrenList>
+								<RandomSequenceContainer Name="Dark_Entity_Interact" ID="{FC85F1E8-9E2D-46F4-A0DA-DEB5E938B82C}" ShortID="527069912">
+									<PropertyList>
+										<Property Name="InitialDelay" Type="Real64">
+											<ValueList>
+												<Value>0.5</Value>
+											</ValueList>
+										</Property>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{27F70A5B-D7C2-4BA9-9793-BA39E1BC8B1D}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{0C9031E4-8081-4B6E-AB6C-02891DDBDDA8}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<Sound Name="Dark_Entity_Interact_01" ID="{23C911A1-9C7D-4E08-AF2E-566509F59491}" ShortID="883207502">
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{27F70A5B-D7C2-4BA9-9793-BA39E1BC8B1D}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{0C9031E4-8081-4B6E-AB6C-02891DDBDDA8}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="Dark_Entity_Interact_01" ID="{317F6475-6A73-4027-A780-2A186B2F512D}">
+													<Language>SFX</Language>
+													<AudioFile>SFX\Dark_Entity_Interact_01.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="314875391"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ActiveSourceList>
+												<ActiveSource Name="Dark_Entity_Interact_01" ID="{317F6475-6A73-4027-A780-2A186B2F512D}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+										<Sound Name="Dark_Entity_Interact_02" ID="{7F18A160-F82C-47C6-B2E6-3696CCAF1545}" ShortID="152986573">
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{27F70A5B-D7C2-4BA9-9793-BA39E1BC8B1D}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{0C9031E4-8081-4B6E-AB6C-02891DDBDDA8}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="Dark_Entity_Interact_02" ID="{D276B362-BD7B-47C6-B33D-DD62BA904DA8}">
+													<PropertyList>
+														<Property Name="LoopBegin" Type="Real64" Value="0.432"/>
+														<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+														<Property Name="TrimBegin" Type="Real64" Value="0.432"/>
+													</PropertyList>
+													<Language>SFX</Language>
+													<AudioFile>SFX\Dark_Entity_Interact_02.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="440849487"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ActiveSourceList>
+												<ActiveSource Name="Dark_Entity_Interact_02" ID="{D276B362-BD7B-47C6-B33D-DD62BA904DA8}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+										<Sound Name="Dark_Entity_Interact_03" ID="{7C0DE7C6-6F9B-4DFC-861F-9E8E7DE4DA23}" ShortID="508864427">
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{27F70A5B-D7C2-4BA9-9793-BA39E1BC8B1D}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{0C9031E4-8081-4B6E-AB6C-02891DDBDDA8}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="Dark_Entity_Interact_03" ID="{3D6AAF7B-E004-4A4B-B709-891D1803C68B}">
+													<Language>SFX</Language>
+													<AudioFile>SFX\Dark_Entity_Interact_03.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="611619135"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ActiveSourceList>
+												<ActiveSource Name="Dark_Entity_Interact_03" ID="{3D6AAF7B-E004-4A4B-B709-891D1803C68B}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+										<Sound Name="Dark_Entity_Interact_04" ID="{70D9574B-D022-4DE8-A301-4E205484EE46}" ShortID="655720081">
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{27F70A5B-D7C2-4BA9-9793-BA39E1BC8B1D}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{0C9031E4-8081-4B6E-AB6C-02891DDBDDA8}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="Dark_Entity_Interact_04" ID="{FC3D97D4-E576-45FF-834B-88DA83EE28FE}">
+													<Language>SFX</Language>
+													<AudioFile>SFX\Dark_Entity_Interact_04.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="973722182"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ActiveSourceList>
+												<ActiveSource Name="Dark_Entity_Interact_04" ID="{FC3D97D4-E576-45FF-834B-88DA83EE28FE}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+									</ChildrenList>
+								</RandomSequenceContainer>
+								<RandomSequenceContainer Name="Dark_Entity_Refuse" ID="{3C33CEDF-2C2D-4C77-B9AD-67DD8F0D0A90}" ShortID="666931486">
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{27F70A5B-D7C2-4BA9-9793-BA39E1BC8B1D}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{0C9031E4-8081-4B6E-AB6C-02891DDBDDA8}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<Sound Name="Dark_Entity_Refuse_01" ID="{322045D6-020C-4DAA-B839-C1013C1A1E7E}" ShortID="445986129">
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{27F70A5B-D7C2-4BA9-9793-BA39E1BC8B1D}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{0C9031E4-8081-4B6E-AB6C-02891DDBDDA8}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="Dark_Entity_Refuse_01" ID="{2C82DBC4-D563-436F-A7D1-4886A413E4C7}">
+													<Language>SFX</Language>
+													<AudioFile>SFX\Dark_Entity_Refuse_01.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="862157290"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ActiveSourceList>
+												<ActiveSource Name="Dark_Entity_Refuse_01" ID="{2C82DBC4-D563-436F-A7D1-4886A413E4C7}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+										<Sound Name="Dark_Entity_Refuse_02" ID="{EC11E57B-37A4-4B7D-9893-21D72411154E}" ShortID="111751084">
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{27F70A5B-D7C2-4BA9-9793-BA39E1BC8B1D}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{0C9031E4-8081-4B6E-AB6C-02891DDBDDA8}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="Dark_Entity_Refuse_02" ID="{3146D8A6-1F68-4DE2-B4E7-1B98F65644C2}">
+													<Language>SFX</Language>
+													<AudioFile>SFX\Dark_Entity_Refuse_02.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="744898792"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ActiveSourceList>
+												<ActiveSource Name="Dark_Entity_Refuse_02" ID="{3146D8A6-1F68-4DE2-B4E7-1B98F65644C2}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+									</ChildrenList>
+								</RandomSequenceContainer>
+								<RandomSequenceContainer Name="Dark_Entity_Accept" ID="{C2CD25ED-3163-4412-9CDF-B49EB44789EF}" ShortID="393890145">
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{27F70A5B-D7C2-4BA9-9793-BA39E1BC8B1D}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{0C9031E4-8081-4B6E-AB6C-02891DDBDDA8}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<Sound Name="Dark_Entity_Accept_01" ID="{2F4D3D88-EF21-4811-AB13-8858A38A84FC}" ShortID="724931746">
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{27F70A5B-D7C2-4BA9-9793-BA39E1BC8B1D}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{0C9031E4-8081-4B6E-AB6C-02891DDBDDA8}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="Dark_Entity_Accept_01" ID="{FCFCB83D-13B3-42AC-A36B-6EF27C3E9019}">
+													<Language>SFX</Language>
+													<AudioFile>SFX\Dark_Entity_Accept_01.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="728849354"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ActiveSourceList>
+												<ActiveSource Name="Dark_Entity_Accept_01" ID="{FCFCB83D-13B3-42AC-A36B-6EF27C3E9019}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+										<Sound Name="Dark_Entity_Accept_02" ID="{67AE63DC-9CF8-45C0-8538-1E9D479F7970}" ShortID="773623352">
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{27F70A5B-D7C2-4BA9-9793-BA39E1BC8B1D}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{0C9031E4-8081-4B6E-AB6C-02891DDBDDA8}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="Dark_Entity_Accept_02" ID="{386DCB5F-213A-4A13-8460-4FDEC9A74427}">
+													<Language>SFX</Language>
+													<AudioFile>SFX\Dark_Entity_Accept_02.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="441236375"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ActiveSourceList>
+												<ActiveSource Name="Dark_Entity_Accept_02" ID="{386DCB5F-213A-4A13-8460-4FDEC9A74427}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+										<Sound Name="Dark_Entity_Accept_03" ID="{B0829ABD-6738-4CD3-95F2-52C08B8ADD98}" ShortID="230455239">
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{27F70A5B-D7C2-4BA9-9793-BA39E1BC8B1D}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{0C9031E4-8081-4B6E-AB6C-02891DDBDDA8}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="Dark_Entity_Accept_03" ID="{CC92CC4F-A0FC-415F-BAB9-A8BF4D30F031}">
+													<Language>SFX</Language>
+													<AudioFile>SFX\Dark_Entity_Accept_03.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="142834001"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ActiveSourceList>
+												<ActiveSource Name="Dark_Entity_Accept_03" ID="{CC92CC4F-A0FC-415F-BAB9-A8BF4D30F031}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+										<Sound Name="Dark_Entity_Accept_04" ID="{0A040640-1687-4F47-B251-EBF10F08EDF4}" ShortID="716405102">
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{27F70A5B-D7C2-4BA9-9793-BA39E1BC8B1D}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{0C9031E4-8081-4B6E-AB6C-02891DDBDDA8}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="Dark_Entity_Accept_04" ID="{5B22F22F-2C4F-4C4D-A8F7-D96A5CA03EA3}">
+													<Language>SFX</Language>
+													<AudioFile>SFX\Dark_Entity_Accept_04.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="761092468"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ActiveSourceList>
+												<ActiveSource Name="Dark_Entity_Accept_04" ID="{5B22F22F-2C4F-4C4D-A8F7-D96A5CA03EA3}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+									</ChildrenList>
+								</RandomSequenceContainer>
+							</ChildrenList>
+						</Folder>
 					</ChildrenList>
 				</PropertyContainer>
 				<Folder Name="Music" ID="{336DB3A4-7453-446D-B478-CD1F97A834DC}" ShortID="645111496">
 					<ChildrenList>
-						<MusicPlaylistContainer Name="First_Level" ID="{E859CA17-1FF6-48FA-B1F0-9032B4341C20}" ShortID="1070667064">
-							<PropertyList>
-								<Property Name="Volume" Type="Real64">
-									<ValueList>
-										<Value>8</Value>
-									</ValueList>
-								</Property>
-							</PropertyList>
+						<MusicSwitchContainer Name="Jukebox" ID="{27778AFB-AC5D-4F11-AE80-896043B8AE67}" ShortID="155839074">
 							<ReferenceList>
 								<Reference Name="Conversion">
 									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{27F70A5B-D7C2-4BA9-9793-BA39E1BC8B1D}"/>
 								</Reference>
 								<Reference Name="OutputBus">
-									<ObjectRef Name="Music" ID="{46A9DF34-5C17-49BC-90AC-4BF2EED4756C}" WorkUnitID="{0C9031E4-8081-4B6E-AB6C-02891DDBDDA8}"/>
+									<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{0C9031E4-8081-4B6E-AB6C-02891DDBDDA8}"/>
 								</Reference>
-								<Reference Name="PlaylistRoot">
+								<Reference Name="TransitionRoot">
 									<Custom>
-										<MusicPlaylistItem Name="" ID="{0469F8FF-CFA3-402A-830F-19BAD8A14FEB}" ShortID="688340679">
+										<MusicTransition Name="Root" ID="{4A56A7E7-EBC1-4450-A352-30EE06913033}">
 											<PropertyList>
-												<Property Name="LoopCount" Type="int16" Value="0"/>
+												<Property Name="IsFolder" Type="bool" Value="True"/>
 											</PropertyList>
 											<ChildrenList>
-												<MusicPlaylistItem Name="" ID="{12C6C086-54F7-4940-8611-4C1F1AFA6C7D}" ShortID="283589887">
+												<MusicTransition Name="Transition" ID="{E4512E80-EE75-4550-971D-BC34E41C5497}">
+													<PropertyList>
+														<Property Name="EnableSourceFadeOut" Type="bool" Value="True"/>
+														<Property Name="ExitSourceAt" Type="int16" Value="0"/>
+													</PropertyList>
+													<TransitionInfo>
+														<SourceFadeOut>
+															<MusicFade Name="Source Fade-out" ID="{A84D0B97-310D-48E5-A5C2-293CF83270A9}">
+																<PropertyList>
+																	<Property Name="FadeCurve" Type="int16" Value="1"/>
+																	<Property Name="FadeTime" Type="Real64" Value="1"/>
+																	<Property Name="FadeType" Type="int16" Value="1"/>
+																</PropertyList>
+															</MusicFade>
+														</SourceFadeOut>
+													</TransitionInfo>
+												</MusicTransition>
+											</ChildrenList>
+											<TransitionInfo/>
+										</MusicTransition>
+									</Custom>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<MusicPlaylistContainer Name="First_Level" ID="{E859CA17-1FF6-48FA-B1F0-9032B4341C20}" ShortID="1070667064">
+									<PropertyList>
+										<Property Name="OverrideClockSettings" Type="bool" Value="True"/>
+										<Property Name="Tempo" Type="Real64" Value="75"/>
+										<Property Name="Volume" Type="Real64">
+											<ValueList>
+												<Value>8</Value>
+											</ValueList>
+										</Property>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{27F70A5B-D7C2-4BA9-9793-BA39E1BC8B1D}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Music" ID="{46A9DF34-5C17-49BC-90AC-4BF2EED4756C}" WorkUnitID="{0C9031E4-8081-4B6E-AB6C-02891DDBDDA8}"/>
+										</Reference>
+										<Reference Name="PlaylistRoot">
+											<Custom>
+												<MusicPlaylistItem Name="" ID="{0469F8FF-CFA3-402A-830F-19BAD8A14FEB}" ShortID="688340679">
 													<PropertyList>
 														<Property Name="LoopCount" Type="int16" Value="0"/>
-														<Property Name="PlaylistItemType" Type="int16" Value="1"/>
 													</PropertyList>
-													<ReferenceList>
-														<Reference Name="Segment">
-															<ObjectRef Name="First Level" ID="{047C0210-6971-474B-B880-45DDD85C4416}" WorkUnitID="{1D3CE180-6637-4348-B301-DDCBC094ECDF}"/>
-														</Reference>
-													</ReferenceList>
+													<ChildrenList>
+														<MusicPlaylistItem Name="" ID="{12C6C086-54F7-4940-8611-4C1F1AFA6C7D}" ShortID="283589887">
+															<PropertyList>
+																<Property Name="LoopCount" Type="int16" Value="0"/>
+																<Property Name="PlaylistItemType" Type="int16" Value="1"/>
+															</PropertyList>
+															<ReferenceList>
+																<Reference Name="Segment">
+																	<ObjectRef Name="First Level" ID="{047C0210-6971-474B-B880-45DDD85C4416}" WorkUnitID="{1D3CE180-6637-4348-B301-DDCBC094ECDF}"/>
+																</Reference>
+															</ReferenceList>
+														</MusicPlaylistItem>
+													</ChildrenList>
 												</MusicPlaylistItem>
-											</ChildrenList>
-										</MusicPlaylistItem>
-									</Custom>
-								</Reference>
-								<Reference Name="TransitionRoot">
-									<Custom>
-										<MusicTransition Name="Root" ID="{30CE58CC-440A-4D36-A041-3375C6EEF928}">
-											<PropertyList>
-												<Property Name="IsFolder" Type="bool" Value="True"/>
-											</PropertyList>
-											<ChildrenList>
-												<MusicTransition Name="Transition" ID="{435F9FBD-CD7B-4F74-8B14-ACFDDB098059}">
-													<TransitionInfo/>
-												</MusicTransition>
-											</ChildrenList>
-											<TransitionInfo/>
-										</MusicTransition>
-									</Custom>
-								</Reference>
-							</ReferenceList>
-							<ChildrenList>
-								<MusicSegment Name="First Level" ID="{047C0210-6971-474B-B880-45DDD85C4416}" ShortID="220769471">
-									<PropertyList>
-										<Property Name="EndPosition" Type="Real64" Value="108800"/>
-									</PropertyList>
-									<ReferenceList>
-										<Reference Name="Conversion">
-											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{27F70A5B-D7C2-4BA9-9793-BA39E1BC8B1D}"/>
+											</Custom>
 										</Reference>
-										<Reference Name="OutputBus">
-											<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{0C9031E4-8081-4B6E-AB6C-02891DDBDDA8}"/>
-										</Reference>
-									</ReferenceList>
-									<ChildrenList>
-										<MusicTrack Name="Dragon_Soup_First_Level 1-BBC Symphony Orchestra" ID="{FBCE3D42-FD1A-46F8-9131-261E5FB9293C}" ShortID="191713490">
-											<ReferenceList>
-												<Reference Name="OutputBus">
-													<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{0C9031E4-8081-4B6E-AB6C-02891DDBDDA8}"/>
-												</Reference>
-												<Reference Name="TransitionRoot">
-													<Custom>
-														<MusicTransition Name="Root" ID="{9261A0A3-7EE9-4C3C-97B7-717FF679BCE1}">
-															<PropertyList>
-																<Property Name="IsFolder" Type="bool" Value="True"/>
-															</PropertyList>
-															<TransitionInfo/>
-														</MusicTransition>
-													</Custom>
-												</Reference>
-											</ReferenceList>
-											<ChildrenList>
-												<AudioFileSource Name="Dragon_Soup_First_Level 1-BBC Symphony Orchestra" ID="{AE4EDD76-6477-4090-A5B1-97F0F30BAC53}">
-													<Language>SFX</Language>
-													<AudioFile>First Level\Dragon_Soup_First_Level 1-BBC Symphony Orchestra.wav</AudioFile>
-													<MediaIDList>
-														<MediaID ID="861384175"/>
-													</MediaIDList>
-												</AudioFileSource>
-											</ChildrenList>
-											<ObjectLists>
-												<ObjectList Name="Sequences">
-													<MusicTrackSequence Name="" ID="{013313C5-E9A4-444D-9478-1EDAB911B83E}">
-														<ObjectLists>
-															<ObjectList Name="Clips">
-																<MusicClip Name="Dragon_Soup_First_Level 1-BBC Symphony Orchestra" ID="{8C73A625-9E5B-44EC-B198-6E5155B769CE}">
-																	<PropertyList>
-																		<Property Name="EndTrimOffset" Type="Real64" Value="108800"/>
-																		<Property Name="FadeInMode" Type="int16" Value="0"/>
-																		<Property Name="FadeOutMode" Type="int16" Value="0"/>
-																	</PropertyList>
-																	<AudioSourceRef Name="Dragon_Soup_First_Level 1-BBC Symphony Orchestra" ID="{AE4EDD76-6477-4090-A5B1-97F0F30BAC53}"/>
-																</MusicClip>
-															</ObjectList>
-														</ObjectLists>
-													</MusicTrackSequence>
-												</ObjectList>
-											</ObjectLists>
-										</MusicTrack>
-										<MusicTrack Name="Dragon_Soup_First_Level 3-Kontakt 8" ID="{9203F975-1A28-4AEB-B431-8EB300F03D1D}" ShortID="522043724">
-											<ReferenceList>
-												<Reference Name="OutputBus">
-													<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{0C9031E4-8081-4B6E-AB6C-02891DDBDDA8}"/>
-												</Reference>
-												<Reference Name="TransitionRoot">
-													<Custom>
-														<MusicTransition Name="Root" ID="{7AB810D6-E1DE-4988-BDE6-ED165E70166C}">
-															<PropertyList>
-																<Property Name="IsFolder" Type="bool" Value="True"/>
-															</PropertyList>
-															<TransitionInfo/>
-														</MusicTransition>
-													</Custom>
-												</Reference>
-											</ReferenceList>
-											<ChildrenList>
-												<AudioFileSource Name="Dragon_Soup_First_Level 3-Kontakt 8" ID="{55FF296A-A094-44FD-9F24-70163C599205}">
-													<Language>SFX</Language>
-													<AudioFile>First Level\Dragon_Soup_First_Level 3-Kontakt 8.wav</AudioFile>
-													<MediaIDList>
-														<MediaID ID="270679101"/>
-													</MediaIDList>
-												</AudioFileSource>
-											</ChildrenList>
-											<ObjectLists>
-												<ObjectList Name="Sequences">
-													<MusicTrackSequence Name="" ID="{7F51EE7E-7CEA-45CB-BE0D-FA250DC55E39}">
-														<ObjectLists>
-															<ObjectList Name="Clips">
-																<MusicClip Name="Dragon_Soup_First_Level 3-Kontakt 8" ID="{50C20ACB-03B2-4FCD-BED4-AE56FDC8990F}">
-																	<PropertyList>
-																		<Property Name="EndTrimOffset" Type="Real64" Value="108800"/>
-																		<Property Name="FadeInMode" Type="int16" Value="0"/>
-																		<Property Name="FadeOutMode" Type="int16" Value="0"/>
-																	</PropertyList>
-																	<AudioSourceRef Name="Dragon_Soup_First_Level 3-Kontakt 8" ID="{55FF296A-A094-44FD-9F24-70163C599205}"/>
-																</MusicClip>
-															</ObjectList>
-														</ObjectLists>
-													</MusicTrackSequence>
-												</ObjectList>
-											</ObjectLists>
-										</MusicTrack>
-										<MusicTrack Name="Dragon_Soup_First_Level 4-BBC Symphony Orchestra" ID="{56D34F29-41E2-4FCA-8DE4-950BF1DF32BA}" ShortID="659781024">
-											<ReferenceList>
-												<Reference Name="OutputBus">
-													<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{0C9031E4-8081-4B6E-AB6C-02891DDBDDA8}"/>
-												</Reference>
-												<Reference Name="TransitionRoot">
-													<Custom>
-														<MusicTransition Name="Root" ID="{3F8BAD44-F517-475E-8954-7C1C37C25C94}">
-															<PropertyList>
-																<Property Name="IsFolder" Type="bool" Value="True"/>
-															</PropertyList>
-															<TransitionInfo/>
-														</MusicTransition>
-													</Custom>
-												</Reference>
-											</ReferenceList>
-											<ChildrenList>
-												<AudioFileSource Name="Dragon_Soup_First_Level 4-BBC Symphony Orchestra" ID="{1C0884E9-FFFF-4108-99CC-98DA3F258C38}">
-													<Language>SFX</Language>
-													<AudioFile>First Level\Dragon_Soup_First_Level 4-BBC Symphony Orchestra.wav</AudioFile>
-													<MediaIDList>
-														<MediaID ID="527449594"/>
-													</MediaIDList>
-												</AudioFileSource>
-											</ChildrenList>
-											<ObjectLists>
-												<ObjectList Name="Sequences">
-													<MusicTrackSequence Name="" ID="{3852B9E1-DB16-4D55-9D2F-034991EF1B81}">
-														<ObjectLists>
-															<ObjectList Name="Clips">
-																<MusicClip Name="Dragon_Soup_First_Level 4-BBC Symphony Orchestra" ID="{9B7E6EA9-6AF9-4BA2-828C-3705CB4F70F9}">
-																	<PropertyList>
-																		<Property Name="EndTrimOffset" Type="Real64" Value="108800"/>
-																		<Property Name="FadeInMode" Type="int16" Value="0"/>
-																		<Property Name="FadeOutMode" Type="int16" Value="0"/>
-																	</PropertyList>
-																	<AudioSourceRef Name="Dragon_Soup_First_Level 4-BBC Symphony Orchestra" ID="{1C0884E9-FFFF-4108-99CC-98DA3F258C38}"/>
-																</MusicClip>
-															</ObjectList>
-														</ObjectLists>
-													</MusicTrackSequence>
-												</ObjectList>
-											</ObjectLists>
-										</MusicTrack>
-										<MusicTrack Name="Dragon_Soup_First_Level 5-Kontakt 8" ID="{6FF4CB2E-DDB2-4ED7-AEC7-2696E15F1E05}" ShortID="260367332">
-											<PropertyList>
-												<Property Name="Volume" Type="Real64">
-													<ValueList>
-														<Value>-5</Value>
-													</ValueList>
-												</Property>
-											</PropertyList>
-											<ReferenceList>
-												<Reference Name="OutputBus">
-													<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{0C9031E4-8081-4B6E-AB6C-02891DDBDDA8}"/>
-												</Reference>
-												<Reference Name="TransitionRoot">
-													<Custom>
-														<MusicTransition Name="Root" ID="{85A0FBFD-14E6-42E7-BEE3-EAF9F3D3538C}">
-															<PropertyList>
-																<Property Name="IsFolder" Type="bool" Value="True"/>
-															</PropertyList>
-															<TransitionInfo/>
-														</MusicTransition>
-													</Custom>
-												</Reference>
-											</ReferenceList>
-											<ChildrenList>
-												<AudioFileSource Name="Dragon_Soup_First_Level 5-Kontakt 8" ID="{C22756B6-B3BE-443E-9749-D0EFFBF57C6B}">
-													<Language>SFX</Language>
-													<AudioFile>First Level\Dragon_Soup_First_Level 5-Kontakt 8.wav</AudioFile>
-													<MediaIDList>
-														<MediaID ID="1008815571"/>
-													</MediaIDList>
-												</AudioFileSource>
-											</ChildrenList>
-											<ObjectLists>
-												<ObjectList Name="Sequences">
-													<MusicTrackSequence Name="" ID="{37F694B2-9DEF-448A-A91E-F5DF8688EE70}">
-														<ObjectLists>
-															<ObjectList Name="Clips">
-																<MusicClip Name="Dragon_Soup_First_Level 5-Kontakt 8" ID="{1B9CD486-D88B-4462-A15A-881DE8F55AD7}">
-																	<PropertyList>
-																		<Property Name="EndTrimOffset" Type="Real64" Value="108800"/>
-																		<Property Name="FadeInMode" Type="int16" Value="0"/>
-																		<Property Name="FadeOutMode" Type="int16" Value="0"/>
-																	</PropertyList>
-																	<AudioSourceRef Name="Dragon_Soup_First_Level 5-Kontakt 8" ID="{C22756B6-B3BE-443E-9749-D0EFFBF57C6B}"/>
-																</MusicClip>
-															</ObjectList>
-														</ObjectLists>
-													</MusicTrackSequence>
-												</ObjectList>
-											</ObjectLists>
-										</MusicTrack>
-										<MusicTrack Name="Dragon_Soup_First_Level 6-BBC Symphony Orchestra" ID="{5F397500-40EA-4A7B-BCA0-EEC04923BA72}" ShortID="505048359">
-											<PropertyList>
-												<Property Name="Volume" Type="Real64">
-													<ValueList>
-														<Value>-5</Value>
-													</ValueList>
-												</Property>
-											</PropertyList>
-											<ReferenceList>
-												<Reference Name="OutputBus">
-													<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{0C9031E4-8081-4B6E-AB6C-02891DDBDDA8}"/>
-												</Reference>
-												<Reference Name="TransitionRoot">
-													<Custom>
-														<MusicTransition Name="Root" ID="{A00505F5-F796-43DB-BABD-77E1957822CB}">
-															<PropertyList>
-																<Property Name="IsFolder" Type="bool" Value="True"/>
-															</PropertyList>
-															<TransitionInfo/>
-														</MusicTransition>
-													</Custom>
-												</Reference>
-											</ReferenceList>
-											<ChildrenList>
-												<AudioFileSource Name="Dragon_Soup_First_Level 6-BBC Symphony Orchestra" ID="{BB8EE808-609D-44E1-B8FE-1529B8805429}">
-													<Language>SFX</Language>
-													<AudioFile>First Level\Dragon_Soup_First_Level 6-BBC Symphony Orchestra.wav</AudioFile>
-													<MediaIDList>
-														<MediaID ID="931230729"/>
-													</MediaIDList>
-												</AudioFileSource>
-											</ChildrenList>
-											<ObjectLists>
-												<ObjectList Name="Sequences">
-													<MusicTrackSequence Name="" ID="{410DAE4B-173D-4AA0-906F-7C41106F1FDF}">
-														<ObjectLists>
-															<ObjectList Name="Clips">
-																<MusicClip Name="Dragon_Soup_First_Level 6-BBC Symphony Orchestra" ID="{2FEB1EC9-87A7-48F5-9A8D-311E436B47ED}">
-																	<PropertyList>
-																		<Property Name="EndTrimOffset" Type="Real64" Value="108800"/>
-																		<Property Name="FadeInMode" Type="int16" Value="0"/>
-																		<Property Name="FadeOutMode" Type="int16" Value="0"/>
-																	</PropertyList>
-																	<AudioSourceRef Name="Dragon_Soup_First_Level 6-BBC Symphony Orchestra" ID="{BB8EE808-609D-44E1-B8FE-1529B8805429}"/>
-																</MusicClip>
-															</ObjectList>
-														</ObjectLists>
-													</MusicTrackSequence>
-												</ObjectList>
-											</ObjectLists>
-										</MusicTrack>
-										<MusicTrack Name="Dragon_Soup_First_Level Bass" ID="{D550A76A-685F-4AC5-A458-06380B37E497}" ShortID="745661237">
-											<ReferenceList>
-												<Reference Name="OutputBus">
-													<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{0C9031E4-8081-4B6E-AB6C-02891DDBDDA8}"/>
-												</Reference>
-												<Reference Name="TransitionRoot">
-													<Custom>
-														<MusicTransition Name="Root" ID="{A4E612FB-A9FE-4963-A0E2-EC1CA37F0334}">
-															<PropertyList>
-																<Property Name="IsFolder" Type="bool" Value="True"/>
-															</PropertyList>
-															<TransitionInfo/>
-														</MusicTransition>
-													</Custom>
-												</Reference>
-											</ReferenceList>
-											<ChildrenList>
-												<AudioFileSource Name="Dragon_Soup_First_Level Bass" ID="{091BC795-F40D-425A-A5DC-8DF0B6E6F92B}">
-													<Language>SFX</Language>
-													<AudioFile>First Level\Dragon_Soup_First_Level Bass.wav</AudioFile>
-													<MediaIDList>
-														<MediaID ID="849936005"/>
-													</MediaIDList>
-												</AudioFileSource>
-											</ChildrenList>
-											<ObjectLists>
-												<ObjectList Name="Sequences">
-													<MusicTrackSequence Name="" ID="{C3D4AE6B-6F6E-4ED2-9487-A6879C2BA435}">
-														<ObjectLists>
-															<ObjectList Name="Clips">
-																<MusicClip Name="Dragon_Soup_First_Level Bass" ID="{E1B2DC4D-66B5-425C-9F3D-ED7573E33BFB}">
-																	<PropertyList>
-																		<Property Name="EndTrimOffset" Type="Real64" Value="108800"/>
-																		<Property Name="FadeInMode" Type="int16" Value="0"/>
-																		<Property Name="FadeOutMode" Type="int16" Value="0"/>
-																	</PropertyList>
-																	<AudioSourceRef Name="Dragon_Soup_First_Level Bass" ID="{091BC795-F40D-425A-A5DC-8DF0B6E6F92B}"/>
-																</MusicClip>
-															</ObjectList>
-														</ObjectLists>
-													</MusicTrackSequence>
-												</ObjectList>
-											</ObjectLists>
-										</MusicTrack>
-									</ChildrenList>
-									<ObjectLists>
-										<ObjectList Name="Cues">
-											<MusicCue Name="Entry Cue" ID="{F9B6DC28-3E6F-480B-897D-F32A999B1AA0}"/>
-											<MusicCue Name="Exit Cue" ID="{3786E74F-8BE6-4031-BC90-757FEFC8E36E}">
-												<PropertyList>
-													<Property Name="CueType" Type="int16" Value="1"/>
-													<Property Name="TimeMs" Type="Real64" Value="108800"/>
-												</PropertyList>
-											</MusicCue>
-										</ObjectList>
-									</ObjectLists>
-								</MusicSegment>
-							</ChildrenList>
-						</MusicPlaylistContainer>
-						<MusicPlaylistContainer Name="Main_Menu" ID="{7DD389A1-3170-444F-A10D-A8ABA29CD199}" ShortID="812676145">
-							<ReferenceList>
-								<Reference Name="Conversion">
-									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{27F70A5B-D7C2-4BA9-9793-BA39E1BC8B1D}"/>
-								</Reference>
-								<Reference Name="OutputBus">
-									<ObjectRef Name="Music" ID="{46A9DF34-5C17-49BC-90AC-4BF2EED4756C}" WorkUnitID="{0C9031E4-8081-4B6E-AB6C-02891DDBDDA8}"/>
-								</Reference>
-								<Reference Name="PlaylistRoot">
-									<Custom>
-										<MusicPlaylistItem Name="" ID="{C490FB54-5155-4CE6-83FC-FA3E9EB8EE90}" ShortID="83444694">
-											<PropertyList>
-												<Property Name="LoopCount" Type="int16" Value="0"/>
-											</PropertyList>
-											<ChildrenList>
-												<MusicPlaylistItem Name="" ID="{71E44958-E5D7-40FD-93E3-6824A07A80D7}" ShortID="898951823">
+										<Reference Name="TransitionRoot">
+											<Custom>
+												<MusicTransition Name="Root" ID="{30CE58CC-440A-4D36-A041-3375C6EEF928}">
 													<PropertyList>
-														<Property Name="PlaylistItemType" Type="int16" Value="1"/>
+														<Property Name="IsFolder" Type="bool" Value="True"/>
 													</PropertyList>
-													<ReferenceList>
-														<Reference Name="Segment">
-															<ObjectRef Name="Dragon_Soup_Title" ID="{99621DC7-36EB-4985-BF82-1BBD2DE572BA}" WorkUnitID="{1D3CE180-6637-4348-B301-DDCBC094ECDF}"/>
-														</Reference>
-													</ReferenceList>
-												</MusicPlaylistItem>
-											</ChildrenList>
-										</MusicPlaylistItem>
-									</Custom>
-								</Reference>
-								<Reference Name="TransitionRoot">
-									<Custom>
-										<MusicTransition Name="Root" ID="{673FF897-8B7F-4ED4-AD2E-54ECB843364D}">
-											<PropertyList>
-												<Property Name="IsFolder" Type="bool" Value="True"/>
-											</PropertyList>
-											<ChildrenList>
-												<MusicTransition Name="Transition" ID="{6B2B2857-F960-4608-94A5-6BF8F73F0BA0}">
+													<ChildrenList>
+														<MusicTransition Name="Transition" ID="{435F9FBD-CD7B-4F74-8B14-ACFDDB098059}">
+															<TransitionInfo/>
+														</MusicTransition>
+													</ChildrenList>
 													<TransitionInfo/>
 												</MusicTransition>
+											</Custom>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<MusicSegment Name="First Level" ID="{047C0210-6971-474B-B880-45DDD85C4416}" ShortID="220769471">
+											<PropertyList>
+												<Property Name="EndPosition" Type="Real64" Value="108800"/>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{27F70A5B-D7C2-4BA9-9793-BA39E1BC8B1D}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{0C9031E4-8081-4B6E-AB6C-02891DDBDDA8}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<MusicTrack Name="Dragon_Soup_First_Level 1-BBC Symphony Orchestra" ID="{FBCE3D42-FD1A-46F8-9131-261E5FB9293C}" ShortID="191713490">
+													<ReferenceList>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{0C9031E4-8081-4B6E-AB6C-02891DDBDDA8}"/>
+														</Reference>
+														<Reference Name="TransitionRoot">
+															<Custom>
+																<MusicTransition Name="Root" ID="{9261A0A3-7EE9-4C3C-97B7-717FF679BCE1}">
+																	<PropertyList>
+																		<Property Name="IsFolder" Type="bool" Value="True"/>
+																	</PropertyList>
+																	<TransitionInfo/>
+																</MusicTransition>
+															</Custom>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="Dragon_Soup_First_Level 1-BBC Symphony Orchestra" ID="{AE4EDD76-6477-4090-A5B1-97F0F30BAC53}">
+															<Language>SFX</Language>
+															<AudioFile>First Level\Dragon_Soup_First_Level 1-BBC Symphony Orchestra.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="861384175"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ObjectLists>
+														<ObjectList Name="Sequences">
+															<MusicTrackSequence Name="" ID="{013313C5-E9A4-444D-9478-1EDAB911B83E}">
+																<ObjectLists>
+																	<ObjectList Name="Clips">
+																		<MusicClip Name="Dragon_Soup_First_Level 1-BBC Symphony Orchestra" ID="{8C73A625-9E5B-44EC-B198-6E5155B769CE}">
+																			<PropertyList>
+																				<Property Name="EndTrimOffset" Type="Real64" Value="108800"/>
+																				<Property Name="FadeInMode" Type="int16" Value="0"/>
+																				<Property Name="FadeOutMode" Type="int16" Value="0"/>
+																			</PropertyList>
+																			<AudioSourceRef Name="Dragon_Soup_First_Level 1-BBC Symphony Orchestra" ID="{AE4EDD76-6477-4090-A5B1-97F0F30BAC53}"/>
+																		</MusicClip>
+																	</ObjectList>
+																</ObjectLists>
+															</MusicTrackSequence>
+														</ObjectList>
+													</ObjectLists>
+												</MusicTrack>
+												<MusicTrack Name="Dragon_Soup_First_Level 3-Kontakt 8" ID="{9203F975-1A28-4AEB-B431-8EB300F03D1D}" ShortID="522043724">
+													<ReferenceList>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{0C9031E4-8081-4B6E-AB6C-02891DDBDDA8}"/>
+														</Reference>
+														<Reference Name="TransitionRoot">
+															<Custom>
+																<MusicTransition Name="Root" ID="{7AB810D6-E1DE-4988-BDE6-ED165E70166C}">
+																	<PropertyList>
+																		<Property Name="IsFolder" Type="bool" Value="True"/>
+																	</PropertyList>
+																	<TransitionInfo/>
+																</MusicTransition>
+															</Custom>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="Dragon_Soup_First_Level 3-Kontakt 8" ID="{55FF296A-A094-44FD-9F24-70163C599205}">
+															<Language>SFX</Language>
+															<AudioFile>First Level\Dragon_Soup_First_Level 3-Kontakt 8.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="270679101"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ObjectLists>
+														<ObjectList Name="Sequences">
+															<MusicTrackSequence Name="" ID="{7F51EE7E-7CEA-45CB-BE0D-FA250DC55E39}">
+																<ObjectLists>
+																	<ObjectList Name="Clips">
+																		<MusicClip Name="Dragon_Soup_First_Level 3-Kontakt 8" ID="{50C20ACB-03B2-4FCD-BED4-AE56FDC8990F}">
+																			<PropertyList>
+																				<Property Name="EndTrimOffset" Type="Real64" Value="108800"/>
+																				<Property Name="FadeInMode" Type="int16" Value="0"/>
+																				<Property Name="FadeOutMode" Type="int16" Value="0"/>
+																			</PropertyList>
+																			<AudioSourceRef Name="Dragon_Soup_First_Level 3-Kontakt 8" ID="{55FF296A-A094-44FD-9F24-70163C599205}"/>
+																		</MusicClip>
+																	</ObjectList>
+																</ObjectLists>
+															</MusicTrackSequence>
+														</ObjectList>
+													</ObjectLists>
+												</MusicTrack>
+												<MusicTrack Name="Dragon_Soup_First_Level 4-BBC Symphony Orchestra" ID="{56D34F29-41E2-4FCA-8DE4-950BF1DF32BA}" ShortID="659781024">
+													<ReferenceList>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{0C9031E4-8081-4B6E-AB6C-02891DDBDDA8}"/>
+														</Reference>
+														<Reference Name="TransitionRoot">
+															<Custom>
+																<MusicTransition Name="Root" ID="{3F8BAD44-F517-475E-8954-7C1C37C25C94}">
+																	<PropertyList>
+																		<Property Name="IsFolder" Type="bool" Value="True"/>
+																	</PropertyList>
+																	<TransitionInfo/>
+																</MusicTransition>
+															</Custom>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="Dragon_Soup_First_Level 4-BBC Symphony Orchestra" ID="{1C0884E9-FFFF-4108-99CC-98DA3F258C38}">
+															<Language>SFX</Language>
+															<AudioFile>First Level\Dragon_Soup_First_Level 4-BBC Symphony Orchestra.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="527449594"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ObjectLists>
+														<ObjectList Name="Sequences">
+															<MusicTrackSequence Name="" ID="{3852B9E1-DB16-4D55-9D2F-034991EF1B81}">
+																<ObjectLists>
+																	<ObjectList Name="Clips">
+																		<MusicClip Name="Dragon_Soup_First_Level 4-BBC Symphony Orchestra" ID="{9B7E6EA9-6AF9-4BA2-828C-3705CB4F70F9}">
+																			<PropertyList>
+																				<Property Name="EndTrimOffset" Type="Real64" Value="108800"/>
+																				<Property Name="FadeInMode" Type="int16" Value="0"/>
+																				<Property Name="FadeOutMode" Type="int16" Value="0"/>
+																			</PropertyList>
+																			<AudioSourceRef Name="Dragon_Soup_First_Level 4-BBC Symphony Orchestra" ID="{1C0884E9-FFFF-4108-99CC-98DA3F258C38}"/>
+																		</MusicClip>
+																	</ObjectList>
+																</ObjectLists>
+															</MusicTrackSequence>
+														</ObjectList>
+													</ObjectLists>
+												</MusicTrack>
+												<MusicTrack Name="Dragon_Soup_First_Level 5-Kontakt 8" ID="{6FF4CB2E-DDB2-4ED7-AEC7-2696E15F1E05}" ShortID="260367332">
+													<PropertyList>
+														<Property Name="Volume" Type="Real64">
+															<ValueList>
+																<Value>-5</Value>
+															</ValueList>
+														</Property>
+													</PropertyList>
+													<ReferenceList>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{0C9031E4-8081-4B6E-AB6C-02891DDBDDA8}"/>
+														</Reference>
+														<Reference Name="TransitionRoot">
+															<Custom>
+																<MusicTransition Name="Root" ID="{85A0FBFD-14E6-42E7-BEE3-EAF9F3D3538C}">
+																	<PropertyList>
+																		<Property Name="IsFolder" Type="bool" Value="True"/>
+																	</PropertyList>
+																	<TransitionInfo/>
+																</MusicTransition>
+															</Custom>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="Dragon_Soup_First_Level 5-Kontakt 8" ID="{C22756B6-B3BE-443E-9749-D0EFFBF57C6B}">
+															<Language>SFX</Language>
+															<AudioFile>First Level\Dragon_Soup_First_Level 5-Kontakt 8.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="1008815571"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ObjectLists>
+														<ObjectList Name="Sequences">
+															<MusicTrackSequence Name="" ID="{37F694B2-9DEF-448A-A91E-F5DF8688EE70}">
+																<ObjectLists>
+																	<ObjectList Name="Clips">
+																		<MusicClip Name="Dragon_Soup_First_Level 5-Kontakt 8" ID="{1B9CD486-D88B-4462-A15A-881DE8F55AD7}">
+																			<PropertyList>
+																				<Property Name="EndTrimOffset" Type="Real64" Value="108800"/>
+																				<Property Name="FadeInMode" Type="int16" Value="0"/>
+																				<Property Name="FadeOutMode" Type="int16" Value="0"/>
+																			</PropertyList>
+																			<AudioSourceRef Name="Dragon_Soup_First_Level 5-Kontakt 8" ID="{C22756B6-B3BE-443E-9749-D0EFFBF57C6B}"/>
+																		</MusicClip>
+																	</ObjectList>
+																</ObjectLists>
+															</MusicTrackSequence>
+														</ObjectList>
+													</ObjectLists>
+												</MusicTrack>
+												<MusicTrack Name="Dragon_Soup_First_Level 6-BBC Symphony Orchestra" ID="{5F397500-40EA-4A7B-BCA0-EEC04923BA72}" ShortID="505048359">
+													<PropertyList>
+														<Property Name="Volume" Type="Real64">
+															<ValueList>
+																<Value>-5</Value>
+															</ValueList>
+														</Property>
+													</PropertyList>
+													<ReferenceList>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{0C9031E4-8081-4B6E-AB6C-02891DDBDDA8}"/>
+														</Reference>
+														<Reference Name="TransitionRoot">
+															<Custom>
+																<MusicTransition Name="Root" ID="{A00505F5-F796-43DB-BABD-77E1957822CB}">
+																	<PropertyList>
+																		<Property Name="IsFolder" Type="bool" Value="True"/>
+																	</PropertyList>
+																	<TransitionInfo/>
+																</MusicTransition>
+															</Custom>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="Dragon_Soup_First_Level 6-BBC Symphony Orchestra" ID="{BB8EE808-609D-44E1-B8FE-1529B8805429}">
+															<Language>SFX</Language>
+															<AudioFile>First Level\Dragon_Soup_First_Level 6-BBC Symphony Orchestra.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="931230729"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ObjectLists>
+														<ObjectList Name="Sequences">
+															<MusicTrackSequence Name="" ID="{410DAE4B-173D-4AA0-906F-7C41106F1FDF}">
+																<ObjectLists>
+																	<ObjectList Name="Clips">
+																		<MusicClip Name="Dragon_Soup_First_Level 6-BBC Symphony Orchestra" ID="{2FEB1EC9-87A7-48F5-9A8D-311E436B47ED}">
+																			<PropertyList>
+																				<Property Name="EndTrimOffset" Type="Real64" Value="108800"/>
+																				<Property Name="FadeInMode" Type="int16" Value="0"/>
+																				<Property Name="FadeOutMode" Type="int16" Value="0"/>
+																			</PropertyList>
+																			<AudioSourceRef Name="Dragon_Soup_First_Level 6-BBC Symphony Orchestra" ID="{BB8EE808-609D-44E1-B8FE-1529B8805429}"/>
+																		</MusicClip>
+																	</ObjectList>
+																</ObjectLists>
+															</MusicTrackSequence>
+														</ObjectList>
+													</ObjectLists>
+												</MusicTrack>
+												<MusicTrack Name="Dragon_Soup_First_Level Bass" ID="{D550A76A-685F-4AC5-A458-06380B37E497}" ShortID="745661237">
+													<ReferenceList>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{0C9031E4-8081-4B6E-AB6C-02891DDBDDA8}"/>
+														</Reference>
+														<Reference Name="TransitionRoot">
+															<Custom>
+																<MusicTransition Name="Root" ID="{A4E612FB-A9FE-4963-A0E2-EC1CA37F0334}">
+																	<PropertyList>
+																		<Property Name="IsFolder" Type="bool" Value="True"/>
+																	</PropertyList>
+																	<TransitionInfo/>
+																</MusicTransition>
+															</Custom>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="Dragon_Soup_First_Level Bass" ID="{091BC795-F40D-425A-A5DC-8DF0B6E6F92B}">
+															<Language>SFX</Language>
+															<AudioFile>First Level\Dragon_Soup_First_Level Bass.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="849936005"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ObjectLists>
+														<ObjectList Name="Sequences">
+															<MusicTrackSequence Name="" ID="{C3D4AE6B-6F6E-4ED2-9487-A6879C2BA435}">
+																<ObjectLists>
+																	<ObjectList Name="Clips">
+																		<MusicClip Name="Dragon_Soup_First_Level Bass" ID="{E1B2DC4D-66B5-425C-9F3D-ED7573E33BFB}">
+																			<PropertyList>
+																				<Property Name="EndTrimOffset" Type="Real64" Value="108800"/>
+																				<Property Name="FadeInMode" Type="int16" Value="0"/>
+																				<Property Name="FadeOutMode" Type="int16" Value="0"/>
+																			</PropertyList>
+																			<AudioSourceRef Name="Dragon_Soup_First_Level Bass" ID="{091BC795-F40D-425A-A5DC-8DF0B6E6F92B}"/>
+																		</MusicClip>
+																	</ObjectList>
+																</ObjectLists>
+															</MusicTrackSequence>
+														</ObjectList>
+													</ObjectLists>
+												</MusicTrack>
 											</ChildrenList>
-											<TransitionInfo/>
-										</MusicTransition>
-									</Custom>
-								</Reference>
-							</ReferenceList>
-							<ChildrenList>
-								<MusicSegment Name="Dragon_Soup_Title" ID="{99621DC7-36EB-4985-BF82-1BBD2DE572BA}" ShortID="450484644">
+											<ObjectLists>
+												<ObjectList Name="Cues">
+													<MusicCue Name="Entry Cue" ID="{F9B6DC28-3E6F-480B-897D-F32A999B1AA0}"/>
+													<MusicCue Name="Exit Cue" ID="{3786E74F-8BE6-4031-BC90-757FEFC8E36E}">
+														<PropertyList>
+															<Property Name="CueType" Type="int16" Value="1"/>
+															<Property Name="TimeMs" Type="Real64" Value="108800"/>
+														</PropertyList>
+													</MusicCue>
+												</ObjectList>
+											</ObjectLists>
+										</MusicSegment>
+									</ChildrenList>
+								</MusicPlaylistContainer>
+								<MusicPlaylistContainer Name="Main_Menu" ID="{7DD389A1-3170-444F-A10D-A8ABA29CD199}" ShortID="812676145">
 									<PropertyList>
-										<Property Name="EndPosition" Type="Real64" Value="129600"/>
+										<Property Name="OverrideClockSettings" Type="bool" Value="True"/>
+										<Property Name="Tempo" Type="Real64" Value="50"/>
 									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{27F70A5B-D7C2-4BA9-9793-BA39E1BC8B1D}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Music" ID="{46A9DF34-5C17-49BC-90AC-4BF2EED4756C}" WorkUnitID="{0C9031E4-8081-4B6E-AB6C-02891DDBDDA8}"/>
+										</Reference>
+										<Reference Name="PlaylistRoot">
+											<Custom>
+												<MusicPlaylistItem Name="" ID="{C490FB54-5155-4CE6-83FC-FA3E9EB8EE90}" ShortID="83444694">
+													<PropertyList>
+														<Property Name="LoopCount" Type="int16" Value="0"/>
+													</PropertyList>
+													<ChildrenList>
+														<MusicPlaylistItem Name="" ID="{71E44958-E5D7-40FD-93E3-6824A07A80D7}" ShortID="898951823">
+															<PropertyList>
+																<Property Name="PlaylistItemType" Type="int16" Value="1"/>
+															</PropertyList>
+															<ReferenceList>
+																<Reference Name="Segment">
+																	<ObjectRef Name="Dragon_Soup_Title" ID="{99621DC7-36EB-4985-BF82-1BBD2DE572BA}" WorkUnitID="{1D3CE180-6637-4348-B301-DDCBC094ECDF}"/>
+																</Reference>
+															</ReferenceList>
+														</MusicPlaylistItem>
+													</ChildrenList>
+												</MusicPlaylistItem>
+											</Custom>
+										</Reference>
+										<Reference Name="TransitionRoot">
+											<Custom>
+												<MusicTransition Name="Root" ID="{673FF897-8B7F-4ED4-AD2E-54ECB843364D}">
+													<PropertyList>
+														<Property Name="IsFolder" Type="bool" Value="True"/>
+													</PropertyList>
+													<ChildrenList>
+														<MusicTransition Name="Transition" ID="{6B2B2857-F960-4608-94A5-6BF8F73F0BA0}">
+															<TransitionInfo/>
+														</MusicTransition>
+													</ChildrenList>
+													<TransitionInfo/>
+												</MusicTransition>
+											</Custom>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<MusicSegment Name="Dragon_Soup_Title" ID="{99621DC7-36EB-4985-BF82-1BBD2DE572BA}" ShortID="450484644">
+											<PropertyList>
+												<Property Name="EndPosition" Type="Real64" Value="129600"/>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{27F70A5B-D7C2-4BA9-9793-BA39E1BC8B1D}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{0C9031E4-8081-4B6E-AB6C-02891DDBDDA8}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<MusicTrack Name="Dragon_Soup_Title" ID="{6C8A17E7-F802-4F74-B261-0DB8AC8A3CB9}" ShortID="277553298">
+													<ReferenceList>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{0C9031E4-8081-4B6E-AB6C-02891DDBDDA8}"/>
+														</Reference>
+														<Reference Name="TransitionRoot">
+															<Custom>
+																<MusicTransition Name="Root" ID="{D90951AF-D1C7-4600-9803-C83257255E6F}">
+																	<PropertyList>
+																		<Property Name="IsFolder" Type="bool" Value="True"/>
+																	</PropertyList>
+																	<TransitionInfo/>
+																</MusicTransition>
+															</Custom>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="Dragon_Soup_Title" ID="{DFF343F9-4FDD-4443-9710-83EC6E9D669E}">
+															<Language>SFX</Language>
+															<AudioFile>SFX\Dragon_Soup_Title.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="209505840"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ObjectLists>
+														<ObjectList Name="Sequences">
+															<MusicTrackSequence Name="" ID="{E9D79D6C-BB02-4E15-82F8-34F57C69B0FF}">
+																<ObjectLists>
+																	<ObjectList Name="Clips">
+																		<MusicClip Name="Dragon_Soup_Title" ID="{2802BFB7-75C9-48EC-9057-E4678D03A0FB}">
+																			<PropertyList>
+																				<Property Name="EndTrimOffset" Type="Real64" Value="129600"/>
+																				<Property Name="FadeInMode" Type="int16" Value="0"/>
+																				<Property Name="FadeOutMode" Type="int16" Value="0"/>
+																			</PropertyList>
+																			<AudioSourceRef Name="Dragon_Soup_Title" ID="{DFF343F9-4FDD-4443-9710-83EC6E9D669E}"/>
+																		</MusicClip>
+																	</ObjectList>
+																</ObjectLists>
+															</MusicTrackSequence>
+														</ObjectList>
+													</ObjectLists>
+												</MusicTrack>
+											</ChildrenList>
+											<ObjectLists>
+												<ObjectList Name="Cues">
+													<MusicCue Name="Entry Cue" ID="{5007DBB0-97CC-4B6F-B0EC-832B2262780D}"/>
+													<MusicCue Name="Exit Cue" ID="{9677593F-3B3B-459E-8BED-C663E68F0890}">
+														<PropertyList>
+															<Property Name="CueType" Type="int16" Value="1"/>
+															<Property Name="TimeMs" Type="Real64" Value="129600"/>
+														</PropertyList>
+													</MusicCue>
+												</ObjectList>
+											</ObjectLists>
+										</MusicSegment>
+									</ChildrenList>
+								</MusicPlaylistContainer>
+								<MusicPlaylistContainer Name="Dark_Encounter" ID="{5CCDF33C-2836-4C52-863A-98602FBFD504}" ShortID="642684321">
 									<ReferenceList>
 										<Reference Name="Conversion">
 											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{27F70A5B-D7C2-4BA9-9793-BA39E1BC8B1D}"/>
@@ -1890,67 +2432,224 @@
 										<Reference Name="OutputBus">
 											<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{0C9031E4-8081-4B6E-AB6C-02891DDBDDA8}"/>
 										</Reference>
+										<Reference Name="PlaylistRoot">
+											<Custom>
+												<MusicPlaylistItem Name="" ID="{721E09EE-4146-4C64-95F7-BCDDA93E915E}" ShortID="893708817">
+													<PropertyList>
+														<Property Name="LoopCount" Type="int16" Value="0"/>
+													</PropertyList>
+													<ChildrenList>
+														<MusicPlaylistItem Name="" ID="{046A13F5-50A9-47ED-AFD7-506099B5B4FB}" ShortID="629613159">
+															<PropertyList>
+																<Property Name="PlaylistItemType" Type="int16" Value="1"/>
+															</PropertyList>
+															<ReferenceList>
+																<Reference Name="Segment">
+																	<ObjectRef Name="Dark_Encounter" ID="{9A3829C6-C29C-4F05-9F16-3F43A36515CA}" WorkUnitID="{1D3CE180-6637-4348-B301-DDCBC094ECDF}"/>
+																</Reference>
+															</ReferenceList>
+														</MusicPlaylistItem>
+													</ChildrenList>
+												</MusicPlaylistItem>
+											</Custom>
+										</Reference>
+										<Reference Name="TransitionRoot">
+											<Custom>
+												<MusicTransition Name="Root" ID="{53609291-7126-4188-97F0-CAA1CE022476}">
+													<PropertyList>
+														<Property Name="IsFolder" Type="bool" Value="True"/>
+													</PropertyList>
+													<ChildrenList>
+														<MusicTransition Name="Transition" ID="{3B28DD84-1199-4597-990A-CD54B9C679B3}">
+															<TransitionInfo/>
+														</MusicTransition>
+													</ChildrenList>
+													<TransitionInfo/>
+												</MusicTransition>
+											</Custom>
+										</Reference>
 									</ReferenceList>
 									<ChildrenList>
-										<MusicTrack Name="Dragon_Soup_Title" ID="{6C8A17E7-F802-4F74-B261-0DB8AC8A3CB9}" ShortID="277553298">
+										<MusicSegment Name="Dark_Encounter" ID="{9A3829C6-C29C-4F05-9F16-3F43A36515CA}" ShortID="251821335">
+											<PropertyList>
+												<Property Name="EndPosition" Type="Real64" Value="120000"/>
+												<Property Name="Volume" Type="Real64">
+													<ValueList>
+														<Value>-8</Value>
+													</ValueList>
+												</Property>
+											</PropertyList>
 											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{27F70A5B-D7C2-4BA9-9793-BA39E1BC8B1D}"/>
+												</Reference>
 												<Reference Name="OutputBus">
 													<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{0C9031E4-8081-4B6E-AB6C-02891DDBDDA8}"/>
 												</Reference>
-												<Reference Name="TransitionRoot">
-													<Custom>
-														<MusicTransition Name="Root" ID="{D90951AF-D1C7-4600-9803-C83257255E6F}">
-															<PropertyList>
-																<Property Name="IsFolder" Type="bool" Value="True"/>
-															</PropertyList>
-															<TransitionInfo/>
-														</MusicTransition>
-													</Custom>
-												</Reference>
 											</ReferenceList>
 											<ChildrenList>
-												<AudioFileSource Name="Dragon_Soup_Title" ID="{DFF343F9-4FDD-4443-9710-83EC6E9D669E}">
-													<Language>SFX</Language>
-													<AudioFile>SFX\Dragon_Soup_Title.wav</AudioFile>
-													<MediaIDList>
-														<MediaID ID="209505840"/>
-													</MediaIDList>
-												</AudioFileSource>
+												<MusicTrack Name="Dark_Encounter" ID="{53E2FEED-0312-4AB6-A13B-C775909872F3}" ShortID="896385793">
+													<ReferenceList>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{0C9031E4-8081-4B6E-AB6C-02891DDBDDA8}"/>
+														</Reference>
+														<Reference Name="TransitionRoot">
+															<Custom>
+																<MusicTransition Name="Root" ID="{A6679D1D-7099-4EA2-A9C4-11DA980A0C71}">
+																	<PropertyList>
+																		<Property Name="IsFolder" Type="bool" Value="True"/>
+																	</PropertyList>
+																	<TransitionInfo/>
+																</MusicTransition>
+															</Custom>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="Dark_Encounter" ID="{5DC645F5-BD40-4251-AA6E-43D20E520124}">
+															<Language>SFX</Language>
+															<AudioFile>SFX\Dark_Encounter.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="584862984"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ObjectLists>
+														<ObjectList Name="Sequences">
+															<MusicTrackSequence Name="" ID="{9ED802E3-568D-41C0-92A4-2F977C6A4B81}">
+																<ObjectLists>
+																	<ObjectList Name="Clips">
+																		<MusicClip Name="Dark_Encounter" ID="{EFDEBF23-2544-4791-BC43-5D7A7CC47B8F}">
+																			<PropertyList>
+																				<Property Name="EndTrimOffset" Type="Real64" Value="120000"/>
+																				<Property Name="FadeInMode" Type="int16" Value="0"/>
+																				<Property Name="FadeOutMode" Type="int16" Value="0"/>
+																			</PropertyList>
+																			<AudioSourceRef Name="Dark_Encounter" ID="{5DC645F5-BD40-4251-AA6E-43D20E520124}"/>
+																		</MusicClip>
+																	</ObjectList>
+																</ObjectLists>
+															</MusicTrackSequence>
+														</ObjectList>
+													</ObjectLists>
+												</MusicTrack>
 											</ChildrenList>
 											<ObjectLists>
-												<ObjectList Name="Sequences">
-													<MusicTrackSequence Name="" ID="{E9D79D6C-BB02-4E15-82F8-34F57C69B0FF}">
-														<ObjectLists>
-															<ObjectList Name="Clips">
-																<MusicClip Name="Dragon_Soup_Title" ID="{2802BFB7-75C9-48EC-9057-E4678D03A0FB}">
-																	<PropertyList>
-																		<Property Name="EndTrimOffset" Type="Real64" Value="129600"/>
-																		<Property Name="FadeInMode" Type="int16" Value="0"/>
-																		<Property Name="FadeOutMode" Type="int16" Value="0"/>
-																	</PropertyList>
-																	<AudioSourceRef Name="Dragon_Soup_Title" ID="{DFF343F9-4FDD-4443-9710-83EC6E9D669E}"/>
-																</MusicClip>
-															</ObjectList>
-														</ObjectLists>
-													</MusicTrackSequence>
+												<ObjectList Name="Cues">
+													<MusicCue Name="Entry Cue" ID="{CF1F6B8B-38DA-4E21-8C56-9BB103136559}"/>
+													<MusicCue Name="Exit Cue" ID="{C2680977-B63C-4437-971F-85CD9C733FDE}">
+														<PropertyList>
+															<Property Name="CueType" Type="int16" Value="1"/>
+															<Property Name="TimeMs" Type="Real64" Value="120000"/>
+														</PropertyList>
+													</MusicCue>
 												</ObjectList>
 											</ObjectLists>
-										</MusicTrack>
+										</MusicSegment>
 									</ChildrenList>
-									<ObjectLists>
-										<ObjectList Name="Cues">
-											<MusicCue Name="Entry Cue" ID="{5007DBB0-97CC-4B6F-B0EC-832B2262780D}"/>
-											<MusicCue Name="Exit Cue" ID="{9677593F-3B3B-459E-8BED-C663E68F0890}">
-												<PropertyList>
-													<Property Name="CueType" Type="int16" Value="1"/>
-													<Property Name="TimeMs" Type="Real64" Value="129600"/>
-												</PropertyList>
-											</MusicCue>
-										</ObjectList>
-									</ObjectLists>
-								</MusicSegment>
+								</MusicPlaylistContainer>
 							</ChildrenList>
-						</MusicPlaylistContainer>
+							<StateInfo>
+								<StateGroupList>
+									<StateGroupInfo>
+										<StateGroupRef Name="Game_State" ID="{7727E4FB-FBFE-4898-9B32-FC6C8BD361D8}"/>
+										<StateGroupInfo Name="" ID="{BFA31917-20BA-455B-9B84-CC84EF06DF82}" ShortID="875368166"/>
+									</StateGroupInfo>
+								</StateGroupList>
+								<CustomStateList>
+									<CustomState>
+										<StateRef Name="None" ID="{5AFF935C-A62E-451A-8BAF-107D0D2C56C7}"/>
+										<CustomState Name="" ID="{3045B8BC-2BC6-4742-9142-41D06ACEF392}" ShortID="493544018"/>
+									</CustomState>
+									<CustomState>
+										<StateRef Name="In_Game" ID="{3E8E5B9F-E9D4-4546-B41F-D017E765F65A}"/>
+										<CustomState Name="" ID="{D83C7DCF-2861-43EF-8CCF-D5D345604C9A}" ShortID="775892195"/>
+									</CustomState>
+									<CustomState>
+										<StateRef Name="Dark_Entity" ID="{E88B4236-1B3E-4733-A2FA-E1A54A5DF244}"/>
+										<CustomState Name="" ID="{58AC6BCD-0EB5-4416-BF05-6990B8841B43}" ShortID="363925998"/>
+									</CustomState>
+									<CustomState>
+										<StateRef Name="Cutscene" ID="{6591EEFD-B860-4757-BB88-A00348451334}"/>
+										<CustomState Name="" ID="{8A96AF2A-B8E9-4654-BF22-CAE8C7F860E1}" ShortID="188666860"/>
+									</CustomState>
+									<CustomState>
+										<StateRef Name="In_Menu" ID="{933F2F01-23B1-4D27-8B8D-A06BF09A10F8}"/>
+										<CustomState Name="" ID="{B0EFC479-FD84-47C8-BC38-595EEDB392A0}" ShortID="1069802221"/>
+									</CustomState>
+									<CustomState>
+										<StateRef Name="Pause" ID="{FED95F53-F5B4-4DA7-A3FA-D4E1A4A50296}"/>
+										<CustomState Name="" ID="{2A47AD17-0631-4441-B463-899B2EC8D721}" ShortID="450986410"/>
+									</CustomState>
+								</CustomStateList>
+							</StateInfo>
+							<ObjectLists>
+								<ObjectList Name="Arguments">
+									<PluginInnerObject Name="" ID="{E4A74C68-9517-4363-9E8B-1D1099837EE3}" PluginName="MusicArgumentsSlot" CompanyID="0" PluginID="89">
+										<ReferenceList>
+											<Reference Name="Argument">
+												<ObjectRef Name="Game_State" ID="{7727E4FB-FBFE-4898-9B32-FC6C8BD361D8}" WorkUnitID="{834FE55D-FED2-4EF3-AF0C-2F936982382E}"/>
+											</Reference>
+										</ReferenceList>
+									</PluginInnerObject>
+								</ObjectList>
+								<ObjectList Name="Entries">
+									<MultiSwitchEntry Name="" ID="{2FE45867-162B-48DD-92EA-184C7A1513D6}">
+										<ReferenceList>
+											<Reference Name="AudioNode">
+												<ObjectRef Name="Main_Menu" ID="{7DD389A1-3170-444F-A10D-A8ABA29CD199}" WorkUnitID="{1D3CE180-6637-4348-B301-DDCBC094ECDF}"/>
+											</Reference>
+										</ReferenceList>
+										<ObjectLists>
+											<ObjectList Name="EntryPath">
+												<PluginInnerObject Name="" ID="{34B9F0A5-F4D9-4937-B0FA-0D5CBD151887}" PluginName="EntryPathSlot" CompanyID="0" PluginID="88">
+													<ReferenceList>
+														<Reference Name="EntryPathObject">
+															<ObjectRef Name="In_Menu" ID="{933F2F01-23B1-4D27-8B8D-A06BF09A10F8}" WorkUnitID="{834FE55D-FED2-4EF3-AF0C-2F936982382E}"/>
+														</Reference>
+													</ReferenceList>
+												</PluginInnerObject>
+											</ObjectList>
+										</ObjectLists>
+									</MultiSwitchEntry>
+									<MultiSwitchEntry Name="" ID="{E05B1BFE-5C80-4836-917A-0E02A2FEBC68}">
+										<ReferenceList>
+											<Reference Name="AudioNode">
+												<ObjectRef Name="First_Level" ID="{E859CA17-1FF6-48FA-B1F0-9032B4341C20}" WorkUnitID="{1D3CE180-6637-4348-B301-DDCBC094ECDF}"/>
+											</Reference>
+										</ReferenceList>
+										<ObjectLists>
+											<ObjectList Name="EntryPath">
+												<PluginInnerObject Name="" ID="{6D897788-C4E3-44B8-8B04-16A0FAD2D909}" PluginName="EntryPathSlot" CompanyID="0" PluginID="88">
+													<ReferenceList>
+														<Reference Name="EntryPathObject">
+															<ObjectRef Name="In_Game" ID="{3E8E5B9F-E9D4-4546-B41F-D017E765F65A}" WorkUnitID="{834FE55D-FED2-4EF3-AF0C-2F936982382E}"/>
+														</Reference>
+													</ReferenceList>
+												</PluginInnerObject>
+											</ObjectList>
+										</ObjectLists>
+									</MultiSwitchEntry>
+									<MultiSwitchEntry Name="" ID="{299A71AF-B0A7-46CB-A787-9CEDCC6066D7}">
+										<ReferenceList>
+											<Reference Name="AudioNode">
+												<ObjectRef Name="Dark_Encounter" ID="{5CCDF33C-2836-4C52-863A-98602FBFD504}" WorkUnitID="{1D3CE180-6637-4348-B301-DDCBC094ECDF}"/>
+											</Reference>
+										</ReferenceList>
+										<ObjectLists>
+											<ObjectList Name="EntryPath">
+												<PluginInnerObject Name="" ID="{548E746E-9332-4BC1-8595-15ABDB4BAF68}" PluginName="EntryPathSlot" CompanyID="0" PluginID="88">
+													<ReferenceList>
+														<Reference Name="EntryPathObject">
+															<ObjectRef Name="Dark_Entity" ID="{E88B4236-1B3E-4733-A2FA-E1A54A5DF244}" WorkUnitID="{834FE55D-FED2-4EF3-AF0C-2F936982382E}"/>
+														</Reference>
+													</ReferenceList>
+												</PluginInnerObject>
+											</ObjectList>
+										</ObjectLists>
+									</MultiSwitchEntry>
+								</ObjectList>
+							</ObjectLists>
+						</MusicSwitchContainer>
 					</ChildrenList>
 				</Folder>
 			</ChildrenList>
