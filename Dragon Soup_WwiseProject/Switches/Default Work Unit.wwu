@@ -8,6 +8,7 @@
 						<Switch Name="Metal" ID="{4108B71E-914C-4A8F-BBE2-BB0B9537033F}"/>
 						<Switch Name="Wood" ID="{09F9EE26-1F93-41B8-813B-442952DD4C79}"/>
 						<Switch Name="Organic" ID="{AE872C70-B1F4-4392-9C1C-2B8C58E3D8ED}"/>
+						<Switch Name="Texture" ID="{81C3EAB1-02FB-4D75-BF77-B4BDF86F5060}"/>
 					</ChildrenList>
 				</SwitchGroup>
 				<SwitchGroup Name="Upgrade_Station" ID="{27A21745-C77B-4991-991D-C1F242855C06}">

@@ -212,6 +212,56 @@
 								</Action>
 							</ChildrenList>
 						</Event>
+						<Event Name="Axe_Use" ID="{D9279DB7-FDF7-4687-8E3B-45CC3796D59E}">
+							<ChildrenList>
+								<Action Name="" ID="{07280703-5937-4DE1-8085-1B89CD317E2D}" ShortID="598758746">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="Axe_Use" ID="{57E8AD6A-8819-4276-8E96-49877F083169}" WorkUnitID="{1D3CE180-6637-4348-B301-DDCBC094ECDF}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
+						<Event Name="Item_Demolished" ID="{934EE351-C116-479E-A255-64990F226AD6}">
+							<ChildrenList>
+								<Action Name="" ID="{4DAC540F-45D0-420F-8F01-1D8DC4FD7956}" ShortID="937627105">
+									<PropertyList>
+										<Property Name="ActionType" Type="int16" Value="2"/>
+										<Property Name="FadeTime" Type="Real64" Value="0.1"/>
+										<Property Name="Scope" Type="int16" Value="1"/>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="Axe_Use" ID="{57E8AD6A-8819-4276-8E96-49877F083169}" WorkUnitID="{1D3CE180-6637-4348-B301-DDCBC094ECDF}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+								<Action Name="" ID="{7665CE04-024D-44FC-8C09-25B29BBEF56B}" ShortID="850299324">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="Item_Demolished" ID="{E8C02E23-6B40-4C0B-B23C-A1AFF1F4FC74}" WorkUnitID="{1D3CE180-6637-4348-B301-DDCBC094ECDF}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
+						<Event Name="Stop_Axe_Use" ID="{E1C6A98B-0FA0-4BFD-9E01-E1566DB4F5A7}">
+							<ChildrenList>
+								<Action Name="" ID="{FFED8DCC-C2FB-41A4-9200-02E612AC2C90}" ShortID="312670578">
+									<PropertyList>
+										<Property Name="ActionType" Type="int16" Value="2"/>
+										<Property Name="FadeTime" Type="Real64" Value="0.1"/>
+										<Property Name="Scope" Type="int16" Value="1"/>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="Axe_Use" ID="{57E8AD6A-8819-4276-8E96-49877F083169}" WorkUnitID="{1D3CE180-6637-4348-B301-DDCBC094ECDF}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
 					</ChildrenList>
 				</Folder>
 				<Folder Name="Main_Menu" ID="{A3AD14D7-A532-4A9F-9B01-EE881BDEA8DA}" ShortID="715734465"/>

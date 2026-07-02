@@ -262,14 +262,64 @@
 												<ActiveSource Name="Metal_Bowl_Pickup" ID="{D6BE7FEC-C130-40BA-B92D-781C73C75DDB}" Platform="Linked"/>
 											</ActiveSourceList>
 										</Sound>
+										<Sound Name="Textile_Pickup" ID="{AEA60B6C-0EC7-47DB-B617-7536972995F8}" ShortID="118525991">
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{27F70A5B-D7C2-4BA9-9793-BA39E1BC8B1D}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{0C9031E4-8081-4B6E-AB6C-02891DDBDDA8}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="Textile_Pickup" ID="{147CDC84-AD7C-4EEF-9536-E541F7D25A86}">
+													<Language>SFX</Language>
+													<AudioFile>SFX\Textile_Pickup.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="957690255"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ActiveSourceList>
+												<ActiveSource Name="Textile_Pickup" ID="{147CDC84-AD7C-4EEF-9536-E541F7D25A86}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+										<Sound Name="Wood_Pickup" ID="{8F3F64F8-FE8D-4BFC-8680-82EDD5631795}" ShortID="793179330">
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{27F70A5B-D7C2-4BA9-9793-BA39E1BC8B1D}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{0C9031E4-8081-4B6E-AB6C-02891DDBDDA8}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="Wood_Pickup" ID="{4D12533B-B6A0-4B7D-B0E0-FDDAF44489B8}">
+													<Language>SFX</Language>
+													<AudioFile>SFX\Wood_Pickup.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="437648540"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ActiveSourceList>
+												<ActiveSource Name="Wood_Pickup" ID="{4D12533B-B6A0-4B7D-B0E0-FDDAF44489B8}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
 									</ChildrenList>
 									<GroupingInfo>
 										<GroupingBehaviorList>
+											<GroupingBehavior>
+												<ItemRef Name="Textile_Pickup" ID="{AEA60B6C-0EC7-47DB-B617-7536972995F8}"/>
+											</GroupingBehavior>
 											<GroupingBehavior>
 												<ItemRef Name="Metal_Bowl_Pickup" ID="{C3126BC3-33F9-43BA-8CAE-8CDCE825B498}"/>
 											</GroupingBehavior>
 											<GroupingBehavior>
 												<ItemRef Name="Meat_Pickup" ID="{5501C2F2-9BBE-4F21-8014-EBDA175ECF64}"/>
+											</GroupingBehavior>
+											<GroupingBehavior>
+												<ItemRef Name="Wood_Pickup" ID="{8F3F64F8-FE8D-4BFC-8680-82EDD5631795}"/>
 											</GroupingBehavior>
 										</GroupingBehaviorList>
 										<GroupingList>
@@ -280,9 +330,21 @@
 												</ItemList>
 											</Grouping>
 											<Grouping>
+												<SwitchRef Name="Wood" ID="{09F9EE26-1F93-41B8-813B-442952DD4C79}"/>
+												<ItemList>
+													<ItemRef Name="Wood_Pickup" ID="{8F3F64F8-FE8D-4BFC-8680-82EDD5631795}"/>
+												</ItemList>
+											</Grouping>
+											<Grouping>
 												<SwitchRef Name="Organic" ID="{AE872C70-B1F4-4392-9C1C-2B8C58E3D8ED}"/>
 												<ItemList>
 													<ItemRef Name="Meat_Pickup" ID="{5501C2F2-9BBE-4F21-8014-EBDA175ECF64}"/>
+												</ItemList>
+											</Grouping>
+											<Grouping>
+												<SwitchRef Name="Texture" ID="{81C3EAB1-02FB-4D75-BF77-B4BDF86F5060}"/>
+												<ItemList>
+													<ItemRef Name="Textile_Pickup" ID="{AEA60B6C-0EC7-47DB-B617-7536972995F8}"/>
 												</ItemList>
 											</Grouping>
 										</GroupingList>
@@ -352,6 +414,50 @@
 												<ActiveSource Name="Metal_Bowl_Drop" ID="{EEB14621-02AD-44B5-BECA-6445D85FFD05}" Platform="Linked"/>
 											</ActiveSourceList>
 										</Sound>
+										<Sound Name="Textile_Drop" ID="{561EF46D-027F-488A-BA45-5BD4F7191185}" ShortID="157716224">
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{27F70A5B-D7C2-4BA9-9793-BA39E1BC8B1D}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{0C9031E4-8081-4B6E-AB6C-02891DDBDDA8}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="Textile_Drop" ID="{4264C867-F89B-4CE6-AEF1-17EBE1EDBACB}">
+													<Language>SFX</Language>
+													<AudioFile>SFX\Textile_Drop.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="877598669"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ActiveSourceList>
+												<ActiveSource Name="Textile_Drop" ID="{4264C867-F89B-4CE6-AEF1-17EBE1EDBACB}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+										<Sound Name="Wood_Drop" ID="{92864324-2F9A-45AC-98C0-E15DEDB81063}" ShortID="264852341">
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{27F70A5B-D7C2-4BA9-9793-BA39E1BC8B1D}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="SFX" ID="{553FBE0F-6F3D-46D3-B60B-CF458887C1C1}" WorkUnitID="{0C9031E4-8081-4B6E-AB6C-02891DDBDDA8}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="Wood_Drop" ID="{65DA82FB-446E-4BC6-B947-C599905F1B09}">
+													<Language>SFX</Language>
+													<AudioFile>SFX\Wood_Drop.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="1040469568"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ActiveSourceList>
+												<ActiveSource Name="Wood_Drop" ID="{65DA82FB-446E-4BC6-B947-C599905F1B09}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
 									</ChildrenList>
 									<GroupingInfo>
 										<GroupingBehaviorList>
@@ -359,7 +465,13 @@
 												<ItemRef Name="Meat_Drop" ID="{0A82B820-260E-4E3B-A9F9-19884620F4DE}"/>
 											</GroupingBehavior>
 											<GroupingBehavior>
+												<ItemRef Name="Wood_Drop" ID="{92864324-2F9A-45AC-98C0-E15DEDB81063}"/>
+											</GroupingBehavior>
+											<GroupingBehavior>
 												<ItemRef Name="Metal_Bowl_Drop" ID="{6D831261-571E-4C5A-A5C9-F83ED38F1636}"/>
+											</GroupingBehavior>
+											<GroupingBehavior>
+												<ItemRef Name="Textile_Drop" ID="{561EF46D-027F-488A-BA45-5BD4F7191185}"/>
 											</GroupingBehavior>
 										</GroupingBehaviorList>
 										<GroupingList>
@@ -370,14 +482,84 @@
 												</ItemList>
 											</Grouping>
 											<Grouping>
+												<SwitchRef Name="Wood" ID="{09F9EE26-1F93-41B8-813B-442952DD4C79}"/>
+												<ItemList>
+													<ItemRef Name="Wood_Drop" ID="{92864324-2F9A-45AC-98C0-E15DEDB81063}"/>
+												</ItemList>
+											</Grouping>
+											<Grouping>
 												<SwitchRef Name="Organic" ID="{AE872C70-B1F4-4392-9C1C-2B8C58E3D8ED}"/>
 												<ItemList>
 													<ItemRef Name="Meat_Drop" ID="{0A82B820-260E-4E3B-A9F9-19884620F4DE}"/>
 												</ItemList>
 											</Grouping>
+											<Grouping>
+												<SwitchRef Name="Texture" ID="{81C3EAB1-02FB-4D75-BF77-B4BDF86F5060}"/>
+												<ItemList>
+													<ItemRef Name="Textile_Drop" ID="{561EF46D-027F-488A-BA45-5BD4F7191185}"/>
+												</ItemList>
+											</Grouping>
 										</GroupingList>
 									</GroupingInfo>
 								</SwitchContainer>
+								<Sound Name="Axe_Use" ID="{57E8AD6A-8819-4276-8E96-49877F083169}" ShortID="314066885">
+									<PropertyList>
+										<Property Name="Volume" Type="Real64">
+											<ValueList>
+												<Value>-6</Value>
+											</ValueList>
+										</Property>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{27F70A5B-D7C2-4BA9-9793-BA39E1BC8B1D}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{0C9031E4-8081-4B6E-AB6C-02891DDBDDA8}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<AudioFileSource Name="Axe_Use" ID="{65588D52-7102-4654-92A4-07E331F156D9}">
+											<Language>SFX</Language>
+											<AudioFile>SFX\Axe_Use.wav</AudioFile>
+											<MediaIDList>
+												<MediaID ID="267990349"/>
+											</MediaIDList>
+										</AudioFileSource>
+									</ChildrenList>
+									<ActiveSourceList>
+										<ActiveSource Name="Axe_Use" ID="{65588D52-7102-4654-92A4-07E331F156D9}" Platform="Linked"/>
+									</ActiveSourceList>
+								</Sound>
+								<Sound Name="Item_Demolished" ID="{E8C02E23-6B40-4C0B-B23C-A1AFF1F4FC74}" ShortID="905611500">
+									<PropertyList>
+										<Property Name="Volume" Type="Real64">
+											<ValueList>
+												<Value>-5</Value>
+											</ValueList>
+										</Property>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{27F70A5B-D7C2-4BA9-9793-BA39E1BC8B1D}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{0C9031E4-8081-4B6E-AB6C-02891DDBDDA8}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<AudioFileSource Name="Item_Demolished" ID="{75DCAB3B-2BEC-4214-9EFA-9B7C377F07C1}">
+											<Language>SFX</Language>
+											<AudioFile>SFX\Item_Demolished.wav</AudioFile>
+											<MediaIDList>
+												<MediaID ID="551796064"/>
+											</MediaIDList>
+										</AudioFileSource>
+									</ChildrenList>
+									<ActiveSourceList>
+										<ActiveSource Name="Item_Demolished" ID="{75DCAB3B-2BEC-4214-9EFA-9B7C377F07C1}" Platform="Linked"/>
+									</ActiveSourceList>
+								</Sound>
 							</ChildrenList>
 						</Folder>
 						<Folder Name="UI" ID="{0E9C1BCA-1100-47FA-93E7-1CE661A8CEF3}" ShortID="1041507347">
