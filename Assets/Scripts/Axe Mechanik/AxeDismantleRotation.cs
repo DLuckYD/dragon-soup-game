@@ -3,12 +3,11 @@ using UnityEngine;
 [DefaultExecutionOrder(100)]
 public class AxeDismantleRotation : MonoBehaviour
 {
-    [Header("IMPORTANT: drag ONLY visual child here, not root axe object")]
     [SerializeField] private Transform axeVisual;
 
     [Header("Dismantle Rotation")]
-    [SerializeField] private Vector3 dismantleRotationOffsetEuler = new Vector3(0f, 0f, 90f);
-    [SerializeField] private float prepareRotationDuration = 0.25f;
+    [SerializeField] private Vector3 dismantleRotationOffsetEuler = new Vector3(90f, 0f, 0f);
+    [SerializeField] private float prepareRotationDuration = 0.5f;
 
     [Header("Swing Settings")]
     [SerializeField] private Vector3 swingEulerAxis = new Vector3(1f, 0f, 0f);
@@ -19,6 +18,7 @@ public class AxeDismantleRotation : MonoBehaviour
     [SerializeField] private bool showDebugLogs = true;
 
     private Quaternion originalVisualLocalRotation;
+    private Quaternion prepareStartRotation;
     private Quaternion dismantleBaseRotation;
 
     private bool isPreparing;
@@ -41,9 +41,6 @@ public class AxeDismantleRotation : MonoBehaviour
         }
 
         originalVisualLocalRotation = axeVisual.localRotation;
-
-        dismantleBaseRotation =
-            originalVisualLocalRotation * Quaternion.Euler(dismantleRotationOffsetEuler);
     }
 
     private void LateUpdate()
@@ -55,10 +52,15 @@ public class AxeDismantleRotation : MonoBehaviour
             float t = Mathf.Clamp01(prepareTimer / prepareRotationDuration);
 
             axeVisual.localRotation = Quaternion.Slerp(
-                originalVisualLocalRotation,
+                prepareStartRotation,
                 dismantleBaseRotation,
                 t
             );
+
+            if (showDebugLogs)
+            {
+                Debug.Log($"[AXE ROTATION] Preparing t={t}, currentEuler={axeVisual.localEulerAngles}");
+            }
 
             if (t >= 1f)
             {
@@ -67,7 +69,7 @@ public class AxeDismantleRotation : MonoBehaviour
                 axeVisual.localRotation = dismantleBaseRotation;
 
                 if (showDebugLogs)
-                    Debug.Log("[AXE ROTATION] Axe prepared for dismantle.");
+                    Debug.Log($"[AXE ROTATION] Axe prepared. Final Euler: {axeVisual.localEulerAngles}");
             }
 
             return;
@@ -102,8 +104,18 @@ public class AxeDismantleRotation : MonoBehaviour
         prepareTimer = 0f;
         swingTimer = 0f;
 
+        prepareStartRotation = axeVisual.localRotation;
+
+        dismantleBaseRotation =
+            prepareStartRotation * Quaternion.Euler(dismantleRotationOffsetEuler);
+
         if (showDebugLogs)
-            Debug.Log("[AXE ROTATION] Preparing axe rotation.");
+        {
+            Debug.Log($"[AXE ROTATION] Preparing axe rotation.");
+            Debug.Log($"[AXE ROTATION] Start Euler: {prepareStartRotation.eulerAngles}");
+            Debug.Log($"[AXE ROTATION] Offset Euler: {dismantleRotationOffsetEuler}");
+            Debug.Log($"[AXE ROTATION] Target Euler: {dismantleBaseRotation.eulerAngles}");
+        }
     }
 
     public void PlayDismantleSwing(float duration)
