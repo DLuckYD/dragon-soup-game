@@ -432,7 +432,9 @@ public class PlayerInteraction : MonoBehaviour
         for (int i = 0; i < hotbarManager.slots.Length; i++)
         {
             HotbarSlot slot = hotbarManager.slots[i];
-            slot.icon.color = slot.originalColor;
+
+            if (slot != null)
+                slot.SetHighlighted(false);
         }
     }
 
@@ -447,14 +449,16 @@ public class PlayerInteraction : MonoBehaviour
             int slotIndex = -1;
 
             if (heldItem.itemData != null && heldItem.itemData.isStackable)
-                slotIndex = activeHotbarIndex; // for stackable
+                slotIndex = activeHotbarIndex;
             else
-                slotIndex = hotbarManager.GetItemPositionInInventory(heldItem); // for non-stackable
+                slotIndex = hotbarManager.GetItemPositionInInventory(heldItem);
 
             if (slotIndex != -1)
             {
                 HotbarSlot slot = hotbarManager.slots[slotIndex];
-                slot.icon.color = Color.yellow;
+
+                if (slot != null)
+                    slot.SetHighlighted(true);
             }
         }
     }

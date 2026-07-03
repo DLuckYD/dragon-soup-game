@@ -1862,6 +1862,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 178199438}
   m_CullTransparentMesh: 1
+--- !u!1 &187807809 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2511616518857007844, guid: d7f42853bdeb7f841a3428de01088bc0, type: 3}
+  m_PrefabInstance: {fileID: 1596455608}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &188439884
 GameObject:
   m_ObjectHideFlags: 0
@@ -2478,6 +2483,7 @@ Transform:
   - {fileID: 1869594821}
   - {fileID: 289725946}
   - {fileID: 487680854}
+  - {fileID: 1925219502}
   m_Father: {fileID: 1579576423}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &266275448
@@ -2823,6 +2829,7 @@ MonoBehaviour:
   playerInteraction: {fileID: 267349054}
   raycastOrigin: {fileID: 0}
   progressUI: {fileID: 333723242}
+  axeRotation: {fileID: 0}
   dismantleKey: 107
   requiredHeldItemId: axe_breaker
   dismantleDistance: 2.5
@@ -3947,11 +3954,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7447777b5787c3549a74e7c69f106722, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DismantleProgressUI
---- !u!1 &338443001 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 071fed918b8b7b84b835298db97562bd, type: 3}
-  m_PrefabInstance: {fileID: 493919606}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &351026697
 GameObject:
   m_ObjectHideFlags: 0
@@ -13192,6 +13194,11 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 4711208715938537054, guid: e77b502b3aec13d4fadc7951a135772d, type: 3}
+--- !u!4 &1481892477 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3914543605724593049, guid: d7f42853bdeb7f841a3428de01088bc0, type: 3}
+  m_PrefabInstance: {fileID: 1596455608}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1511664078
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -14202,16 +14209,39 @@ PrefabInstance:
       propertyPath: m_Center.z
       value: 0.037841696
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 8342497314503619771, guid: d7f42853bdeb7f841a3428de01088bc0, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 2511616518857007844, guid: d7f42853bdeb7f841a3428de01088bc0, type: 3}
+      insertIndex: 2
+      addedObject: {fileID: 1596455614}
   m_SourcePrefab: {fileID: 100100000, guid: d7f42853bdeb7f841a3428de01088bc0, type: 3}
 --- !u!4 &1596455609 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4617203458683338591, guid: d7f42853bdeb7f841a3428de01088bc0, type: 3}
   m_PrefabInstance: {fileID: 1596455608}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1596455614
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 187807809}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f2262bef323b3f144ba147d0e850d216, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::AxeDismantleRotation
+  axeVisual: {fileID: 1481892477}
+  dismantleRotationOffsetEuler: {x: 0, y: 0, z: 90}
+  prepareRotationDuration: 0.25
+  swingEulerAxis: {x: 1, y: 0, z: 0}
+  swingAngle: 45
+  swingSpeed: 10
+  showDebugLogs: 1
 --- !u!1001 &1608664518
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -17535,6 +17565,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1921039230}
   m_CullTransparentMesh: 1
+--- !u!4 &1925219502 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 7241076896892859896, guid: 17148c8aef7e5cf49a79241fb706b7b5, type: 3}
+  m_PrefabInstance: {fileID: 2089946287}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1930442334
 PrefabInstance:
   m_ObjectHideFlags: 0
