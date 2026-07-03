@@ -1285,12 +1285,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::HotbarSlot
   background: {fileID: 134479594}
+  iconBackground: {fileID: 0}
   icon: {fileID: 797815415}
-  highlitedBack: {fileID: 0}
   amountText: {fileID: 2017606326}
+  normalBackgroundColor: {r: 1, g: 1, b: 1, a: 1}
+  highlightedBackgroundColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
   itemData: {fileID: 0}
   amount: 0
-  originalColor: {r: 0, g: 0, b: 0, a: 0}
   uniqueItem: {fileID: 0}
 --- !u!114 &134479594
 MonoBehaviour:
@@ -2675,7 +2676,7 @@ Transform:
   m_GameObject: {fileID: 267349046}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
-  m_LocalPosition: {x: 0, y: 1.357, z: 3.718}
+  m_LocalPosition: {x: 0, y: 1.453, z: 3.718}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -2896,12 +2897,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::HotbarSlot
   background: {fileID: 274678350}
+  iconBackground: {fileID: 0}
   icon: {fileID: 293450197}
-  highlitedBack: {fileID: 0}
   amountText: {fileID: 2058052264}
+  normalBackgroundColor: {r: 1, g: 1, b: 1, a: 1}
+  highlightedBackgroundColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
   itemData: {fileID: 0}
   amount: 0
-  originalColor: {r: 0, g: 0, b: 0, a: 0}
   uniqueItem: {fileID: 0}
 --- !u!114 &274678350
 MonoBehaviour:
@@ -3585,12 +3587,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::HotbarSlot
   background: {fileID: 311868354}
+  iconBackground: {fileID: 0}
   icon: {fileID: 1657558363}
-  highlitedBack: {fileID: 0}
   amountText: {fileID: 1578797425}
+  normalBackgroundColor: {r: 1, g: 1, b: 1, a: 1}
+  highlightedBackgroundColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
   itemData: {fileID: 0}
   amount: 0
-  originalColor: {r: 0, g: 0, b: 0, a: 0}
   uniqueItem: {fileID: 0}
 --- !u!114 &311868354
 MonoBehaviour:
@@ -3712,7 +3715,7 @@ Transform:
   m_GameObject: {fileID: 330585543}
   serializedVersion: 2
   m_LocalRotation: {x: -0.00000009362676, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.6, z: 0}
+  m_LocalPosition: {x: 0, y: 0.695, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -4389,12 +4392,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::HotbarSlot
   background: {fileID: 361599859}
+  iconBackground: {fileID: 0}
   icon: {fileID: 2095451192}
-  highlitedBack: {fileID: 0}
   amountText: {fileID: 355047266}
+  normalBackgroundColor: {r: 1, g: 1, b: 1, a: 1}
+  highlightedBackgroundColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
   itemData: {fileID: 0}
   amount: 0
-  originalColor: {r: 0, g: 0, b: 0, a: 0}
   uniqueItem: {fileID: 0}
 --- !u!114 &361599859
 MonoBehaviour:
@@ -5284,12 +5288,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::HotbarSlot
   background: {fileID: 464347370}
+  iconBackground: {fileID: 0}
   icon: {fileID: 1587884668}
-  highlitedBack: {fileID: 0}
   amountText: {fileID: 2094499286}
+  normalBackgroundColor: {r: 1, g: 1, b: 1, a: 1}
+  highlightedBackgroundColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
   itemData: {fileID: 0}
   amount: 0
-  originalColor: {r: 0, g: 0, b: 0, a: 0}
   uniqueItem: {fileID: 0}
 --- !u!114 &464347370
 MonoBehaviour:
@@ -5628,6 +5633,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: 071fed918b8b7b84b835298db97562bd, type: 3}
       insertIndex: -1
       addedObject: {fileID: 2094257839}
+    - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: 071fed918b8b7b84b835298db97562bd, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1516825163}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 071fed918b8b7b84b835298db97562bd, type: 3}
 --- !u!4 &494344421 stripped
@@ -5886,12 +5894,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::HotbarSlot
   background: {fileID: 506166496}
+  iconBackground: {fileID: 0}
   icon: {fileID: 1955341599}
-  highlitedBack: {fileID: 0}
   amountText: {fileID: 1063159008}
+  normalBackgroundColor: {r: 1, g: 1, b: 1, a: 1}
+  highlightedBackgroundColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
   itemData: {fileID: 0}
   amount: 0
-  originalColor: {r: 0, g: 0, b: 0, a: 0}
   uniqueItem: {fileID: 0}
 --- !u!114 &506166496
 MonoBehaviour:
@@ -7184,6 +7193,14 @@ PrefabInstance:
     - target: {fileID: 2954333834654313259, guid: e121f65ac925b174c9e88ee73ea984ae, type: 3}
       propertyPath: m_Name
       value: 'Dark entity '
+      objectReference: {fileID: 0}
+    - target: {fileID: 2954333834654313259, guid: e121f65ac925b174c9e88ee73ea984ae, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4499767442471268416, guid: e121f65ac925b174c9e88ee73ea984ae, type: 3}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5753498706168128044, guid: e121f65ac925b174c9e88ee73ea984ae, type: 3}
       propertyPath: ShapeModule.type
@@ -10905,12 +10922,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::HotbarSlot
   background: {fileID: 1259623115}
+  iconBackground: {fileID: 0}
   icon: {fileID: 1559718777}
-  highlitedBack: {fileID: 0}
   amountText: {fileID: 1565029003}
+  normalBackgroundColor: {r: 1, g: 1, b: 1, a: 1}
+  highlightedBackgroundColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
   itemData: {fileID: 0}
   amount: 0
-  originalColor: {r: 0, g: 0, b: 0, a: 0}
   uniqueItem: {fileID: 0}
 --- !u!114 &1259623115
 MonoBehaviour:
@@ -12312,12 +12330,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::HotbarSlot
   background: {fileID: 1355530998}
+  iconBackground: {fileID: 0}
   icon: {fileID: 1583186537}
-  highlitedBack: {fileID: 0}
   amountText: {fileID: 1079538721}
+  normalBackgroundColor: {r: 1, g: 1, b: 1, a: 1}
+  highlightedBackgroundColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
   itemData: {fileID: 0}
   amount: 0
-  originalColor: {r: 0, g: 0, b: 0, a: 1}
   uniqueItem: {fileID: 0}
 --- !u!1 &1356516088
 GameObject:
@@ -12872,12 +12891,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::HotbarSlot
   background: {fileID: 1436245233}
+  iconBackground: {fileID: 0}
   icon: {fileID: 2020666996}
-  highlitedBack: {fileID: 0}
   amountText: {fileID: 670541751}
+  normalBackgroundColor: {r: 1, g: 1, b: 1, a: 1}
+  highlightedBackgroundColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
   itemData: {fileID: 0}
   amount: 0
-  originalColor: {r: 0, g: 0, b: 0, a: 0}
   uniqueItem: {fileID: 0}
 --- !u!114 &1436245233
 MonoBehaviour:
@@ -13256,6 +13276,118 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ed1f4d5d4d844de4fa8de71af0e929b1, type: 3}
+--- !u!1 &1516825162
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1516825163}
+  - component: {fileID: 1516825166}
+  - component: {fileID: 1516825165}
+  - component: {fileID: 1516825164}
+  m_Layer: 3
+  m_Name: Plane
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1516825163
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1516825162}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0.3098493, y: 0.6356048, z: -0.6356048, w: 0.3098493}
+  m_LocalPosition: {x: -4.839, y: 1.416, z: 5.627}
+  m_LocalScale: {x: 0.17802547, y: 0.76135, z: 0.27268878}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1579576423}
+  m_LocalEulerAnglesHint: {x: 90, y: 180, z: 51.977005}
+--- !u!64 &1516825164
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1516825162}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!23 &1516825165
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1516825162}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
+  m_ForceMeshLod: -1
+  m_MeshLodSelectionBias: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: 1a9bbee744bd9404e8fba061cee55b1d, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_GlobalIlluminationMeshLod: 0
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
+--- !u!33 &1516825166
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1516825162}
+  m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!1 &1521471381
 GameObject:
   m_ObjectHideFlags: 0
