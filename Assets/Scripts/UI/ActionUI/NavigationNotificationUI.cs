@@ -25,8 +25,8 @@ public class NavigationNotificationUI : MonoBehaviour
         PlayerInteraction.OnInteraction += ShowMessage;
         PlayerInteraction.OnEndedInteraction += HideMessage;
 
-        DismantlingManager.OnInteraction += ShowMessage;
-        DismantlingManager.OnEndedInteraction += HideMessage;
+        //DismantlingManager.OnInteraction += ShowMessage;
+        //DismantlingManager.OnEndedInteraction += HideMessage;
     }
 
     private void OnDisable()
@@ -35,8 +35,8 @@ public class NavigationNotificationUI : MonoBehaviour
         PlayerInteraction.OnInteraction -= ShowMessage;
         PlayerInteraction.OnEndedInteraction -= HideMessage;
 
-        DismantlingManager.OnInteraction -= ShowMessage;
-        DismantlingManager.OnEndedInteraction -= HideMessage;
+        //DismantlingManager.OnInteraction -= ShowMessage;
+        //DismantlingManager.OnEndedInteraction -= HideMessage;
     }
 
     private void ShowMessage(string message)
