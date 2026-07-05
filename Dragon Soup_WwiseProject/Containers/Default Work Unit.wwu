@@ -1425,11 +1425,36 @@
 												</Sound>
 											</ChildrenList>
 										</RandomSequenceContainer>
+										<Sound Name="Axe_Station_Fail" ID="{C2EDF124-2C54-4EE8-8BCF-14BC8F115C0B}" ShortID="119247875">
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{27F70A5B-D7C2-4BA9-9793-BA39E1BC8B1D}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{0C9031E4-8081-4B6E-AB6C-02891DDBDDA8}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="Axe_Station_Fail" ID="{AE81B9CF-FC2D-4353-8735-61F9042995DD}">
+													<Language>SFX</Language>
+													<AudioFile>SFX\Axe_Station_Fail.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="166575147"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ActiveSourceList>
+												<ActiveSource Name="Axe_Station_Fail" ID="{AE81B9CF-FC2D-4353-8735-61F9042995DD}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
 									</ChildrenList>
 									<GroupingInfo>
 										<GroupingBehaviorList>
 											<GroupingBehavior>
 												<ItemRef Name="Magic_Fridge_Fail" ID="{1349D11D-E351-4BB6-9D0B-1117CC3FA0FE}"/>
+											</GroupingBehavior>
+											<GroupingBehavior>
+												<ItemRef Name="Axe_Station_Fail" ID="{C2EDF124-2C54-4EE8-8BCF-14BC8F115C0B}"/>
 											</GroupingBehavior>
 											<GroupingBehavior>
 												<ItemRef Name="Workbench_Fail" ID="{2B90655D-CDB1-4358-BAF7-06233E2AB16C}"/>
@@ -1467,6 +1492,12 @@
 												<SwitchRef Name="Fireplace" ID="{ECDF7BDB-417A-4891-9AC8-EE3B2717CE95}"/>
 												<ItemList>
 													<ItemRef Name="Fireplace_Fail" ID="{F8897164-92BA-42D5-98CA-CB513B56784C}"/>
+												</ItemList>
+											</Grouping>
+											<Grouping>
+												<SwitchRef Name="Axe" ID="{2D3D84EE-79EC-4DD2-A9C1-870C69C19726}"/>
+												<ItemList>
+													<ItemRef Name="Axe_Station_Fail" ID="{C2EDF124-2C54-4EE8-8BCF-14BC8F115C0B}"/>
 												</ItemList>
 											</Grouping>
 											<Grouping>
@@ -1865,6 +1896,74 @@
 												</Sound>
 											</ChildrenList>
 										</BlendContainer>
+										<BlendContainer Name="Axe_Station_Success" ID="{62B7418D-2221-4E9C-BA23-A0B768A6B8D0}" ShortID="710620956">
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{27F70A5B-D7C2-4BA9-9793-BA39E1BC8B1D}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{0C9031E4-8081-4B6E-AB6C-02891DDBDDA8}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<Sound Name="Axe_Station_Use" ID="{F302AF70-3584-4D65-91EE-D6245543E041}" ShortID="1062071752">
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{27F70A5B-D7C2-4BA9-9793-BA39E1BC8B1D}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="SFX" ID="{553FBE0F-6F3D-46D3-B60B-CF458887C1C1}" WorkUnitID="{0C9031E4-8081-4B6E-AB6C-02891DDBDDA8}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="Axe_Station_Use" ID="{D2D890FD-4783-4A54-8D11-688AA0C7E983}">
+															<Language>SFX</Language>
+															<AudioFile>SFX\Axe_Station_Use.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="648449839"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ActiveSourceList>
+														<ActiveSource Name="Axe_Station_Use" ID="{D2D890FD-4783-4A54-8D11-688AA0C7E983}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+												<Sound Name="Item_Crafted" ID="{DE985CCF-819A-4A15-8B44-F231A0C5B912}" ShortID="654301023">
+													<PropertyList>
+														<Property Name="InitialDelay" Type="Real64">
+															<ValueList>
+																<Value>0.4</Value>
+															</ValueList>
+														</Property>
+													</PropertyList>
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{27F70A5B-D7C2-4BA9-9793-BA39E1BC8B1D}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="SFX" ID="{553FBE0F-6F3D-46D3-B60B-CF458887C1C1}" WorkUnitID="{0C9031E4-8081-4B6E-AB6C-02891DDBDDA8}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="Item_Crafted" ID="{20B33F2E-D2BD-4246-A045-8C123C40EAEB}">
+															<PropertyList>
+																<Property Name="FadeOutDuration" Type="Real64" Value="1.06866416978777"/>
+																<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+																<Property Name="TrimEnd" Type="Real64" Value="2.5518102372035"/>
+															</PropertyList>
+															<Language>SFX</Language>
+															<AudioFile>Item_Crafted.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="27399822"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ActiveSourceList>
+														<ActiveSource Name="Item_Crafted" ID="{20B33F2E-D2BD-4246-A045-8C123C40EAEB}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+											</ChildrenList>
+										</BlendContainer>
 									</ChildrenList>
 									<GroupingInfo>
 										<GroupingBehaviorList>
@@ -1876,6 +1975,9 @@
 											</GroupingBehavior>
 											<GroupingBehavior>
 												<ItemRef Name="Item_Crafted" ID="{0A902C83-0627-4473-A5D7-43ED9FA2DAC7}"/>
+											</GroupingBehavior>
+											<GroupingBehavior>
+												<ItemRef Name="Axe_Station_Success" ID="{62B7418D-2221-4E9C-BA23-A0B768A6B8D0}"/>
 											</GroupingBehavior>
 											<GroupingBehavior>
 												<ItemRef Name="Alc_Rack_Success" ID="{1A1BDE8F-DCE2-4458-935C-E8CEDA6930D1}"/>
@@ -1910,6 +2012,12 @@
 												<SwitchRef Name="Fireplace" ID="{ECDF7BDB-417A-4891-9AC8-EE3B2717CE95}"/>
 												<ItemList>
 													<ItemRef Name="Fireplace_Success" ID="{A10407A0-4305-4164-85E8-695C3D505EA8}"/>
+												</ItemList>
+											</Grouping>
+											<Grouping>
+												<SwitchRef Name="Axe" ID="{2D3D84EE-79EC-4DD2-A9C1-870C69C19726}"/>
+												<ItemList>
+													<ItemRef Name="Axe_Station_Success" ID="{62B7418D-2221-4E9C-BA23-A0B768A6B8D0}"/>
 												</ItemList>
 											</Grouping>
 											<Grouping>

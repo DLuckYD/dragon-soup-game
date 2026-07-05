@@ -18,6 +18,7 @@
 						<Switch Name="Fireplace" ID="{ECDF7BDB-417A-4891-9AC8-EE3B2717CE95}"/>
 						<Switch Name="Alcohol" ID="{2378E908-E36E-4362-AF43-034D8332DB46}"/>
 						<Switch Name="Painting" ID="{34857F0E-6CF8-40E5-8CF7-1E8D54F86256}"/>
+						<Switch Name="Axe" ID="{2D3D84EE-79EC-4DD2-A9C1-870C69C19726}"/>
 					</ChildrenList>
 				</SwitchGroup>
 			</ChildrenList>

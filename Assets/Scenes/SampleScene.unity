@@ -2478,6 +2478,7 @@ Transform:
   - {fileID: 1869594821}
   - {fileID: 289725946}
   - {fileID: 487680854}
+  - {fileID: 2089946288}
   m_Father: {fileID: 1579576423}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &266275448
@@ -3947,11 +3948,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7447777b5787c3549a74e7c69f106722, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DismantleProgressUI
---- !u!1 &338443001 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 071fed918b8b7b84b835298db97562bd, type: 3}
-  m_PrefabInstance: {fileID: 493919606}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &351026697
 GameObject:
   m_ObjectHideFlags: 0
@@ -7882,7 +7878,7 @@ MonoBehaviour:
   stationId: axe_upgrade
   canInteract: 0
   disabledMessage: This station cannot be used right now.
-  WwiseSwitchName: 
+  WwiseSwitchName: Axe
   successMessage: Item modified.
   noItemMessage: No item to modify.
   destroyListedItems: 0
@@ -24118,6 +24114,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 17148c8aef7e5cf49a79241fb706b7b5, type: 3}
+--- !u!4 &2089946288 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 7241076896892859896, guid: 17148c8aef7e5cf49a79241fb706b7b5, type: 3}
+  m_PrefabInstance: {fileID: 2089946287}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2094257838
 GameObject:
   m_ObjectHideFlags: 0
