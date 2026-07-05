@@ -1,10 +1,10 @@
+using System;
 using UnityEngine;
 
 public class DismantlingManager : MonoBehaviour
 {
     [Header("References")]
     [SerializeField] private PlayerInteraction playerInteraction;
-    [SerializeField] private Transform raycastOrigin;
     [SerializeField] private DismantleProgressUI progressUI;
     [SerializeField] private AxeDismantleRotation axeRotation;
 
@@ -27,8 +27,12 @@ public class DismantlingManager : MonoBehaviour
     private bool dismantleSoundStarted = false;
     private bool isPreparingAxe;
     private bool hasStartedAxeSwing;
+    private Transform raycastOrigin;
 
     private AxeDismantleRotation currentAxeRotation;
+
+    public static event Action<string> OnInteraction;
+    public static event Action OnEndedInteraction;
 
     private void Awake()
     {
@@ -176,14 +180,23 @@ public class DismantlingManager : MonoBehaviour
         if (raycastOrigin == null)
             return null;
 
-        if (Physics.Raycast(
-                raycastOrigin.position,
-                raycastOrigin.forward,
-                out RaycastHit hit,
-                dismantleDistance,
-                dismantleLayerMask))
+        RaycastHit[] hits = Physics.RaycastAll(
+            raycastOrigin.position,
+            raycastOrigin.forward,
+            dismantleDistance,
+            dismantleLayerMask
+        );
+
+        if (hits.Length == 0)
+            return null;
+
+        System.Array.Sort(hits, (a, b) => a.distance.CompareTo(b.distance));
+
+        foreach (var hit in hits)
         {
-            return hit.collider.GetComponentInParent<DismantleTarget>();
+            DismantleTarget target = hit.collider.GetComponentInParent<DismantleTarget>();
+            if (target != null)
+                return target;
         }
 
         return null;
