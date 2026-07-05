@@ -84,7 +84,11 @@ public class HotbarSlot : MonoBehaviour
 
     public void SetHighlighted(bool highlighted)
     {
+        //Debug.Log(gameObject.name + " highlighted: " + highlighted);
+
         if (background != null)
             background.color = highlighted ? highlightedBackgroundColor : normalBackgroundColor;
+        else
+            Debug.LogWarning(gameObject.name + " background is NULL");
     }
 }
