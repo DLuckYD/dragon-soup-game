@@ -24,9 +24,6 @@ public class NavigationNotificationUI : MonoBehaviour
         Debug.Log("Subscribing to [NavigationNotificationUI] events...");
         PlayerInteraction.OnInteraction += ShowMessage;
         PlayerInteraction.OnEndedInteraction += HideMessage;
-
-        DismantlingManager.OnInteraction += ShowMessage;
-        DismantlingManager.OnEndedInteraction += HideMessage;
     }
 
     private void OnDisable()
@@ -34,9 +31,6 @@ public class NavigationNotificationUI : MonoBehaviour
         Debug.Log("Unsubscribing from [NavigationNotificationUI] events...");
         PlayerInteraction.OnInteraction -= ShowMessage;
         PlayerInteraction.OnEndedInteraction -= HideMessage;
-
-        DismantlingManager.OnInteraction -= ShowMessage;
-        DismantlingManager.OnEndedInteraction -= HideMessage;
     }
 
     private void ShowMessage(string message)

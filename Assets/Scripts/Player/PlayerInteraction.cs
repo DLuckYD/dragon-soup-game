@@ -41,21 +41,6 @@ public class PlayerInteraction : MonoBehaviour
     public static event Action<string> OnLockedItemInteraction;
     public static event Action<string> OnFullInventory;
 
-    private void OnEnable()
-    {
-        HotbarManager.OnRequestEquipSlot += HandleRequestEquipSlot;
-    }
-
-    private void OnDisable()
-    {
-        HotbarManager.OnRequestEquipSlot -= HandleRequestEquipSlot;
-    }
-
-    private void HandleRequestEquipSlot(int index)
-    {
-        EquipHotbarSlot(index);
-    }
-
     void Update()
     {
         if (Input.GetKeyDown(upgradeKey))
@@ -292,29 +277,11 @@ public class PlayerInteraction : MonoBehaviour
     {
         if (heldItem == null)
         {
-            RaycastHit[] hits = Physics.RaycastAll(
-                playerCameraTransform.position,
-                playerCameraTransform.forward,
-                pickUpDistance,
-                pickUpLayerMask
-            );
-
-            if (hits.Length > 0)
+            if (Physics.Raycast(playerCameraTransform.position, playerCameraTransform.forward, out RaycastHit raycastHit, pickUpDistance, pickUpLayerMask))
             {
-                System.Array.Sort(hits, (a, b) => a.distance.CompareTo(b.distance));
-
-                InventoryItem inventoryItem = null;
-
-                foreach (var hit in hits)
+                if (raycastHit.transform.TryGetComponent<InventoryItem>(out var inventoryItem))
                 {
-                    inventoryItem = hit.transform.GetComponentInParent<InventoryItem>();
-                    if (inventoryItem != null)
-                        break;
-                }
-
-                if (inventoryItem != null)
-                {
-                    if (inventoryItem.itemData.isStackable)
+                    if(inventoryItem.itemData.isStackable)
                     {
                         bool isAdded = hotbarManager.TryAddStackableItemToInventory(inventoryItem);
                         if (isAdded)
@@ -335,9 +302,10 @@ public class PlayerInteraction : MonoBehaviour
                         heldItem = inventoryItem;
                         heldItem.Grab(objectGrabPointTransform);
                         heldItem.isHeld = true;
-
+                        
                         nearbyItem = null;
                         OnInteraction?.Invoke($"Press {addToInventoryKey} to add to inventory");
+                        
 
                         EventManager.CallItemPickedUp(heldItem);
                         Debug.Log("Picked up ");
@@ -349,6 +317,7 @@ public class PlayerInteraction : MonoBehaviour
         {
             if (!heldItem.itemData.isStackable)
             {
+
                 EventManager.CallItemDropped(heldItem);
 
                 heldItem.Drop();

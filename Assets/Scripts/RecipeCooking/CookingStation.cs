@@ -19,7 +19,6 @@ public class CookingStation : MonoBehaviour
     public static event Action<string> OnMissingIngredients;
     public static event Action<string> OnNextIngredient;
     public static event Action<string> OnSuccessfulCook;
-    public static event Action<string> OnInventoryFull;
 
     private Recipe activeRecipe;
     private int currentIngredientIndex = -1;
@@ -78,10 +77,7 @@ public class CookingStation : MonoBehaviour
         foreach (var ingredient in recipe.ingredients)
         {
             if (!inventory.HasItemDataAmount(ingredient.item, ingredient.amount))
-            {
-                OnMissingIngredients?.Invoke("Not enough ingredients");
                 return false;
-            }
         }
 
         return true;
@@ -106,6 +102,8 @@ public class CookingStation : MonoBehaviour
 
         if (!CanCook(recipe, playerInventory))
         {
+            OnMissingIngredients?.Invoke("Not enough ingredients");
+            Debug.Log("Missing ingredients");
             return;
         }
 
@@ -200,10 +198,7 @@ public class CookingStation : MonoBehaviour
         if (activeRecipe == null)
             return;
 
-        bool addedToInventory = playerInventory.AddCookingDishToInventory(activeRecipe.result);
-
-        if (!addedToInventory)
-            playerInventory.SpawnDishInWorld(activeRecipe.result);
+        playerInventory.AddCookingDishToInventory(activeRecipe.result);
 
         cookedRecipes.Add(activeRecipe.id);
 
