@@ -141,6 +141,18 @@
 						</Event>
 						<Event Name="Dark_Entity_Accept" ID="{83449EDD-0F57-45FE-8278-E32E0B2AC819}">
 							<ChildrenList>
+								<Action Name="" ID="{4601F0BA-C5B9-416E-A80E-1A5E4D254EEA}" ShortID="246761305">
+									<PropertyList>
+										<Property Name="ActionType" Type="int16" Value="2"/>
+										<Property Name="FadeTime" Type="Real64" Value="0.2"/>
+										<Property Name="Scope" Type="int16" Value="1"/>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="Dark Entity" ID="{17856521-9D6E-40DF-B331-946BB5CE75C6}" WorkUnitID="{1D3CE180-6637-4348-B301-DDCBC094ECDF}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
 								<Action Name="" ID="{FFA7C5EC-40AE-4584-90DF-270321D33014}" ShortID="151029932">
 									<ReferenceList>
 										<Reference Name="Target">
@@ -152,6 +164,18 @@
 						</Event>
 						<Event Name="Dark_Entity_Decline" ID="{EBD542EC-6910-48FC-8A3E-302FDF5AE0D5}">
 							<ChildrenList>
+								<Action Name="" ID="{F5E346D1-BB1E-45B3-9A79-73E10CA1525C}" ShortID="520861456">
+									<PropertyList>
+										<Property Name="ActionType" Type="int16" Value="2"/>
+										<Property Name="FadeTime" Type="Real64" Value="0.2"/>
+										<Property Name="Scope" Type="int16" Value="1"/>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="Dark Entity" ID="{17856521-9D6E-40DF-B331-946BB5CE75C6}" WorkUnitID="{1D3CE180-6637-4348-B301-DDCBC094ECDF}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
 								<Action Name="" ID="{B90C4352-5BAD-4656-9DA7-FC8624C6F873}" ShortID="255430997">
 									<ReferenceList>
 										<Reference Name="Target">
@@ -163,10 +187,76 @@
 						</Event>
 						<Event Name="Dark_Entity_Interact" ID="{DDF1D9A5-7363-4BB4-8D75-A13AAF6EC14E}">
 							<ChildrenList>
+								<Action Name="" ID="{E2FFC298-4A82-4BA7-937B-7D3DE00C3FFF}" ShortID="427480722">
+									<PropertyList>
+										<Property Name="ActionType" Type="int16" Value="2"/>
+										<Property Name="FadeTime" Type="Real64" Value="0.2"/>
+										<Property Name="Scope" Type="int16" Value="1"/>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="Dark Entity" ID="{17856521-9D6E-40DF-B331-946BB5CE75C6}" WorkUnitID="{1D3CE180-6637-4348-B301-DDCBC094ECDF}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
 								<Action Name="" ID="{D2E71E53-B9F2-4110-B73B-2829F36AA927}" ShortID="986309277">
+									<PropertyList>
+										<Property Name="Delay" Type="Real64" Value="0.3"/>
+										<Property Name="FadeTime" Type="Real64" Value="0.2"/>
+									</PropertyList>
 									<ReferenceList>
 										<Reference Name="Target">
 											<ObjectRef Name="Dark_Entity_Interact" ID="{FC85F1E8-9E2D-46F4-A0DA-DEB5E938B82C}" WorkUnitID="{1D3CE180-6637-4348-B301-DDCBC094ECDF}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
+						<Event Name="Axe_Use" ID="{D9279DB7-FDF7-4687-8E3B-45CC3796D59E}">
+							<ChildrenList>
+								<Action Name="" ID="{07280703-5937-4DE1-8085-1B89CD317E2D}" ShortID="598758746">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="Axe_Use" ID="{57E8AD6A-8819-4276-8E96-49877F083169}" WorkUnitID="{1D3CE180-6637-4348-B301-DDCBC094ECDF}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
+						<Event Name="Item_Demolished" ID="{934EE351-C116-479E-A255-64990F226AD6}">
+							<ChildrenList>
+								<Action Name="" ID="{4DAC540F-45D0-420F-8F01-1D8DC4FD7956}" ShortID="937627105">
+									<PropertyList>
+										<Property Name="ActionType" Type="int16" Value="2"/>
+										<Property Name="FadeTime" Type="Real64" Value="0.1"/>
+										<Property Name="Scope" Type="int16" Value="1"/>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="Axe_Use" ID="{57E8AD6A-8819-4276-8E96-49877F083169}" WorkUnitID="{1D3CE180-6637-4348-B301-DDCBC094ECDF}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+								<Action Name="" ID="{7665CE04-024D-44FC-8C09-25B29BBEF56B}" ShortID="850299324">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="Item_Demolished" ID="{E8C02E23-6B40-4C0B-B23C-A1AFF1F4FC74}" WorkUnitID="{1D3CE180-6637-4348-B301-DDCBC094ECDF}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
+						<Event Name="Stop_Axe_Use" ID="{E1C6A98B-0FA0-4BFD-9E01-E1566DB4F5A7}">
+							<ChildrenList>
+								<Action Name="" ID="{FFED8DCC-C2FB-41A4-9200-02E612AC2C90}" ShortID="312670578">
+									<PropertyList>
+										<Property Name="ActionType" Type="int16" Value="2"/>
+										<Property Name="FadeTime" Type="Real64" Value="0.1"/>
+										<Property Name="Scope" Type="int16" Value="1"/>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="Axe_Use" ID="{57E8AD6A-8819-4276-8E96-49877F083169}" WorkUnitID="{1D3CE180-6637-4348-B301-DDCBC094ECDF}"/>
 										</Reference>
 									</ReferenceList>
 								</Action>

@@ -63,6 +63,7 @@ public class CutscenePlayer : MonoBehaviour
         activePlayer = videoPlayer;
         sceneAfterVideo = sceneName;
         preloadOperation = null;
+        AkUnitySoundEngine.SetState("Game_State", "Cutscene");
 
         PrepareVideoPlayer(activePlayer);
         PrepareCutsceneState();

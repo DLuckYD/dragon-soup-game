@@ -1231,6 +1231,11 @@ Transform:
   - {fileID: 2004873716}
   m_Father: {fileID: 1579576423}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &132627174 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 6419c1c857d2f9c45b8250d281f113db, type: 3}
+  m_PrefabInstance: {fileID: 670090633}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &134479591
 GameObject:
   m_ObjectHideFlags: 0
@@ -7006,6 +7011,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 128316333}
     m_Modifications:
+    - target: {fileID: 607434229052465925, guid: 6419c1c857d2f9c45b8250d281f113db, type: 3}
+      propertyPath: axeVisual
+      value: 
+      objectReference: {fileID: 132627174}
     - target: {fileID: 1724459214597746517, guid: 6419c1c857d2f9c45b8250d281f113db, type: 3}
       propertyPath: m_Name
       value: 'AxePlaceHolder '
@@ -7978,7 +7987,7 @@ MonoBehaviour:
   stationId: axe_upgrade
   canInteract: 0
   disabledMessage: This station cannot be used right now.
-  WwiseSwitchName: 
+  WwiseSwitchName: Axe
   successMessage: Item modified.
   noItemMessage: No item to modify.
   destroyListedItems: 0
