@@ -140,8 +140,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: x4 - chicken breast
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 5db33aab5b824ef40b5fa4bf8d37e160, type: 2}
+  m_sharedMaterial: {fileID: -6335320141398307661, guid: 5db33aab5b824ef40b5fa4bf8d37e160, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
