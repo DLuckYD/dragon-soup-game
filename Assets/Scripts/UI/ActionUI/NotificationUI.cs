@@ -49,7 +49,6 @@ public class NotificationUI : MonoBehaviour
 
         CookingStation.OnMissingIngredients += ShowMessage;
         CookingStation.OnNextIngredient += ShowMessage;
-        CookingStation.OnInventoryFull += ShowMessage;
     }
 
     private void OnDisable()
@@ -77,7 +76,6 @@ public class NotificationUI : MonoBehaviour
 
         CookingStation.OnMissingIngredients -= ShowMessage;
         CookingStation.OnNextIngredient -= ShowMessage;
-        CookingStation.OnInventoryFull -= ShowMessage;
     }
 
     private void Start()
