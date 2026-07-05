@@ -1285,12 +1285,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::HotbarSlot
   background: {fileID: 134479594}
+  iconBackground: {fileID: 0}
   icon: {fileID: 797815415}
-  highlitedBack: {fileID: 0}
   amountText: {fileID: 2017606326}
+  normalBackgroundColor: {r: 1, g: 1, b: 1, a: 1}
+  highlightedBackgroundColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
   itemData: {fileID: 0}
   amount: 0
-  originalColor: {r: 0, g: 0, b: 0, a: 0}
   uniqueItem: {fileID: 0}
 --- !u!114 &134479594
 MonoBehaviour:
@@ -2824,6 +2825,7 @@ MonoBehaviour:
   playerInteraction: {fileID: 267349054}
   raycastOrigin: {fileID: 0}
   progressUI: {fileID: 333723242}
+  axeRotation: {fileID: 0}
   dismantleKey: 107
   requiredHeldItemId: axe_breaker
   dismantleDistance: 2.5
@@ -2890,12 +2892,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::HotbarSlot
   background: {fileID: 274678350}
+  iconBackground: {fileID: 0}
   icon: {fileID: 293450197}
-  highlitedBack: {fileID: 0}
   amountText: {fileID: 2058052264}
+  normalBackgroundColor: {r: 1, g: 1, b: 1, a: 1}
+  highlightedBackgroundColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
   itemData: {fileID: 0}
   amount: 0
-  originalColor: {r: 0, g: 0, b: 0, a: 0}
   uniqueItem: {fileID: 0}
 --- !u!114 &274678350
 MonoBehaviour:
@@ -3176,11 +3179,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 366269261331728866, guid: 494d72a4f367e4b44956719385859843, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 734.5
+      value: 823.6
       objectReference: {fileID: 0}
     - target: {fileID: 366269261331728866, guid: 494d72a4f367e4b44956719385859843, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 305.2
+      value: 360.6
       objectReference: {fileID: 0}
     - target: {fileID: 366269261331728866, guid: 494d72a4f367e4b44956719385859843, type: 3}
       propertyPath: m_LocalPosition.x
@@ -3309,6 +3312,14 @@ PrefabInstance:
     - target: {fileID: 6092278712030175106, guid: 494d72a4f367e4b44956719385859843, type: 3}
       propertyPath: m_hasFontAssetChanged
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7159108301586012558, guid: 494d72a4f367e4b44956719385859843, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 260
+      objectReference: {fileID: 0}
+    - target: {fileID: 7159108301586012558, guid: 494d72a4f367e4b44956719385859843, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 120
       objectReference: {fileID: 0}
     - target: {fileID: 7159108301586012558, guid: 494d72a4f367e4b44956719385859843, type: 3}
       propertyPath: m_AnchoredPosition.x
@@ -3631,12 +3642,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::HotbarSlot
   background: {fileID: 311868354}
+  iconBackground: {fileID: 0}
   icon: {fileID: 1657558363}
-  highlitedBack: {fileID: 0}
   amountText: {fileID: 1578797425}
+  normalBackgroundColor: {r: 1, g: 1, b: 1, a: 1}
+  highlightedBackgroundColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
   itemData: {fileID: 0}
   amount: 0
-  originalColor: {r: 0, g: 0, b: 0, a: 0}
   uniqueItem: {fileID: 0}
 --- !u!114 &311868354
 MonoBehaviour:
@@ -3957,7 +3969,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5714419344428095852, guid: af987f92cb9f421458cfc7cfa7b3a9bb, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -5
+      value: 13.4
       objectReference: {fileID: 0}
     - target: {fileID: 5714419344428095852, guid: af987f92cb9f421458cfc7cfa7b3a9bb, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -4435,12 +4447,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::HotbarSlot
   background: {fileID: 361599859}
+  iconBackground: {fileID: 0}
   icon: {fileID: 2095451192}
-  highlitedBack: {fileID: 0}
   amountText: {fileID: 355047266}
+  normalBackgroundColor: {r: 1, g: 1, b: 1, a: 1}
+  highlightedBackgroundColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
   itemData: {fileID: 0}
   amount: 0
-  originalColor: {r: 0, g: 0, b: 0, a: 0}
   uniqueItem: {fileID: 0}
 --- !u!114 &361599859
 MonoBehaviour:
@@ -5330,12 +5343,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::HotbarSlot
   background: {fileID: 464347370}
+  iconBackground: {fileID: 0}
   icon: {fileID: 1587884668}
-  highlitedBack: {fileID: 0}
   amountText: {fileID: 2094499286}
+  normalBackgroundColor: {r: 1, g: 1, b: 1, a: 1}
+  highlightedBackgroundColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
   itemData: {fileID: 0}
   amount: 0
-  originalColor: {r: 0, g: 0, b: 0, a: 0}
   uniqueItem: {fileID: 0}
 --- !u!114 &464347370
 MonoBehaviour:
@@ -5932,12 +5946,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::HotbarSlot
   background: {fileID: 506166496}
+  iconBackground: {fileID: 0}
   icon: {fileID: 1955341599}
-  highlitedBack: {fileID: 0}
   amountText: {fileID: 1063159008}
+  normalBackgroundColor: {r: 1, g: 1, b: 1, a: 1}
+  highlightedBackgroundColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
   itemData: {fileID: 0}
   amount: 0
-  originalColor: {r: 0, g: 0, b: 0, a: 0}
   uniqueItem: {fileID: 0}
 --- !u!114 &506166496
 MonoBehaviour:
@@ -6258,7 +6273,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 600, y: 40}
+  m_SizeDelta: {x: 750, y: 40}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &548663555
 MonoBehaviour:
@@ -6280,7 +6295,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 
+  m_text: 'Press Q to drop from inventory '
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 5db33aab5b824ef40b5fa4bf8d37e160, type: 2}
   m_sharedMaterial: {fileID: -6335320141398307661, guid: 5db33aab5b824ef40b5fa4bf8d37e160, type: 2}
@@ -6841,7 +6856,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -772.68933, y: 382}
+  m_AnchoredPosition: {x: -759, y: 382}
   m_SizeDelta: {x: -1545.3729, y: -984.4524}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &606398263
@@ -10951,12 +10966,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::HotbarSlot
   background: {fileID: 1259623115}
+  iconBackground: {fileID: 0}
   icon: {fileID: 1559718777}
-  highlitedBack: {fileID: 0}
   amountText: {fileID: 1565029003}
+  normalBackgroundColor: {r: 1, g: 1, b: 1, a: 1}
+  highlightedBackgroundColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
   itemData: {fileID: 0}
   amount: 0
-  originalColor: {r: 0, g: 0, b: 0, a: 0}
   uniqueItem: {fileID: 0}
 --- !u!114 &1259623115
 MonoBehaviour:
@@ -11182,7 +11198,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1278119302
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12358,12 +12374,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::HotbarSlot
   background: {fileID: 1355530998}
+  iconBackground: {fileID: 0}
   icon: {fileID: 1583186537}
-  highlitedBack: {fileID: 0}
   amountText: {fileID: 1079538721}
+  normalBackgroundColor: {r: 1, g: 1, b: 1, a: 1}
+  highlightedBackgroundColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
   itemData: {fileID: 0}
   amount: 0
-  originalColor: {r: 0, g: 0, b: 0, a: 1}
   uniqueItem: {fileID: 0}
 --- !u!1 &1356516088
 GameObject:
@@ -12918,12 +12935,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::HotbarSlot
   background: {fileID: 1436245233}
+  iconBackground: {fileID: 0}
   icon: {fileID: 2020666996}
-  highlitedBack: {fileID: 0}
   amountText: {fileID: 670541751}
+  normalBackgroundColor: {r: 1, g: 1, b: 1, a: 1}
+  highlightedBackgroundColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
   itemData: {fileID: 0}
   amount: 0
-  originalColor: {r: 0, g: 0, b: 0, a: 0}
   uniqueItem: {fileID: 0}
 --- !u!114 &1436245233
 MonoBehaviour:
@@ -14967,7 +14985,7 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294967295
+    rgba: 4278190080
   m_fontColor: {r: 0, g: 0, b: 0, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
@@ -16772,7 +16790,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -393}
+  m_AnchoredPosition: {x: 0, y: -377.5}
   m_SizeDelta: {x: 490, y: 40}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1833359070
@@ -23751,7 +23769,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 600, y: 130}
+  m_SizeDelta: {x: 800, y: 80}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2062030181
 MonoBehaviour:
