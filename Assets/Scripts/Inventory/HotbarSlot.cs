@@ -4,26 +4,30 @@ using UnityEngine.UI;
 
 public class HotbarSlot : MonoBehaviour
 {
+    [Header("UI")]
     public Image background;
+    public Image iconBackground;
     public Image icon;
-    public Image highlitedBack;
     public TMP_Text amountText;
+
+    [Header("Colors")]
+    public Color normalBackgroundColor = Color.white;
+    public Color highlightedBackgroundColor = Color.yellow;
 
     [Header("Stackable Data")]
     public IngredientData itemData;
     public int amount = 0;
-    public Color originalColor;
 
     [Header("Non-stackable Data")]
     public InventoryItem uniqueItem;
 
     public bool IsEmpty =>
-       (itemData == null || amount <= 0) && uniqueItem == null;
+        (itemData == null || amount <= 0) && uniqueItem == null;
 
     private void Awake()
     {
         if (background != null)
-            originalColor = background.color;
+            normalBackgroundColor = background.color;
     }
 
     public void Clear()
@@ -44,7 +48,11 @@ public class HotbarSlot : MonoBehaviour
             {
                 icon.enabled = false;
                 icon.sprite = null;
+                icon.color = Color.white;
             }
+
+            if (iconBackground != null)
+                iconBackground.enabled = false;
 
             if (amountText != null)
                 amountText.text = "";
@@ -52,10 +60,18 @@ public class HotbarSlot : MonoBehaviour
             return;
         }
 
+        if (iconBackground != null)
+        {
+            iconBackground.enabled = true;
+            iconBackground.color = Color.white;
+        }
+
         if (icon != null)
         {
             icon.enabled = true;
             icon.sprite = data.icon;
+
+            icon.color = Color.white;
         }
 
         if (amountText != null)
@@ -64,5 +80,11 @@ public class HotbarSlot : MonoBehaviour
                 ? amount.ToString()
                 : "";
         }
+    }
+
+    public void SetHighlighted(bool highlighted)
+    {
+        if (background != null)
+            background.color = highlighted ? highlightedBackgroundColor : normalBackgroundColor;
     }
 }

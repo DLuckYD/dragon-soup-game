@@ -6,6 +6,7 @@ public class DismantlingManager : MonoBehaviour
     [SerializeField] private PlayerInteraction playerInteraction;
     [SerializeField] private Transform raycastOrigin;
     [SerializeField] private DismantleProgressUI progressUI;
+    [SerializeField] private AxeDismantleRotation axeRotation;
 
     [Header("Input")]
     [SerializeField] private KeyCode dismantleKey = KeyCode.K;
@@ -24,6 +25,10 @@ public class DismantlingManager : MonoBehaviour
     private float currentProgressTime;
     private bool isDismantling;
     private bool dismantleSoundStarted = false;
+    private bool isPreparingAxe;
+    private bool hasStartedAxeSwing;
+
+    private AxeDismantleRotation currentAxeRotation;
 
     private void Awake()
     {
@@ -68,18 +73,52 @@ public class DismantlingManager : MonoBehaviour
         {
             currentTarget = target;
             currentProgressTime = 0f;
-            isDismantling = true;
             if (!dismantleSoundStarted)
             {
                 dismantleSoundStarted = true;
                 WwiseAudioManager.Instance.PostEvent("Axe_Use", gameObject);
             }
+            isDismantling = false;
+            isPreparingAxe = true;
+            hasStartedAxeSwing = false;
+
+            currentAxeRotation = GetHeldAxeRotation();
+
+            if (currentAxeRotation != null)
+            {
+                currentAxeRotation.PrepareForDismantle();
+            }
 
             if (progressUI != null)
+            {
                 progressUI.Show();
+                progressUI.SetProgress(0f);
+            }
 
             if (showDebugLogs)
-                Debug.Log($"[DISMANTLE] Started dismantling: {currentTarget.name}");
+                Debug.Log($"[DISMANTLE] Preparing axe for: {currentTarget.name}");
+        }
+
+        if (isPreparingAxe)
+        {
+            if (currentAxeRotation == null || currentAxeRotation.IsPrepared)
+            {
+                isPreparingAxe = false;
+                isDismantling = true;
+
+                if (currentAxeRotation != null && !hasStartedAxeSwing)
+                {
+                    currentAxeRotation.PlayDismantleSwing(currentTarget.DismantleTime);
+                    hasStartedAxeSwing = true;
+                }
+
+                if (showDebugLogs)
+                    Debug.Log($"[DISMANTLE] Started dismantling after axe prepare: {currentTarget.name}");
+            }
+            else
+            {
+                return;
+            }
         }
 
         currentProgressTime += Time.deltaTime;
@@ -121,6 +160,17 @@ public class DismantlingManager : MonoBehaviour
         return heldItem.itemData.id == requiredHeldItemId;
     }
 
+    private AxeDismantleRotation GetHeldAxeRotation()
+    {
+        if (!IsHoldingRequiredItem())
+            return null;
+
+        if (axeRotation != null)
+            return axeRotation;
+
+        return FindObjectOfType<AxeDismantleRotation>(true);
+    }
+
     private DismantleTarget GetDismantleTargetInFront()
     {
         if (raycastOrigin == null)
@@ -141,14 +191,23 @@ public class DismantlingManager : MonoBehaviour
 
     private void ResetProgress()
     {
-        if (!isDismantling && currentTarget == null && currentProgressTime <= 0f)
+        if (!isDismantling && !isPreparingAxe && currentTarget == null && currentProgressTime <= 0f && currentAxeRotation == null)
             return;
+
+        if (currentAxeRotation != null)
+        {
+            currentAxeRotation.StopDismantleSwing();
+            currentAxeRotation = null;
+        }
 
         currentTarget = null;
         currentProgressTime = 0f;
         isDismantling = false;
         dismantleSoundStarted = false;
         WwiseAudioManager.Instance.PostEvent("Stop_Axe_Use", gameObject);
+        isPreparingAxe = false;
+        hasStartedAxeSwing = false;
+
         if (progressUI != null)
             progressUI.Hide();
     }

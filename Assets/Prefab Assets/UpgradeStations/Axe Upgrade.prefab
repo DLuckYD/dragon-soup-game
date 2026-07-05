@@ -164,9 +164,12 @@ MonoBehaviour:
   stationId: axe_upgrade
   canInteract: 0
   disabledMessage: This station cannot be used right now.
-  useSoundEventName: 
+  WwiseSwitchName: 
   successMessage: Item modified.
   noItemMessage: No item to modify.
+  destroyListedItems: 0
+  itemsToDestroy: []
+  itemDestroyedMessage: Item destroyed
   conditions:
     requireCanBeModified: 1
     stateRequirement: 1
