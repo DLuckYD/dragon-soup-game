@@ -26,7 +26,7 @@ RenderSettings:
   m_AmbientIntensity: 1
   m_AmbientMode: 0
   m_SubtractiveShadowColor: {r: 0.42, g: 0.478, b: 0.627, a: 1}
-  m_SkyboxMaterial: {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
+  m_SkyboxMaterial: {fileID: 2100000, guid: ec0f75a93a7b2cd48a97920071d8594a, type: 2}
   m_HaloStrength: 0.5
   m_FlareStrength: 1
   m_FlareFadeSpeed: 3
@@ -2938,6 +2938,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DismantlingManager
   playerInteraction: {fileID: 267349054}
+  raycastOrigin: {fileID: 0}
   progressUI: {fileID: 333723242}
   axeRotation: {fileID: 2004873719}
   dismantleKey: 107
@@ -2947,6 +2948,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 4294967295
   showDebugLogs: 1
+  currentAxeRotation: {fileID: 0}
 --- !u!4 &272923884 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3146031581167921070, guid: 1d606af3cdcd4994fa39989e48718e25, type: 3}
@@ -4126,11 +4128,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7447777b5787c3549a74e7c69f106722, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DismantleProgressUI
---- !u!4 &345322198 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 6419c1c857d2f9c45b8250d281f113db, type: 3}
-  m_PrefabInstance: {fileID: 670090633}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &351026697
 GameObject:
   m_ObjectHideFlags: 0
@@ -28558,15 +28555,11 @@ ParticleSystem:
         m_PostInfinity: 2
         m_RotationOrder: 4
     vectorLabel1_3: W
---- !u!4 &2004873716 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 1877394430002011314, guid: 6419c1c857d2f9c45b8250d281f113db, type: 3}
-  m_PrefabInstance: {fileID: 670090633}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &2004873719 stripped
+--- !u!114 &2004873719
 MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 607434229052465925, guid: 6419c1c857d2f9c45b8250d281f113db, type: 3}
-  m_PrefabInstance: {fileID: 670090633}
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
   m_Enabled: 1
@@ -28574,6 +28567,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f2262bef323b3f144ba147d0e850d216, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::AxeDismantleRotation
+  axeVisual: {fileID: 0}
+  dismantleRotationOffsetEuler: {x: 90, y: 0, z: 0}
+  prepareRotationDuration: 0.5
+  swingEulerAxis: {x: 1, y: 0, z: 0}
+  swingAngle: 45
+  swingSpeed: 10
+  showDebugLogs: 1
 --- !u!4 &2005393558 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6856649130744557486, guid: 06ad683a707c4384c96f99a148f4ee9f, type: 3}
@@ -31406,3 +31406,4 @@ SceneRoots:
   - {fileID: 428662500}
   - {fileID: 89426875}
   - {fileID: 1051022460}
+  - {fileID: 665177429}
