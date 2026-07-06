@@ -6,7 +6,6 @@ public class DismantlingManager : MonoBehaviour
     [SerializeField] private PlayerInteraction playerInteraction;
     [SerializeField] private Transform raycastOrigin;
     [SerializeField] private DismantleProgressUI progressUI;
-    [SerializeField] private AxeDismantleRotation axeRotation;
 
     [Header("Input")]
     [SerializeField] private KeyCode dismantleKey = KeyCode.K;
@@ -24,11 +23,13 @@ public class DismantlingManager : MonoBehaviour
     private DismantleTarget currentTarget;
     private float currentProgressTime;
     private bool isDismantling;
-    private bool dismantleSoundStarted = false;
+    private bool dismantleSoundStarted;
     private bool isPreparingAxe;
     private bool hasStartedAxeSwing;
 
-    [SerializeField] private AxeDismantleRotation currentAxeRotation;
+    private AxeDismantleRotation currentAxeRotation;
+
+    private string lastFailReason = "";
 
     private void Awake()
     {
@@ -52,42 +53,66 @@ public class DismantlingManager : MonoBehaviour
         if (!Input.GetKey(dismantleKey))
         {
             ResetProgress();
+            lastFailReason = "";
             return;
         }
 
-        if (!IsHoldingRequiredItem())
+        if (Input.GetKeyDown(dismantleKey))
         {
+            Log("[DISMANTLE] K pressed. Trying to start dismantling.");
+        }
+
+        if (!IsHoldingRequiredItem(out string heldItemId))
+        {
+            LogFailOnce($"[DISMANTLE] Cannot start. Held item id='{heldItemId}', required='{requiredHeldItemId}'.");
             ResetProgress();
             return;
         }
 
         DismantleTarget target = GetDismantleTargetInFront();
 
-        if (target == null || target.Recipe == null)
+        if (target == null)
         {
             ResetProgress();
             return;
         }
 
+        if (target.Recipe == null)
+        {
+            LogFailOnce($"[DISMANTLE] Target '{target.name}' has no dismantle recipe.");
+            ResetProgress();
+            return;
+        }
+
+        lastFailReason = "";
+
         if (currentTarget != target)
         {
             currentTarget = target;
             currentProgressTime = 0f;
+
             if (!dismantleSoundStarted)
             {
                 dismantleSoundStarted = true;
-                WwiseAudioManager.Instance.PostEvent("Axe_Use", gameObject);
+
+                if (WwiseAudioManager.Instance != null)
+                    WwiseAudioManager.Instance.PostEvent("Axe_Use", gameObject);
             }
+
             isDismantling = false;
             isPreparingAxe = true;
             hasStartedAxeSwing = false;
 
             currentAxeRotation = GetHeldAxeRotation();
 
-            if (currentAxeRotation != null)
+            if (currentAxeRotation == null)
             {
-                currentAxeRotation.PrepareForDismantle();
+                LogFailOnce("[DISMANTLE] AxeDismantleRotation was not found on held axe.");
+                ResetProgress();
+                return;
             }
+
+            currentAxeRotation.PrepareForDismantle();
 
             if (progressUI != null)
             {
@@ -95,8 +120,7 @@ public class DismantlingManager : MonoBehaviour
                 progressUI.SetProgress(0f);
             }
 
-            if (showDebugLogs)
-                Debug.Log($"[DISMANTLE] Preparing axe for: {currentTarget.name}");
+            Log($"[DISMANTLE] Found target '{currentTarget.name}'. Preparing axe.");
         }
 
         if (isPreparingAxe)
@@ -112,8 +136,7 @@ public class DismantlingManager : MonoBehaviour
                     hasStartedAxeSwing = true;
                 }
 
-                if (showDebugLogs)
-                    Debug.Log($"[DISMANTLE] Started dismantling after axe prepare: {currentTarget.name}");
+                Log($"[DISMANTLE] Started dismantling target '{currentTarget.name}'. Time: {currentTarget.DismantleTime}");
             }
             else
             {
@@ -136,16 +159,20 @@ public class DismantlingManager : MonoBehaviour
 
             if (completedTarget != null)
             {
-                if (showDebugLogs)
-                    Debug.Log($"[DISMANTLE] Completed dismantling: {completedTarget.name}");
-                WwiseAudioManager.Instance.PostEvent("Item_Demolished", gameObject);
+                Log($"[DISMANTLE] Completed dismantling: {completedTarget.name}");
+
+                if (WwiseAudioManager.Instance != null)
+                    WwiseAudioManager.Instance.PostEvent("Item_Demolished", gameObject);
+
                 completedTarget.Dismantle();
             }
         }
     }
 
-    private bool IsHoldingRequiredItem()
+    private bool IsHoldingRequiredItem(out string heldItemId)
     {
+        heldItemId = "NULL";
+
         if (playerInteraction == null)
             return false;
 
@@ -155,41 +182,44 @@ public class DismantlingManager : MonoBehaviour
             return false;
 
         if (heldItem.itemData == null)
+        {
+            heldItemId = "NO_ITEM_DATA";
             return false;
+        }
+
+        heldItemId = heldItem.itemData.id;
 
         return heldItem.itemData.id == requiredHeldItemId;
     }
 
     private AxeDismantleRotation GetHeldAxeRotation()
     {
-        if (!IsHoldingRequiredItem())
+        if (playerInteraction == null)
             return null;
 
-        if (axeRotation != null)
-        {
-            if (showDebugLogs)
-                Debug.Log("[DISMANTLE] Using assigned axeRotation from Inspector.");
+        InventoryItem heldItem = playerInteraction.getHeldItem();
 
-            return axeRotation;
+        if (heldItem == null)
+            return null;
+
+        AxeDismantleRotation rotation = heldItem.GetComponentInChildren<AxeDismantleRotation>(true);
+
+        if (rotation != null)
+        {
+            Log($"[DISMANTLE] Axe rotation found on held item: {heldItem.name}");
+            return rotation;
         }
 
-        AxeDismantleRotation foundRotation = FindObjectOfType<AxeDismantleRotation>(true);
-
-        if (showDebugLogs)
-        {
-            if (foundRotation != null)
-                Debug.Log("[DISMANTLE] Found AxeDismantleRotation in scene: " + foundRotation.name);
-            else
-                Debug.LogWarning("[DISMANTLE] AxeDismantleRotation not found in scene.");
-        }
-
-        return foundRotation;
+        return null;
     }
 
     private DismantleTarget GetDismantleTargetInFront()
     {
         if (raycastOrigin == null)
+        {
+            LogFailOnce("[DISMANTLE] Raycast origin is missing.");
             return null;
+        }
 
         if (Physics.Raycast(
                 raycastOrigin.position,
@@ -198,9 +228,18 @@ public class DismantlingManager : MonoBehaviour
                 dismantleDistance,
                 dismantleLayerMask))
         {
-            return hit.collider.GetComponentInParent<DismantleTarget>();
+            DismantleTarget target = hit.collider.GetComponentInParent<DismantleTarget>();
+
+            if (target == null)
+            {
+                LogFailOnce($"[DISMANTLE] Raycast hit '{hit.collider.name}', but no DismantleTarget found in parents.");
+                return null;
+            }
+
+            return target;
         }
 
+        LogFailOnce("[DISMANTLE] Raycast did not hit anything.");
         return null;
     }
 
@@ -219,11 +258,33 @@ public class DismantlingManager : MonoBehaviour
         currentProgressTime = 0f;
         isDismantling = false;
         dismantleSoundStarted = false;
-        WwiseAudioManager.Instance.PostEvent("Stop_Axe_Use", gameObject);
         isPreparingAxe = false;
         hasStartedAxeSwing = false;
 
+        if (WwiseAudioManager.Instance != null)
+            WwiseAudioManager.Instance.PostEvent("Stop_Axe_Use", gameObject);
+
         if (progressUI != null)
             progressUI.Hide();
+
+        Log("[DISMANTLE] Reset progress.");
+    }
+
+    private void Log(string message)
+    {
+        if (showDebugLogs)
+            Debug.Log(message);
+    }
+
+    private void LogFailOnce(string message)
+    {
+        if (!showDebugLogs)
+            return;
+
+        if (lastFailReason == message)
+            return;
+
+        lastFailReason = message;
+        Debug.LogWarning(message);
     }
 }

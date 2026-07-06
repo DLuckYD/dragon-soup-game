@@ -80,7 +80,13 @@ public class CauldronUI : MonoBehaviour
         currentIngredientIndex = ingredientIndex;
         state = CauldronVisualState.CookingIngredient;
 
-        timerText.color = Color.black;
+        Color color;
+
+        if (ColorUtility.TryParseHtmlString("#EFD6BE", out color))
+        {
+            timerText.color = color;
+        }
+        
         UpdateTimer(time);
 
         if (ingredientIndex >= 0 && ingredientIndex < ingredientIcons.Count)
