@@ -185,7 +185,7 @@ public class DarkEntity : MonoBehaviour
 
         isSpawning = false;
         spawnRoutine = null;
-        OnSpawned?.Invoke($"Dark Entity spawned ingredients for {recipe.displayName}");
+        OnSpawned?.Invoke($"Dark Entity spawned ingredients");
         
     }
 

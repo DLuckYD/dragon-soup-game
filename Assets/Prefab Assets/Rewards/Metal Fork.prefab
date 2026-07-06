@@ -13,7 +13,6 @@ GameObject:
   - component: {fileID: 2664533892780317091}
   - component: {fileID: 3163099320118020370}
   - component: {fileID: 3408998923635307067}
-  - component: {fileID: 2898635263764381226}
   m_Layer: 0
   m_Name: Metal Fork
   m_TagString: Untagged
@@ -140,18 +139,3 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &2898635263764381226
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4610189606682851446}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 23f27ba16c0b87d4cbf39b5d266e07b5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::FoodItem
-  itemData: {fileID: 0}
-  isInInventory: 0
-  isHeld: 0
