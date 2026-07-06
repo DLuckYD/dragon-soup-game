@@ -72,9 +72,9 @@ public class DarkEntityUI : MonoBehaviour
         }
 
         descriptionText.text =
-            $"The Dark Entity can restore the ingredients for:\n" +
+            $"The Dark Entity can restore the ingredients for:\n\n" +
             $"{currentRecipe.displayName}\n\n" +
-            $"Accepting the deal will increase the dark influence.";
+            $"Accepting this deal will have unavoidable consequences.";
 
         if (acceptButton != null)
         {

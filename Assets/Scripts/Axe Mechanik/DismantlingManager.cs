@@ -24,10 +24,11 @@ public class DismantlingManager : MonoBehaviour
     private DismantleTarget currentTarget;
     private float currentProgressTime;
     private bool isDismantling;
+    private bool dismantleSoundStarted = false;
     private bool isPreparingAxe;
     private bool hasStartedAxeSwing;
 
-    private AxeDismantleRotation currentAxeRotation;
+    [SerializeField] private AxeDismantleRotation currentAxeRotation;
 
     private void Awake()
     {
@@ -72,6 +73,11 @@ public class DismantlingManager : MonoBehaviour
         {
             currentTarget = target;
             currentProgressTime = 0f;
+            if (!dismantleSoundStarted)
+            {
+                dismantleSoundStarted = true;
+                WwiseAudioManager.Instance.PostEvent("Axe_Use", gameObject);
+            }
             isDismantling = false;
             isPreparingAxe = true;
             hasStartedAxeSwing = false;
@@ -132,7 +138,7 @@ public class DismantlingManager : MonoBehaviour
             {
                 if (showDebugLogs)
                     Debug.Log($"[DISMANTLE] Completed dismantling: {completedTarget.name}");
-
+                WwiseAudioManager.Instance.PostEvent("Item_Demolished", gameObject);
                 completedTarget.Dismantle();
             }
         }
@@ -160,9 +166,24 @@ public class DismantlingManager : MonoBehaviour
             return null;
 
         if (axeRotation != null)
-            return axeRotation;
+        {
+            if (showDebugLogs)
+                Debug.Log("[DISMANTLE] Using assigned axeRotation from Inspector.");
 
-        return FindObjectOfType<AxeDismantleRotation>(true);
+            return axeRotation;
+        }
+
+        AxeDismantleRotation foundRotation = FindObjectOfType<AxeDismantleRotation>(true);
+
+        if (showDebugLogs)
+        {
+            if (foundRotation != null)
+                Debug.Log("[DISMANTLE] Found AxeDismantleRotation in scene: " + foundRotation.name);
+            else
+                Debug.LogWarning("[DISMANTLE] AxeDismantleRotation not found in scene.");
+        }
+
+        return foundRotation;
     }
 
     private DismantleTarget GetDismantleTargetInFront()
@@ -197,6 +218,8 @@ public class DismantlingManager : MonoBehaviour
         currentTarget = null;
         currentProgressTime = 0f;
         isDismantling = false;
+        dismantleSoundStarted = false;
+        WwiseAudioManager.Instance.PostEvent("Stop_Axe_Use", gameObject);
         isPreparingAxe = false;
         hasStartedAxeSwing = false;
 

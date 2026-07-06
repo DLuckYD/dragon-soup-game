@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class HotbarManager : MonoBehaviour
@@ -9,8 +10,13 @@ public class HotbarManager : MonoBehaviour
     [Header("Items Database")]
     [SerializeField] private ItemDatabase itemDatabase;
 
+    public static event Action<int> OnRequestEquipSlot;
+
     [Header("Drop Point for Items")]
     public Transform dropPoint;
+
+    [SerializeField] private int activeSlotIndex = 0;
+    public int ActiveSlotIndex => activeSlotIndex;
 
     private void Awake()
     {
@@ -222,18 +228,18 @@ public class HotbarManager : MonoBehaviour
         }
     }
 
-    public void AddCookingDishToInventory(IngredientData result)
+    public bool AddCookingDishToInventory(IngredientData result)
     {
         if (result == null)
         {
             Debug.LogWarning("addCookingDishToInventory: result is NULL");
-            return;
+            return false;
         }
 
         if (result.worldPrefab == null)
         {
             Debug.LogWarning($"addCookingDishToInventory: worldPrefab is NULL for IngredientData {result.name}");
-            return;
+            return false;
         }
 
         for (int i = 0; i < slots.Length; i++)
@@ -241,38 +247,78 @@ public class HotbarManager : MonoBehaviour
             var s = slots[i];
             if (s.IsEmpty)
             {
-                // create prefab instance
                 GameObject go = Instantiate(result.worldPrefab);
                 go.name = result.displayName + " (Inventory)";
 
-                // get any InventoryItem component
                 InventoryItem inventoryItem = go.GetComponent<InventoryItem>();
                 if (inventoryItem == null)
                 {
                     Debug.LogWarning("addCookingDishToInventory: worldPrefab has no InventoryItem component.");
                     Destroy(go);
-                    return;
+                    return false;
                 }
 
-                // add itemData and hide
                 inventoryItem.itemData = result;
                 inventoryItem.isInInventory = true;
                 inventoryItem.isHeld = false;
                 go.SetActive(false);
 
-                // add to the slot
                 s.itemData = result;
                 s.uniqueItem = inventoryItem;
                 s.amount = 1;
 
                 s.UpdateUI();
-                return;
+
+                SetActiveSlot(i);
+                OnRequestEquipSlot?.Invoke(i);
+
+                return true;
             }
         }
 
         Debug.Log("addCookingDishToInventory: inventory is full");
+        return false;
     }
 
+    public void SpawnDishInWorld(IngredientData result)
+    {
+        if (result == null || result.worldPrefab == null)
+        {
+            Debug.LogWarning("SpawnDishInWorld: result or worldPrefab is NULL");
+            return;
+        }
+
+        Vector3 pos = dropPoint != null ? dropPoint.position : transform.position;
+        Quaternion rot = dropPoint != null ? dropPoint.rotation : Quaternion.identity;
+
+        GameObject go = Instantiate(result.worldPrefab, pos, rot);
+        go.name = result.displayName + " (World)";
+
+        InventoryItem inventoryItem = go.GetComponent<InventoryItem>();
+        if (inventoryItem != null)
+        {
+            inventoryItem.itemData = result;
+            inventoryItem.isInInventory = false;
+            inventoryItem.isHeld = false;
+        }
+
+        Debug.Log("SpawnDishInWorld: inventory full, dropped dish in world: " + result.displayName);
+    }
+
+    public void SetActiveSlot(int index)
+    {
+        if (index < 0 || index >= slots.Length)
+            return;
+
+        activeSlotIndex = index;
+
+        Debug.Log("Active slot changed to: " + activeSlotIndex);
+
+        for (int i = 0; i < slots.Length; i++)
+        {
+            slots[i].SetHighlighted(i == activeSlotIndex);
+        }
+    }
     public InventorySaveData CaptureSaveData()
     {
         InventorySaveData saveData = new InventorySaveData();
@@ -356,4 +402,30 @@ public class HotbarManager : MonoBehaviour
 
         slots = inventorySlots.ToArray();
     }
+
+    public bool HasEmptySlot()
+    {
+        foreach (var slot in slots)
+        {
+            if (slot.IsEmpty)
+                return true;
+        }
+
+        return false;
+    }
+    public int GetItemDataAmount(IngredientData itemData)
+    {
+        int totalAmount = 0;
+
+        foreach (var slot in slots)
+        {
+            if (!slot.IsEmpty && slot.itemData == itemData)
+            {
+                totalAmount += slot.amount;
+            }
+        }
+
+        return totalAmount;
+    }
+
 }

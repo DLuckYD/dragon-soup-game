@@ -1,5 +1,6 @@
 using UnityEngine;
 using System;
+using System.Collections;
 
 public class DarkEntity : MonoBehaviour
 {
@@ -10,13 +11,22 @@ public class DarkEntity : MonoBehaviour
     [Header("Spawn Settings")]
     [SerializeField] private Transform spawnPoint;
     [SerializeField] private float itemSpacing = 0.6f;
+    [SerializeField] private int rowSize = 4;
+
+    [Header("Delayed Spawn")]
+    [SerializeField] private float spawnDelayBetweenItems = 0.15f;
+    [SerializeField] private float spawnHeightOffset = 0.15f;
 
     [Header("State")]
     [SerializeField] private int darkEntityUsageCount = 0;
+    [SerializeField] private bool isSpawning = false;
 
     public int DarkEntityUsageCount => darkEntityUsageCount;
-    
+    public bool IsSpawning => isSpawning;
+
     public static event Action<string> OnSpawned;
+
+    private Coroutine spawnRoutine;
 
     private void Awake()
     {
@@ -33,8 +43,14 @@ public class DarkEntity : MonoBehaviour
 
     public void Interact()
     {
+        if (isSpawning)
+        {
+            return; 
+        }
+
         AkUnitySoundEngine.SetState("Game_State", "Dark_Entity");
         WwiseAudioManager.Instance.PostEvent("Dark_Entity_Interact", gameObject);
+
         if (recipeProgressManager == null)
         {
             Debug.LogWarning("[DARK ENTITY] RecipeProgressManager is missing.");
@@ -57,6 +73,13 @@ public class DarkEntity : MonoBehaviour
     {
         AkUnitySoundEngine.SetState("Game_State", "In_Game");
         WwiseAudioManager.Instance.PostEvent("Dark_Entity_Accept", gameObject);
+
+        if (isSpawning)
+        {
+            Debug.Log("[DARK ENTITY] Cannot accept deal. Already spawning.");
+            return;
+        }
+
         if (recipeProgressManager == null)
         {
             Debug.LogWarning("[DARK ENTITY] Cannot accept deal. RecipeProgressManager is missing.");
@@ -65,47 +88,55 @@ public class DarkEntity : MonoBehaviour
 
         Recipe currentRecipe = recipeProgressManager.CurrentActiveRecipe;
 
-        if (currentRecipe == null)
+        if (!CanSpawnRecipe(currentRecipe))
         {
-            Debug.LogWarning("[DARK ENTITY] Cannot spawn items. Current active recipe is null.");
             return;
         }
-
-        SpawnRecipeIngredients(currentRecipe);
 
         darkEntityUsageCount++;
 
         Debug.Log($"[DARK ENTITY] Deal accepted. Usage count: {darkEntityUsageCount}");
+
+        spawnRoutine = StartCoroutine(SpawnRecipeIngredientsWithDelay(currentRecipe));
     }
 
     public void DeclineDeal()
     {
         AkUnitySoundEngine.SetState("Game_State", "In_Game");
         WwiseAudioManager.Instance.PostEvent("Dark_Entity_Decline", gameObject);
+
         Debug.Log("[DARK ENTITY] Deal declined.");
     }
 
-    private void SpawnRecipeIngredients(Recipe recipe)
+    private bool CanSpawnRecipe(Recipe recipe)
     {
         if (recipe == null)
         {
-            Debug.LogWarning("[DARK ENTITY] Recipe is null.");
-            return;
+            Debug.LogWarning("[DARK ENTITY] Cannot spawn items. Current active recipe is null.");
+            return false;
         }
 
         if (spawnPoint == null)
         {
             Debug.LogWarning("[DARK ENTITY] Spawn point is missing.");
-            return;
+            return false;
         }
 
         if (recipe.ingredients == null || recipe.ingredients.Count == 0)
         {
             Debug.LogWarning($"[DARK ENTITY] Recipe {recipe.displayName} has no ingredients.");
-            return;
+            return false;
         }
 
+        return true;
+    }
+
+    private IEnumerator SpawnRecipeIngredientsWithDelay(Recipe recipe)
+    {
+        isSpawning = true;
+
         int spawnedIndex = 0;
+        int totalSpawned = 0;
 
         foreach (IngredientAmount ingredient in recipe.ingredients)
         {
@@ -139,20 +170,37 @@ public class DarkEntity : MonoBehaviour
                 );
 
                 spawnedIndex++;
+                totalSpawned++;
+
+                if (spawnDelayBetweenItems > 0f)
+                {
+                    yield return new WaitForSecondsRealtime(spawnDelayBetweenItems);
+                }
+                else
+                {
+                    yield return null;
+                }
             }
         }
-        OnSpawned?.Invoke("DARK ENTITY Spawned all ingredients for recipe!");
-        Debug.Log($"[DARK ENTITY] Spawned all ingredients for recipe: {recipe.displayName}");
+
+        isSpawning = false;
+        spawnRoutine = null;
+        OnSpawned?.Invoke($"Dark Entity spawned ingredients for {recipe.displayName}");
+        
     }
 
     private Vector3 GetSpawnPosition(int index)
     {
-        int rowSize = 4;
+        int safeRowSize = Mathf.Max(1, rowSize);
 
-        int x = index % rowSize;
-        int z = index / rowSize;
+        int x = index % safeRowSize;
+        int z = index / safeRowSize;
 
-        Vector3 offset = new Vector3(x * itemSpacing, 0f, z * itemSpacing);
+        Vector3 offset = new Vector3(
+            x * itemSpacing,
+            spawnHeightOffset,
+            z * itemSpacing
+        );
 
         return spawnPoint.position + offset;
     }
