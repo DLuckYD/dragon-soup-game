@@ -2445,12 +2445,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EndingCutsceneStarter
   cutscenePlayer: {fileID: 207974343}
-  darkEntity: {fileID: 0}
+  darkEntity: {fileID: 665177431}
   recipeDatabase: {fileID: 11400000, guid: 29417aea8e2ce8b4580475c417e9a371, type: 2}
   badEndingPlayer: {fileID: 1781230039}
   goodEndingPlayer: {fileID: 1521471383}
   fadeCanvasGroup: {fileID: 696970706}
-  fadeOutDuration: 1
+  fadeOutDuration: 10
   fadeInDuration: 0.5
   badEndingIfDarkEntityWasUsed: 1
   mainMenuSceneName: MainMenu
