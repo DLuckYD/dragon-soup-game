@@ -8498,7 +8498,18 @@ MonoBehaviour:
   successMessage: Item modified.
   noItemMessage: No item to modify.
   destroyListedItems: 0
-  itemsToDestroy: []
+  itemsToDestroy:
+  - {fileID: 11400000, guid: 64be6ad573a51c344b44d050e8b4464b, type: 2}
+  - {fileID: 11400000, guid: e5229585616e33846a80dbb35d1c9332, type: 2}
+  - {fileID: 11400000, guid: bbca52fb7dd2faf45beb31fecc705b7d, type: 2}
+  - {fileID: 11400000, guid: d8ab261328deb754b8b02aff00167109, type: 2}
+  - {fileID: 11400000, guid: 0fe3c5aba1538eb4e8218d7d567413d7, type: 2}
+  - {fileID: 11400000, guid: 98ff38b6fcdc2964dac5cb3c74f5b864, type: 2}
+  - {fileID: 11400000, guid: 5bf6d256927305d42979a9a2f745ace2, type: 2}
+  - {fileID: 11400000, guid: cbaf4f4f90a6dc246b9b0650d0146e17, type: 2}
+  - {fileID: 11400000, guid: 9e37e498027a7c045b72025a068e1a9c, type: 2}
+  - {fileID: 11400000, guid: f5f5bd89b12eebe4ea273004d2b24445, type: 2}
+  - {fileID: 11400000, guid: a7b3a36c786323c41b51196d871aae9f, type: 2}
   itemDestroyedMessage: Item destroyed
   conditions:
     requireCanBeModified: 1
