@@ -8492,12 +8492,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UpgradeStation
   stationId: axe_upgrade
-  canInteract: 0
+  canInteract: 1
   disabledMessage: This station cannot be used right now.
   WwiseSwitchName: 
   successMessage: Item modified.
   noItemMessage: No item to modify.
-  destroyListedItems: 0
+  destroyListedItems: 1
   itemsToDestroy:
   - {fileID: 11400000, guid: 64be6ad573a51c344b44d050e8b4464b, type: 2}
   - {fileID: 11400000, guid: e5229585616e33846a80dbb35d1c9332, type: 2}
@@ -10783,7 +10783,7 @@ MeshCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 5
   m_Convex: 0
   m_CookingOptions: 30
