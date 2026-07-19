@@ -8492,7 +8492,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UpgradeStation
   stationId: axe_upgrade
-  canInteract: 1
+  canInteract: 0
   disabledMessage: This station cannot be used right now.
   WwiseSwitchName: 
   successMessage: Item modified.
@@ -10783,7 +10783,7 @@ MeshCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 5
   m_Convex: 0
   m_CookingOptions: 30
