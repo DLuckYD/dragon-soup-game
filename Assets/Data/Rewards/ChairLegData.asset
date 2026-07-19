@@ -17,4 +17,5 @@ MonoBehaviour:
   icon: {fileID: 21300000, guid: e30dd923a5f981b41b3eb168cab354be, type: 3}
   isStackable: 0
   maxStackSize: 1
-  worldPrefab: {fileID: 7858043954312102514, guid: 09097f138d9fc0c44baf013d49150199, type: 3}
+  worldPrefab: {fileID: 3759979371425677329, guid: aa08b8aa810c1184ab1e40bc45f3a5b8, type: 3}
+  cookingTime: 0
