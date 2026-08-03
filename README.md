@@ -136,20 +136,20 @@ Completing quests, preparing rewards, and using the tavern systems moves the sto
 
 ## Notable Systems
 
--Adventurer spawning and interaction
--Quest and reward system
--JSON-based dialogue
--Dice-based haggling
--Cooking and recipe system
--Nine-slot hotbar
--Item pickup, carrying, and placement
--Upgrade stations
--Furniture dismantling
--Dark Entity interactions
--Game recipe progression
--Save and load system
--Main menu, settings, and gameplay UI
--Notifications, cutscenes, and interaction feedback
+- Adventurer spawning and interaction
+- Quest and reward system
+- JSON-based dialogue
+- Dice-based haggling
+- Cooking and recipe system
+- Nine-slot hotbar
+- Item pickup, carrying, and placement
+- Upgrade stations
+- Furniture dismantling
+- Dark Entity interactions
+- Game recipe progression
+- Save and load system
+- Main menu, settings, and gameplay UI
+- Notifications, cutscenes, and interaction feedback
 
 ---
 
