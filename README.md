@@ -104,42 +104,66 @@ Completing quests, preparing rewards, and using the tavern systems moves the sto
 
 <div align="center">
 
-<img src="docs/readme/screenshot-01.jpg" alt="Fishy Game combat" width="49%">
-<img src="docs/readme/screenshot-02.jpg" alt="Fishy Game upgrade selection" width="49%">
+<img src="docs/readme/main-menu.png" alt="Dragon Soup main menu" width="49%">
+<img src="docs/readme/tavern.png" alt="Dragon Soup tavern" width="49%">
 
-<img src="docs/readme/screenshot-03.jpg" alt="Fishy Game depth transition" width="49%">
-<img src="docs/readme/screenshot-04.jpg" alt="Fishy Game enemy horde" width="49%">
+<img src="docs/readme/adventurers.png" alt="Dragon Soup adventurers" width="49%">
+<img src="docs/readme/item-pickup.png" alt="Dragon Soup item pickup" width="49%">
 
-<img src="docs/readme/screenshot-05.png" alt="Fishy Game final screen" width="99%">
+<img src="docs/readme/item-upgrade.png" alt="Dragon Soup item upgrade" width="49%">
+<img src="docs/readme/forge-room.png" alt="Dragon Soup forge room" width="49%">
+
+<img src="docs/readme/cookbook.png" alt="Dragon Soup cookbook" width="99%">
 
 </div>
 
----SS
+---
+## Technology
 
-## Overview
+- **Engine:** Unity
+- **Language:** C#
+- **Audio:** Wwise
+- **3d Modeling:** Blender
+- **Textures creation:** Substance painter
+- **2d Art:** Procreate
+- **Data architecture:** ScriptableObjects for items, ingredients, recipes, adventurers and so on
+- **Dialogue:** JSON-based dialogue system
+- **System communication:** C# events
+- **Reusable content:** Unity Prefabs for all items, characters, stations, and UI elements
+- **Saving:** Custom save and load system
 
-Dragon Soup flips the classic fantasy RPG perspective — instead of controlling the adventurer, you manage the tavern. Send adventurers on quests to collect ingredients, reward them with items from your inventory (honest or otherwise), and work toward crafting the legendary Dragon Soup.
+---
 
-The game blends resource management, light deception mechanics, and a branching narrative with multiple endings.
+## Notable Systems
 
-## Gameplay Features
+-Adventurer spawning and interaction
+-Quest and reward system
+-JSON-based dialogue
+-Dice-based haggling
+-Cooking and recipe system
+-Nine-slot hotbar
+-Item pickup, carrying, and placement
+-Upgrade stations
+-Furniture dismantling
+-Dark Entity interactions
+-Game recipe progression
+-Save and load system
+-Main menu, settings, and gameplay UI
+-Notifications, cutscenes, and interaction feedback
 
-- **Quest system** — dispatch adventurers and receive ingredients upon their return
-- **Reward negotiation** — offer items as payment; adventurers evaluate their value before accepting
-- **Item upgrade stations** — enhance item value to unlock harder quests
-- **Inventory management** — collect, store, and manage tavern items
-- **Cooking system** — gather ingredients and follow recipes toward the final Dragon Soup
-- **Dark Pact mechanic** — an alternative path via a Dark Entity that affects the ending
-- **Multiple endings** — Good / Bad / Failed outcomes based on your choices
+---
 
-## Tech Stack
+## Team
 
-| Tool | Purpose |
-|------|---------|
-| Unity | Game engine |
-| Unity Version Control | Team collaboration & version control |
-| Wwise | Audio & music integration |
-| C# | Game logic and systems |
+| Team Member | Role | Main Responsibilities |
+|---|---|---|
+| **Taha Batur Şenli** | Game Designer & Project Manager | Game concept, gameplay design and narrative content |
+| **Roman Shostak** | Unity Developer | Dialogue and quest systems, haggling, item upgrading and dismantling, and the Dark Entity system |
+| **Iryna Huryn** | Unity Developer | Cooking system фтв progression, hotbar and item interactions, menu implementation, and save/load system |
+| **Nazree Nadhir** | 3D Artist | Furniture, rewards, ingredients and finished dishes |
+| **Lisa Grebe** | 2D & 3D Artist | House model, UI, icons, and other 2D assets |
+| **Jonathan Glück** | Sound Designer & Audio Engineer | Music, sound effects, audio implementation, and mixing |
+---
 
 **Platform:** Windows 8+
 
