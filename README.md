@@ -197,7 +197,7 @@ Unless otherwise noted, the original code, artwork, game design materials, and h
 
 ## License
 
-Copyright © 2026 Fishy Game Team. All rights reserved.
+Copyright © 2026 Dragon Soup Team. All rights reserved.
 
 This project is publicly available for portfolio viewing and educational evaluation only. The source code, original assets, hardware materials, and other project contents may not be copied, modified, redistributed, or used in other projects without prior written permission from the respective copyright holders.
 
