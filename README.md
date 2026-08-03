@@ -1,6 +1,21 @@
-# 🐉 Dragon Soup
+<div align="center">
+  
+# 🐉🍲 Dragon Soup
 
-> A narrative puzzle simulation game where you play as the tavern keeper, not the hero.
+### A narrative puzzle simulation game where you play as the tavern keeper, not the hero.
+
+[![Status](https://img.shields.io/badge/status-prototype-informational)](#project-status)
+[![Engine](https://img.shields.io/badge/engine-Unity-black)](#technology)
+[![Language](https://img.shields.io/badge/language-C%23-blue)](#technology)
+[![Project](https://img.shields.io/badge/project-university%20game-green)](#team)
+
+<img src="Assets/UI_Elements/Dragon Soup Logo April.png" alt="Dragon Soup cover image" width="50%">
+
+</div>
+
+---
+
+## About the Game
 
 ## Overview
 
