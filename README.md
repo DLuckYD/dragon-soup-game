@@ -27,16 +27,7 @@ The main idea of the game is to show the familiar MMORPG quest system from the o
 
 <div align="center">
 
-<a href="https://youtu.be/YpTqSrJ9CFw">
-  <img
-    src="docs/readme/cover.jpg"
-    alt="Watch the Dragon Soup gameplay trailer"
-    width="900">
-</a>
-
-<br>
-
-<a href="https://youtu.be/YpTqSrJ9CFw">
+<a href="https://youtu.be/Md8u-3zo31Y?si=y4kyKYZ12CvHMw2M">
   <strong>▶ Watch the Gameplay Trailer</strong>
 </a>
 
@@ -107,6 +98,23 @@ Completing quests, preparing rewards, and using the tavern systems moves the sto
 </tr>
 </table>
 
+---
+
+## Screenshots
+
+<div align="center">
+
+<img src="docs/readme/screenshot-01.jpg" alt="Fishy Game combat" width="49%">
+<img src="docs/readme/screenshot-02.jpg" alt="Fishy Game upgrade selection" width="49%">
+
+<img src="docs/readme/screenshot-03.jpg" alt="Fishy Game depth transition" width="49%">
+<img src="docs/readme/screenshot-04.jpg" alt="Fishy Game enemy horde" width="49%">
+
+<img src="docs/readme/screenshot-05.png" alt="Fishy Game final screen" width="99%">
+
+</div>
+
+---SS
 
 ## Overview
 
