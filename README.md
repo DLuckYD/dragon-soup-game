@@ -163,21 +163,44 @@ Completing quests, preparing rewards, and using the tavern systems moves the sto
 | **Nazree Nadhir** | 3D Artist | Furniture, rewards, ingredients and finished dishes |
 | **Lisa Grebe** | 2D & 3D Artist | House model, UI, icons, and other 2D assets |
 | **Jonathan Glück** | Sound Designer & Audio Engineer | Music, sound effects, audio implementation, and mixing |
+
 ---
 
-**Platform:** Windows 8+
+## Links
 
-## My Role
+- **Playable build:** Coming later
+- **Gameplay video:** [Link](https://youtu.be/Md8u-3zo31Y?si=y4kyKYZ12CvHMw2M)
 
-*Unity Developer — UI & Systems Integration*
+---
 
-- Implemented UI elements and interface logic
-- Built and maintained scene structure and visual consistency
-- Integrated design-oriented features into Unity
-- Bridged technical execution with the visual design direction
-- Contributed to the overall gameplay pipeline from system structure to playable prototype
+## Credits
 
-## Project Status
+Created as a university team project by students from different specializations, including game design, Unity development, hardware development, and art.
 
-University team project (Hochschule Bonn-Rhein-Sieg). MVP completed covering core gameplay requirements including movement, item interaction, item upgrade, inventory, cooking, quest system, and basic UI.
+Special thanks to everyone who contributed to the prototype, testing, presentation, and final delivery.
 
+---
+
+## Third-Party Assets
+
+Dragon Soup uses some of third-party assets. These materials remain the property of their respective authors and are used according to their original licenses.
+
+| Asset | Author / Source | License | Usage |
+|---|---|---|---|
+| **[Berry Rotunda](https://www.dafont.com/berry-rotunda.font)** | Typo-Graf / DaFont | Public Domain | Used for menus, dialogue panels, notifications, and other UI text |
+| **[Tudor Wall 03](https://freestylized.com/material/tudor-wall-03/)** | FreeStylized | FreeStylized Custom CC0 / Royalty-Free License | Used for the tavern wall material |
+| **[Wood Planks 05](https://freestylized.com/material/wood_planks_05/)** | FreeStylized | FreeStylized Custom CC0 / Royalty-Free License | Used for the tavern floor material |
+
+Unless otherwise noted, the original code, artwork, game design materials, and hardware-related content were created by the Dragon Soup development team.
+
+---
+
+## License
+
+Copyright © 2026 Fishy Game Team. All rights reserved.
+
+This project is publicly available for portfolio viewing and educational evaluation only. The source code, original assets, hardware materials, and other project contents may not be copied, modified, redistributed, or used in other projects without prior written permission from the respective copyright holders.
+
+Third-party assets are excluded from this license and remain subject to their respective licenses and terms of use.
+
+---
