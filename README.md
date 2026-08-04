@@ -1,6 +1,6 @@
 <div align="center">
 
-<img src="docs/readme/Dragon Soup Logo.png" alt="Dragon Soup cover image" width="50%">
+<img src="docs/readme/dragon_soup_logo_bg.png" alt="Dragon Soup cover image" width="50%">
 
 ### A narrative puzzle simulation game where you play as the tavern keeper, not the hero.
 
