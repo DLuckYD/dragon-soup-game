@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0a63bdc680b8d1e4e936ed7908a53288, type: 3}
+  m_Name: adv_026
+  m_EditorClassIdentifier: Assembly-CSharp::AdventurerData
+  id: adv_026
+  displayName: Evelra Mothborne
+  classType: Archer
+  skinSprite: {fileID: 0}
+  faceSprite: {fileID: 21300000, guid: 498759675a1a3b24d81be8e3fffd2953, type: 3}
+  bodySprite: {fileID: 21300000, guid: 265f50d62ea85f846bd66cdb71acdf13, type: 3}
+  weaponSprite: {fileID: 21300000, guid: db86bfdfe2943e748867b4e524d22a4e, type: 3}
+  preferredRewardItemId: stick
+  preferredItemState: 2
+  difficultyModifier: 0
+  viceId: lazy

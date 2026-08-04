@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ea32ced8bc60a6c409646b9f9909ae03, type: 3}
   m_Name: ButterKnifeData
   m_EditorClassIdentifier: Assembly-CSharp::ItemData
-  id: 3
+  id: butter_knife
   displayName: Butter Knife
-  icon: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
+  icon: {fileID: 21300000, guid: d62eb940f2a87aa49a082f59a2056686, type: 3}
   isStackable: 0
   maxStackSize: 1
   worldPrefab: {fileID: 4288017003035144913, guid: e22ce7adce317a942b6138a63b986eda, type: 3}

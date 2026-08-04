@@ -19,7 +19,7 @@ public enum QuestState
 [Serializable]
 public class QuestRequest
 {
-    public ItemData ingridient;
+    public IngredientData ingredient;
     public int amount;
     public int minRewardValue;
     public float returnDelaySeconds;

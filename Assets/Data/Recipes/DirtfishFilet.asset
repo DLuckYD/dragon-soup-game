@@ -1,0 +1,32 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7eaa5f4e5b4ce3344bf280ac66fa903c, type: 3}
+  m_Name: DirtfishFilet
+  m_EditorClassIdentifier: Assembly-CSharp::Recipe
+  id: recipe_4
+  displayName: Dirtfish Filet
+  ingredients:
+  - item: {fileID: 11400000, guid: 8d9f93fa180beff4dbdd1328b2176f45, type: 2}
+    amount: 1
+  - item: {fileID: 11400000, guid: 77033d24389d8b040bda781a5d3e1880, type: 2}
+    amount: 2
+  - item: {fileID: 11400000, guid: 0adff101fac623148bc77439c4e95d86, type: 2}
+    amount: 1
+  result: {fileID: 11400000, guid: b8e9cc3b1d8d8e84db4c059f65e76937, type: 2}
+  cookTime: 0
+  icon: {fileID: 21300000, guid: 0ebd5cd5adb09924682c537868273c0f, type: 3}
+  difficultyLevel: 2
+  progressionEffects:
+  - effectType: 0
+    targetId: recipe_5
+  - effectType: 1
+    targetId: paint_station

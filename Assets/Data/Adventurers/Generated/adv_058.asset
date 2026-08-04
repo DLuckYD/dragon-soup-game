@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0a63bdc680b8d1e4e936ed7908a53288, type: 3}
+  m_Name: adv_058
+  m_EditorClassIdentifier: Assembly-CSharp::AdventurerData
+  id: adv_058
+  displayName: Helvra Krossmere
+  classType: Warrior
+  skinSprite: {fileID: 0}
+  faceSprite: {fileID: 21300000, guid: d35cc316d0538864abc416d5e749fcbf, type: 3}
+  bodySprite: {fileID: 21300000, guid: 9042c36ef7e69e74db180128a01c82f3, type: 3}
+  weaponSprite: {fileID: 21300000, guid: 70b3e80d0f8054243be9dd2f2a90a5a5, type: 3}
+  preferredRewardItemId: chair_back
+  preferredItemState: 4
+  difficultyModifier: 0
+  viceId: lazy

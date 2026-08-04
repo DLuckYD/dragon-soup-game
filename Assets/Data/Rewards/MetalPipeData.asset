@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ea32ced8bc60a6c409646b9f9909ae03, type: 3}
   m_Name: MetalPipeData
   m_EditorClassIdentifier: Assembly-CSharp::ItemData
-  id: 1
+  id: metal_pipe
   displayName: Metal Pipe
-  icon: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
+  icon: {fileID: 21300000, guid: f3515f57ae7a6a04286a8bd835a8f1cc, type: 3}
   isStackable: 0
   maxStackSize: 1
   worldPrefab: {fileID: 1501543841725994967, guid: 895fd01f4762b2849ad1e19b1233ebd9, type: 3}

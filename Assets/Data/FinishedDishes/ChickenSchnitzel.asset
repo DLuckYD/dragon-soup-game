@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ea32ced8bc60a6c409646b9f9909ae03, type: 3}
+  m_Name: ChickenSchnitzel
+  m_EditorClassIdentifier: Assembly-CSharp::ItemData
+  id: chicken_schnitzel
+  displayName: Chicken Schnitzel
+  icon: {fileID: 21300000, guid: 94d932badf1d71b4481844c7621fe3a7, type: 3}
+  isStackable: 1
+  maxStackSize: 12
+  worldPrefab: {fileID: 5912008312385521913, guid: c07d27894e4907d4087304469680057e, type: 3}
+  cookingTime: 0

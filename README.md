@@ -1,130 +1,206 @@
-# 🐉 Dragon Soup
+<div align="center">
 
-> A narrative puzzle simulation game where you play as the tavern keeper, not the hero.
+<img src="docs/readme/dragon_soup_logo_bg.png" alt="Dragon Soup cover image" width="50%">
 
-![Project Banner Placeholder](./docs/images/banner-placeholder.png)
+### A narrative puzzle simulation game where you play as the tavern keeper, not the hero.
 
-## Overview
+[![Status](https://img.shields.io/badge/status-prototype-informational)](#project-status)
+[![Engine](https://img.shields.io/badge/engine-Unity-black)](#technology)
+[![Language](https://img.shields.io/badge/language-C%23-blue)](#technology)
+[![Project](https://img.shields.io/badge/project-university%20game-green)](#team)
 
-**Dragon Soup** is a fantasy-themed narrative management prototype that reverses the usual RPG perspective.  
-Instead of controlling the adventurer, the player takes the role of a tavern keeper who manages quests, items, ingredients, and risky decisions behind the scenes.
-
-Adventurers visit the tavern, accept quests, return with resources, and expect rewards in exchange. The player must decide how to manage inventory, whether to upgrade items honestly, and how far to go in pursuit of the legendary **Dragon Soup**. The game combines light strategy, item progression, and branching outcomes shaped by player choices.
-
-The project was developed as a university team project at **Hochschule Bonn-Rhein-Sieg** and focuses on delivering a functional MVP that demonstrates the core gameplay loop, system integration, and narrative direction.
-
-## Version Control Guide
-
-New contributors — especially members of the Art Team — should read the version control guide before working with the repository.
-
-👉 [Open the full GitHub instruction here](./instruction.md)
-
-## Core Gameplay Loop
-
-1. Receive or assign quests to adventurers  
-2. Send adventurers out into the world  
-3. Collect ingredients and items when they return  
-4. Manage and upgrade inventory items  
-5. Use gathered resources for cooking and progression  
-6. Make choices that influence narrative direction and ending outcomes
-
-## Gameplay Features
-
-- **Quest System** — dispatch adventurers and receive ingredients or rewards upon completion
-- **Reward Negotiation** — offer items as payment; adventurers evaluate whether the reward is acceptable
-- **Item Upgrade Stations** — improve item value to unlock better quest opportunities
-- **Inventory Management** — collect, store, and organize usable tavern resources
-- **Cooking System** — combine ingredients and work toward crafting the final Dragon Soup
-- **Dark Pact Mechanic** — an alternative progression path tied to a Dark Entity
-- **Branching Outcomes** — player choices affect how the story concludes
-- **Narrative Framing** — the player operates indirectly through tavern management rather than direct combat
-
-## Visuals
-
-### Screenshots
-![Screenshot Placeholder 1](./docs/images/screenshot-01.png)
-![Screenshot Placeholder 2](./docs/images/screenshot-02.png)
-
-### Video Demo
-[Demo Video Placeholder](./docs/videos/demo-link-here)
-
-## Tech Stack
-
-| Tool | Purpose |
-|------|---------|
-| **Unity** | Main game engine |
-| **C#** | Gameplay logic, UI logic, and system implementation |
-| **GitHub** | Version control and repository hosting |
-| **GitHub Desktop** | Simplified collaboration workflow for non-programming team members |
-| **Wwise** | Audio and music integration |
-
-**Target Platform:** Windows 8+
-
-## Project Scope
-
-The MVP focuses on validating the main game concept and implementing the core systems required for a playable prototype.  
-At this stage, the project covers:
-
-- tavern-based gameplay structure
-- item interaction and inventory flow
-- item upgrading
-- cooking progression
-- quest-related logic
-- basic UI and scene integration
-- branching design direction for different outcomes
-
-## My Role
-
-**Unity Developer — UI & Systems Integration**
-
-My contribution focused on the implementation and integration side of the project inside Unity. This included both technical and structure-related tasks needed to turn the game concept into a playable prototype.
-
-Main responsibilities:
-- Implemented UI elements and interface-related logic
-- Integrated gameplay systems into the Unity project structure
-- Maintained scene organization and visual consistency
-- Connected design-driven ideas with technical implementation
-- Supported the playable prototype pipeline from system setup to in-engine functionality
-
-## Project Status
-
-**Status:** MVP completed
-
-The current prototype covers the main gameplay foundation required for the university project, including:
-- movement
-- item interaction
-- item upgrade flow
-- inventory
-- cooking
-- quest system
-- basic UI implementation
-
-The project is functional as a prototype and serves as the base for future refinement, balancing, visual polishing, and expanded content.
-
-## Academic Context
-
-This project was created as part of a university team assignment at **Hochschule Bonn-Rhein-Sieg**.  
-Its purpose is not only to present a game idea, but also to demonstrate collaborative development, gameplay system integration, and production workflow within a student team environment.
-
-## Repository Notes
-
-If you are joining the project for the first time:
-- read the [version control guide](./instruction.md)
-- clone the repository
-- create your own branch from `development-branch`
-- never work directly in the shared branch unless instructed
-- commit your changes clearly and in small logical steps
-
-## Future Improvements
-
-Potential next steps for the project include:
-- additional quest variety
-- more developed reward logic
-- stronger audiovisual feedback
-- improved balancing of progression systems
-- expanded narrative outcomes
-- further UI polish and usability improvements
+</div>
 
 ---
 
-**Dragon Soup** explores what happens when the hero’s story is told from the tavern counter instead of the battlefield.
+## About the Game
+
+**Dragon Soup** is a first-person fantasy tavern game that changes the usual role of the player in MMORPGs.
+
+Normally, the player is an adventurer who talks to NPCs, accepts quests, and receives rewards. In **Dragon Soup**, the player takes the role of one of these NPCs — a tavern keeper. Adventurers come to the tavern with their own requests and problems. The player must talk to them, understand what they need, prepare quests and rewards, and help them continue their journey.
+
+The main idea of the game is to show the familiar MMORPG quest system from the other side — from the perspective of the NPC.
+
+---
+
+## Gameplay Trailer
+
+<div align="center">
+
+<a href="https://youtu.be/Md8u-3zo31Y?si=y4kyKYZ12CvHMw2M">
+  <strong>▶ Watch the Gameplay Trailer</strong>
+</a>
+
+</div>
+
+The main gameplay loop is:
+
+1. Talk to adventurers who visit the tavern
+2. Learn what they need and give them quests
+3. Prepare suitable rewards for completed quests
+4. Collect ingredients and cook new recipes
+5. Upgrade or dismantle items to satisfy adventurers’ requests
+6. Use the Dark Entity to skip a recipe and receive all required ingredients
+7. Continue the story and reach one of the endings
+
+---
+
+## Key Features
+
+<table>
+<tr>
+<td width="50%" valign="top">
+
+### Adventurers and Quests
+
+Adventurers visit the tavern with different needs and requests. The player talks to them, gives them quests, and prepares rewards for their return.
+
+</td>
+<td width="50%" valign="top">
+
+### Cooking and Recipes
+
+The player collects ingredients and cooks different recipes. Prepared dishes are used to continue the progression and story.
+
+</td>
+</tr>
+<tr>
+<td width="50%" valign="top">
+
+### Rewards and Item Management
+
+Items can be collected, carried, stored, and used as rewards. Choosing the correct item is important for satisfying each adventurer’s request.
+
+</td>
+<td width="50%" valign="top">
+
+### Upgrading and Dismantling
+
+Some adventurers ask for upgraded items or separate furniture parts. The player can improve items at upgrade stations or dismantle furniture into reusable components.
+
+</td>
+</tr>
+<tr>
+<td width="50%" valign="top">
+
+### Dark Entity
+
+The Dark Entity offers an optional shortcut. The player can skip the normal recipe process and receive all ingredients required for the current recipe.
+
+</td>
+<td width="50%" valign="top">
+
+### Story Progression and Endings
+
+Completing quests, preparing rewards, and using the tavern systems moves the story forward. The player’s actions eventually lead to one of the available endings.
+
+</td>
+</tr>
+</table>
+
+---
+
+## Screenshots
+
+<div align="center">
+
+<img src="docs/readme/main-menu.png" alt="Dragon Soup main menu" width="49%">
+<img src="docs/readme/tavern.png" alt="Dragon Soup tavern" width="49%">
+
+<img src="docs/readme/adventurers.png" alt="Dragon Soup adventurers" width="49%">
+<img src="docs/readme/item-pickup.png" alt="Dragon Soup item pickup" width="49%">
+
+<img src="docs/readme/item-upgrade.png" alt="Dragon Soup item upgrade" width="49%">
+<img src="docs/readme/forge-room.png" alt="Dragon Soup forge room" width="49%">
+
+<img src="docs/readme/cookbook.png" alt="Dragon Soup cookbook" width="99%">
+
+</div>
+
+---
+## Technology
+
+- **Engine:** Unity
+- **Language:** C#
+- **Audio:** Wwise
+- **3d Modeling:** Blender
+- **Textures creation:** Substance painter
+- **2d Art:** Procreate
+- **Data architecture:** ScriptableObjects for items, ingredients, recipes, adventurers and so on
+- **Dialogue:** JSON-based dialogue system
+- **System communication:** C# events
+- **Reusable content:** Unity Prefabs for all items, characters, stations, and UI elements
+- **Saving:** Custom save and load system
+
+---
+
+## Notable Systems
+
+- Adventurer spawning and interaction
+- Quest and reward system
+- JSON-based dialogue
+- Dice-based haggling
+- Cooking and recipe system
+- Nine-slot hotbar
+- Item pickup, carrying, and placement
+- Upgrade stations
+- Furniture dismantling
+- Dark Entity interactions
+- Game recipe progression
+- Save and load system
+- Main menu, settings, and gameplay UI
+- Notifications, cutscenes, and interaction feedback
+
+---
+
+## Team
+
+| Team Member | Role | Main Responsibilities |
+|---|---|---|
+| **Taha Batur Şenli** | Game Designer & Project Manager | Game concept, gameplay design and narrative content |
+| **Roman Shostak** | Unity Developer | Dialogue and quest systems, haggling, item upgrading and dismantling, and the Dark Entity system |
+| **Iryna Huryn** | Unity Developer | Cooking system фтв progression, hotbar and item interactions, menu implementation, and save/load system |
+| **Nazree Nadhir** | 3D Artist | Furniture, rewards, ingredients and finished dishes |
+| **Lisa Grebe** | 2D & 3D Artist | House model, UI, icons, and other 2D assets |
+| **Jonathan Glück** | Sound Designer & Audio Engineer | Music, sound effects, audio implementation, and mixing |
+
+---
+
+## Links
+
+- **Playable build:** Coming later
+- **Gameplay video:** [Link](https://youtu.be/Md8u-3zo31Y?si=y4kyKYZ12CvHMw2M)
+
+---
+
+## Credits
+
+Created as a university team project by students from different specializations, including game design, Unity development, hardware development, and art.
+
+Special thanks to everyone who contributed to the prototype, testing, presentation, and final delivery.
+
+---
+
+## Third-Party Assets
+
+Dragon Soup uses some of third-party assets. These materials remain the property of their respective authors and are used according to their original licenses.
+
+| Asset | Author / Source | License | Usage |
+|---|---|---|---|
+| **[Berry Rotunda](https://www.dafont.com/berry-rotunda.font)** | Typo-Graf / DaFont | Public Domain | Used for menus, dialogue panels, notifications, and other UI text |
+| **[Tudor Wall 03](https://freestylized.com/material/tudor-wall-03/)** | FreeStylized | FreeStylized Custom CC0 / Royalty-Free License | Used for the tavern wall material |
+| **[Wood Planks 05](https://freestylized.com/material/wood_planks_05/)** | FreeStylized | FreeStylized Custom CC0 / Royalty-Free License | Used for the tavern floor material |
+
+Unless otherwise noted, the original code, artwork, game design materials, and hardware-related content were created by the Dragon Soup development team.
+
+---
+
+## License
+
+Copyright © 2026 Dragon Soup Team. All rights reserved.
+
+This project is publicly available for portfolio viewing and educational evaluation only. The source code, original assets, hardware materials, and other project contents may not be copied, modified, redistributed, or used in other projects without prior written permission from the respective copyright holders.
+
+Third-party assets are excluded from this license and remain subject to their respective licenses and terms of use.
+
+---

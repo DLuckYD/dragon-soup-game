@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ea32ced8bc60a6c409646b9f9909ae03, type: 3}
+  m_Name: DragonSoup
+  m_EditorClassIdentifier: Assembly-CSharp::ItemData
+  id: dragon-soup
+  displayName: Dragon Soup
+  icon: {fileID: 21300000, guid: e57ac505103af464aa55a864a7dac5ee, type: 3}
+  isStackable: 1
+  maxStackSize: 12
+  worldPrefab: {fileID: 3424333685590651131, guid: 6437436dff745f34980f87663c41f69c, type: 3}
+  cookingTime: 0
