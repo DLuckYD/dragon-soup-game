@@ -159,7 +159,7 @@ Completing quests, preparing rewards, and using the tavern systems moves the sto
 |---|---|---|
 | **Taha Batur Şenli** | Game Designer & Project Manager | Game concept, gameplay design and narrative content |
 | **Roman Shostak** | Unity Developer | Dialogue and quest systems, haggling, item upgrading and dismantling, and the Dark Entity system |
-| **Iryna Huryn** | Unity Developer | Cooking system фтв progression, hotbar and item interactions, menu implementation, and save/load system |
+| **Iryna Huryn** | Unity Developer | Cooking system and progression, hotbar and item interactions, menu implementation, and save/load system |
 | **Nazree Nadhir** | 3D Artist | Furniture, rewards, ingredients and finished dishes |
 | **Lisa Grebe** | 2D & 3D Artist | House model, UI, icons, and other 2D assets |
 | **Jonathan Glück** | Sound Designer & Audio Engineer | Music, sound effects, audio implementation, and mixing |
