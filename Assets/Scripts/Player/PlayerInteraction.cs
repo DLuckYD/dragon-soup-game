@@ -1,6 +1,7 @@
 ﻿using System;
 using TMPro;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class PlayerInteraction : MonoBehaviour
 {
@@ -8,10 +9,10 @@ public class PlayerInteraction : MonoBehaviour
     private InventoryItem heldItem;
 
     [Header("Keybindings ")]
-    public KeyCode pickKey = KeyCode.E;
-    public KeyCode upgradeKey = KeyCode.R;
-    public KeyCode addToInventoryKey = KeyCode.Q;
-    public KeyCode talkKey = KeyCode.T;
+    [SerializeField] private InputActionReference pickUpAction;
+    [SerializeField] private InputActionReference upgradeAction;
+    [SerializeField] private InputActionReference addToInventoryAction;
+    [SerializeField] private InputActionReference talkAction;
 
     [SerializeField] private float pickUpDistance = 2f;
     public LayerMask pickUpLayerMask;
@@ -22,7 +23,7 @@ public class PlayerInteraction : MonoBehaviour
     public TMP_Text buttonPressedText;
 
     [Header("Cooking System")]
-    public KeyCode activateCookBook = KeyCode.Tab;
+    [SerializeField] private InputActionReference activateCookBookAction;
     public CookbookUI cookBook;
 
     private int activeHotbarIndex = -1;              // which hotbar slot is currently active
@@ -58,11 +59,11 @@ public class PlayerInteraction : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(upgradeKey))
+        if (upgradeAction.action.WasPressedThisFrame())
         {
             TryUpgradeItem();
         }
-        if (Input.GetKeyDown(pickKey))
+        if (pickUpAction.action.WasPressedThisFrame())
         {
             if (cookingStation != null && cookingStation.IsWaitingForIngredient)
             {
@@ -72,16 +73,16 @@ public class PlayerInteraction : MonoBehaviour
 
             PickUpAndDrop();
         }
-        if (Input.GetKeyDown(addToInventoryKey))
+        if (addToInventoryAction.action.WasPressedThisFrame())
         {
             AddAndRemoveFromInventory();
         }
-        if(Input.GetKeyDown(activateCookBook))
+        if(activateCookBookAction.action.WasPressedThisFrame())
         {
             OpenAndCloseCookBook();
         }
 
-        if (Input.GetKeyDown(talkKey))
+        if (talkAction.action.WasPressedThisFrame())
         {
             if (nearbyAdventurer != null)
             {
@@ -139,7 +140,7 @@ public class PlayerInteraction : MonoBehaviour
             }
             else
             {
-                OnInteraction?.Invoke($"Press {upgradeKey} to modify item");
+                OnInteraction?.Invoke($"Press {upgradeAction.action.GetBindingDisplayString()} to modify item");
             }
 
             Debug.Log($"[INTERACTION] Entered upgrade station: {station.name} through collider: {other.name}");
@@ -163,7 +164,7 @@ public class PlayerInteraction : MonoBehaviour
         {
             nearbyAdventurer = adventurer;
 
-            OnInteraction?.Invoke($"Press {talkKey} to talk to adventurer");
+            OnInteraction?.Invoke($"Press {talkAction.action.GetBindingDisplayString()} to talk to adventurer");
 
             Debug.Log($"[INTERACTION] Entered adventurer: {adventurer.name}");
         }
@@ -174,7 +175,7 @@ public class PlayerInteraction : MonoBehaviour
         {
             darkEntity = entity;
 
-            OnInteraction?.Invoke($"Press {talkKey} to make a deal");
+            OnInteraction?.Invoke($"Press {talkAction.action.GetBindingDisplayString()} to make a deal");
 
             Debug.Log($"[INTERACTION] Entered dark entity: {entity.name}");
         }
@@ -188,7 +189,7 @@ public class PlayerInteraction : MonoBehaviour
         {
             cookingStation = cauldron;
 
-            OnInteraction?.Invoke($"Press {activateCookBook} to cook a dish");
+            OnInteraction?.Invoke($"Press {activateCookBookAction.action.GetBindingDisplayString()} to cook a dish");
 
             Debug.Log($"[INTERACTION] Entered cooking station: {cauldron.name}");
         }
@@ -202,7 +203,7 @@ public class PlayerInteraction : MonoBehaviour
             {
                 nearbyItem = item;
 
-                OnInteraction?.Invoke($"Press {pickKey} to add to inventory");
+                OnInteraction?.Invoke($"Press {pickUpAction.action.GetBindingDisplayString()} to add to inventory");
                 Debug.Log($"[INTERACTION] Entered item pickup area: {item.name}");
             }
             return;
@@ -216,7 +217,7 @@ public class PlayerInteraction : MonoBehaviour
             {
                 nearbyItem = reward;
 
-                OnInteraction?.Invoke($"Press {pickKey} to pick up");
+                OnInteraction?.Invoke($"Press {pickUpAction.action.GetBindingDisplayString()} to pick up");
                 Debug.Log($"[INTERACTION] Entered item pickup area: {reward.name}");
             }
             Debug.LogWarning($"RewardItem '{reward.name}' has NULL itemData (triggered by collider '{other.name}')");
@@ -337,7 +338,7 @@ public class PlayerInteraction : MonoBehaviour
                         heldItem.isHeld = true;
 
                         nearbyItem = null;
-                        OnInteraction?.Invoke($"Press {addToInventoryKey} to add to inventory");
+                        OnInteraction?.Invoke($"Press {addToInventoryAction.action.GetBindingDisplayString()} to add to inventory");
 
                         EventManager.CallItemPickedUp(heldItem);
                         Debug.Log("Picked up ");
@@ -359,7 +360,7 @@ public class PlayerInteraction : MonoBehaviour
             }
             else
             {
-                OnInteraction?.Invoke($"Press {addToInventoryKey} to drop the item");
+                OnInteraction?.Invoke($"Press {addToInventoryAction.action.GetBindingDisplayString()} to drop the item");
             }
         }
     }
@@ -536,7 +537,7 @@ public class PlayerInteraction : MonoBehaviour
             heldItem.Grab(objectGrabPointTransform);
             heldItem.isHeld = true;
 
-            OnInteraction?.Invoke($"Press {addToInventoryKey} to drop from inventory");
+            OnInteraction?.Invoke($"Press {addToInventoryAction.action.GetBindingDisplayString()} to drop from inventory");
 
             Debug.Log("Equipped NON-stackable from slot " + (index + 1));
             return;
@@ -548,7 +549,7 @@ public class PlayerInteraction : MonoBehaviour
             activeHotbarIndex = index;
             EquipStackableFromSlot(slot);
 
-            OnInteraction?.Invoke($"Press {addToInventoryKey} to drop from inventory");
+            OnInteraction?.Invoke($"Press {addToInventoryAction.action.GetBindingDisplayString()} to drop from inventory");
 
             Debug.Log("Equipped STACKABLE visual from slot " + (index + 1));
             return;
@@ -560,7 +561,7 @@ public class PlayerInteraction : MonoBehaviour
             activeHotbarIndex = index;
             EquipNonStackableFromSlot(slot);
 
-            OnInteraction?.Invoke($"Press {addToInventoryKey} to drop from inventory");
+            OnInteraction?.Invoke($"Press {addToInventoryAction.action.GetBindingDisplayString()} to drop from inventory");
 
             Debug.Log("Equipped NON-stackable visual from itemData slot " + (index + 1));
             return;

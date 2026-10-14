@@ -2869,8 +2869,8 @@ MonoBehaviour:
   airMultiplier: 0.4
   crouchSpeed: 2
   crouchYScale: 0.3
-  jumpKey: 32
-  crouchKey: 306
+  jumpAction: {fileID: -2099379676528639254, guid: 052faaac586de48259a63d0c4782560b, type: 3}
+  crouchAction: {fileID: 7040659881675835329, guid: 052faaac586de48259a63d0c4782560b, type: 3}
   playerHeight: 2
   whatIsGround:
     serializedVersion: 2
@@ -2917,10 +2917,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d465c50508f646442872931c47b344e1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerUpgradeItem
-  pickKey: 101
-  upgradeKey: 114
-  addToInventoryKey: 113
-  talkKey: 116
+  pickUpAction: {fileID: 2396505236444749893, guid: 052faaac586de48259a63d0c4782560b, type: 3}
+  upgradeAction: {fileID: -2837530296838423751, guid: 052faaac586de48259a63d0c4782560b, type: 3}
+  addToInventoryAction: {fileID: -5003010839619147394, guid: 052faaac586de48259a63d0c4782560b, type: 3}
+  talkAction: {fileID: -5526931990704374901, guid: 052faaac586de48259a63d0c4782560b, type: 3}
   pickUpDistance: 2
   pickUpLayerMask:
     serializedVersion: 2
@@ -2929,7 +2929,7 @@ MonoBehaviour:
   objectGrabPointTransform: {fileID: 734842747}
   hotbarManager: {fileID: 950630261}
   buttonPressedText: {fileID: 548663555}
-  activateCookBook: 9
+  activateCookBookAction: {fileID: 5257518567010251584, guid: 052faaac586de48259a63d0c4782560b, type: 3}
   cookBook: {fileID: 2115300314}
 --- !u!114 &267349055
 MonoBehaviour:
@@ -2995,7 +2995,7 @@ MonoBehaviour:
   playerInteraction: {fileID: 267349054}
   raycastOrigin: {fileID: 0}
   progressUI: {fileID: 333723242}
-  dismantleKey: 107
+  dismantleAction: {fileID: -2533013031530169661, guid: 052faaac586de48259a63d0c4782560b, type: 3}
   requiredHeldItemId: axe_breaker
   dismantleDistance: 2.5
   dismantleLayerMask:

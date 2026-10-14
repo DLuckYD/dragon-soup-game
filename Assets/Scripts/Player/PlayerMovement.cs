@@ -1,6 +1,7 @@
 using System.ComponentModel.Design;
 using Unity.Physics;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -25,8 +26,8 @@ public class PlayerMovement : MonoBehaviour
     private float startYScale;
 
     [Header("Keybinding")]
-    public KeyCode jumpKey = KeyCode.Space;
-    public KeyCode crouchKey = KeyCode.LeftControl;
+    [SerializeField] private InputActionReference jumpAction;
+    [SerializeField] private InputActionReference crouchAction;
 
     [Header("Ground Check")]
     public float playerHeight;
@@ -105,7 +106,7 @@ public class PlayerMovement : MonoBehaviour
         verticalInput = Input.GetAxis("Vertical");
 
         //when to jump
-        if (Input.GetKey(jumpKey) && readyToJump && grounded)
+        if (jumpAction.action.WasPressedThisFrame() && readyToJump && grounded)
         {
             readyToJump = false;
             Jump();
@@ -113,13 +114,13 @@ public class PlayerMovement : MonoBehaviour
         }
 
         //start crouch
-        if (Input.GetKeyDown(crouchKey) && grounded)
+        if (crouchAction.action.WasPressedThisFrame() && grounded)
         {
             Crouch();
         }
 
         //stop crouch
-        if (Input.GetKeyUp(crouchKey))
+        if (crouchAction.action.WasPressedThisFrame())
         {
             transform.localScale = new Vector3(transform.localScale.x, startYScale, transform.localScale.z);
         }
@@ -149,7 +150,7 @@ public class PlayerMovement : MonoBehaviour
     public void StateHandler()
     {
         //crouching
-        if (grounded && Input.GetKey(crouchKey))
+        if (grounded && crouchAction.action.WasPressedThisFrame())
         {
             state = MovementState.crouching;
             moveSpeed = crouchSpeed;

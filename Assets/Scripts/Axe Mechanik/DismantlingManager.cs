@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class DismantlingManager : MonoBehaviour
 {
@@ -8,7 +9,7 @@ public class DismantlingManager : MonoBehaviour
     [SerializeField] private DismantleProgressUI progressUI;
 
     [Header("Input")]
-    [SerializeField] private KeyCode dismantleKey = KeyCode.K;
+    [SerializeField] private InputActionReference dismantleAction;
 
     [Header("Axe Check")]
     [SerializeField] private string requiredHeldItemId = "axe_breaker";
@@ -50,16 +51,16 @@ public class DismantlingManager : MonoBehaviour
 
     private void HandleDismantling()
     {
-        if (!Input.GetKey(dismantleKey))
+        if (!dismantleAction.action.IsPressed())
         {
             ResetProgress();
             lastFailReason = "";
             return;
         }
 
-        if (Input.GetKeyDown(dismantleKey))
+        if (dismantleAction.action.WasPressedThisFrame())
         {
-            Log("[DISMANTLE] K pressed. Trying to start dismantling.");
+            Log("[DISMANTLE] Action pressed. Trying to start dismantling.");
         }
 
         if (!IsHoldingRequiredItem(out string heldItemId))

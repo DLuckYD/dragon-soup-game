@@ -72,6 +72,7 @@ public class SettingsSaveLoadManager : MonoBehaviour
 
             string json = JsonUtility.ToJson(CurrentSettings, true);
             File.WriteAllText(settingsFilePath, json);
+            Debug.Log("Settings saved to: " + settingsFilePath);
         }
         catch (Exception e)
         {
