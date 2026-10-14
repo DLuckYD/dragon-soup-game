@@ -63,7 +63,7 @@ public class SceneObjectsManager : MonoBehaviour
                 continue;
             }
 
-            if (item.isInInventory)
+            if (item.isInInventory || item.isHeld)
             {
                 Debug.Log("[SCENE SAVE] Skipping item in inventory or held by player: " + item.name);
                 continue;
@@ -71,6 +71,9 @@ public class SceneObjectsManager : MonoBehaviour
 
             Vector3 position = item.transform.position;
             Quaternion rotation = item.transform.rotation;
+            Vector3 scale = item.transform.lossyScale;
+
+            Rigidbody rb = item.GetComponent<Rigidbody>();
 
             SceneItemSaveData itemSaveData = new SceneItemSaveData
             {
@@ -85,7 +88,19 @@ public class SceneObjectsManager : MonoBehaviour
                 rotZ = rotation.z,
                 rotW = rotation.w,
 
-                isActive = item.gameObject.activeSelf
+                scaleX = scale.x,
+                scaleY = scale.y,
+                scaleZ = scale.z,
+
+                isActive = item.gameObject.activeSelf,
+
+                hasRigidbody = rb != null,
+                isKinematic = rb != null && rb.isKinematic,
+                useGravity = rb != null && rb.useGravity,
+                detectCollisions = rb != null && rb.detectCollisions,
+                rigidbodyConstraints = rb != null
+                            ? (int)rb.constraints
+                            : 0
             };
 
             RewardItem rewardItem = item as RewardItem;
@@ -97,6 +112,14 @@ public class SceneObjectsManager : MonoBehaviour
                 itemSaveData.canBeUpgraded = rewardItem.canBeUpgrated;
                 itemSaveData.itemType = rewardItem.type;
             }
+
+            Debug.Log(
+    $"[SCENE SAVE] {item.name} | " +
+    $"ID: {item.itemData.id} | " +
+    $"Parent: {(item.transform.parent != null ? item.transform.parent.name : "None")} | " +
+    $"ActiveInHierarchy: {item.gameObject.activeInHierarchy}"
+);
+
             saveData.items.Add(itemSaveData);
         }
 
@@ -150,6 +173,8 @@ public class SceneObjectsManager : MonoBehaviour
 
     private void SpawnItemFromSave(SceneItemSaveData savedItem)
     {
+        Debug.Log($"[SCENE LOAD] Trying to spawn item: {savedItem.itemId}");
+
         IngredientData itemData = itemDatabase.GetItemById(savedItem.itemId);
 
         if (itemData == null)
@@ -174,8 +199,42 @@ public class SceneObjectsManager : MonoBehaviour
             worldItemsParent
         );
 
+        Vector3 savedWorldScale = new Vector3(
+            savedItem.scaleX,
+            savedItem.scaleY,
+            savedItem.scaleZ
+        );
+
+        Vector3 parentScale = spawnedObject.transform.parent != null
+            ? spawnedObject.transform.parent.lossyScale
+            : Vector3.one;
+
+        spawnedObject.transform.localScale = new Vector3(
+            parentScale.x != 0 ? savedWorldScale.x / parentScale.x : savedWorldScale.x,
+            parentScale.y != 0 ? savedWorldScale.y / parentScale.y : savedWorldScale.y,
+            parentScale.z != 0 ? savedWorldScale.z / parentScale.z : savedWorldScale.z
+        );
+
+        Debug.Log(
+            $"[SCENE LOAD] Spawned: {spawnedObject.name}, " +
+            $"Position: {spawnedObject.transform.position}, " +
+            $"Active in hierarchy: {spawnedObject.activeInHierarchy}, " +
+            $"InventoryItem: {spawnedObject.GetComponent<InventoryItem>() != null}"
+        );
+
         // in order to add InventoryItem attributes
-        InventoryItem inventoryItem = spawnedObject.GetComponent<InventoryItem>();
+        InventoryItem inventoryItem =
+    spawnedObject.GetComponent<InventoryItem>();
+
+        RewardItem rewardItemCheck =
+            spawnedObject.GetComponent<RewardItem>();
+
+        Debug.Log(
+            $"[ITEM CHECK] {savedItem.itemId} | " +
+            $"Prefab: {itemData.worldPrefab.name} | " +
+            $"InventoryItem: {inventoryItem != null} | " +
+            $"RewardItem: {rewardItemCheck != null}"
+        );
 
         if (inventoryItem == null)
         {
@@ -185,6 +244,29 @@ public class SceneObjectsManager : MonoBehaviour
         }
 
         inventoryItem.itemData = itemData;
+
+        Rigidbody rb = spawnedObject.GetComponent<Rigidbody>();
+
+        if (!savedItem.hasRigidbody)
+        {
+            if (rb != null)
+            {
+                Destroy(rb);
+            }
+        }
+        else
+        {
+            if (rb == null)
+            {
+                rb = spawnedObject.AddComponent<Rigidbody>();
+            }
+
+            rb.isKinematic = savedItem.isKinematic;
+            rb.useGravity = savedItem.useGravity;
+            rb.detectCollisions = savedItem.detectCollisions;
+            rb.constraints = (RigidbodyConstraints)savedItem.rigidbodyConstraints;
+        }
+
         spawnedObject.SetActive(savedItem.isActive);
 
         RewardItem rewardItem = inventoryItem as RewardItem;
@@ -197,5 +279,12 @@ public class SceneObjectsManager : MonoBehaviour
             rewardItem.type = savedItem.itemType;
             rewardItem.UpdateVisual();
         }
+
+        Debug.Log(
+    $"[SCENE LOAD] FINAL STATE: {spawnedObject.name} | " +
+    $"ActiveSelf: {spawnedObject.activeSelf} | " +
+    $"ActiveInHierarchy: {spawnedObject.activeInHierarchy} | " +
+    $"Parent: {(spawnedObject.transform.parent != null ? spawnedObject.transform.parent.name : "None")}"
+);
     }
 }

@@ -20,6 +20,18 @@ public class SceneItemSaveData
     public float rotZ;
     public float rotW;
 
+    // Scale
+    public float scaleX = 1f;
+    public float scaleY = 1f;
+    public float scaleZ = 1f;
+
+    // Physics
+    public bool hasRigidbody;
+    public bool isKinematic;
+    public bool useGravity;
+    public bool detectCollisions;
+    public int rigidbodyConstraints;
+
     public bool isActive;
 
     // for rewards

@@ -20,8 +20,7 @@ public class ItemDatabase : ScriptableObject
     {
         items.Clear();
 
-        string[] guids = AssetDatabase.FindAssets("t:ItemData", new[] { itemDataFolderPath });
-
+        string[] guids = AssetDatabase.FindAssets("t:IngredientData", new[] { itemDataFolderPath });
         foreach (string guid in guids)
         {
             string path = AssetDatabase.GUIDToAssetPath(guid);

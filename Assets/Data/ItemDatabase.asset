@@ -11,14 +11,45 @@ MonoBehaviour:
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e3316ff6cb15d244c8007e795ca83e05, type: 3}
   m_Name: ItemDatabase
-  m_EditorClassIdentifier: Assembly-CSharp::ItemDataBase
+  m_EditorClassIdentifier: Assembly-CSharp::ItemDatabase
   items:
+  - {fileID: 11400000, guid: 675a23727b9f1704da6d074246e9c6be, type: 2}
+  - {fileID: 11400000, guid: 5bf6d256927305d42979a9a2f745ace2, type: 2}
+  - {fileID: 11400000, guid: f5f5bd89b12eebe4ea273004d2b24445, type: 2}
+  - {fileID: 11400000, guid: 382a514f0aa0c1048ac34a1f722eede8, type: 2}
   - {fileID: 11400000, guid: d8ab261328deb754b8b02aff00167109, type: 2}
+  - {fileID: 11400000, guid: 7cae254ae05213f4aa41d3560c991cee, type: 2}
+  - {fileID: 11400000, guid: cdc137ab514cfd14b9b0a28124df6c6c, type: 2}
+  - {fileID: 11400000, guid: 4732b847b128c584cb21d301bd951518, type: 2}
   - {fileID: 11400000, guid: e5229585616e33846a80dbb35d1c9332, type: 2}
+  - {fileID: 11400000, guid: cbaf4f4f90a6dc246b9b0650d0146e17, type: 2}
+  - {fileID: 11400000, guid: 9e37e498027a7c045b72025a068e1a9c, type: 2}
   - {fileID: 11400000, guid: f9dd8e86ffc6e2d4a9fd5e17f0530380, type: 2}
+  - {fileID: 11400000, guid: 30e4e043fe15d394984e27e424de2bfe, type: 2}
+  - {fileID: 11400000, guid: 639ea99d66eec5346b2ddea96cf24f0e, type: 2}
+  - {fileID: 11400000, guid: 8d9f93fa180beff4dbdd1328b2176f45, type: 2}
+  - {fileID: 11400000, guid: b8e9cc3b1d8d8e84db4c059f65e76937, type: 2}
+  - {fileID: 11400000, guid: b91f91400ea561944abaac33b4b34896, type: 2}
+  - {fileID: 11400000, guid: 4c406f4b8b0c7fe41954ad24931285a2, type: 2}
+  - {fileID: 11400000, guid: 43575529b8a11cd4b9553713266b1d83, type: 2}
+  - {fileID: 11400000, guid: c99060ed7c4de0344a9afb73e5f6ff3e, type: 2}
+  - {fileID: 11400000, guid: 9f221291b10806243ad9d6b4a38a883f, type: 2}
   - {fileID: 11400000, guid: 0adff101fac623148bc77439c4e95d86, type: 2}
+  - {fileID: 11400000, guid: 9482db1e69790284f963c863475da98a, type: 2}
+  - {fileID: 11400000, guid: 0fe3c5aba1538eb4e8218d7d567413d7, type: 2}
+  - {fileID: 11400000, guid: a7b3a36c786323c41b51196d871aae9f, type: 2}
   - {fileID: 11400000, guid: 64be6ad573a51c344b44d050e8b4464b, type: 2}
+  - {fileID: 11400000, guid: 77033d24389d8b040bda781a5d3e1880, type: 2}
+  - {fileID: 11400000, guid: 37dcafedb4b299547aaed0675b25844c, type: 2}
+  - {fileID: 11400000, guid: dca69d08c0d5a004b9f246de567be154, type: 2}
   - {fileID: 11400000, guid: 536e4103e2dae224696f5b571909f60e, type: 2}
   - {fileID: 11400000, guid: 9006436ef0c1a8448bdeb781f0b3c2c6, type: 2}
+  - {fileID: 11400000, guid: 34cbc41a21f06dc418d32d6f20654ede, type: 2}
+  - {fileID: 11400000, guid: 1ef096aa6df09be479e2257ad2ed28a0, type: 2}
+  - {fileID: 11400000, guid: ada25916d9891cc4ba1f41a2bdae843b, type: 2}
+  - {fileID: 11400000, guid: 98ff38b6fcdc2964dac5cb3c74f5b864, type: 2}
   - {fileID: 11400000, guid: 91b3c57c8456e1340a6297c0a73eb933, type: 2}
+  - {fileID: 11400000, guid: bbca52fb7dd2faf45beb31fecc705b7d, type: 2}
+  - {fileID: 11400000, guid: 2e74fea90517ecc4eba864a70d29ee9f, type: 2}
+  - {fileID: 11400000, guid: 0a48fbd6642f2674c887be88387bd3ab, type: 2}
   itemDataFolderPath: Assets
