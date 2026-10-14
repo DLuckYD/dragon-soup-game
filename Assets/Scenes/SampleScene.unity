@@ -4059,7 +4059,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::FirstPersonCamera
   player: {fileID: 267349050}
-  mouseSensitivity: 4
   cameraVerticalRotation: 0
   cameraHorizontalRotation: 0
   lockCursor: 1
