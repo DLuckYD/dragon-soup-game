@@ -13,7 +13,7 @@ public class SettingsData
     public int screenModeIndex = 1;
 
     public string inputBindingOverridesJson = "";
-    public float mouseSensitivity = 1f;
+    public float mouseSensitivity = 2f;
 
     public int autoSaveTime = 5;
 }

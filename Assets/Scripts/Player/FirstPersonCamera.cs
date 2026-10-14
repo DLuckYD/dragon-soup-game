@@ -4,11 +4,12 @@ public class FirstPersonCamera : MonoBehaviour
 {
 
     public Transform player;
-    public float mouseSensitivity = 2f;
     public float cameraVerticalRotation = 0f;
     public float cameraHorizontalRotation = 0f;
     public bool lockCursor = true;
     public bool canLook = true;
+
+    private float mouseSensitivity;
 
     void Start()
     {
@@ -26,6 +27,16 @@ public class FirstPersonCamera : MonoBehaviour
         {
             Cursor.lockState = CursorLockMode.Locked;
             Cursor.visible = false;
+        }
+
+        if (SettingsSaveLoadManager.Instance != null)
+        {
+            mouseSensitivity = SettingsSaveLoadManager.Instance.CurrentSettings.mouseSensitivity;
+        }
+        else
+        {
+            mouseSensitivity = 1f;
+            Debug.LogWarning("FirstPersonCamera: SettingsSaveLoadManager instance not found. Using default mouse sensitivity.");
         }
     }
 

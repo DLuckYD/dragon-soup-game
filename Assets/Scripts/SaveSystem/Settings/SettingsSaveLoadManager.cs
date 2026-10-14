@@ -1,9 +1,6 @@
 using System;
 using System.IO;
-using Unity.VisualScripting;
-using Unity.VisualScripting.Antlr3.Runtime.Tree;
 using UnityEngine;
-using static UnityEngine.Rendering.DebugUI;
 
 public class SettingsSaveLoadManager : MonoBehaviour
 {
@@ -34,7 +31,6 @@ public class SettingsSaveLoadManager : MonoBehaviour
 #if UNITY_EDITOR
         Debug.Log(settingsFilePath);
 #endif
-
         LoadSettings();
     }
 

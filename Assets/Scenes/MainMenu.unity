@@ -5867,7 +5867,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::InputPanelController
   inputActionsAsset: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
   mouseSensitivitySlider: {fileID: 1663713184}
-  mainMenuManager: {fileID: 0}
+  mainMenuManager: {fileID: 747420624}
 --- !u!1 &609334687
 GameObject:
   m_ObjectHideFlags: 0
@@ -7924,7 +7924,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &747420621
 RectTransform:
   m_ObjectHideFlags: 0
@@ -10394,6 +10394,50 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1012145277}
   m_CullTransparentMesh: 1
+--- !u!1 &1013089794
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1013089796}
+  - component: {fileID: 1013089795}
+  m_Layer: 0
+  m_Name: SettingsSaveLoadManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1013089795
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1013089794}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3d58170850f9ae44bb51012cfb51408c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SettingsManager
+--- !u!4 &1013089796
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1013089794}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 2.90004, y: 0.96274, z: 5.76174}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1060024840
 GameObject:
   m_ObjectHideFlags: 0
@@ -19201,14 +19245,13 @@ GameObject:
   - component: {fileID: 1984494373}
   - component: {fileID: 1984494372}
   - component: {fileID: 1984494376}
-  - component: {fileID: 1984494375}
   m_Layer: 5
   m_Name: SettingsScreenPanel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1984494371
 RectTransform:
   m_ObjectHideFlags: 0
@@ -19276,18 +19319,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1984494370}
   m_CullTransparentMesh: 1
---- !u!114 &1984494375
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1984494370}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3d58170850f9ae44bb51012cfb51408c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::SettingsManager
 --- !u!114 &1984494376
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -21148,3 +21179,4 @@ SceneRoots:
   - {fileID: 1191901021}
   - {fileID: 254331268863536060}
   - {fileID: 1513446161}
+  - {fileID: 1013089796}
