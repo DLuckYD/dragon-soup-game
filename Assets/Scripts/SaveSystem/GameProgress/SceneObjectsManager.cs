@@ -63,8 +63,7 @@ public class SceneObjectsManager : MonoBehaviour
                 continue;
             }
 
-            if (item.isInInventory || item.isHeld)
-            {
+if (item.isInInventory || item.isHeld)            {
                 Debug.Log("[SCENE SAVE] Skipping item in inventory or held by player: " + item.name);
                 continue;
             }
