@@ -349,11 +349,11 @@ public class PlayerInteraction : MonoBehaviour
                         {
                             nearbyItem = null;
 
-                            TutorialManager.Instance?.CompleteTutorial(
+                            DynamicTutorialManager.Instance?.CompleteTutorial(
                                 TutorialID.ItemPickUp
                             );
 
-                            TutorialManager.Instance?.CompleteTutorial(
+                            DynamicTutorialManager.Instance?.CompleteTutorial(
                                 TutorialID.AddToInventory
                             );
 
@@ -376,7 +376,7 @@ public class PlayerInteraction : MonoBehaviour
                         nearbyItem = null;
 
                         // Pickup completed successfully
-                        TutorialManager.Instance?.CompleteTutorial(
+                        DynamicTutorialManager.Instance?.CompleteTutorial(
                             TutorialID.ItemPickUp
                         );
 
@@ -440,7 +440,7 @@ public class PlayerInteraction : MonoBehaviour
                 heldItem.isHeld = false;
                 heldItem = null;
 
-                TutorialManager.Instance?.CompleteTutorial(
+                DynamicTutorialManager.Instance?.CompleteTutorial(
                     TutorialID.AddToInventory
                 );
 
@@ -711,7 +711,7 @@ public class PlayerInteraction : MonoBehaviour
             return;
         }
 
-        TutorialManager.Instance?.CompleteTutorial(
+        DynamicTutorialManager.Instance?.CompleteTutorial(
             TutorialID.UpgradeItem
         );
 
@@ -741,7 +741,7 @@ public class PlayerInteraction : MonoBehaviour
 
                 if (cookBook.IsOpened())
                 {
-                    TutorialManager.Instance?.CompleteTutorial(
+                    DynamicTutorialManager.Instance?.CompleteTutorial(
                         TutorialID.OpenCookBook
                     );
                 }
