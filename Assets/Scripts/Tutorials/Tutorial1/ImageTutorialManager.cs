@@ -63,6 +63,11 @@ public class ImageTutorialManager : MonoBehaviour
         }
     }
 
+    public void CLickTutorialCloseButton()
+    {
+        
+    }
+
     public void CloseTutorial()
     {
         if (!isTutorialOpen)
