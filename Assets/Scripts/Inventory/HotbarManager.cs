@@ -428,4 +428,13 @@ public class HotbarManager : MonoBehaviour
         return totalAmount;
     }
 
+    public bool IsHotbarEmpty()
+    {
+        foreach (var slot in slots)
+        {
+            if (!slot.IsEmpty)
+                return false;
+        }
+        return true;
+    }
 }

@@ -35,8 +35,8 @@ public class PlayerInteraction : MonoBehaviour
     private DarkEntity darkEntity;
 
     // Events for key interactions
-    public static event Action<string> OnInteraction;
-    public static event Action OnEndedInteraction;
+    public static event Action<TutorialID, string, string, string> OnInteraction;
+    public static event Action<TutorialID> OnEndedInteraction;
 
     // Event for in game changes
     public static event Action<string> OnLockedItemInteraction;
@@ -140,7 +140,19 @@ public class PlayerInteraction : MonoBehaviour
             }
             else
             {
-                OnInteraction?.Invoke($"Press {upgradeAction.action.GetBindingDisplayString()} to modify item");
+
+                if (hotbarManager.IsHotbarEmpty())
+                {
+                    OnInteraction?.Invoke(TutorialID.UpgradeItem, "Press", $"{upgradeAction.action.GetBindingDisplayString()}", "to upgrade item. Add the item to your inventory first.");
+                }
+                else if (heldItem == null)
+                {
+                    OnInteraction?.Invoke(TutorialID.UpgradeItem, "Press", $"{upgradeAction.action.GetBindingDisplayString()}", "to upgrade item. Choose item to upgrade.");
+                }
+                else
+                {
+                    OnInteraction?.Invoke(TutorialID.UpgradeItem, "Press", $"{upgradeAction.action.GetBindingDisplayString()}", "to upgrade item.");
+                }
             }
 
             Debug.Log($"[INTERACTION] Entered upgrade station: {station.name} through collider: {other.name}");
@@ -164,7 +176,12 @@ public class PlayerInteraction : MonoBehaviour
         {
             nearbyAdventurer = adventurer;
 
-            OnInteraction?.Invoke($"Press {talkAction.action.GetBindingDisplayString()} to talk to adventurer");
+            OnInteraction?.Invoke(
+                TutorialID.TalkToAdventurer,
+                "Press",
+                talkAction.action.GetBindingDisplayString(),
+                "to talk to adventurer"
+            );
 
             Debug.Log($"[INTERACTION] Entered adventurer: {adventurer.name}");
         }
@@ -175,7 +192,7 @@ public class PlayerInteraction : MonoBehaviour
         {
             darkEntity = entity;
 
-            OnInteraction?.Invoke($"Press {talkAction.action.GetBindingDisplayString()} to make a deal");
+            OnInteraction?.Invoke(TutorialID.TalkToDarkEntity, "Press", talkAction.action.GetBindingDisplayString(), "to talk to adventurer");
 
             Debug.Log($"[INTERACTION] Entered dark entity: {entity.name}");
         }
@@ -189,7 +206,7 @@ public class PlayerInteraction : MonoBehaviour
         {
             cookingStation = cauldron;
 
-            OnInteraction?.Invoke($"Press {activateCookBookAction.action.GetBindingDisplayString()} to cook a dish");
+            OnInteraction?.Invoke(TutorialID.OpenCookBook, "Press", $"{activateCookBookAction.action.GetBindingDisplayString()}", "to open the cookbook");
 
             Debug.Log($"[INTERACTION] Entered cooking station: {cauldron.name}");
         }
@@ -203,7 +220,12 @@ public class PlayerInteraction : MonoBehaviour
             {
                 nearbyItem = item;
 
-                OnInteraction?.Invoke($"Press {pickUpAction.action.GetBindingDisplayString()} to add to inventory");
+                OnInteraction?.Invoke(
+                    TutorialID.ItemPickUp,
+                    "Press",
+                    pickUpAction.action.GetBindingDisplayString(),
+                    "to pick up"
+                );
                 Debug.Log($"[INTERACTION] Entered item pickup area: {item.name}");
             }
             return;
@@ -217,7 +239,12 @@ public class PlayerInteraction : MonoBehaviour
             {
                 nearbyItem = reward;
 
-                OnInteraction?.Invoke($"Press {pickUpAction.action.GetBindingDisplayString()} to pick up");
+                OnInteraction?.Invoke(
+                    TutorialID.ItemPickUp,
+                    "Press",
+                    pickUpAction.action.GetBindingDisplayString(),
+                    "to pick up"
+                );
                 Debug.Log($"[INTERACTION] Entered item pickup area: {reward.name}");
             }
             Debug.LogWarning($"RewardItem '{reward.name}' has NULL itemData (triggered by collider '{other.name}')");
@@ -238,7 +265,7 @@ public class PlayerInteraction : MonoBehaviour
 
             upgradeStation = null;
 
-            OnEndedInteraction?.Invoke();
+            OnEndedInteraction?.Invoke(TutorialID.UpgradeItem);
         }
 
         AdventurerNPC adventurer = other.GetComponentInParent<AdventurerNPC>();
@@ -249,7 +276,7 @@ public class PlayerInteraction : MonoBehaviour
 
             nearbyAdventurer = null;
 
-            OnEndedInteraction?.Invoke();
+            OnEndedInteraction?.Invoke(TutorialID.TalkToAdventurer);
         }
         
         DarkEntity entity = other.GetComponentInParent<DarkEntity>();
@@ -260,7 +287,7 @@ public class PlayerInteraction : MonoBehaviour
 
             darkEntity = null;
 
-            OnEndedInteraction?.Invoke();
+            OnEndedInteraction?.Invoke(TutorialID.TalkToDarkEntity);
         }
 
         CookingStation cauldron = other.GetComponentInParent<CookingStation>();
@@ -271,7 +298,7 @@ public class PlayerInteraction : MonoBehaviour
 
             cookingStation = null;
 
-            OnEndedInteraction?.Invoke();
+            OnEndedInteraction?.Invoke(TutorialID.OpenCookBook);
         }
 
         InventoryItem item = other.GetComponentInParent<InventoryItem>();
@@ -284,7 +311,7 @@ public class PlayerInteraction : MonoBehaviour
 
                 nearbyItem = null;
 
-                OnEndedInteraction?.Invoke();
+                OnEndedInteraction?.Invoke(TutorialID.ItemPickUp);
             }
         }
     }
@@ -321,7 +348,16 @@ public class PlayerInteraction : MonoBehaviour
                         if (isAdded)
                         {
                             nearbyItem = null;
-                            OnEndedInteraction?.Invoke();
+
+                            TutorialManager.Instance?.CompleteTutorial(
+                                TutorialID.ItemPickUp
+                            );
+
+                            TutorialManager.Instance?.CompleteTutorial(
+                                TutorialID.AddToInventory
+                            );
+
+                            OnEndedInteraction?.Invoke(TutorialID.ItemPickUp);
 
                             Debug.Log("Stackable item added to inventory.");
                             return;
@@ -338,7 +374,19 @@ public class PlayerInteraction : MonoBehaviour
                         heldItem.isHeld = true;
 
                         nearbyItem = null;
-                        OnInteraction?.Invoke($"Press {addToInventoryAction.action.GetBindingDisplayString()} to add to inventory");
+
+                        // Pickup completed successfully
+                        TutorialManager.Instance?.CompleteTutorial(
+                            TutorialID.ItemPickUp
+                        );
+
+                        // Show the next tutorial
+                        OnInteraction?.Invoke(
+                            TutorialID.AddToInventory,
+                            "Press",
+                            addToInventoryAction.action.GetBindingDisplayString(),
+                            "to add to inventory"
+                        );
 
                         EventManager.CallItemPickedUp(heldItem);
                         Debug.Log("Picked up ");
@@ -356,11 +404,11 @@ public class PlayerInteraction : MonoBehaviour
                 heldItem = null;
                 Debug.Log("Dropped held item");
 
-                OnEndedInteraction?.Invoke();
+                OnEndedInteraction?.Invoke(TutorialID.AddToInventory);
             }
             else
             {
-                OnInteraction?.Invoke($"Press {addToInventoryAction.action.GetBindingDisplayString()} to drop the item");
+                OnInteraction?.Invoke(TutorialID.AddToInventory, "Press", $" {addToInventoryAction.action.GetBindingDisplayString()}", "to add to inventory");
             }
         }
     }
@@ -391,7 +439,12 @@ public class PlayerInteraction : MonoBehaviour
             {
                 heldItem.isHeld = false;
                 heldItem = null;
-                OnEndedInteraction?.Invoke();
+
+                TutorialManager.Instance?.CompleteTutorial(
+                    TutorialID.AddToInventory
+                );
+
+                OnEndedInteraction?.Invoke(TutorialID.AddToInventory);
 
                 Debug.Log("Item stored in inventory from world.");
             }
@@ -455,7 +508,7 @@ public class PlayerInteraction : MonoBehaviour
             activeHotbarIndex = -1;
 
             Debug.Log("Dropped non-stackable from inventory.");
-            OnEndedInteraction?.Invoke();
+            OnEndedInteraction?.Invoke(TutorialID.AddToInventory);
         }
     }
 
@@ -516,7 +569,7 @@ public class PlayerInteraction : MonoBehaviour
             ClearHands(dropWorldItem: dropWorld);
 
             activeHotbarIndex = -1;
-            OnEndedInteraction?.Invoke();
+            OnEndedInteraction?.Invoke(TutorialID.AddToInventory);
 
             Debug.Log("Selected empty hotbar slot, cleared hands");
             return;
@@ -537,7 +590,7 @@ public class PlayerInteraction : MonoBehaviour
             heldItem.Grab(objectGrabPointTransform);
             heldItem.isHeld = true;
 
-            OnInteraction?.Invoke($"Press {addToInventoryAction.action.GetBindingDisplayString()} to drop from inventory");
+            OnInteraction?.Invoke(TutorialID.AddToInventory, "Press", $"{addToInventoryAction.action.GetBindingDisplayString()}", "to add to inventory");
 
             Debug.Log("Equipped NON-stackable from slot " + (index + 1));
             return;
@@ -549,7 +602,7 @@ public class PlayerInteraction : MonoBehaviour
             activeHotbarIndex = index;
             EquipStackableFromSlot(slot);
 
-            OnInteraction?.Invoke($"Press {addToInventoryAction.action.GetBindingDisplayString()} to drop from inventory");
+            OnInteraction?.Invoke(TutorialID.AddToInventory, "Press", $"{addToInventoryAction.action.GetBindingDisplayString()}", "to add to inventory");
 
             Debug.Log("Equipped STACKABLE visual from slot " + (index + 1));
             return;
@@ -561,7 +614,7 @@ public class PlayerInteraction : MonoBehaviour
             activeHotbarIndex = index;
             EquipNonStackableFromSlot(slot);
 
-            OnInteraction?.Invoke($"Press {addToInventoryAction.action.GetBindingDisplayString()} to drop from inventory");
+            OnInteraction?.Invoke(TutorialID.AddToInventory, "Press", $"{addToInventoryAction.action.GetBindingDisplayString()}", " to add to inventory");
 
             Debug.Log("Equipped NON-stackable visual from itemData slot " + (index + 1));
             return;
@@ -658,6 +711,10 @@ public class PlayerInteraction : MonoBehaviour
             return;
         }
 
+        TutorialManager.Instance?.CompleteTutorial(
+            TutorialID.UpgradeItem
+        );
+
         Debug.Log("Item processed. Current value = " + result.Value);
 
         EventManager.CallItemModified(result, upgradeStation);
@@ -677,8 +734,17 @@ public class PlayerInteraction : MonoBehaviour
             {
                 Debug.LogWarning("No CookBook assigned to playerInteraction script.");
                 return;
-            }else if (!cookBook.IsOpened()) {
+            }
+            else if (!cookBook.IsOpened())
+            {
                 cookBook.OpenCookBook();
+
+                if (cookBook.IsOpened())
+                {
+                    TutorialManager.Instance?.CompleteTutorial(
+                        TutorialID.OpenCookBook
+                    );
+                }
             }
             else
             {
