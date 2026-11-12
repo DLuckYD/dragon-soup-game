@@ -4,64 +4,40 @@ using UnityEngine;
 public class NavigationNotificationUI : MonoBehaviour
 {
     [SerializeField] private GameObject notificationPanel;
-    [SerializeField] private TMP_Text notificationText;
 
-    private void Start()
+    [SerializeField] private TMP_Text prefixText;
+    [SerializeField] private TMP_Text keyText;
+    [SerializeField] private TMP_Text actionText;
+
+    private void Awake()
     {
-        Debug.Log("[NavigationNotificationUI] Start");
         if (notificationPanel != null)
-        {
             notificationPanel.SetActive(false);
-        }
-        else
+    }
+
+    public void ShowMessage(string prefix, string key, string action)
+    {
+        if (notificationPanel == null ||
+            prefixText == null ||
+            keyText == null ||
+            actionText == null)
         {
-            Debug.LogWarning("[NavigationNotificationUI] Notification panel is not assigned.");
-        }
-    }
-
-    private void OnEnable()
-    {
-        Debug.Log("Subscribing to [NavigationNotificationUI] events...");
-        PlayerInteraction.OnInteraction += ShowMessage;
-        PlayerInteraction.OnEndedInteraction += HideMessage;
-
-        //DismantlingManager.OnInteraction += ShowMessage;
-        //DismantlingManager.OnEndedInteraction += HideMessage;
-    }
-
-    private void OnDisable()
-    {
-        Debug.Log("Unsubscribing from [NavigationNotificationUI] events...");
-        PlayerInteraction.OnInteraction -= ShowMessage;
-        PlayerInteraction.OnEndedInteraction -= HideMessage;
-
-        //DismantlingManager.OnInteraction -= ShowMessage;
-        //DismantlingManager.OnEndedInteraction -= HideMessage;
-    }
-
-    private void ShowMessage(string message)
-    {
-        Debug.Log("Showing interaction prompt: " + message);
-
-        if (notificationPanel == null || notificationText == null)
-        {
-            Debug.LogWarning("[NOTIFICATION UI] Panel or text is not assigned.");
+            Debug.LogWarning("[TUTORIAL UI] UI references are missing.");
             return;
         }
 
-        notificationText.text = message;
+        prefixText.text = prefix;
+        keyText.text = key;
+        actionText.text = action;
+
         notificationPanel.SetActive(true);
     }
 
-    private void HideMessage()
+    public void HideMessage()
     {
-        if (notificationPanel == null || notificationText == null)
-        {
-            Debug.LogWarning("[NOTIFICATION UI] Panel or text is not assigned.");
+        if (notificationPanel == null)
             return;
-        }
 
-        notificationText.text = "";
         notificationPanel.SetActive(false);
     }
 }
