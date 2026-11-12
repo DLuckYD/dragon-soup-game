@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d26e4283d17f0b542924e2126259c8ea, type: 3}
+  m_Name: ImageTutorialData
+  m_EditorClassIdentifier: Assembly-CSharp::ImageTutorialData
+  pages:
+  - image: {fileID: 21300000, guid: e26bf70ff9e7a804caf847daea794ed1, type: 3}
+    description: Tutoria 1
+  - image: {fileID: 21300000, guid: 94dd575875f27344e9dfe8c5ecafe847, type: 3}
+    description: Tutoria 2
+  - image: {fileID: 21300000, guid: 9c0338e564ad4ff4a87071bd6e9ec4af, type: 3}
+    description: Tutoria 3
+  - image: {fileID: 21300000, guid: 8aa4adcbf62886845a83d531fd618ff4, type: 3}
+    description: Tutoria 4
+  - image: {fileID: 21300000, guid: 8ff63be3351ac654c8550afcc49c33e9, type: 3}
+    description: Tutoria 5
