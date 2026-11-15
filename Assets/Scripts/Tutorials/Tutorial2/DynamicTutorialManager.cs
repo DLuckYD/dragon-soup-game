@@ -1,9 +1,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TutorialManager : MonoBehaviour
+public class DynamicTutorialManager : MonoBehaviour
 {
-    public static TutorialManager Instance { get; private set; }
+    public static DynamicTutorialManager Instance { get; private set; }
 
     [Header("UI")]
     [SerializeField] private NavigationNotificationUI notificationUI;

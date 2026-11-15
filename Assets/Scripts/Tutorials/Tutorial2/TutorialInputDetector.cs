@@ -16,7 +16,7 @@ public class TutorialInputDetector : MonoBehaviour
 
     private void Update()
     {
-        if (TutorialManager.Instance == null)
+        if (DynamicTutorialManager.Instance == null)
             return;
 
         CheckMovement();
@@ -25,7 +25,7 @@ public class TutorialInputDetector : MonoBehaviour
 
     private void CheckMovement()
     {
-        if (TutorialManager.Instance.IsCompleted(TutorialID.Movement))
+        if (DynamicTutorialManager.Instance.IsCompleted(TutorialID.Movement))
             return;
 
         if (moveAction == null || moveAction.action == null)
@@ -38,7 +38,7 @@ public class TutorialInputDetector : MonoBehaviour
 
         if (accumulatedMovement >= movementThreshold)
         {
-            TutorialManager.Instance.CompleteTutorial(
+            DynamicTutorialManager.Instance.CompleteTutorial(
                 TutorialID.Movement
             );
         }
@@ -46,10 +46,10 @@ public class TutorialInputDetector : MonoBehaviour
 
     private void CheckCameraLook()
     {
-        if (!TutorialManager.Instance.IsCompleted(TutorialID.Movement))
+        if (!DynamicTutorialManager.Instance.IsCompleted(TutorialID.Movement))
             return;
 
-        if (TutorialManager.Instance.IsCompleted(TutorialID.CameraLook))
+        if (DynamicTutorialManager.Instance.IsCompleted(TutorialID.CameraLook))
             return;
 
         if (lookAction == null || lookAction.action == null)
@@ -62,7 +62,7 @@ public class TutorialInputDetector : MonoBehaviour
 
         if (accumulatedLook >= lookThreshold)
         {
-            TutorialManager.Instance.CompleteTutorial(
+            DynamicTutorialManager.Instance.CompleteTutorial(
                 TutorialID.CameraLook
             );
         }

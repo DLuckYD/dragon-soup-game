@@ -27,10 +27,10 @@ public class TutorialTrigger : MonoBehaviour
         if (!other.CompareTag("Player"))
             return;
 
-        if (TutorialManager.Instance.IsCompleted(tutorialID))
+        if (DynamicTutorialManager.Instance.IsCompleted(tutorialID))
             return;
 
-        TutorialManager.Instance?.ShowTutorial(
+        DynamicTutorialManager.Instance?.ShowTutorial(
             tutorialID,
             tutorialPreffix,
             tutorialKey,
@@ -43,6 +43,6 @@ public class TutorialTrigger : MonoBehaviour
         if (!other.CompareTag("Player"))
             return;
 
-        TutorialManager.Instance.HideTutorial(tutorialID);
+        DynamicTutorialManager.Instance.HideTutorial(tutorialID);
     }
 }
