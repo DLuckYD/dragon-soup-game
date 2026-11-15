@@ -46,6 +46,9 @@ public class DarkEntityUI : MonoBehaviour
         if (panel != null)
         {
             panel.SetActive(true);
+            DynamicTutorialManager.Instance?.CompleteTutorial(
+                TutorialID.TalkToDarkEntity
+            );
         }
 
         FreezeGame();
@@ -117,7 +120,7 @@ public class DarkEntityUI : MonoBehaviour
 
     private void FreezeGame()
     {
-        Time.timeScale = 0f;
+        //Time.timeScale = 0f;
         Cursor.visible = true;
         Cursor.lockState = CursorLockMode.None;
 
@@ -129,7 +132,7 @@ public class DarkEntityUI : MonoBehaviour
 
     private void UnfreezeGame()
     {
-        Time.timeScale = 1f;
+        //Time.timeScale = 1f;
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
 

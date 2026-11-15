@@ -192,7 +192,7 @@ public class PlayerInteraction : MonoBehaviour
         {
             darkEntity = entity;
 
-            OnInteraction?.Invoke(TutorialID.TalkToDarkEntity, "Press", talkAction.action.GetBindingDisplayString(), "to talk to adventurer");
+            OnInteraction?.Invoke(TutorialID.TalkToDarkEntity, "Press", talkAction.action.GetBindingDisplayString(), "to talk to Dark Entity");
 
             Debug.Log($"[INTERACTION] Entered dark entity: {entity.name}");
         }
