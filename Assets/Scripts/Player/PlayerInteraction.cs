@@ -59,6 +59,7 @@ public class PlayerInteraction : MonoBehaviour
 
     void Update()
     {
+        GetLookedAtItem();
         if (upgradeAction.action.WasPressedThisFrame())
         {
             TryUpgradeItem();
@@ -242,12 +243,12 @@ public class PlayerInteraction : MonoBehaviour
             {
                 nearbyItem = item;
 
-                OnInteraction?.Invoke(
-                    TutorialID.ItemPickUp,
-                    "Press",
-                    pickUpAction.action.GetBindingDisplayString(),
-                    "to pick up"
-                );
+                //OnInteraction?.Invoke(
+                //    TutorialID.ItemPickUp,
+                //    "Press",
+                //    pickUpAction.action.GetBindingDisplayString(),
+                //    "to pick up"
+                //);
                 Debug.Log($"[INTERACTION] Entered item pickup area: {item.name}");
             }
             return;
@@ -261,12 +262,12 @@ public class PlayerInteraction : MonoBehaviour
             {
                 nearbyItem = reward;
 
-                OnInteraction?.Invoke(
-                    TutorialID.ItemPickUp,
-                    "Press",
-                    pickUpAction.action.GetBindingDisplayString(),
-                    "to pick up"
-                );
+                //OnInteraction?.Invoke(
+                //    TutorialID.ItemPickUp,
+                //    "Press",
+                //    pickUpAction.action.GetBindingDisplayString(),
+                //    "to pick up"
+                //);
                 Debug.Log($"[INTERACTION] Entered item pickup area: {reward.name}");
             }
             Debug.LogWarning($"RewardItem '{reward.name}' has NULL itemData (triggered by collider '{other.name}')");
@@ -334,10 +335,68 @@ public class PlayerInteraction : MonoBehaviour
 
                 nearbyItem = null;
 
-                OnEndedInteraction?.Invoke(TutorialID.ItemPickUp);
+                //OnEndedInteraction?.Invoke(TutorialID.ItemPickUp);
             }
         }
     }
+
+    private InventoryItem currentPickupTarget;
+
+    private void GetLookedAtItem()
+    {
+        InventoryItem item = null;
+
+        if (heldItem == null &&
+            (cookingStation == null || !cookingStation.IsWaitingForIngredient))
+        {
+            RaycastHit[] hits = Physics.RaycastAll(
+                playerCameraTransform.position,
+                playerCameraTransform.forward,
+                pickUpDistance,
+                pickUpLayerMask
+            );
+
+            System.Array.Sort(hits,
+                (a, b) => a.distance.CompareTo(b.distance));
+
+            foreach (var hit in hits)
+            {
+                InventoryItem candidate =
+                    hit.transform.GetComponentInParent<InventoryItem>();
+
+                if (candidate != null &&
+                    !candidate.isHeld &&
+                    !candidate.isInInventory)
+                {
+                    item = candidate;
+                    break;
+                }
+            }
+        }
+
+        if (item != currentPickupTarget)
+        {
+            if (currentPickupTarget != null)
+                OnEndedInteraction?.Invoke(TutorialID.ItemPickUp);
+
+            currentPickupTarget = item;
+        }
+
+        if (item != null &&
+            DynamicTutorialManager.Instance != null &&
+            !DynamicTutorialManager.Instance.IsCompleted(TutorialID.ItemPickUp) &&
+            !DynamicTutorialManager.Instance.IsActiveTutorial(TutorialID.ItemPickUp))
+        {
+            OnInteraction?.Invoke(
+                TutorialID.ItemPickUp,
+                "Press",
+                pickUpAction.action.GetBindingDisplayString(),
+                "to pick up"
+            );
+        }
+    }
+
+
 
     private void PickUpAndDrop()
     {
@@ -380,7 +439,7 @@ public class PlayerInteraction : MonoBehaviour
                                 TutorialID.AddToInventory
                             );
 
-                            OnEndedInteraction?.Invoke(TutorialID.ItemPickUp);
+                            //OnEndedInteraction?.Invoke(TutorialID.ItemPickUp);
 
                             Debug.Log("Stackable item added to inventory.");
                             return;

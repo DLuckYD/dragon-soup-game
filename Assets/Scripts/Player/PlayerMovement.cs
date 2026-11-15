@@ -113,16 +113,20 @@ public class PlayerMovement : MonoBehaviour
             Invoke(nameof(ResetJump), jumpCooldown);
         }
 
-        //start crouch
+        // Start crouching
         if (crouchAction.action.WasPressedThisFrame() && grounded)
         {
             Crouch();
         }
 
-        //stop crouch
-        if (crouchAction.action.WasPressedThisFrame())
+        // Stop crouching
+        if (crouchAction.action.WasReleasedThisFrame())
         {
-            transform.localScale = new Vector3(transform.localScale.x, startYScale, transform.localScale.z);
+            transform.localScale = new Vector3(
+                transform.localScale.x,
+                startYScale,
+                transform.localScale.z
+            );
         }
     }
 
@@ -150,7 +154,7 @@ public class PlayerMovement : MonoBehaviour
     public void StateHandler()
     {
         //crouching
-        if (grounded && crouchAction.action.WasPressedThisFrame())
+        if (grounded && crouchAction.action.IsPressed())
         {
             state = MovementState.crouching;
             moveSpeed = crouchSpeed;
@@ -165,6 +169,7 @@ public class PlayerMovement : MonoBehaviour
         else
         {
             state = MovementState.air;
+            moveSpeed = walkSpeed;
         }
     }
 

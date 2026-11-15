@@ -89,6 +89,9 @@ public class DynamicTutorialManager : MonoBehaviour
 
         activeTutorial = null;
         notificationUI.HideMessage();
+
+        Debug.Log($"[TUTORIAL HIDE] Active: {activeTutorial}");
+        Debug.Log(System.Environment.StackTrace);
     }
 
     public void CompleteTutorial(TutorialID id)
@@ -122,5 +125,10 @@ public class DynamicTutorialManager : MonoBehaviour
                 ShowTutorial(id, "Press", "E", "to give the requested item");
                 break;
         }
+    }
+
+    public bool IsActiveTutorial(TutorialID id)
+    {
+        return activeTutorial == id;
     }
 }
