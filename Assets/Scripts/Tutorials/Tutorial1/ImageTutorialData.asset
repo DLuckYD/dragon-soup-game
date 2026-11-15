@@ -14,12 +14,35 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ImageTutorialData
   pages:
   - image: {fileID: 21300000, guid: e26bf70ff9e7a804caf847daea794ed1, type: 3}
-    description: Tutoria 1
+    tutorialNumber: 1
+    tutorialName: Tutorial 1
+    tutorialDescription: 'This is placeholder for tutorial 1 This is placeholder
+      for tutorial 1 This is placeholder for tutorial 1 This is placeholder for tutorial
+      1 This is placeholder for tutorial 1 This is placeholder for tutorial 1 This
+      is placeholder for tutorial 1 This is placeholder for tutorial 1 This is placeholder
+      for tutorial 1 This is placeholder for tutorial 1 This is placeholder for tutorial
+      1 '
   - image: {fileID: 21300000, guid: 94dd575875f27344e9dfe8c5ecafe847, type: 3}
-    description: Tutoria 2
+    tutorialNumber: 2
+    tutorialName: Tutorial 2
+    tutorialDescription: 'This is placeholder for tutorial 2 This is placeholder
+      for tutorial 2 This is placeholder for tutorial 2 This is placeholder for tutorial
+      2 This is placeholder for tutorial 2 This is placeholder for tutorial 2 This
+      is placeholder for tutorial 2 This is placeholder for tutorial 2 This is placeholder
+      for tutorial 2 This is placeholder for tutorial 2 '
   - image: {fileID: 21300000, guid: 9c0338e564ad4ff4a87071bd6e9ec4af, type: 3}
-    description: Tutoria 3
+    tutorialNumber: 3
+    tutorialName: Tutorial 3
+    tutorialDescription: 'This is placeholder for tutorial 3 This is placeholder
+      for tutorial 3 This is placeholder for tutorial 3 This is placeholder for tutorial
+      3 This is placeholder for tutorial 3 This is placeholder for tutorial 3 '
   - image: {fileID: 21300000, guid: 8aa4adcbf62886845a83d531fd618ff4, type: 3}
-    description: Tutoria 4
+    tutorialNumber: 4
+    tutorialName: Tutorial 4
+    tutorialDescription: This is placeholder for tutorial 1 This is placeholder for
+      tutorial 4This is placeholder for tutorial 4This is placeholder for tutorial
+      4
   - image: {fileID: 21300000, guid: 8ff63be3351ac654c8550afcc49c33e9, type: 3}
-    description: Tutoria 5
+    tutorialNumber: 5
+    tutorialName: Tutorial 5
+    tutorialDescription: This is placeholder for tutorial 5

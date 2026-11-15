@@ -6,19 +6,36 @@ public class ImageTutorialWindow : MonoBehaviour
 {
     [Header("UI References")]
     [SerializeField] private Image tutorialImage;
-    [SerializeField] private TMP_Text tutorialText;
 
-    public void Initialize(Sprite image, string text)
+    [SerializeField] private TMP_Text tutorialNumberText;
+    [SerializeField] private TMP_Text tutorialNameText;
+    [SerializeField] private TMP_Text tutorialDescriptionText;
+
+    public void Initialize(ImageTutorialPage page)
     {
         if (tutorialImage != null)
         {
-            tutorialImage.sprite = image;
-            tutorialImage.enabled = image != null;
+            tutorialImage.sprite = page.image;
+            tutorialImage.enabled = page.image != null;
         }
 
-        if (tutorialText != null)
+        if (page.tutorialName != null)
         {
-            tutorialText.text = text;
+            tutorialNameText.text = page.tutorialName;
         }
+        
+        if (page.tutorialNumber != null)
+        {
+            tutorialNumberText.text = page.tutorialNumber.ToString();
+        }
+        
+        if (page.tutorialDescription != null)
+        {
+            tutorialDescriptionText.text = page.tutorialDescription;
+        }
+        
+        
+        
+        
     }
 }

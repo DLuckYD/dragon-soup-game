@@ -51,7 +51,7 @@ public class ImageTutorialManager : MonoBehaviour
             ImageTutorialWindow window =
                 Instantiate(windowPrefab, contentParent);
 
-            window.Initialize(page.image, page.description);
+            window.Initialize(page);
         }
 
         // Update UI layout
