@@ -2864,7 +2864,7 @@ CapsuleCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.5
+  m_Radius: 0.3
   m_Height: 1.8
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
@@ -2933,8 +2933,8 @@ Transform:
   m_GameObject: {fileID: 267349046}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
-  m_LocalPosition: {x: 0, y: 1.453, z: 3.718}
-  m_LocalScale: {x: 0.55827, y: 1, z: 0.67861}
+  m_LocalPosition: {x: 0, y: 1, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 330585546}
@@ -3950,7 +3950,6 @@ MonoBehaviour:
   adventurerNameText: {fileID: 1356516091}
   offerIntroText: {fileID: 1725573118}
   offerOutroText: {fileID: 590538487}
-  offerDebugText: {fileID: 830234487}
   offerIngredientIcon: {fileID: 1850694986}
   offerIngredientLine: {fileID: 1614917917}
   giveQuestButton: {fileID: 306524730}
