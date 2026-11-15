@@ -20,7 +20,7 @@ public class QuestUI : MonoBehaviour
     [Header("Offer: Blocks")]
     [SerializeField] private TMP_Text offerIntroText;
     [SerializeField] private TMP_Text offerOutroText;
-    [SerializeField] private TMP_Text offerDebugText;
+    //[SerializeField] private TMP_Text offerDebugText;
 
     [Header("Offer: Goal Card")]
     [SerializeField] private Image offerIngredientIcon;
@@ -72,6 +72,8 @@ public class QuestUI : MonoBehaviour
 
     public void OpenOfferUIPanel(AdventurerNPC npc)
     {
+        DynamicTutorialManager.Instance?.CompleteTutorial(TutorialID.TalkToAdventurerToGiveQuest);
+
         currentNpc = npc;
 
         SetPanelState(showOffer: true, showReturn: false);
@@ -91,16 +93,16 @@ public class QuestUI : MonoBehaviour
         if (offerOutroText != null)
             offerOutroText.text = preview.outro;
 
-        if (offerDebugText != null)
-        {
-            bool hasDebugInfo = !string.IsNullOrEmpty(preview.debugInfo);
-            offerDebugText.gameObject.SetActive(hasDebugInfo);
-            offerDebugText.text = hasDebugInfo ? preview.debugInfo : string.Empty;
-        }
-        else if (!string.IsNullOrEmpty(preview.debugInfo) && offerOutroText != null)
-        {
-            offerOutroText.text += "\n\n" + preview.debugInfo;
-        }
+        //if (offerDebugText != null)
+        //{
+        //    bool hasDebugInfo = !string.IsNullOrEmpty(preview.debugInfo);
+        //    offerDebugText.gameObject.SetActive(hasDebugInfo);
+        //    offerDebugText.text = hasDebugInfo ? preview.debugInfo : string.Empty;
+        //}
+        //else if (!string.IsNullOrEmpty(preview.debugInfo) && offerOutroText != null)
+        //{
+        //    offerOutroText.text += "\n\n" + preview.debugInfo;
+        //}
 
         if (offerIngredientLine != null)
             offerIngredientLine.text = $"{preview.ingredientName} x{preview.amount}";
@@ -114,6 +116,7 @@ public class QuestUI : MonoBehaviour
 
     public void OpenReturnUI(AdventurerNPC npc, QuestManager.ReturnInfo info)
     {
+        DynamicTutorialManager.Instance?.CompleteTutorial(TutorialID.TalkToAdventurerToGetRequest);
         currentNpc = npc;
 
         SetPanelState(showOffer: false, showReturn: true);
@@ -238,11 +241,11 @@ public class QuestUI : MonoBehaviour
         SetRollHaggleButtonVisible(false);
         ClearAdventurerPreview();
 
-        if (offerDebugText != null)
-        {
-            offerDebugText.text = string.Empty;
-            offerDebugText.gameObject.SetActive(false);
-        }
+        //if (offerDebugText != null)
+        //{
+        //    offerDebugText.text = string.Empty;
+        //    offerDebugText.gameObject.SetActive(false);
+        //}
 
         Time.timeScale = 1f;
         Cursor.visible = false;

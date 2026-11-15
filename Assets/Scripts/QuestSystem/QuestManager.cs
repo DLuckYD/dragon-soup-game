@@ -422,6 +422,10 @@ public class QuestManager : MonoBehaviour
                 // spawning the ingredient, and finishing the quest.
                 questUI?.ShowRewardTradeFeedback(tradeResult);
                 CompleteSuccessfulTrade(npc, quest, tradeResult.rewardItem);
+
+                DynamicTutorialManager.Instance?.HideTutorial(
+                    TutorialID.GiveItemToAdventurer
+                );
                 break;
 
             case RewardTradeSubmitOutcome.HaggleRequired:

@@ -15,8 +15,6 @@ public class DynamicTutorialManager : MonoBehaviour
     private readonly Dictionary<TutorialID, TutorialID> nextTutorial = new()
 {
     { TutorialID.Movement, TutorialID.CameraLook },
-    { TutorialID.OpenCookBook, TutorialID.ChooseRecipe },
-    { TutorialID.TalkToAdventurer, TutorialID.GiveItemToAdventurer }
 };
 
     private void Awake()

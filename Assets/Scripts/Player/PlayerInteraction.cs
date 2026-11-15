@@ -176,14 +176,36 @@ public class PlayerInteraction : MonoBehaviour
         {
             nearbyAdventurer = adventurer;
 
-            OnInteraction?.Invoke(
-                TutorialID.TalkToAdventurer,
-                "Press",
-                talkAction.action.GetBindingDisplayString(),
-                "to talk to adventurer"
-            );
+            Debug.Log($"[INTERACTION] Entered adventurer: {adventurer.name} with state: {adventurer.State}");
+            if (adventurer.State.Equals(AdventurerState.Offered))
+            {
+                OnInteraction?.Invoke(
+                    TutorialID.TalkToAdventurerToGiveQuest,
+                    "Press",
+                    talkAction.action.GetBindingDisplayString(),
+                    "to talk to adventurer"
+                );
+            }
+            if (adventurer.State.Equals(AdventurerState.WaitingReward))
+            {
+                OnInteraction?.Invoke(
+                    TutorialID.TalkToAdventurerToGetRequest,
+                    "Press",
+                    talkAction.action.GetBindingDisplayString(),
+                    "to talk about the reward"
+                );
+                if(heldItem != null && heldItem is RewardItem questReward)
+                {
+                    OnInteraction?.Invoke(
+                        TutorialID.GiveItemToAdventurer,
+                        "Press",
+                        talkAction.action.GetBindingDisplayString(),
+                        "to give the requested item"
+                    );
+                }
+            }
 
-            Debug.Log($"[INTERACTION] Entered adventurer: {adventurer.name}");
+            //Debug.Log($"[INTERACTION] Entered adventurer: {adventurer.name}");
         }
         
         DarkEntity entity = other.GetComponentInParent<DarkEntity>();
@@ -276,9 +298,10 @@ public class PlayerInteraction : MonoBehaviour
 
             nearbyAdventurer = null;
 
-            OnEndedInteraction?.Invoke(TutorialID.TalkToAdventurer);
+            OnEndedInteraction?.Invoke(TutorialID.TalkToAdventurerToGiveQuest);
+            OnEndedInteraction?.Invoke(TutorialID.TalkToAdventurerToGetRequest);
         }
-        
+
         DarkEntity entity = other.GetComponentInParent<DarkEntity>();
 
         if (entity != null && entity == darkEntity)

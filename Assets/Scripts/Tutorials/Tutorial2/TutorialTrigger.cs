@@ -12,9 +12,11 @@ public enum TutorialID
     ChooseRecipe,
     AddIngredient,
     UpgradeItem,
-    TalkToAdventurer,
+    TalkToAdventurerToGiveQuest,
+    TalkToAdventurerToGetRequest,
+    GiveItemToAdventurer,
     TalkToDarkEntity,
-    GiveItemToAdventurer
+    
 }
 public class TutorialTrigger : MonoBehaviour
 {
