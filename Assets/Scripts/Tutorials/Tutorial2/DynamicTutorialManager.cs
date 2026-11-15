@@ -12,6 +12,13 @@ public class DynamicTutorialManager : MonoBehaviour
 
     private TutorialID? activeTutorial;
 
+    private readonly Dictionary<TutorialID, TutorialID> nextTutorial = new()
+{
+    { TutorialID.Movement, TutorialID.CameraLook },
+    { TutorialID.OpenCookBook, TutorialID.ChooseRecipe },
+    { TutorialID.TalkToAdventurer, TutorialID.GiveItemToAdventurer }
+};
+
     private void Awake()
     {
         if (Instance != null && Instance != this)
@@ -95,14 +102,27 @@ public class DynamicTutorialManager : MonoBehaviour
 
         Debug.Log($"[TUTORIAL] Completed: {id}");
 
-        if (id == TutorialID.Movement)
+        if (nextTutorial.TryGetValue(id, out TutorialID next))
         {
-            ShowTutorial(
-                TutorialID.CameraLook,
-                "Move",
-                "Mouse",
-                "to look around"
-            );
+            ShowNextTutorial(next);
+        }
+    }
+
+    private void ShowNextTutorial(TutorialID id)
+    {
+        switch (id)
+        {
+            case TutorialID.CameraLook:
+                ShowTutorial(id, "Move", "Mouse", "to look around");
+                break;
+
+            //case TutorialID.ChooseRecipe:
+            //    ShowTutorial(id, "Choose the", "Recipe", "to start cooking");
+            //    break;
+
+            case TutorialID.GiveItemToAdventurer:
+                ShowTutorial(id, "Press", "E", "to give the requested item");
+                break;
         }
     }
 }

@@ -10,6 +10,7 @@ public enum TutorialID
     DropFromInventory,
     OpenCookBook,
     ChooseRecipe,
+    AddIngredient,
     UpgradeItem,
     TalkToAdventurer,
     TalkToDarkEntity,

@@ -104,6 +104,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "AddIngredient",
+                    "type": "Button",
+                    "id": "81acd32f-07ca-4aca-a6e4-903d37131c48",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -313,6 +322,17 @@
                     "processors": "",
                     "groups": ";Keyboard&Mouse",
                     "action": "Dismantle",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "7f7adf71-a311-439c-b106-5efd524d548a",
+                    "path": "<Keyboard>/e",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "AddIngredient",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

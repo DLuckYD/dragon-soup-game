@@ -744,7 +744,15 @@ public class PlayerInteraction : MonoBehaviour
                     DynamicTutorialManager.Instance?.CompleteTutorial(
                         TutorialID.OpenCookBook
                     );
+
+                    DynamicTutorialManager.Instance?.ShowTutorial(
+                        TutorialID.ChooseRecipe,
+                        "Choose the",
+                        "Recipe",
+                        "to start cooking"
+                    );
                 }
+
             }
             else
             {

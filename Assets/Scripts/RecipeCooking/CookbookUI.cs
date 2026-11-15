@@ -72,6 +72,10 @@ public class CookbookUI : MonoBehaviour
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
         if (cameraScript != null) cameraScript.canLook = true;
+
+        DynamicTutorialManager.Instance?.HideTutorial(
+            TutorialID.ChooseRecipe
+        );
     }
 
     void GenerateRecipeCards()

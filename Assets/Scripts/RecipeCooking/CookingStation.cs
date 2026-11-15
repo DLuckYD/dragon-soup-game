@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class CookingStation : MonoBehaviour
 {
@@ -20,6 +21,8 @@ public class CookingStation : MonoBehaviour
     public static event Action<string> OnNextIngredient;
     public static event Action<string> OnSuccessfulCook;
     public static event Action<string> OnInventoryFull;
+
+    [SerializeField] private InputActionReference addIngredientAction;
 
     private Recipe activeRecipe;
     private int currentIngredientIndex = -1;
@@ -115,14 +118,27 @@ public class CookingStation : MonoBehaviour
         cookingState = CookingState.WaitingForIngredient;
         timer = addIngredientTime;
 
+        // Recipe successfully selected
+        DynamicTutorialManager.Instance?.CompleteTutorial(
+            TutorialID.ChooseRecipe
+        );
+
+        if (cookBook != null)
+            cookBook.CloseCookBook();
+
         if (cauldronUI != null)
         {
             cauldronUI.StartCookingUI(activeRecipe);
             cauldronUI.ShowWaitingForIngredient(currentIngredientIndex, timer);
         }
 
-        if (cookBook != null)
-            cookBook.CloseCookBook();
+        // Show the next tutorial
+        DynamicTutorialManager.Instance?.ShowTutorial(
+            TutorialID.AddIngredient,
+            "Press",
+            addIngredientAction.action.GetBindingDisplayString(),
+            "to add an ingredient when the timer is red"
+        );
 
         Debug.Log("[COOKING] Started recipe: " + recipe.displayName);
     }
@@ -154,6 +170,11 @@ public class CookingStation : MonoBehaviour
         }
 
         playerInventory.RemoveItemDataAmount(ingredient.item, ingredient.amount);
+
+        // Complete the tutorial for adding an ingredient
+        DynamicTutorialManager.Instance?.CompleteTutorial(
+            TutorialID.AddIngredient
+        );
 
         float cookTime = ingredient.amount * ingredient.item.cookingTime;
 

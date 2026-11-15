@@ -3529,6 +3529,9 @@ MonoBehaviour:
   prefixText: {fileID: 1154472042}
   keyText: {fileID: 151827259}
   actionText: {fileID: 1048585860}
+  canvasGroup: {fileID: 807318786}
+  fadeInDuration: 0
+  fadeOutDuration: 0.2
 --- !u!1001 &300935679
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8044,6 +8047,7 @@ MonoBehaviour:
   recipeProcessManager: {fileID: 734968605}
   cauldronUI: {fileID: 1221041479}
   addIngredientTime: 10
+  addIngredientAction: {fileID: 0}
 --- !u!114 &680585411
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8610,6 +8614,7 @@ GameObject:
   - component: {fileID: 807318783}
   - component: {fileID: 807318785}
   - component: {fileID: 807318784}
+  - component: {fileID: 807318786}
   m_Layer: 5
   m_Name: Popup
   m_TagString: Untagged
@@ -8676,6 +8681,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 807318782}
   m_CullTransparentMesh: 1
+--- !u!225 &807318786
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 807318782}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1001 &808138750
 PrefabInstance:
   m_ObjectHideFlags: 0
