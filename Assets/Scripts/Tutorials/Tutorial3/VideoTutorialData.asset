@@ -1,0 +1,47 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 0}
+  m_Name: VideoTutorialData
+  m_EditorClassIdentifier: Assembly-CSharp::VideoTutorialData
+  pages:
+  - video: {fileID: 32900000, guid: c2e93c1efa900c44488575353e68a3b9, type: 3}
+    tutorialNumber: 1
+    tutorialName: Tutorial 1
+    tutorialDescription: 'Tutorial 1 Tutorial 1 Tutorial 1 Tutorial 1 Tutorial 1
+      Tutorial 1 Tutorial 1 Tutorial 1 Tutorial 1 Tutorial 1 Tutorial 1 Tutorial
+      1 Tutorial 1 Tutorial 1 Tutorial 1 Tutorial 1 Tutorial 1 Tutorial 1 Tutorial
+      1 '
+    loopVideo: 0
+  - video: {fileID: 32900000, guid: e936f65f07b7f874b9ed022d224a2802, type: 3}
+    tutorialNumber: 2
+    tutorialName: Tutorial 2
+    tutorialDescription: 'Tutorial 2 Tutorial 2 Tutorial 2 Tutorial 2 Tutorial 2
+      Tutorial 2 Tutorial 2 Tutorial 2 '
+    loopVideo: 1
+  - video: {fileID: 32900000, guid: 067cf2df113b5fe41ba9009e69f6222c, type: 3}
+    tutorialNumber: 3
+    tutorialName: Tutorial 3
+    tutorialDescription: 'Tutorial 3 Tutorial 3 Tutorial 3 Tutorial 3 Tutorial 3
+      Tutorial 3 '
+    loopVideo: 0
+  - video: {fileID: 32900000, guid: 40f621a15596193468cd2c89b7bf6eb5, type: 3}
+    tutorialNumber: 4
+    tutorialName: Tutorial 4
+    tutorialDescription: 'Tutorial 4 Tutorial 4 Tutorial 4 Tutorial 4 Tutorial 4
+      Tutorial 4 Tutorial 4 Tutorial 4 Tutorial 4 Tutorial 4 Tutorial 4 Tutorial
+      4 '
+    loopVideo: 0
+  - video: {fileID: 32900000, guid: c2e93c1efa900c44488575353e68a3b9, type: 3}
+    tutorialNumber: 4
+    tutorialName: Tutorial 4
+    tutorialDescription: 'Tutorial 5 Tutorial 5 Tutorial 5 Tutorial 5 Tutorial 5 '
+    loopVideo: 1
